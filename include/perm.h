@@ -23,21 +23,21 @@
 #if 0
 #define CHECK_PERM(ulevelbits, x)	( (x) ? ulevelbits&(x) : 1)
 
-#define PERM_CHAT        00000001  /*  'C' ¥i¨Ï¥Î²á¤Ñ«Ç */
-#define PERM_TALK        00000002  /*  'T' ¥i¨Ï¥ÎÂù¤H¹ï½Í¥\¯à */
-#define PERM_POST        00000004  /*  'P' ¥i±i¶K§G§i */
-#define PERM_EMAIL       00000008  /*  'E' ¥i±H°e email */
-#define PERM_POSTNEWS    00000010  /*  'N' §G§i¥i°e¤Wºô¸ô */
-#define PERM_CHATIGNORE  00000020  /*  'D' ¥i¨Ï¥Î²á¤Ñ«Ç½ğ¤H¥\¯à */
-#define PERM_CLOAK       00000040  /*  'O' ¥iÁô§Î */
-#define PERM_XEMPT       00000080  /*  'X' ±b¸¹¥Ã¤[«O¯d */
-#define PERM_MESSAGE     00000100  /*  'M' ¥i¨Ï¥Î°e°T®§¥\¯à */
-#define PERM_NOIDLEOUT   00000200  /*  'L' ¤£³Q IDLE OUT */
+#define PERM_CHAT        00000001  /*  'C' å¯ä½¿ç”¨èŠå¤©å®¤ */
+#define PERM_TALK        00000002  /*  'T' å¯ä½¿ç”¨é›™äººå°è«‡åŠŸèƒ½ */
+#define PERM_POST        00000004  /*  'P' å¯å¼µè²¼ä½ˆå‘Š */
+#define PERM_EMAIL       00000008  /*  'E' å¯å¯„é€ email */
+#define PERM_POSTNEWS    00000010  /*  'N' ä½ˆå‘Šå¯é€ä¸Šç¶²è·¯ */
+#define PERM_CHATIGNORE  00000020  /*  'D' å¯ä½¿ç”¨èŠå¤©å®¤è¸¢äººåŠŸèƒ½ */
+#define PERM_CLOAK       00000040  /*  'O' å¯éš±å½¢ */
+#define PERM_XEMPT       00000080  /*  'X' å¸³è™Ÿæ°¸ä¹…ä¿ç•™ */
+#define PERM_MESSAGE     00000100  /*  'M' å¯ä½¿ç”¨é€è¨Šæ¯åŠŸèƒ½ */
+#define PERM_NOIDLEOUT   00000200  /*  'L' ä¸è¢« IDLE OUT */
 
 #define PERM_LOGINOK     00010000
-#define PERM_CHECKID     00020000  /*  'I' ¤w³q¹L¨­¥÷»{ÃÒ */
-#define PERM_BM          00040000  /*  'B' ªO¥D */
-#define PERM_SYSOP       00080000  /*  'S' ¯¸ªø */
+#define PERM_CHECKID     00020000  /*  'I' å·²é€šéèº«ä»½èªè­‰ */
+#define PERM_BM          00040000  /*  'B' æ¿ä¸» */
+#define PERM_SYSOP       00080000  /*  'S' ç«™é•· */
 
 #define PERM_DEFAULT	(PERM_CHAT|PERM_TALK|PERM_POST)
 #endif

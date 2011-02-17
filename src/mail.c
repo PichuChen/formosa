@@ -9,7 +9,7 @@
 
 
 /**************************************************************
- * ÀË¬d­Ó¤H«H½c Mail ¼Æ¶q
+ * æª¢æŸ¥å€‹äººä¿¡ç®± Mail æ•¸é‡
  **************************************************************/
 BOOL check_mail_num(int opt)
 {
@@ -23,7 +23,7 @@ BOOL check_mail_num(int opt)
 	{
 		if (PERM_SYSOP == curuser.userlevel)
 			maxkeepmail = 100 * SPEC_MAX_KEEP_MAIL;	/* lthuang */
-/* By kmwang:20000529:For KHBBS µ¥¯Å¦b100(§t)¥H¤WªÌªº«H½c¤W­­¬Ò³]¬° 200 */
+/* By kmwang:20000529:For KHBBS ç­‰ç´šåœ¨100(å«)ä»¥ä¸Šè€…çš„ä¿¡ç®±ä¸Šé™çš†è¨­ç‚º 200 */
 #ifdef KHBBS
                 else if (curuser.userlevel >= 100)
                         maxkeepmail = SPEC_MAX_KEEP_MAIL;
@@ -57,7 +57,7 @@ disable
 
 	if (opt == 1 && num_delete)
 	{
-		msg("¥ß¨è§R°£«H¥ó¶Ü? [n]: ");
+		msg("ç«‹åˆ»åˆªé™¤ä¿¡ä»¶å—? [n]: ");
 		if (igetkey() == 'y')
 		{
 			pack_article(ufile_mail);
@@ -69,14 +69,14 @@ disable
 	{
 		if (opt == 0)
 		{
-			msg("½Ğ¥ı±N±z«H½c¤º«H¥ó«O¯d¤Ö©ó %d «Ê!\n", maxkeepmail);
+			msg("è«‹å…ˆå°‡æ‚¨ä¿¡ç®±å…§ä¿¡ä»¶ä¿ç•™å°‘æ–¼ %d å°!\n", maxkeepmail);
 			getkey();
 		}
 		else if (opt == 1)
 		{
 			clear();
 			prints(_msg_max_mail_warning, num_mails, maxkeepmail);
-			outs("\n½T©w­nÂ÷¶}¶Ü (y/n) ? [n]: ");
+			outs("\nç¢ºå®šè¦é›¢é–‹å— (y/n) ? [n]: ");
 			if (igetkey() == 'y')
 				return FALSE;
 		}
@@ -102,11 +102,11 @@ static int mail_group(char *fname, char *title)
 	if ((msNew = CreateMailSocket()) < 0)
 		return -1;
 
-	msg("¦Û¤v«O¦s±H¥ó³Æ¥÷ (y/n) ? [n]: ");
+	msg("è‡ªå·±ä¿å­˜å¯„ä»¶å‚™ä»½ (y/n) ? [n]: ");
 	if (igetkey() == 'y')
 	{
-		/* ±H¥ó³Æ¥÷ */
-		sprintf(genbuf, "[±H¥ó³Æ¥÷] -- %s", title);
+		/* å¯„ä»¶å‚™ä»½ */
+		sprintf(genbuf, "[å¯„ä»¶å‚™ä»½] -- %s", title);
 		/* TODO: check return vaule ? */
 #ifndef IGNORE_CASE
                 SendMail(msNew, fname, curuser.userid, curuser.userid, genbuf,
@@ -314,7 +314,7 @@ int m_group()
 
 
 /*
- * ±H«H
+ * å¯„ä¿¡
  */
 int m_send(int ent, FILEHEADER *finfo, char *direct)
 {
@@ -331,14 +331,14 @@ int m_send(int ent, FILEHEADER *finfo, char *direct)
 
 
 /*******************************************************************
- * ¥uÅª·sªº«H
+ * åªè®€æ–°çš„ä¿¡
  *******************************************************************/
 int m_new()
 {
 	int fd, ent = 0;
 	FILEHEADER fhn;
 
-/* kmwang: ¦AÅª·s«H®É´£¿ô user ¦¬«H¦^¥h */
+/* kmwang: å†è®€æ–°ä¿¡æ™‚æé†’ user æ”¶ä¿¡å›å» */
 #ifdef MAILWARN
 	pmore(MAIL_WARN, TRUE);
 #endif
@@ -411,23 +411,23 @@ static void mail_title()
 {
 	title_func(_msg_mail_3, BBSTITLE);
 	outs("\n\
-(h)»¡©ú (Ctrl-p)¼g«H (</>)(a/A)·j´M ([/])¥DÃD¾\\Åª (U)¬d¸ßµo«H¤H (T)¾ã§å§R°£\n\
-(d)§R°£ (E)­×§ï½s¿è (m)±H¥X (x)Âà¶K (g)«O¯d«H¥ó (HOME)­º½g ($)¥½½g ");
-#if defined(NSYSUBBS1) || defined(KHBBS) /* sarek:09/23/2001:°ª¥«¸ê±Ğ­n¨D */
-	outs("(Ctrl-X)±ÄÃÒ");
+(h)èªªæ˜ (Ctrl-p)å¯«ä¿¡ (</>)(a/A)æœå°‹ ([/])ä¸»é¡Œé–±\è®€ (U)æŸ¥è©¢ç™¼ä¿¡äºº (T)æ•´æ‰¹åˆªé™¤\n\
+(d)åˆªé™¤ (E)ä¿®æ”¹ç·¨è¼¯ (m)å¯„å‡º (x)è½‰è²¼ (g)ä¿ç•™ä¿¡ä»¶ (HOME)é¦–ç¯‡ ($)æœ«ç¯‡ ");
+#if defined(NSYSUBBS1) || defined(KHBBS) /* sarek:09/23/2001:é«˜å¸‚è³‡æ•™è¦æ±‚ */
+	outs("(Ctrl-X)æ¡è­‰");
 #endif
 	outs("\n\
-[7m   ½s¸¹     µo«H¤H         ¤é´Á    ¼ĞÃD                                       [m");
+[7m   ç·¨è™Ÿ     ç™¼ä¿¡äºº         æ—¥æœŸ    æ¨™é¡Œ                                       [m");
 }
 
 
-#if defined(NSYSUBBS1) || defined(KHBBS) /* sarek:09/23/2001:°ª¥«¸ê±Ğ­n¨D */
+#if defined(NSYSUBBS1) || defined(KHBBS) /* sarek:09/23/2001:é«˜å¸‚è³‡æ•™è¦æ±‚ */
 static int capture_mail(int ent, FILEHEADER *finfo, char *direct)
 {
 	char fnori[PATHLEN];
 
 
-	msg("<<«H¥ó±ÄÃÒ>: §A¦P·N­n±N«H¥ó±ÄÃÒ¦Ü %s ªO¶Ü (y/n)? [n]: ",
+	msg("<<ä¿¡ä»¶æ¡è­‰>: ä½ åŒæ„è¦å°‡ä¿¡ä»¶æ¡è­‰è‡³ %s æ¿å— (y/n)? [n]: ",
 		CAPTURE_BOARD);
 	if (igetkey() != 'y')
 	{
@@ -441,17 +441,17 @@ static int capture_mail(int ent, FILEHEADER *finfo, char *direct)
 #ifdef	USE_THREADING	/* syhu */
 /*
 	if (PublishPost(fnori, curuser.userid, curuser.username, CAPTURE_BOARD,
-		"[«H¥ó°O¿ı]", curuser.ident, uinfo.from, FALSE, NULL, 0,-1,-1) < 0)
+		"[ä¿¡ä»¶è¨˜éŒ„]", curuser.ident, uinfo.from, FALSE, NULL, 0,-1,-1) < 0)
 */
 	if (PublishPost(fnori, curuser.userid, uinfo.username, CAPTURE_BOARD,
-		"[«H¥ó°O¿ı]", curuser.ident, uinfo.from, FALSE, NULL, 0,-1,-1) < 0)
+		"[ä¿¡ä»¶è¨˜éŒ„]", curuser.ident, uinfo.from, FALSE, NULL, 0,-1,-1) < 0)
 #else
 /*
 	if (PublishPost(fnori, curuser.userid, curuser.username, CAPTURE_BOARD,
-		"[«H¥ó°O¿ı]", curuser.ident, uinfo.from, FALSE, NULL, 0) < 0)
+		"[ä¿¡ä»¶è¨˜éŒ„]", curuser.ident, uinfo.from, FALSE, NULL, 0) < 0)
 */
 	if (PublishPost(fnori, curuser.userid, uinfo.username, CAPTURE_BOARD,
-		"[«H¥ó°O¿ı]", curuser.ident, uinfo.from, FALSE, NULL, 0) < 0)
+		"[ä¿¡ä»¶è¨˜éŒ„]", curuser.ident, uinfo.from, FALSE, NULL, 0) < 0)
 #endif
 		showmsg(_msg_fail);
 	else
@@ -462,7 +462,7 @@ static int capture_mail(int ent, FILEHEADER *finfo, char *direct)
 
 
 /*******************************************************************
- * Read Mail Menu ­Ó¤H«H½c  ¦Cªí¾\Åª
+ * Read Mail Menu å€‹äººä¿¡ç®±  åˆ—è¡¨é–±è®€
  *******************************************************************/
 int m_read()
 {
@@ -491,14 +491,14 @@ int m_read()
 		{']', thread_forward},
 		{'-', resv_backward},
 		{'+', resv_forward},
-#if defined(NSYSUBBS1) || defined(KHBBS) /* sarek:09/23/2001:°ª¥«¸ê±Ğ­n¨D */
+#if defined(NSYSUBBS1) || defined(KHBBS) /* sarek:09/23/2001:é«˜å¸‚è³‡æ•™è¦æ±‚ */
 		{CTRL('X'), capture_mail},
 #endif
 		{'\0', NULL}
 	};
 
 
-/* kmwang: Åª«H®É´£¿ô user ¦¬«H¦^¥h */
+/* kmwang: è®€ä¿¡æ™‚æé†’ user æ”¶ä¿¡å›å» */
 #ifdef MAILWARN
         pmore(MAIL_WARN, TRUE);
 #endif

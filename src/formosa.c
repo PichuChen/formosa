@@ -154,10 +154,10 @@ static void user_init()
 #endif
 
 #ifdef NSYSUBBS
-	/* ~bbs/conf/sysoplist ¯¸ªø¦Cªí
-	 * ¥»ÀÉ®×¤¤¦³¦C¦WªÌ¡]¤@¦æ¤@­Ó¢×¢Ò¡^¤~¯à¬İ¨ì Admin ¿ï³æ¡A¨Ã¾Ö
-	 * ¦³ admin ¨Ï¥ÎÅv, §_«h§Y¨Ï¦³ PERM_BM µ¥¯Åªº¯¸ªø¤]¬İ¤£¨ì¡A¡A©Ò¥H
-	 * ·s¼W¯¸ªø½Ğ°O±o­×§ï¦¹ÀÉ®×¡C
+	/* ~bbs/conf/sysoplist ç«™é•·åˆ—è¡¨
+	 * æœ¬æª”æ¡ˆä¸­æœ‰åˆ—åè€…ï¼ˆä¸€è¡Œä¸€å€‹ï¼©ï¼¤ï¼‰æ‰èƒ½çœ‹åˆ° Admin é¸å–®ï¼Œä¸¦æ“
+	 * æœ‰ admin ä½¿ç”¨æ¬Š, å¦å‰‡å³ä½¿æœ‰ PERM_BM ç­‰ç´šçš„ç«™é•·ä¹Ÿçœ‹ä¸åˆ°ï¼Œï¼Œæ‰€ä»¥
+	 * æ–°å¢ç«™é•·è«‹è¨˜å¾—ä¿®æ”¹æ­¤æª”æ¡ˆã€‚
 	 */
 	IsRealSysop = seekstr_in_file("conf/sysoplist", curuser.userid);
 #endif
@@ -195,10 +195,10 @@ static void user_init()
 
 		if (!check_mail_num(0)) {
 			sprintf(fname, "tmp/_writebackup.%s", curuser.userid);
-			if (get_message_file(fname, "[³Æ¥÷] °T®§°O¿ı") == 0)
+			if (get_message_file(fname, "[å‚™ä»½] è¨Šæ¯è¨˜éŒ„") == 0)
 			{
 				SendMail(-1, fname, curuser.userid, curuser.userid,
-						 "[³Æ¥÷] °T®§°O¿ı", curuser.ident);
+						 "[å‚™ä»½] è¨Šæ¯è¨˜éŒ„", curuser.ident);
 				unlink(fname);
 			}
 		}
@@ -248,12 +248,12 @@ static void user_init()
 		{
 			clear();
 			move(10, 0);
-			outs("©êºp, ¥Ñ©ó±zªº¼ÊºÙ§t¦³±m¦â±±¨î½X, ¥B¥¼¥[¤WÁÙ­ì½X\n\
-¬°¤F¨Ï±o¥X²{¦b«H¥ó¡B§G§i¡B¨Ï¥ÎªÌ¦Cªí¤¤±m¦â±±¨î½Xªº§G¸mµo¥Íµe­±¶Ã±¼ªº°İÃD,\n\
-©Ò¥H¼È®É¨ú®ø±zªº¼ÊºÙ!\n\
+			outs("æŠ±æ­‰, ç”±æ–¼æ‚¨çš„æš±ç¨±å«æœ‰å½©è‰²æ§åˆ¶ç¢¼, ä¸”æœªåŠ ä¸Šé‚„åŸç¢¼\n\
+ç‚ºäº†ä½¿å¾—å‡ºç¾åœ¨ä¿¡ä»¶ã€ä½ˆå‘Šã€ä½¿ç”¨è€…åˆ—è¡¨ä¸­å½©è‰²æ§åˆ¶ç¢¼çš„ä½ˆç½®ç™¼ç”Ÿç•«é¢äº‚æ‰çš„å•é¡Œ,\n\
+æ‰€ä»¥æš«æ™‚å–æ¶ˆæ‚¨çš„æš±ç¨±!\n\
 \n\
-½Ğ±z¦Ü¥D¿ï³æ -> (x)­Ó¤H¤u¨ã½c -> (f)¥h°£¼ÊºÙ±m¦â±±¨î½X\n\
-«K¥i«ì´_±z­ì¦³ªº¼ÊºÙ, ¦ı±m¦â±±¨î½X±N·|®ø¥¢!\n");
+è«‹æ‚¨è‡³ä¸»é¸å–® -> (x)å€‹äººå·¥å…·ç®± -> (f)å»é™¤æš±ç¨±å½©è‰²æ§åˆ¶ç¢¼\n\
+ä¾¿å¯æ¢å¾©æ‚¨åŸæœ‰çš„æš±ç¨±, ä½†å½©è‰²æ§åˆ¶ç¢¼å°‡æœƒæ¶ˆå¤±!\n");
 			pressreturn();
 			uinfo.username[0] = '\0';
 		}
@@ -262,7 +262,7 @@ static void user_init()
 #endif
 
 #ifdef IGNORE_CASE
-        /* kmwang:20000628:ÀË¬d Fake ID ¬O§_¬Ûµ¥©ó Real ID */
+        /* kmwang:20000628:æª¢æŸ¥ Fake ID æ˜¯å¦ç›¸ç­‰æ–¼ Real ID */
         if (strcasecmp(curuser.userid, curuser.fakeuserid))
         {
                 strcpy(curuser.fakeuserid, curuser.userid);
@@ -298,7 +298,7 @@ static void user_init()
 	/* initialize */
 	if (PERM_SYSOP == curuser.userlevel)
 		maxkeepmail = 100 * SPEC_MAX_KEEP_MAIL;	/* lthuang */
-/* By kmwang:20000529:For KHBBS µ¥¯Å¦b100(§t)¥H¤WªÌªº«H½c¤W­­¬Ò³]¬° 200 */
+/* By kmwang:20000529:For KHBBS ç­‰ç´šåœ¨100(å«)ä»¥ä¸Šè€…çš„ä¿¡ç®±ä¸Šé™çš†è¨­ç‚º 200 */
 #ifdef KHBBS
 	else if (curuser.userlevel >= 100)
 		maxkeepmail = SPEC_MAX_KEEP_MAIL;
@@ -342,7 +342,7 @@ static void new_register(USEREC *nu)
 		getdata(ln_base, 0, _msg_formosa_2, nu->userid, IDLEN, ECHONOSP);
 #ifdef IGNORE_CASE
                 strcpy(nu->fakeuserid, nu->userid);
-                /* kmwang:20000629:±N nu->userid ¥şÂà¬°¤p¼g */
+                /* kmwang:20000629:å°‡ nu->userid å…¨è½‰ç‚ºå°å¯« */
                 strtolow(nu->userid);
 #endif
 		if (invalid_new_userid(nu->userid))
@@ -511,7 +511,7 @@ static void login_query()
 		}
 
 #ifdef IGNORE_CASE
-                strtolow(myuserid);     /* ®³±¼¤j¤p¼g­­¨î */
+                strtolow(myuserid);     /* æ‹¿æ‰å¤§å°å¯«é™åˆ¶ */
 #endif
 
 		if (!strcmp(myuserid, "new"))

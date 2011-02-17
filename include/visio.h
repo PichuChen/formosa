@@ -29,12 +29,12 @@
 
 #define VCLR_INPUT_FIELD	ANSI_COLOR(0;7)
 
-#define VMSG_PAUSE		" ½Ğ«ö¥ô·NÁäÄ~Äò "
-#define VMSG_PAUSE_PAD		"¢e"
-#define VMSG_MSG_FLOAT		" [«ö¥ô·NÁäÄ~Äò]"
-#define VMSG_MSG_PREFIX		" ¡» "
-#define VMSG_HDR_PREFIX		"¡i "
-#define VMSG_HDR_POSTFIX	" ¡j"
+#define VMSG_PAUSE		" è«‹æŒ‰ä»»æ„éµç¹¼çºŒ "
+#define VMSG_PAUSE_PAD		"â–„"
+#define VMSG_MSG_FLOAT		" [æŒ‰ä»»æ„éµç¹¼çºŒ]"
+#define VMSG_MSG_PREFIX		" â—† "
+#define VMSG_HDR_PREFIX		"ã€ "
+#define VMSG_HDR_POSTFIX	" ã€‘"
 
 // CONSTANT DEFINITION -------------------------------------------------
 #define VCOL_MAXW		(INT16_MAX)

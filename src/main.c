@@ -1,6 +1,6 @@
 /*
  * Virtual TTY, Standalone BBS Daemon.
- * ¥»µ{¦¡¥Î¨Ó¨ú¥N Telnetd, ¨Ã¦¨¬° Server, ¨Ï¢Ğ¢Ğ¢á¤£»İ­n TTY
+ * æœ¬ç¨‹å¼ç”¨ä¾†å–ä»£ Telnetd, ä¸¦æˆç‚º Server, ä½¿ï¼¢ï¼¢ï¼³ä¸éœ€è¦ TTY
  * Ming-Jang Liang, lmj@cc.nsysu.edu.tw, 10/03/96
  */
 

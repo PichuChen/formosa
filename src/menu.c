@@ -12,31 +12,31 @@ extern struct commands MainMenu[];
 
 struct commands AdminMenu[] =
 {
-	{'i', PERM_SYSOP, NULL, adminMaintainUser, ADMIN, "User Info", "§ó§ï¨Ï¥ÎªÌ¸ê®Æ"},
-	{'l', PERM_SYSOP, NULL, adminDisplayUserLog, ADMIN, "User Log", "Åã¥Ü¨Ï¥ÎªÌ°O¿ı"},
+	{'i', PERM_SYSOP, NULL, adminMaintainUser, ADMIN, "User Info", "æ›´æ”¹ä½¿ç”¨è€…è³‡æ–™"},
+	{'l', PERM_SYSOP, NULL, adminDisplayUserLog, ADMIN, "User Log", "é¡¯ç¤ºä½¿ç”¨è€…è¨˜éŒ„"},
 #ifdef USE_DELUSER
-	{'d', PERM_SYSOP, NULL, adminDeleteUser, ADMIN, "Delete User", "§R°£¤@¦ì¨Ï¥ÎªÌ"},
+	{'d', PERM_SYSOP, NULL, adminDeleteUser, ADMIN, "Delete User", "åˆªé™¤ä¸€ä½ä½¿ç”¨è€…"},
 #endif
-	{'n', PERM_SYSOP, NULL, adminCreateBoard, ADMIN, "New Board", "«Ø¥ß·s¬İªO"},
-	{'m', PERM_SYSOP, NULL, adminMaintainBoard, ADMIN, "Modify Board", "§ó§ï/§R°£/¾ã²z¬İªO³]©w"},
-	{'e', PERM_SYSOP, NULL, adminEditConf, ADMIN, "Edit Config", "½s¿è³]©wÀÉ®×"},
-	{'u', PERM_SYSOP, NULL, adminListUsers, LAUSERS, "List All Users", "¦C¥X©Ò¦³¨Ï¥ÎªÌ"},
+	{'n', PERM_SYSOP, NULL, adminCreateBoard, ADMIN, "New Board", "å»ºç«‹æ–°çœ‹æ¿"},
+	{'m', PERM_SYSOP, NULL, adminMaintainBoard, ADMIN, "Modify Board", "æ›´æ”¹/åˆªé™¤/æ•´ç†çœ‹æ¿è¨­å®š"},
+	{'e', PERM_SYSOP, NULL, adminEditConf, ADMIN, "Edit Config", "ç·¨è¼¯è¨­å®šæª”æ¡ˆ"},
+	{'u', PERM_SYSOP, NULL, adminListUsers, LAUSERS, "List All Users", "åˆ—å‡ºæ‰€æœ‰ä½¿ç”¨è€…"},
 #if 0
-	{'k', PERM_SYSOP, NULL, adminKickUser, ADMIN, "Kick User", "±N½u¤W¨Ï¥ÎªÌÂ_½u"},
+	{'k', PERM_SYSOP, NULL, adminKickUser, ADMIN, "Kick User", "å°‡ç·šä¸Šä½¿ç”¨è€…æ–·ç·š"},
 #endif
-	{'a', PERM_SYSOP, NULL, adminBroadcast, SENDMSG, "BroadCast", "¥ş¯¸¼s¼½"},
-	{'b', PERM_SYSOP, NULL, adminMailBm, SMAIL, "Mail to all BMs", "±H«Hµ¹©Ò¦³ªO¥D"},
+	{'a', PERM_SYSOP, NULL, adminBroadcast, SENDMSG, "BroadCast", "å…¨ç«™å»£æ’­"},
+	{'b', PERM_SYSOP, NULL, adminMailBm, SMAIL, "Mail to all BMs", "å¯„ä¿¡çµ¦æ‰€æœ‰æ¿ä¸»"},
 #if defined(NSYSUBBS1) || defined(NSYSUBBS3) /* sarek:03/30/2001 */
 /* TODO */
-	{'c', PERM_SYSOP, NULL, adminCancelUser, ADMIN, "Cancel User", "°±¥Î¨Ï¥ÎªÌ±b¸¹"},
+	{'c', PERM_SYSOP, NULL, adminCancelUser, ADMIN, "Cancel User", "åœç”¨ä½¿ç”¨è€…å¸³è™Ÿ"},
 #endif
 #ifndef NSYSUBBS
-	{'s', PERM_SYSOP, NULL, adminSyscheck, ADMIN, "Manually Check Ident", "¤â°Ê¨­¥÷»{ÃÒ"},
+	{'s', PERM_SYSOP, NULL, adminSyscheck, ADMIN, "Manually Check Ident", "æ‰‹å‹•èº«ä»½èªè­‰"},
 #endif
 #ifdef ANIMEBBS
-	{'a', PERM_SYSOP, MainMenu, NULL, ADMIN, "Admin Menu", "¯«©x±K·µ"},
+	{'a', PERM_SYSOP, MainMenu, NULL, ADMIN, "Admin Menu", "ç¥å®˜å¯†æ®¿"},
 #else
-	{'a', PERM_SYSOP, MainMenu, NULL, ADMIN, "Admin Menu", "ºŞ²zªÌ¿ì¤½«Ç"},
+	{'a', PERM_SYSOP, MainMenu, NULL, ADMIN, "Admin Menu", "ç®¡ç†è€…è¾¦å…¬å®¤"},
 #endif
 	{0, PERM_SYSOP, NULL, NULL, 0, NULL, NULL}
 };
@@ -48,19 +48,19 @@ struct commands AdminMenu[] =
 
 struct commands XyzMenu[] =
 {
-	{'d', 1, NULL, x_info, 0, "Personal Data", "Åã¥Ü»P­×§ï­Ó¤H°ò¥»¸ê®Æ"},
-	{'u', 0, NULL, x_uflag, 0, "User Option", "¤Á´«­Ó¤H¨Ï¥Î³]©w"},
-	{'o', 1, NULL, x_override, OVERRIDE, "Override Edit", "½s¿è¦nªB¤Í¦W³æ"},
-	{'l', 1, NULL, x_blacklist, BLACKLIST, "Blacklist Edit", "½s¿èÃa¤H¦W³æ"},
-	{'s', 1, NULL, x_signature, EDITSIG, "Signature Edit", "½s¿èÃ±¦WÀÉ"},
-	{'n', 1, NULL, x_plan, EDITPLAN, "Plan Edit", "½s¿è¦W¤ùÀÉ"},
-	{'t', 0, NULL, x_date, 0, "Time Now", "Åã¥Ü²{¦b¨t²Î®É¶¡"},
-	{'v', 0, NULL, x_viewnote, 0, "View Note", "¬d¾\\¯d¨¥"},
-	{'b', 0, NULL, x_bakpro, 0, "Backup Personal Data", "³Æ¥÷¨p¤H¸ê®Æ"},
+	{'d', 1, NULL, x_info, 0, "Personal Data", "é¡¯ç¤ºèˆ‡ä¿®æ”¹å€‹äººåŸºæœ¬è³‡æ–™"},
+	{'u', 0, NULL, x_uflag, 0, "User Option", "åˆ‡æ›å€‹äººä½¿ç”¨è¨­å®š"},
+	{'o', 1, NULL, x_override, OVERRIDE, "Override Edit", "ç·¨è¼¯å¥½æœ‹å‹åå–®"},
+	{'l', 1, NULL, x_blacklist, BLACKLIST, "Blacklist Edit", "ç·¨è¼¯å£äººåå–®"},
+	{'s', 1, NULL, x_signature, EDITSIG, "Signature Edit", "ç·¨è¼¯ç°½åæª”"},
+	{'n', 1, NULL, x_plan, EDITPLAN, "Plan Edit", "ç·¨è¼¯åç‰‡æª”"},
+	{'t', 0, NULL, x_date, 0, "Time Now", "é¡¯ç¤ºç¾åœ¨ç³»çµ±æ™‚é–“"},
+	{'v', 0, NULL, x_viewnote, 0, "View Note", "æŸ¥é–±\ç•™è¨€"},
+	{'b', 0, NULL, x_bakpro, 0, "Backup Personal Data", "å‚™ä»½ç§äººè³‡æ–™"},
 #ifdef USE_IDENT
-	{'c', 1, NULL, x_idcheck, 0, "ID Check", "¶i¦æ¨­¥÷½T»{"},
+	{'c', 1, NULL, x_idcheck, 0, "ID Check", "é€²è¡Œèº«ä»½ç¢ºèª"},
 #endif
-	{'x', 0, MainMenu, NULL, XMENU, "Xyz Menu", "­Ó¤H¸ê®ÆºûÅ@¤u¨ã½c"},
+	{'x', 0, MainMenu, NULL, XMENU, "Xyz Menu", "å€‹äººè³‡æ–™ç¶­è­·å·¥å…·ç®±"},
 	{0, 0, NULL, NULL, 0, NULL, NULL}
 };
 
@@ -71,14 +71,14 @@ struct commands XyzMenu[] =
 
 struct commands MailMenu[] =
 {
-	{'n', 1, NULL, m_new, RMAIL, "New Mails", "¥uÅª·sªº«H"},
-	{'r', 1, NULL, m_read, RMAIL, "Read Mails", "ÀËµø©Ò¦³«H¥ó"},
-	{'s', 1, NULL, m_send, SMAIL, "Send Mail", "±H«H"},
-	{'g', 1, NULL, m_group, SMAIL, "Mail to Group", "±H«Hµ¹¦h¤H"},
+	{'n', 1, NULL, m_new, RMAIL, "New Mails", "åªè®€æ–°çš„ä¿¡"},
+	{'r', 1, NULL, m_read, RMAIL, "Read Mails", "æª¢è¦–æ‰€æœ‰ä¿¡ä»¶"},
+	{'s', 1, NULL, m_send, SMAIL, "Send Mail", "å¯„ä¿¡"},
+	{'g', 1, NULL, m_group, SMAIL, "Mail to Group", "å¯„ä¿¡çµ¦å¤šäºº"},
 #ifdef ANIMEBBS
-	{'m', 0, MainMenu, NULL, MAIL, "Mail Menu", "³½¶­©¹ªğ«F"},
+	{'m', 0, MainMenu, NULL, MAIL, "Mail Menu", "é­šé›å¾€è¿”äº­"},
 #else
-	{'m', 0, MainMenu, NULL, MAIL, "Mail Menu", "­Ó¤H«H½c"},
+	{'m', 0, MainMenu, NULL, MAIL, "Mail Menu", "å€‹äººä¿¡ç®±"},
 #endif
 	{0, 0, NULL, NULL, 0, NULL, NULL}
 };
@@ -90,17 +90,17 @@ struct commands MailMenu[] =
 
 struct commands TalkMenu[] =
 {
-	{'u', 0, NULL, t_list, LUSERS, "Online Users", "¿ï³æ¦C¥X¥¿¦b½u¤Wªº¨Ï¥ÎªÌ"},
-	{'f', 1, NULL, t_friends, LFRIENDS, "Friends Online", "¦C¥X¥¿¦b½u¤Wªº¦ÑªB¤Í"},
-	{'q', 0, NULL, t_query, QUERY, "Query User", "¬d¸ß¨Ï¥ÎªÌ­Ó¤H¸ê®Æ²Ó¶µ"},
-	{'p', 1, NULL, t_pager, PAGE, "Pager Switch", "¤Á´«²á¤Ñ©I³ê¹a"},
-	{'d', 1, NULL, t_bpager, PAGE, "Broadcast Pager Switch", "¤Á´«¼s¼½©I³ê¹a"},
-	{'t', 1, NULL, t_talk, PAGE, "Talk", "Âù¤H½Í¤ß¶®«Ç"},
-	{'c', 3, NULL, t_chat, CHATROOM, "BBS Chat Room", "¯¸¤º²á¤Ñ¼s³õ"},
-	{'b', 1, NULL, t_fmsq, SENDMSG, "BroadCast", "°e°T®§µ¹¦n¤Í"},
-	{'w', 1, NULL, t_msq, SENDMSG, "Send Message", "½u¤W°e°T®§"},
-	{'r', 1, NULL, t_review, SENDMSG, "Review Message", "¦^ÅU½u¤W°T®§"},
-	{'t', 0, MainMenu, NULL, TMENU, "Talk Menu", "¥ğ¶¢²á¤Ñ¶é¦a"},
+	{'u', 0, NULL, t_list, LUSERS, "Online Users", "é¸å–®åˆ—å‡ºæ­£åœ¨ç·šä¸Šçš„ä½¿ç”¨è€…"},
+	{'f', 1, NULL, t_friends, LFRIENDS, "Friends Online", "åˆ—å‡ºæ­£åœ¨ç·šä¸Šçš„è€æœ‹å‹"},
+	{'q', 0, NULL, t_query, QUERY, "Query User", "æŸ¥è©¢ä½¿ç”¨è€…å€‹äººè³‡æ–™ç´°é …"},
+	{'p', 1, NULL, t_pager, PAGE, "Pager Switch", "åˆ‡æ›èŠå¤©å‘¼å–šéˆ´"},
+	{'d', 1, NULL, t_bpager, PAGE, "Broadcast Pager Switch", "åˆ‡æ›å»£æ’­å‘¼å–šéˆ´"},
+	{'t', 1, NULL, t_talk, PAGE, "Talk", "é›™äººè«‡å¿ƒé›…å®¤"},
+	{'c', 3, NULL, t_chat, CHATROOM, "BBS Chat Room", "ç«™å…§èŠå¤©å»£å ´"},
+	{'b', 1, NULL, t_fmsq, SENDMSG, "BroadCast", "é€è¨Šæ¯çµ¦å¥½å‹"},
+	{'w', 1, NULL, t_msq, SENDMSG, "Send Message", "ç·šä¸Šé€è¨Šæ¯"},
+	{'r', 1, NULL, t_review, SENDMSG, "Review Message", "å›é¡§ç·šä¸Šè¨Šæ¯"},
+	{'t', 0, MainMenu, NULL, TMENU, "Talk Menu", "ä¼‘é–’èŠå¤©åœ’åœ°"},
 	{0, 0, NULL, NULL, 0, NULL, NULL}
 };
 
@@ -112,39 +112,39 @@ struct commands TalkMenu[] =
 #ifdef ANIMEBBS
 struct commands MainMenu[] =
 {
-	{'c', 0, NULL, Class, CLASS_MENU, "Class", "¥ì²úµ^´µ¤À°Ï¹Ï"},
-	{'n', 0, NULL, Announce, READING, "Announce", "¯«·µµo¨¥¤H"},
-	{'0', 0, NULL, Boards, BOARDS_MENU, "Boards", "¥ì²úµ^´µ³¾Àı¹Ï"},
-	{'s', 0, NULL, Select, SELECT, "Select", "¥ì²úµ^´µ¥ô·Nªù"},
-	{'r', 0, NULL, MainRead, READING, "Read", "Åª¨ú§G§i"},
-	{'t', 0, &(TalkMenu[0]), NULL, TMENU, "Talk Menu", "¦³½t¤d¨½¬Û³{ÆU"},
-	{'m', 1, &(MailMenu[0]), NULL, MAIL, "Mail Menu", "³½¶­©¹ªğ«F"},
-	{'x', 0, &(XyzMenu[0]), NULL, XMENU, "Xyz Utilities", "¤u¨ãµó"},
+	{'c', 0, NULL, Class, CLASS_MENU, "Class", "ä¼Šè‰ç´æ–¯åˆ†å€åœ–"},
+	{'n', 0, NULL, Announce, READING, "Announce", "ç¥æ®¿ç™¼è¨€äºº"},
+	{'0', 0, NULL, Boards, BOARDS_MENU, "Boards", "ä¼Šè‰ç´æ–¯é³¥ç°åœ–"},
+	{'s', 0, NULL, Select, SELECT, "Select", "ä¼Šè‰ç´æ–¯ä»»æ„é–€"},
+	{'r', 0, NULL, MainRead, READING, "Read", "è®€å–ä½ˆå‘Š"},
+	{'t', 0, &(TalkMenu[0]), NULL, TMENU, "Talk Menu", "æœ‰ç·£åƒé‡Œç›¸é€¢å»³"},
+	{'m', 1, &(MailMenu[0]), NULL, MAIL, "Mail Menu", "é­šé›å¾€è¿”äº­"},
+	{'x', 0, &(XyzMenu[0]), NULL, XMENU, "Xyz Utilities", "å·¥å…·è¡—"},
 #ifdef USE_MULTI_LANGUAGE
-	{'l', 0, NULL, x_lang, 0, "Language switch", "¤Á´«»y¨¥ª©¥»"},
+	{'l', 0, NULL, x_lang, 0, "Language switch", "åˆ‡æ›èªè¨€ç‰ˆæœ¬"},
 #endif
-	{'g', 0, NULL, Goodbye, 0, "Goodbye", "¤p§O¥ì²úµ^´µ"},
-	{'a', PERM_SYSOP, &(AdminMenu[0]), NULL, ADMIN, "Admin Menu", "¯«©x±K·µ"},
-	{'0', 0, NULL, NULL, MMENU, "Main Menu", "¥D¿ï³æ"},
+	{'g', 0, NULL, Goodbye, 0, "Goodbye", "å°åˆ¥ä¼Šè‰ç´æ–¯"},
+	{'a', PERM_SYSOP, &(AdminMenu[0]), NULL, ADMIN, "Admin Menu", "ç¥å®˜å¯†æ®¿"},
+	{'0', 0, NULL, NULL, MMENU, "Main Menu", "ä¸»é¸å–®"},
 	{0, 0, NULL, NULL, 0, NULL, NULL}
 };
 #else
 struct commands MainMenu[] =
 {
-	{'c', 0, NULL, Class, CLASS_MENU, "Class", "¤ÀÃş¦¡§G§iÄæ¿ï¾Ü"},
-	{'n', 0, NULL, Announce, READING, "Announce", "¶i¯¸¤½§i"},
-	{'0', 0, NULL, Boards, BOARDS_MENU, "Boards", "´å¼Ğ¦¡§G§iÄæ¿ï³æ"},
-	{'s', 0, NULL, Select, SELECT, "Select", "¿é¤J¦¡§G§iÄæ¿ï¾Ü"},
-	{'r', 0, NULL, MainRead, READING, "Read", "Åª¨ú§G§i"},
-	{'t', 0, &(TalkMenu[0]), NULL, TMENU, "Talk Menu", "¥ğ¶¢²á¤Ñ¶é¦a"},
-	{'m', 1, &(MailMenu[0]), NULL, MAIL, "Mail Menu", "­Ó¤H¶l¥ó«H½c"},
-	{'x', 0, &(XyzMenu[0]), NULL, XMENU, "Xyz Utilities", "­Ó¤H¸ê®ÆºûÅ@¤u¨ã½c"},
+	{'c', 0, NULL, Class, CLASS_MENU, "Class", "åˆ†é¡å¼ä½ˆå‘Šæ¬„é¸æ“‡"},
+	{'n', 0, NULL, Announce, READING, "Announce", "é€²ç«™å…¬å‘Š"},
+	{'0', 0, NULL, Boards, BOARDS_MENU, "Boards", "æ¸¸æ¨™å¼ä½ˆå‘Šæ¬„é¸å–®"},
+	{'s', 0, NULL, Select, SELECT, "Select", "è¼¸å…¥å¼ä½ˆå‘Šæ¬„é¸æ“‡"},
+	{'r', 0, NULL, MainRead, READING, "Read", "è®€å–ä½ˆå‘Š"},
+	{'t', 0, &(TalkMenu[0]), NULL, TMENU, "Talk Menu", "ä¼‘é–’èŠå¤©åœ’åœ°"},
+	{'m', 1, &(MailMenu[0]), NULL, MAIL, "Mail Menu", "å€‹äººéƒµä»¶ä¿¡ç®±"},
+	{'x', 0, &(XyzMenu[0]), NULL, XMENU, "Xyz Utilities", "å€‹äººè³‡æ–™ç¶­è­·å·¥å…·ç®±"},
 #ifdef USE_MULTI_LANGUAGE
-	{'l', 0, NULL, x_lang, 0, "Language switch", "¤Á´«»y¨¥ª©¥»"},
+	{'l', 0, NULL, x_lang, 0, "Language switch", "åˆ‡æ›èªè¨€ç‰ˆæœ¬"},
 #endif
-	{'g', 0, NULL, Goodbye, 0, "Goodbye", "¦A¨£¡A§ÚªºªB¤Í"},
-	{'a', PERM_SYSOP, &(AdminMenu[0]), NULL, ADMIN, "Admin Menu", "ºŞ²zªÌ¿ì¤½«Ç"},
-	{'0', 0, NULL, NULL, MMENU, "Main Menu", "¥D¿ï³æ"},
+	{'g', 0, NULL, Goodbye, 0, "Goodbye", "å†è¦‹ï¼Œæˆ‘çš„æœ‹å‹"},
+	{'a', PERM_SYSOP, &(AdminMenu[0]), NULL, ADMIN, "Admin Menu", "ç®¡ç†è€…è¾¦å…¬å®¤"},
+	{'0', 0, NULL, NULL, MMENU, "Main Menu", "ä¸»é¸å–®"},
 	{0, 0, NULL, NULL, 0, NULL, NULL}
 };
 #endif
@@ -195,13 +195,13 @@ static void menu_title()
  * j = 13;
  */
 			move(10, 0);
-			outs(ANSI_COLOR(1;32) "(TAB) ®i¶}¥ş¤å" ANSI_RESET);
+			outs(ANSI_COLOR(1;32) "(TAB) å±•é–‹å…¨æ–‡" ANSI_RESET);
 			move(10, 69 - strlen(msshm->list[pict_no].owner));
-			prints("¡i´£¨Ñ¡j%s ", msshm->list[pict_no].owner);
+			prints("ã€æä¾›ã€‘%s ", msshm->list[pict_no].owner);
 			j = 2;
 			move(j, 0);
 /*
- * prints("[7m¡m§@ªÌ¡n%35.35s  ¡m¼ĞÃD¡n%27.27s[m",
+ * prints("[7mã€Šä½œè€…ã€‹%35.35s  ã€Šæ¨™é¡Œã€‹%27.27s[m",
  * msshm->list[pict_no].owner, msshm->list[pict_no].title);
  */
 			p1 = msshm->list[pict_no].body;
@@ -390,7 +390,7 @@ static int mcmd_enter(int ent, struct commands *cent, char *direct)
 {
 	if (cent->comm)
 	{
-		cmenus = cent->comm;	/* ¶i¤J¤l¿ï³æ */
+		cmenus = cent->comm;	/* é€²å…¥å­é¸å–® */
 		menu_depth++;
 		return C_REDO;
 	}
@@ -434,7 +434,7 @@ void domenu()
 			}
 			else
 			{
-				menu_depth--;	/* °h¦^¤W¼h¿ï³æ */
+				menu_depth--;	/* é€€å›ä¸Šå±¤é¸å–® */
 				m_ccur[menu_depth] = 0;
 				cmenus = cmenus[n_cmenus - 1].comm;
 			}

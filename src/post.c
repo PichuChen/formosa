@@ -14,7 +14,7 @@ extern BOOL isBM;
 int visit_article(int ent, FILEHEADER *finfo, char *direct)
 {
 	int set;
-	if (!in_board)	/* ¥u¦³¦b¬İªO¦ìÅª§PÂ_¬O¥Îpostno */
+	if (!in_board)	/* åªæœ‰åœ¨çœ‹æ¿ä½è®€åˆ¤æ–·æ˜¯ç”¨postno */
 		return C_NONE;
 
 	getdata(b_line, 0, _msg_post_9, genbuf, 2, ECHONOSP | XLCASE);
@@ -26,7 +26,7 @@ int visit_article(int ent, FILEHEADER *finfo, char *direct)
 		return C_FOOT;
 
 	if (ReadRC_Visit(CurBList->bid, curuser.userid, set)) {
-		msg(ANSI_COLOR(1;31) "©|¥¼Åª¥ô¦ó¤å³¹" ANSI_RESET);
+		msg(ANSI_COLOR(1;31) "å°šæœªè®€ä»»ä½•æ–‡ç« " ANSI_RESET);
 		getkey();
 		return C_FOOT;
 	}
@@ -339,11 +339,11 @@ static int mail2(char *to, char *filename, char *title)
 			to, title, curuser.ident);
 #endif
 
-	msg("¦Û¤v«O¦s±H¥ó³Æ¥÷ (y/n) ? [n]: ");	/* lang.h */
+	msg("è‡ªå·±ä¿å­˜å¯„ä»¶å‚™ä»½ (y/n) ? [n]: ");	/* lang.h */
 	if (igetkey() == 'y')
 	{
-		/* ±H¥ó³Æ¥÷ */
-		sprintf(genbuf, "[±H¥ó³Æ¥÷] %s -- %s", to, title);	/* lang.h */
+		/* å¯„ä»¶å‚™ä»½ */
+		sprintf(genbuf, "[å¯„ä»¶å‚™ä»½] %s -- %s", to, title);	/* lang.h */
 #ifndef IGNORE_CASE
                 SendMail(-1, filename, curuser.userid, curuser.userid,
                          genbuf, curuser.ident);
@@ -409,7 +409,7 @@ int PrepareNote()
 
 	update_umode(POSTING);
 
-	if (!getdata(b_line, 0, "¯d¨¥¡G", title, TTLEN, XECHO))
+	if (!getdata(b_line, 0, "ç•™è¨€ï¼š", title, TTLEN, XECHO))
 		return -1;
 
 	rc = publish_note(title, &curuser);
@@ -497,7 +497,7 @@ int PreparePost(char *fn_src, char *to, char *title, int option, char *postpath)
 	if (!option)
 		return 0;
 
-	/* option ¤£¤@©w·|¬O 0¡A­n check PMP_POST ¤~¦æ  --by lmj */
+	/* option ä¸ä¸€å®šæœƒæ˜¯ 0ï¼Œè¦ check PMP_POST æ‰è¡Œ  --by lmj */
 	if(option & PMP_POST)
 	{
 		if (set_article_title(title))
@@ -595,7 +595,7 @@ int PreparePost(char *fn_src, char *to, char *title, int option, char *postpath)
 			{
 				option &= ~PMP_POST;
 				if (postno == -2)
-					showmsg("½Ğ¤Å¤j¶q±i¶K¬Û¦P¤å³¹");
+					showmsg("è«‹å‹¿å¤§é‡å¼µè²¼ç›¸åŒæ–‡ç« ");
 			}
 			else
 			{
@@ -841,10 +841,10 @@ lock_err:
 		if (combin)
 			unlink(fn_comb);
 		if (result <= 0) {
-			sprintf(msgbuf, "²Ä%d½g«á¿ù»~", 0 - result);
+			sprintf(msgbuf, "ç¬¬%dç¯‡å¾ŒéŒ¯èª¤", 0 - result);
 			msg(msgbuf);
 		} else {
-			sprintf(msgbuf, "%s %d½g", _msg_finish, result);
+			sprintf(msgbuf, "%s %dç¯‡", _msg_finish, result);
 			msg(msgbuf);
 		}
 		getkey();
@@ -896,7 +896,7 @@ int mkdir_treasure(int ent, FILEHEADER *finfo, char *direct)	/* make directory i
 
 
 /*
- * ¥æ´«ºëµØ°Ï¤å³¹©Î¥Ø¿ı
+ * äº¤æ›ç²¾è¯å€æ–‡ç« æˆ–ç›®éŒ„
  */
 int xchg_treasure(int ent, FILEHEADER *finfo, char *direct)
 {
@@ -950,7 +950,7 @@ int copy_treasure(int ent, FILEHEADER *finfo, char *direct)
 	if (clip != artwtop)
 		free_wlist(&clip, free);
 
-	getdata(b_line, "<<«ş¨©¤å³¹>> (t)¤w¼Ğ°O (a)¥»½g ? [a]: ", genbuf, 2,
+	getdata(b_line, "<<æ‹·è²æ–‡ç« >> (t)å·²æ¨™è¨˜ (a)æœ¬ç¯‡ ? [a]: ", genbuf, 2,
 		ECHONOSP | XLCASE);
 	if (genbuf[0] == 't')
 		clip = artwtop;

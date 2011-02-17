@@ -20,34 +20,34 @@ struct conf
 
 const struct conf conf_files[] =
 {
-	{WELCOME, "¶i¯¸¤½§i"},
-	{BBS_NEWS_CONF, "Âà«H³]©w"}	,
+	{WELCOME, "é€²ç«™å…¬å‘Š"},
+	{BBS_NEWS_CONF, "è½‰ä¿¡è¨­å®š"}	,
 #if 1
-	{"conf/class.cf.old", "¬İªO¤ÀÃş³]©w" },
+	{"conf/class.cf.old", "çœ‹æ¿åˆ†é¡è¨­å®š" },
 #endif
 /* TODO
-	{ "conf/clang.cf", "¤¤¤å°T®§ÀÉ" },
-	{ "conf/elang.cf", "­^¤å°T®§ÀÉ" },
+	{ "conf/clang.cf", "ä¸­æ–‡è¨Šæ¯æª”" },
+	{ "conf/elang.cf", "è‹±æ–‡è¨Šæ¯æª”" },
 */
-	{ EXPIRE_CONF, "§G§i§R°£³]©w"},
-	{ MENUSHOW_CONF, "µe­±¨q¹Ï³]©w"},
+	{ EXPIRE_CONF, "ä½ˆå‘Šåˆªé™¤è¨­å®š"},
+	{ MENUSHOW_CONF, "ç•«é¢ç§€åœ–è¨­å®š"},
 
-	{ NEWID_HELP, "µù¥U±b¸¹«ü¤Ş"},
-	{ BADUSERID, "©Úµ´µù¥U UserID ¦r¦ê"},
-	{ NEWGUIDE, "·s¨Ï¥ÎªÌ¶·ª¾"},
+	{ NEWID_HELP, "è¨»å†Šå¸³è™ŸæŒ‡å¼•"},
+	{ BADUSERID, "æ‹’çµ•è¨»å†Š UserID å­—ä¸²"},
+	{ NEWGUIDE, "æ–°ä½¿ç”¨è€…é ˆçŸ¥"},
 
-	{ IDENT_DOC, "»{ÃÒ»¡©ú«H¨ç"},
-	{ IDENTED, "³q¹L»{ÃÒ³qª¾"},
-	{ ALLOWIDENT, "¯S§O»{ÃÒ E-Mail ¦ì§}"}, /* sarek:02/23/2001:Allow specified email address */
-	{ BADIDENT, "©Úµ´»{ÃÒ E-Mail ¦ì§}"},
+	{ IDENT_DOC, "èªè­‰èªªæ˜ä¿¡å‡½"},
+	{ IDENTED, "é€šéèªè­‰é€šçŸ¥"},
+	{ ALLOWIDENT, "ç‰¹åˆ¥èªè­‰ E-Mail ä½å€"}, /* sarek:02/23/2001:Allow specified email address */
+	{ BADIDENT, "æ‹’çµ•èªè­‰ E-Mail ä½å€"},
 #ifndef NSYSUBBS
-	{ BOARD_HELP, "¬İªO¿ï³æ¨D§U"},
-	{ READ_HELP, "§G§i¿ï³æ¨D§U"},
-	{ MAIL_HELP, "«H¥ó¿ï³æ¨D§U"},
-	{ EDIT_HELP, "½s¿è¾¹¨D§U"},
+	{ BOARD_HELP, "çœ‹æ¿é¸å–®æ±‚åŠ©"},
+	{ READ_HELP, "ä½ˆå‘Šé¸å–®æ±‚åŠ©"},
+	{ MAIL_HELP, "ä¿¡ä»¶é¸å–®æ±‚åŠ©"},
+	{ EDIT_HELP, "ç·¨è¼¯å™¨æ±‚åŠ©"},
 
-	{ BBSSRV_WELCOME, "¶i¯¸µe­± 1"},
-	{ WELCOME0, "¶i¯¸µe­± 2" },
+	{ BBSSRV_WELCOME, "é€²ç«™ç•«é¢ 1"},
+	{ WELCOME0, "é€²ç«™ç•«é¢ 2" },
 #endif
 	{ NULL, NULL }
 };
@@ -73,7 +73,7 @@ int adminDisplayUserLog()
 	clrtobot();
 	if (getdata(2, 0, _msg_ent_userid, userid, sizeof(userid), ECHONOSP))
 	{
-		getdata(3, 0, "Åã¥Üµn¤J°O¿ı?(y/n)[n]", buf, 3, ECHONOSP | XLCASE);
+		getdata(3, 0, "é¡¯ç¤ºç™»å…¥è¨˜éŒ„?(y/n)[n]", buf, 3, ECHONOSP | XLCASE);
 		if (buf[0] == 'y')
 			display_user_log(userid);
 
@@ -81,7 +81,7 @@ int adminDisplayUserLog()
 		clrtobot();
 
 #ifdef USE_IDENT
-		getdata(3, 0, "Åã¥Üµù¥U¸ê®Æ?(y/n)[n]", buf, 3, ECHONOSP | XLCASE);
+		getdata(3, 0, "é¡¯ç¤ºè¨»å†Šè³‡æ–™?(y/n)[n]", buf, 3, ECHONOSP | XLCASE);
 		if (buf[0] == 'y')
 			display_user_register(userid);
 #endif
@@ -109,11 +109,11 @@ static void show_board(const BOARDHEADER *brdhr)
 	brdtype[1] = _str_brdtype_news;
 	brdtype[2] = _str_brdtype_unzap;
 	brdtype[3] = _str_brdtype_nopostnum;
-	brdtype[4] = "¤£¥iÂà¶K";
+	brdtype[4] = "ä¸å¯è½‰è²¼";
 	brdtype[5] = _str_brdtype_invisible;
 #ifdef	WEB_BOARD
 	brdtype[6] = "WEB SKIN";
-	brdtype[7] = "­­©wID¶i¤J";
+	brdtype[7] = "é™å®šIDé€²å…¥";
 #endif
 
 	move(2, 0);
@@ -130,7 +130,7 @@ static void show_board(const BOARDHEADER *brdhr)
 	{
 		move(3 + i, 53);
 		prints("(%c) %-10.10s : %s", 'A' + i,
-		       (brdtype[i]) ? brdtype[i] : "«O¯dÄİ©Ê",
+		       (brdtype[i]) ? brdtype[i] : "ä¿ç•™å±¬æ€§",
 		       (*pbits & j) ? "Yes" : "No ");
 		j <<= 1;
 	}
@@ -236,7 +236,7 @@ static int set_board(BOARDHEADER *brdhr)
 			{
 				if (get_passwd(NULL, inbuf) <= 0)
 				{
-					showmsg("¨ÃµL¸Ó¨Ï¥ÎªÌ¦s¦b¡I");
+					showmsg("ä¸¦ç„¡è©²ä½¿ç”¨è€…å­˜åœ¨ï¼");
 					break;
 				}
 			}
@@ -246,7 +246,7 @@ static int set_board(BOARDHEADER *brdhr)
 			i = choice[0] - 'a';
 			if (!brdtype[i])
 			{
-				showmsg("«O¯dÄİ©Ê, ¥Ø«eµLªk³]©w!");
+				showmsg("ä¿ç•™å±¬æ€§, ç›®å‰ç„¡æ³•è¨­å®š!");
 				break;
 			}
 			if (i >= 0 && i < MAX_NR_BRDTYPE)
@@ -312,7 +312,7 @@ static int set_board(BOARDHEADER *brdhr)
 				setskinfile(skin, brdhr->filename, custom_files[i]);
 				if (mycp(buffer, skin))
 				{
-					showmsg("«ş¨© WEB SKIN ÀÉ®×¥¢±Ñ!");
+					showmsg("æ‹·è² WEB SKIN æª”æ¡ˆå¤±æ•—!");
 					break;
 				}
 			}
@@ -345,7 +345,7 @@ static int set_board(BOARDHEADER *brdhr)
 
 
 /*
-  ·s¼W¬İªO
+  æ–°å¢çœ‹æ¿
 */
 static int new_board(BOARDHEADER *bhp)
 {
@@ -505,7 +505,7 @@ int adminMaintainBoard()
 		settreafile(pathname, bname, NULL);
 		myunlink(pathname);
 /*
- * -ToDo- ¬O§_«O¯dºëµØ°Ï³Æ¥÷?
+ * -ToDo- æ˜¯å¦ä¿ç•™ç²¾è¯å€å‚™ä»½?
  */
 		bbsd_log_write("DELBOARD", "%s", bname);
 	}
@@ -555,7 +555,7 @@ int adminMaintainBoard()
 }
 
 /*
- * kmwang:20000604: ¸ß°İ admin ¬O§_§â«H±H¦^µ¹ user ªº«H½c
+ * kmwang:20000604: è©¢å• admin æ˜¯å¦æŠŠä¿¡å¯„å›çµ¦ user çš„ä¿¡ç®±
  */
 int fwUserMail(char *userid_del)
 {
@@ -565,27 +565,27 @@ int fwUserMail(char *userid_del)
         FILE *mdfd;
         FILEHEADER mailheader;
 
-        // §â userid_del ªº¸ê®Æ·h¨ì del_user, ¬°¤F­n¨ú±o¥Lªº e-mail addr.
+        // æŠŠ userid_del çš„è³‡æ–™æ¬åˆ° del_user, ç‚ºäº†è¦å–å¾—ä»–çš„ e-mail addr.
         if (get_passwd(&del_user, userid_del) <= 0)
-                return 0;  	//¨Ï¥ÎªÌ¤£¦s¦b!
+                return 0;  	//ä½¿ç”¨è€…ä¸å­˜åœ¨!
 
 	if (!(del_user.email[0]))
 	{
-		msg("¨Ï¥ÎªÌµL E-mail Address.");
-		return 0;	// E-mail¤£¦s¦b.
+		msg("ä½¿ç”¨è€…ç„¡ E-mail Address.");
+		return 0;	// E-mailä¸å­˜åœ¨.
 	}
 
-        msg("­n§â«H±H¦^µ¹³Q§R°£ªº¨Ï¥ÎªÌªº E-MAIL «H½c¶Ü (y/n)? [n]");
+        msg("è¦æŠŠä¿¡å¯„å›çµ¦è¢«åˆªé™¤çš„ä½¿ç”¨è€…çš„ E-MAIL ä¿¡ç®±å— (y/n)? [n]");
         if (igetkey() == 'y')
         {
-        	// ¨ú±o mail .DIR ÀÉªº¦ì¸m©ñ¨ì maildir ¸Ì­±
+        	// å–å¾— mail .DIR æª”çš„ä½ç½®æ”¾åˆ° maildir è£¡é¢
                 setmailfile(maildir, userid_del, DIR_REC);
                 k = get_num_records(maildir, FH_SIZE);
 
                 mdfd = fopen(maildir, "r");
                 for (i=0; i<k; i++)
                 {
-                	//±q .DIR ®³¥X¨C«Êªº header
+                	//å¾ .DIR æ‹¿å‡ºæ¯å°çš„ header
                         fread(&mailheader,  FH_SIZE, 1, mdfd);
                         setmailfile(maildir, userid_del, mailheader.filename);
                         SendMail(-1, maildir, userid_del, del_user.email, mailheader.title,
@@ -618,7 +618,7 @@ int adminDeleteUser()
 		sprintf(cmd, "deluser -u \"%s\"", userid_del);
 		outdoor(cmd);
 		*/
-		/* kmwang: §ó§ï±¼³Q§R°£¨Ï¥ÎªÌªº±K½X */
+		/* kmwang: æ›´æ”¹æ‰è¢«åˆªé™¤ä½¿ç”¨è€…çš„å¯†ç¢¼ */
 		strcpy(del_user.passwd, "DELETED_USER");
 		update_passwd(&del_user);
 
@@ -640,7 +640,7 @@ int adminEditConf()
 		prints("%2d) %s\n", i + 1, conf_files[i].desc);
 	max_conf_files = i;
 
-	if (getdata(b_line, 0, "½s¿èÀÉ®×½s¸¹ ? [0]: ", genbuf, 3, XECHO)
+	if (getdata(b_line, 0, "ç·¨è¼¯æª”æ¡ˆç·¨è™Ÿ ? [0]: ", genbuf, 3, XECHO)
 	&& (i = atoi(genbuf)) >= 1 && i <= max_conf_files)
 	{
 		if (!vedit(conf_files[i - 1].fname, NULL, NULL))
@@ -802,7 +802,7 @@ int adminMailBm()
 
 	if (!vedit(bm_fname, bm_title, NULL))
 	{
-		/* sarek:08022001:¼ĞÃD¦bshell¤U³Q§PÂ_¿ù»~, ¥[¤WÂù¤Ş¸¹§Y¥i */
+		/* sarek:08022001:æ¨™é¡Œåœ¨shellä¸‹è¢«åˆ¤æ–·éŒ¯èª¤, åŠ ä¸Šé›™å¼•è™Ÿå³å¯ */
 		sprintf(genbuf, "mailbm -f %s -t \"%s\" -u %s -i %d",
 			bm_fname, bm_title, curuser.userid, curuser.ident);
 
@@ -918,7 +918,7 @@ int adminCancelUser()
 
 	move(2, 0);
 	clrtobot();
-	outs("¨ú®ø±b¸¹¨Ï¥ÎÅv (½Ğ¤p¤ß¨Ï¥Î)");
+	outs("å–æ¶ˆå¸³è™Ÿä½¿ç”¨æ¬Š (è«‹å°å¿ƒä½¿ç”¨)");
 	if (!getdata(3, 0, _msg_ent_userid, userid, sizeof(userid), ECHONOSP))
 	{
 		return C_FULL;
@@ -943,10 +943,10 @@ int adminCancelUser()
 		{
 			char *reason[MAX_CANCEL_REASON] =
 			{
-				"«H¥óÄÌÂZ",
-				"°T®§ÄÌÂZ",
-				"¹Hªk¦æ¬°",
-				"¨ä¥¦"
+				"ä¿¡ä»¶é¨·æ“¾",
+				"è¨Šæ¯é¨·æ“¾",
+				"é•æ³•è¡Œç‚º",
+				"å…¶å®ƒ"
 			};
 			int j, retval = -1;
 			char fnori[PATHLEN];
@@ -957,7 +957,7 @@ int adminCancelUser()
 			{
 				char *p;
 
-				prints("\n¥Ã¤[¨ú®ø¤U¦C¹q¤l¶l¥ó«H½cªº»{ÃÒÅv§Q:\n%s\n", iemail);
+				prints("\næ°¸ä¹…å–æ¶ˆä¸‹åˆ—é›»å­éƒµä»¶ä¿¡ç®±çš„èªè­‰æ¬Šåˆ©:\n%s\n", iemail);
 				if ((p = strchr(iemail, ' ')) != NULL)
 					*p = '\0';
 				sprintf(genbuf, "%s\n", iemail);
@@ -971,16 +971,16 @@ int adminCancelUser()
 			{
 				char title[78];
 
-				sprintf(title, "[°±¥Î±b¸¹] %s ", userid);
-				outs("\n±b¸¹°±¥Î­ì¦] :\n");
+				sprintf(title, "[åœç”¨å¸³è™Ÿ] %s ", userid);
+				outs("\nå¸³è™Ÿåœç”¨åŸå›  :\n");
 				for (j = 0; j < MAX_CANCEL_REASON; j++)
 					prints("(%d) %s\n", j+1, reason[j]);
-				getdata(12, 0, "½Ğ¿ï¾Ü : ", genbuf, 2, ECHONOSP);
+				getdata(12, 0, "è«‹é¸æ“‡ : ", genbuf, 2, ECHONOSP);
 				j = genbuf[0] - '0';
 				if (j >= 1 && j < MAX_CANCEL_REASON)
 					strcat(title, reason[j - 1]);
 				else
-					getdata(13, 0, "²z¥Ñ : ", title+strlen(title), 78, XECHO);
+					getdata(13, 0, "ç†ç”± : ", title+strlen(title), 78, XECHO);
 
 				write_article_header(fpw, curuser.userid, curuser.username, NULL,
 						       NULL, title, NULL);

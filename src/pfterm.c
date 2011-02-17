@@ -99,7 +99,7 @@ resizeterm(int rows, int cols)
                     ft.cmap[mi][i] = (ftchar*)malloc((cols+1) * sizeof(ftchar));
                     ft.amap[mi][i] = (ftattr*)malloc((cols+1) * sizeof(ftattr));
                     // zero at end to prevent over-run
-                    ft.cmap[mi][i][cols] = 0;
+                    ft.cmap[mi][i][cols] = FTCHAR_END;
                     ft.amap[mi][i][cols] = 0;
                 }
             }
@@ -114,7 +114,7 @@ resizeterm(int rows, int cols)
                     ft.amap[mi][i] = (ftattr*)realloc(ft.amap[mi][i],
                             (cols+1) * sizeof(ftattr));
                     // zero at end to prevent over-run
-                    ft.cmap[mi][i][cols] = 0;
+                    ft.cmap[mi][i][cols] = FTCHAR_END;
                     ft.amap[mi][i][cols] = 0;
                 }
             } else {
@@ -131,8 +131,8 @@ resizeterm(int rows, int cols)
         // no need to initialize anyway.
         if (cols > ft.mcols)
         {
-            ft.dmap = (ftchar*) realloc(ft.dmap,
-                    (cols+1) * sizeof(ftchar));
+            ft.dmap = (ftattr*) realloc(ft.dmap,
+                    (cols+1) * sizeof(ftattr));
             ft.dcmap = (ftchar*) realloc(ft.dcmap,
                     (cols+1) * sizeof(ftchar));
         }
@@ -147,8 +147,8 @@ resizeterm(int rows, int cols)
     // because we will redawwin(), so need to change front buffer only.
     for (i = ft.rows; i < rows; i++)
     {
-        memset(FTCMAP[i], FTCHAR_ERASE,
-                (cols) * sizeof(ftchar));
+		int j =0;
+        for(j = i; j < cols; ++j )FTCMAP[i][j] = FTCHAR_ERASE;
         memset(FTAMAP[i], FTATTR_ERASE,
                 (cols) * sizeof(ftattr));
     }
@@ -156,8 +156,8 @@ resizeterm(int rows, int cols)
     {
         for (i = 0; i < ft.rows; i++)
         {
-            memset(FTCMAP[i]+ft.cols, FTCHAR_ERASE,
-                    (cols-ft.cols) * sizeof(ftchar));
+			int j;
+			for(j = i; j < cols; ++j )FTCMAP[i][j] = FTCHAR_ERASE;
             memset(FTAMAP[i]+ft.cols, FTATTR_ERASE,
                     (cols-ft.cols) * sizeof(ftattr));
         }
@@ -209,9 +209,9 @@ attrsetbg(ftattr attr)
 void
 clrscr(void)
 {
-    int r;
+    int r,j;
     for (r = 0; r < ft.rows; r++)
-        memset(FTCMAP[r], FTCHAR_ERASE, ft.cols * sizeof(ftchar));
+        for(j = r; j < ft.cols; ++j )FTCMAP[r][j] = FTCHAR_ERASE;
     for (r = 0; r < ft.rows; r++)
         memset(FTAMAP[r], FTATTR_ERASE, ft.cols * sizeof(ftattr));
     fterm_markdirty();
@@ -229,7 +229,9 @@ clrtoeol(void)
 {
     ft.x = ranged(ft.x, 0, ft.cols-1);
     ft.y = ranged(ft.y, 0, ft.rows-1);
-    memset(FTPC, FTCHAR_ERASE,  ft.cols - ft.x);
+    //memset(FTPC, FTCHAR_ERASE,  ft.cols - ft.x);
+	int j;
+    for(j = ft.x ; j < ft.cols ; ++j )FTCMAP[ft.y][j] = FTCHAR_ERASE;
     memset(FTPA, FTATTR_ERASE,  ft.cols - ft.x);
     fterm_markdirty();
 }
@@ -239,7 +241,9 @@ clrtobeg(void)
 {
     ft.x = ranged(ft.x, 0, ft.cols-1);
     ft.y = ranged(ft.y, 0, ft.rows-1);
-    memset(FTCROW, FTCHAR_ERASE, ft.x+1);
+   // memset(FTCROW, FTCHAR_ERASE, ft.x+1);
+	int j;
+    for(j = 0 ; j < ft.x+1; ++j )FTCMAP[ft.y][j] = FTCHAR_ERASE;
     memset(FTAROW, FTATTR_ERASE, ft.x+1);
     fterm_markdirty();
 }
@@ -248,7 +252,9 @@ void
 clrcurrline(void)
 {
     ft.y = ranged(ft.y, 0, ft.rows-1);
-    memset(FTCROW, FTCHAR_ERASE, ft.cols);
+    //memset(FTCROW, FTCHAR_ERASE, ft.cols);
+	int j;
+    for(j = 0 ; j < ft.cols ; ++j )FTCMAP[ft.y][j] = FTCHAR_ERASE;
     memset(FTAROW, FTATTR_ERASE, ft.cols);
     fterm_markdirty();
 }
@@ -277,7 +283,9 @@ clrregion(int r1, int r2)
 
     for (; r1 <= r2; r1++)
     {
-        memset(FTCMAP[r1], FTCHAR_ERASE, ft.cols);
+        //memset(FTCMAP[r1], FTCHAR_ERASE, ft.cols);
+		int j;
+		for(j = 0 ; j < ft.cols ; ++j )FTCMAP[r1][j] = FTCHAR_ERASE;
         memset(FTAMAP[r1], FTATTR_ERASE, ft.cols);
     }
     fterm_markdirty();
@@ -415,17 +423,17 @@ doupdate(void)
     for (y = 0; y < ft.rows; y++)
     {
         int len = ft.cols, ds = 0, derase = 0;
-        char dbcs = 0, odbcs = 0; // 0: none, 1: lead, 2: tail
-
+        char dbcs = 0; // 0: none, 1: lead, 2: tail
+	//char odbcs = 0
         // reset dirty and display map
-        memset(FTD, 0,          ft.cols * sizeof(ftchar));
+        memset(FTD, 0,          ft.cols * sizeof(ftattr));
         memcpy(FTDC,FTCMAP[y],  ft.cols * sizeof(ftchar));
 
         // first run: character diff
         for (x = 0; x < len; x++)
         {
             // build base dirty information
-            if (FTCMAP[y][x] != FTOCMAP[y][x])
+            if (ftcharcmp(&FTCMAP[y][x],&FTOCMAP[y][x])!=0)
                 FTD[x] |= FTDIRTY_CHAR, ds++;
             if (FTAMAP[y][x] != FTOAMAP[y][x])
                 FTD[x] |= FTDIRTY_ATTR, ds++;
@@ -434,7 +442,8 @@ doupdate(void)
             if (dbcs == 1)
             {
 #ifdef FTCONF_PREVENT_INVALID_DBCS
-                switch(fterm_DBCS_Big5(FTCMAP[y][x-1], FTCMAP[y][x]))
+/*
+               switch(fterm_DBCS_Big5(FTCMAP[y][x-1], FTCMAP[y][x]))
                 {
                     case FTDBCS_SAFE:
                         // safe to print
@@ -459,6 +468,7 @@ doupdate(void)
                         }
                         break;
                 }
+	*/			
 #endif // FTCONF_PREVENT_INVALID_DBCS
 
                 dbcs  = 2;
@@ -469,13 +479,16 @@ doupdate(void)
                     FTD[x-1]|= FTDIRTY_CHAR;
                 }
             }
-            else if (FTDBCS_ISLEAD(FTCMAP[y][x]))
+           // else if (0&& FTDBCS_ISLEAD(FTCMAP[y][x]))// XXX
+		   else if (0)
             {
                 // LEAD: clear dirty when tail was found.
                 dbcs  = 1;
 #ifdef FTCONF_PREVENT_INVALID_DBCS
+/*
                 FTD[x] |= FTDIRTY_INVALID_DBCS;
                 FTDC[x] = FTCHAR_INVALID_DBCS;
+*/
 #endif // FTCONF_PREVENT_INVALID_DBCS
             }
             else
@@ -483,7 +496,7 @@ doupdate(void)
                 // NON-DBCS
                 dbcs  = 0;
             }
-
+/*
             if (odbcs == 1)
             {
                 // TAIL: dirty prev and me if any is dirty.
@@ -502,7 +515,7 @@ doupdate(void)
             else
             {
                 odbcs = 0;
-            }
+            }*/
         }
 
 #ifndef DBG_SHOW_DIRTY
@@ -514,7 +527,7 @@ doupdate(void)
         // TODO ERASE takes 3 bytes (ESC [ K), so enable only if derase >= 3?
         // TODO ERASE then print can avoid lots of space, optimize in future.
         for (x = ft.cols - 1; x >= 0; x--)
-            if (FTCMAP[y][x] != FTCHAR_ERASE ||
+            if (ftcharcmp(&FTCMAP[y][x],&FTCHAR_ERASE) != 0 ||
                 FTAMAP[y][x] != FTATTR_ERASE)
                 break;
             else if (FTD[x])
@@ -566,9 +579,10 @@ doupdate(void)
 
                 for (i = ft.rx; i < x; i++)
                 {
-                    fterm_rawc(FTDC[i]);
+                    fterm_rawUTF8c(&FTDC[i]);
                     FTAMAP[y][i] = FTOAMAP[y][i]; // spaces may change attr...
-                    ft.rx++;
+					ft.rx++;
+                    //ft.rx+=FTDC[i]._len;
                 }
 
                 break;
@@ -592,8 +606,9 @@ doupdate(void)
             fterm_rawattr(FTAMAP[y][x]);
 #endif // !DBG_SHOW_DIRTY
 
-            fterm_rawc(FTDC[x]);
+            fterm_rawUTF8c(&FTDC[x]);
             ft.rx++;
+			//ft.rx+=FTDC[x]._len;
             touched = 1;
 
             if (FTD[x] & FTDIRTY_RAWMOVE)
@@ -815,10 +830,16 @@ outstr(const char *str)
 static void
 outc_orig(unsigned char c)
 {
+	#ifdef FTUTF8_LEN	
+	static unsigned char UTF8_charlen = 0;
+	static unsigned char UTF8_bytepos = 0;
+	
+	#endif
+
+
     // 0xFF is invalid for most cases (even DBCS),
     if (c == 0xFF || c == 0x00)
         return;
-
     fterm_markdirty();
     if (ft.szcmd)
     {
@@ -850,7 +871,9 @@ outc_orig(unsigned char c)
         // erase the characters between
         if (x > ft.x)
         {
-            memset(FTCROW+ft.x, FTCHAR_ERASE, x - ft.x);
+            //memset(FTCROW+ft.x, FTCHAR_ERASE, x - ft.x);
+			int j;
+			for(j = ft.x;j < x ; ++j)FTCROW[j] = FTCHAR_ERASE;
             memset(FTAROW+ft.x, ft.attr, x-ft.x);
         }
         ft.x = x;
@@ -883,13 +906,48 @@ outc_orig(unsigned char c)
         assert (ft.x >= 0 && ft.x < ft.cols);
 
         // normal characters
-        FTC = c;
+		
+#ifdef FTUTF8_LEN	
+		if(~c & 0x80){//0xxxxxxx
+			FTC._byte[0] = c;
+			FTC._len = 1;
+		}else if(~c & 0x40){//10xxxxxx
+			FTC._byte[UTF8_bytepos] = c;
+			UTF8_bytepos++;
+			if(UTF8_charlen != UTF8_bytepos)return;
+			FTCROW[ft.x +1] = FTCHAR_END;
+			FTC._len = 2;
+		}else if(~c & 0x20){//110xxxxx
+			FTC._byte[0] = c;
+			UTF8_charlen = 2;
+			UTF8_bytepos = 1;
+			return;
+		}else if(~c & 0x10){//1110xxxx
+			FTC._byte[0] = c;
+			UTF8_charlen = 3;
+			UTF8_bytepos = 1;
+			return;
+		}else if(~c & 0x08){//11110xxx
+			FTC._byte[0] = c;
+			UTF8_charlen = 4;
+			UTF8_bytepos = 1;
+			return;
+		}else{
+		//not support
+			return;
+		
+		}
+#else
+		FTC = c;
+#endif
+		
 #ifdef FTATTR_TRANSPARENT
         if (ft.attr != FTATTR_TRANSPARENT)
 #endif // FTATTR_TRANSPARENT
         FTA = ft.attr;
 
-        ft.x++;
+        //ft.x++;
+		ft.x+=FTC._len;
         // XXX allow x == ft.cols?
         if (ft.x >= ft.cols)
         {
@@ -907,9 +965,9 @@ outc_orig(unsigned char c)
 }
 
 /*
- * ¦]¬°screen(http://www.gnu.org/software/screen/)ªºBig5->UTF-8
- * Âà½X¦³°İÃD, ¸I¨ìBig5ªº"<<" ">>"³o¨âºØ¥ş§Î¦r, ´N·|¿ù¦ìµe­±¶Ã±¼
- * ©Ò¥H´N§â³o¨âºØ¥ş§Î¦rÂà¦¨¥Î '<''<' ¥H¤Î '>''>' ¨ú¥N
+ * å› ç‚ºscreen(http://www.gnu.org/software/screen/)çš„Big5->UTF-8
+ * è½‰ç¢¼æœ‰å•é¡Œ, ç¢°åˆ°Big5çš„"<<" ">>"é€™å…©ç¨®å…¨å½¢å­—, å°±æœƒéŒ¯ä½ç•«é¢äº‚æ‰
+ * æ‰€ä»¥å°±æŠŠé€™å…©ç¨®å…¨å½¢å­—è½‰æˆç”¨ '<''<' ä»¥åŠ '>''>' å–ä»£
  */
 extern BOOL fix_screen;
 void outc(unsigned char c)
@@ -951,7 +1009,7 @@ instr       (char *str)
         return 0;
 
     // determine stopping location
-    while (x >= ft.x && FTCROW[x] == FTCHAR_ERASE)
+    while (x >= ft.x && (ftcharcmp(&FTCROW[x],&FTCHAR_ERASE)==0))
         x--;
     if (x < ft.x) return 0;
     x = x - ft.x + 1;
@@ -971,7 +1029,7 @@ innstr      (char *str, int n)
         return 0;
 
     // determine stopping location
-    while (x >= ft.x && FTCROW[x] == FTCHAR_ERASE)
+    while (x >= ft.x && (ftcharcmp(&FTCROW[x],&FTCHAR_ERASE)==0))
         x--;
     if (x < ft.x) return 0;
     n = x - ft.x + 1;
@@ -980,7 +1038,7 @@ innstr      (char *str, int n)
     str[n] = 0;
     return n;
 }
-
+/*
 int
 inansistr   (char *str, int n)
 {
@@ -998,7 +1056,7 @@ inansistr   (char *str, int n)
     n--; // preserve last zero
 
     // determine stopping location
-    while (x >= ft.x && FTCROW[x] == FTCHAR_ERASE && FTAROW[x] == FTATTR_ERASE)
+    while (x >= ft.x && (ftcharcmp(&FTCROW[x],&FTCHAR_ERASE)==0) && FTAROW[x] == FTATTR_ERASE)
         x--;
 
     // retrieve [rt.x, x]
@@ -1040,7 +1098,7 @@ inansistr   (char *str, int n)
     *str = 0;
     return (str - ostr);
 }
-
+*/
 // internal core of piaip's flat-term
 
 void
@@ -1100,7 +1158,7 @@ fterm_prepare_str(int len)
         return -1;
 
     len = ranged(x+len, x, ft.cols);
-
+/*
     for (x = 0; x < len; x++)
     {
         // determine DBCS status
@@ -1112,7 +1170,7 @@ fterm_prepare_str(int len)
             dbcs = 0;
         if (x == ft.x) sdbcs = dbcs;
     }
-
+*/
     x = ft.x;
     // fix start and end
     if(sdbcs == 2 && x > 0) // TAIL, remove word
@@ -1123,7 +1181,9 @@ fterm_prepare_str(int len)
     len -= x;
     if (len < 0) len = 0;
 
-    memset(FTCROW + x, FTCHAR_ERASE, len);
+    //memset(FTCROW + x, FTCHAR_ERASE, len);
+	int j;
+	for(j=x;j<len;++j)FTCROW[x] = FTCHAR_ERASE;
     memset(FTAROW + x, ft.attr, len);
     return len;
 }
@@ -1132,7 +1192,7 @@ fterm_prepare_str(int len)
 void
 fterm_exec(void)
 {
-    ftchar cmd = ft.cmd[ft.szcmd-1];
+    char cmd = ft.cmd[ft.szcmd-1];
     char    *p = (char*)ft.cmd + 2; // ESC [
     int n = -1, x = -1, y;
 
@@ -1989,8 +2049,7 @@ fterm_inbuf(void)
 #endif
 }
 
-void
-fterm_rawc(int c)
+void fterm_rawc(int c)
 {
 #ifdef _PFTERM_TEST_MAIN
     // if (c == ESC_CHR) putchar('*'); else
@@ -2000,6 +2059,36 @@ fterm_rawc(int c)
 #endif
 }
 
+#ifdef FTUTF8_LEN
+void fterm_rawUTF8c(const ftchar * c)
+{
+	if(! (c->_len))return;
+	fterm_rawc(c->_byte[0]);
+	if(! (c->_byte[0] & 0x80) )return;
+	fterm_rawc(c->_byte[1]);
+	if(! (c->_byte[0] & 0x40) )return;
+	fterm_rawc(c->_byte[2]);
+	if(! (c->_byte[0] & 0x20) )return;
+	fterm_rawc(c->_byte[3]);
+}
+
+int utf8strlen(const char* str){
+	int i=0,j=0;
+	while(str[i]){
+		if(~str[i] & 0x80){ //0xxxxxxx
+			j++;
+		}else if(~str[i] & 0x40){//10xxxxxx
+		
+		}else {//11xxxxxx
+			j+=2;
+		}
+		
+		i++;
+	}
+	return j;
+}
+
+#endif
 void
 fterm_rawnewline(void)
 {
@@ -2021,6 +2110,28 @@ fterm_rawflush(void)
 #endif
 }
 
+#ifdef FTUTF8_LEN
+int ftcharcmp(const ftchar*  a,const ftchar* b){
+	char c;
+	c = (a->_byte[0] - b->_byte[0]);
+	if(c != 0 || !(a->_byte[0] & 0x80))return c;
+	
+	c = (a->_byte[1] - b->_byte[1]);
+	if(c != 0 || !(a->_byte[0] & 0x40))return c;
+	
+	c = (a->_byte[2] - b->_byte[2]);
+	if(c != 0 || !(a->_byte[0] & 0x20))return c;
+	
+	c = (a->_byte[3] - b->_byte[3]);
+	//if(c != 0 || !(a->_byte[0] & 0x10))
+	return c;
+	
+}
+
+#endif
+
+
+
 //////////////////////////////////////////////////////////////////////////
 // test
 //////////////////////////////////////////////////////////////////////////
@@ -2035,14 +2146,14 @@ int main(int argc, char* argv[])
     {
 #if 0
         // DBCS test
-        char *a1 = ANSI_COLOR(1;33) "´ú¸Õ" ANSI_COLOR(34) "¤¤¤å"
-            ANSI_REVERSE "´ú¸Õ" ANSI_RESET "´ú¸Õ"
-            "´ú¸Õa" ANSI_RESET "\n";
+        char *a1 = ANSI_COLOR(1;33) "æ¸¬è©¦" ANSI_COLOR(34) "ä¸­æ–‡"
+            ANSI_REVERSE "æ¸¬è©¦" ANSI_RESET "æ¸¬è©¦"
+            "æ¸¬è©¦a" ANSI_RESET "\n";
         outstr(a1);
         move(0, 2);
-        outstr("¤¤¤å1");
-        outstr(ANSI_COLOR(1;33)"¤¤¤å2");
-        outstr(" ¤¤\x85");
+        outstr("ä¸­æ–‡1");
+        outstr(ANSI_COLOR(1;33)"ä¸­æ–‡2");
+        outstr(" ä¸­\x85");
         outstr("okok herer\x8a");
 
         move(0, 8);
@@ -2062,7 +2173,7 @@ int main(int argc, char* argv[])
         getchar();
 
         clear();
-        outs("¤¤¤å¤¤¤å¤¤¤å¤¤¤å¤¤¤å¤¤¤å¤¤¤å¤¤¤å¤¤¤å¤¤¤å¤¤¤å¤¤¤å");
+        outs("ä¸­æ–‡ä¸­æ–‡ä¸­æ–‡ä¸­æ–‡ä¸­æ–‡ä¸­æ–‡ä¸­æ–‡ä¸­æ–‡ä¸­æ–‡ä¸­æ–‡ä¸­æ–‡ä¸­æ–‡");
         move(0, 0);
         outs(" this\xFF (ff)is te.(80 tail)->\x80 (80)");
         refresh();

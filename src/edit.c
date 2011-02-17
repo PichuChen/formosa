@@ -697,7 +697,7 @@ int vedit(const char *filename, const char *saveheader, char *bname)
 		}
 		if (old_rows != t_lines || old_columns != t_columns)
 		{
-			static const char *msg_resized = "[1;34;47m¿Ã¹õ¤j¤p¤w§ïÅÜ, «ö(Ctrl-G)¦^¨ì­¶­º![m";
+			static const char *msg_resized = "[1;34;47mè¢å¹•å¤§å°å·²æ”¹è®Š, æŒ‰(Ctrl-G)å›åˆ°é é¦–![m";
 
 			old_rows = t_lines;
 			old_columns = t_columns;

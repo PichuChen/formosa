@@ -94,7 +94,7 @@ fillns_ansi(int n, const char *s)
 // ---- VREF API --------------------------------------------------
 
 /**
- * vscr_save(): ¶Ç¦^¥Ø«eµe­±ªº³Æ¥÷ª«¥ó¡C
+ * vscr_save(): å‚³å›ç›®å‰ç•«é¢çš„å‚™ä»½ç‰©ä»¶ã€‚
  */
 VREFSCR
 vscr_save(void)
@@ -107,7 +107,7 @@ vscr_save(void)
 }
 
 /**
- * vscr_restore(obj): ¨Ï¥Î¨Ã§R°£µe­±ªº³Æ¥÷ª«¥ó¡C
+ * vscr_restore(obj): ä½¿ç”¨ä¸¦åˆªé™¤ç•«é¢çš„å‚™ä»½ç‰©ä»¶ã€‚
  */
 void
 vscr_restore(VREFSCR obj)
@@ -122,12 +122,12 @@ vscr_restore(VREFSCR obj)
 }
 
 /**
- * vcur_save(): ¶Ç¦^¥Ø«e´å¼Ğªº³Æ¥÷ª«¥ó¡C
+ * vcur_save(): å‚³å›ç›®å‰æ¸¸æ¨™çš„å‚™ä»½ç‰©ä»¶ã€‚
  */
 VREFCUR
 vcur_save(void)
 {
-    // XXX °½Ãi¤£ new object ¤F¡A pointer °÷¤j
+    // XXX å·æ‡¶ä¸ new object äº†ï¼Œ pointer å¤ å¤§
     int y, x;
     VREFCUR v;
     getyx(&y, &x);
@@ -136,7 +136,7 @@ vcur_save(void)
 }
 
 /**
- * vcur_restore(obj): ¨Ï¥Î¨Ã§R°£´å¼Ğªº³Æ¥÷ª«¥ó¡C
+ * vcur_restore(obj): ä½¿ç”¨ä¸¦åˆªé™¤æ¸¸æ¨™çš„å‚™ä»½ç‰©ä»¶ã€‚
  */
 void
 vcur_restore(VREFCUR o)
@@ -151,7 +151,7 @@ vcur_restore(VREFCUR o)
 // ---- LOW LEVEL API -----------------------------------------------
 
 /**
- * prints(fmt, ...): ¨Ï¥Î outs/outc ¿é¥X¨Ã®æ¦¡¤Æ¦r¦ê¡C
+ * prints(fmt, ...): ä½¿ç”¨ outs/outc è¼¸å‡ºä¸¦æ ¼å¼åŒ–å­—ä¸²ã€‚
  */
 void
 prints(const char *fmt,...)
@@ -167,7 +167,7 @@ prints(const char *fmt,...)
 }
 
 /**
- * mvprints(int y, int x, fmt, ...): ¨Ï¥Î mvouts ¿é¥X¨Ã®æ¦¡¤Æ¦r¦ê¡C
+ * mvprints(int y, int x, fmt, ...): ä½¿ç”¨ mvouts è¼¸å‡ºä¸¦æ ¼å¼åŒ–å­—ä¸²ã€‚
  */
 void
 mvprints(int y, int x, const char *fmt, ...)
@@ -210,7 +210,7 @@ void msg(char *fmt, ...)
 
 
 /**
- * vfill(n, flags, s): ¦L¥X¨Ã¶ñº¡ n ­Ó¦r¤¸ªºªÅ¶¡
+ * vfill(n, flags, s): å°å‡ºä¸¦å¡«æ»¿ n å€‹å­—å…ƒçš„ç©ºé–“
  *
  * @param n	space to occupy
  * @param flags	VFILL_* parameters
@@ -270,7 +270,7 @@ vfill(int n, int flags, const char *s)
 }
 
 /**
- * vfill(n, flags, fmt, ...): ¨Ï¥Î vfill ¿é¥X¨Ã®æ¦¡¤Æ¦r¦ê¡C
+ * vfill(n, flags, fmt, ...): ä½¿ç”¨ vfill è¼¸å‡ºä¸¦æ ¼å¼åŒ–å­—ä¸²ã€‚
  *
  * @param n	space to occupy
  * @param flags	VFILL_* parameters
@@ -290,10 +290,10 @@ vfillf(int n, int flags, const char *s, ...)
 }
 
 /**
- * vpad(n, pattern): ¶ñº¡ n ­Ó¦r¤¸ (¨Ï¥Îªº®æ¦¡¬° pattern)
+ * vpad(n, pattern): å¡«æ»¿ n å€‹å­—å…ƒ (ä½¿ç”¨çš„æ ¼å¼ç‚º pattern)
  *
- * @param n ­n¶ñº¡ªº¦r¤¸¼Æ (µLªk¶ñº¡®É·|¨Ï¥ÎªÅ¥Õ¶ñ¸É)
- * @param pattern ¶ñ¥R¥Îªº¦r¦ê
+ * @param n è¦å¡«æ»¿çš„å­—å…ƒæ•¸ (ç„¡æ³•å¡«æ»¿æ™‚æœƒä½¿ç”¨ç©ºç™½å¡«è£œ)
+ * @param pattern å¡«å……ç”¨çš„å­—ä¸²
  */
 inline void
 vpad(int n, const char *pattern)
@@ -310,10 +310,10 @@ vpad(int n, const char *pattern)
 }
 
 /**
- * vgety(): ¨ú±o¥Ø«e©Ò¦b¦ì¸mªº¦æ¼Æ
+ * vgety(): å–å¾—ç›®å‰æ‰€åœ¨ä½ç½®çš„è¡Œæ•¸
  *
- * ¦Ò¼{¨ì ANSI ¨t²Î¡Agetyx() ¸û¬°¤Ö¥Î¥B¦MÀI¡C
- * vgety() ¦w¥ş¦Ó©ú½T¡C
+ * è€ƒæ…®åˆ° ANSI ç³»çµ±ï¼Œgetyx() è¼ƒç‚ºå°‘ç”¨ä¸”å±éšªã€‚
+ * vgety() å®‰å…¨è€Œæ˜ç¢ºã€‚
  */
 inline int
 vgety(void)
@@ -326,9 +326,9 @@ vgety(void)
 // ---- HIGH LEVEL API -----------------------------------------------
 
 /**
- * vshowmsg(s): ¦b©³³¡¦L¥X«ü©w°T®§©Î³æ¯Âªº¼È°±°T®§
+ * vshowmsg(s): åœ¨åº•éƒ¨å°å‡ºæŒ‡å®šè¨Šæ¯æˆ–å–®ç´”çš„æš«åœè¨Šæ¯
  *
- * @param s «ü©w°T®§¡C NULL: ¥ô·NÁäÄ~Äò¡C s: ­Y¦³ \t «h«á­±¦r¦ê¾a¥k (­YµL«hÅã¥Ü¥ô·NÁä)
+ * @param s æŒ‡å®šè¨Šæ¯ã€‚ NULL: ä»»æ„éµç¹¼çºŒã€‚ s: è‹¥æœ‰ \t å‰‡å¾Œé¢å­—ä¸²é å³ (è‹¥ç„¡å‰‡é¡¯ç¤ºä»»æ„éµ)
  */
 void
 vshowmsg(const char *msg)
@@ -403,9 +403,9 @@ vshowmsg(const char *msg)
 }
 
 /**
- * vans(s): ¦b©³³¡¦L¥X°T®§»P¤p¿é¤JÄæ¡A¨Ã¶Ç¦^¨Ï¥ÎªÌªº¿é¤J(Âà¬°¤p¼g)¡C
+ * vans(s): åœ¨åº•éƒ¨å°å‡ºè¨Šæ¯èˆ‡å°è¼¸å…¥æ¬„ï¼Œä¸¦å‚³å›ä½¿ç”¨è€…çš„è¼¸å…¥(è½‰ç‚ºå°å¯«)ã€‚
  *
- * @param s «ü©w°T®§¡A¨£ vshowmsg
+ * @param s æŒ‡å®šè¨Šæ¯ï¼Œè¦‹ vshowmsg
  */
 int
 vans(const char *msg)
@@ -420,9 +420,9 @@ vans(const char *msg)
 }
 
 /**
- * vansf(s, ...): ¦b©³³¡¦L¥X°T®§»P¤p¿é¤JÄæ¡A¨Ã¶Ç¦^¨Ï¥ÎªÌªº¿é¤J(Âà¬°¤p¼g)¡C
+ * vansf(s, ...): åœ¨åº•éƒ¨å°å‡ºè¨Šæ¯èˆ‡å°è¼¸å…¥æ¬„ï¼Œä¸¦å‚³å›ä½¿ç”¨è€…çš„è¼¸å…¥(è½‰ç‚ºå°å¯«)ã€‚
  *
- * @param s «ü©w°T®§¡A¨£ vshowmsg
+ * @param s æŒ‡å®šè¨Šæ¯ï¼Œè¦‹ vshowmsg
  */
 int
 vansf(const char *fmt, ...)
@@ -437,9 +437,9 @@ vansf(const char *fmt, ...)
 }
 
 /**
- * vmsg(s): ¦b©³³¡¦L¥X«ü©w°T®§©Î³æ¯Âªº¼È°±°T®§¡A¨Ã¶Ç¦^¨Ï¥ÎªÌªº«öÁä¡C
+ * vmsg(s): åœ¨åº•éƒ¨å°å‡ºæŒ‡å®šè¨Šæ¯æˆ–å–®ç´”çš„æš«åœè¨Šæ¯ï¼Œä¸¦å‚³å›ä½¿ç”¨è€…çš„æŒ‰éµã€‚
  *
- * @param s «ü©w°T®§¡A¨£ vshowmsg
+ * @param s æŒ‡å®šè¨Šæ¯ï¼Œè¦‹ vshowmsg
  */
 int
 vmsg(const char *msg)
@@ -462,9 +462,9 @@ vmsg(const char *msg)
 
 
 /**
- * vmsgf(s, ...): ®æ¦¡¤Æ¿é¥X¼È°±°T®§¨Ã©I¥s vmsg)¡C
+ * vmsgf(s, ...): æ ¼å¼åŒ–è¼¸å‡ºæš«åœè¨Šæ¯ä¸¦å‘¼å« vmsg)ã€‚
  *
- * @param s ®æ¦¡¤Æªº°T®§
+ * @param s æ ¼å¼åŒ–çš„è¨Šæ¯
  */
 int
 vmsgf(const char *fmt,...)
@@ -479,9 +479,9 @@ vmsgf(const char *fmt,...)
 }
 
 /**
- * vbarf(s, ...): ®æ¦¡¤Æ¿é¥X¥ª¥k¹ï»ôªº¦r¦ê (MAX_COL)
+ * vbarf(s, ...): æ ¼å¼åŒ–è¼¸å‡ºå·¦å³å°é½Šçš„å­—ä¸² (MAX_COL)
  *
- * @param s ®æ¦¡¤Æ¦r¦ê (\t «áªº¤º®e·|¹ï»ô¥kºİ)
+ * @param s æ ¼å¼åŒ–å­—ä¸² (\t å¾Œçš„å…§å®¹æœƒå°é½Šå³ç«¯)
  */
 void
 vbarf(const char *s, ...)
@@ -500,16 +500,16 @@ vbarf(const char *s, ...)
 }
 
 /**
- * vbarlr(l, r): ¥ª¥k¹ï»ôµeº¡¿Ã¹õ (MAX_COL)
- * ª`·N: ¥Ø«eªº¹ê§@¦Û°Ê»{©w´å¼Ğ¤w¦b¦æ¶}ÀY¡C
+ * vbarlr(l, r): å·¦å³å°é½Šç•«æ»¿è¢å¹• (MAX_COL)
+ * æ³¨æ„: ç›®å‰çš„å¯¦ä½œè‡ªå‹•èªå®šæ¸¸æ¨™å·²åœ¨è¡Œé–‹é ­ã€‚
  *
- * @param l ¾a¥ª¹ï»ôªº¦r¦ê (¥i§t ANSI ½X)
- * @param r ¾a¥k¹ï»ôªº¦r¦ê (¥i§t ANSI ½X¡A«á­±¤£·|¸ÉªÅ¥Õ)
+ * @param l é å·¦å°é½Šçš„å­—ä¸² (å¯å« ANSI ç¢¼)
+ * @param r é å³å°é½Šçš„å­—ä¸² (å¯å« ANSI ç¢¼ï¼Œå¾Œé¢ä¸æœƒè£œç©ºç™½)
  */
 void
 vbarlr(const char *l, const char *r)
 {
-    // TODO strlen_noansi ¶]¨â¦¸... ¨ä¹ê l ¥i¥HÃä output Ãäºâ¡C
+    // TODO strlen_noansi è·‘å…©æ¬¡... å…¶å¯¦ l å¯ä»¥é‚Š output é‚Šç®—ã€‚
     int szl = strlen_noansi(l),
 	szr = strlen_noansi(r);
 
@@ -535,11 +535,11 @@ vbarlr(const char *l, const char *r)
 // ---- THEMED FORMATTING OUTPUT -------------------------------------
 
 /**
- * vs_header(title, mid, right): ²MªÅ¿Ã¹õ¨Ã¿é¥X§¹¾ã¼ĞÃD (MAX_COL)
+ * vs_header(title, mid, right): æ¸…ç©ºè¢å¹•ä¸¦è¼¸å‡ºå®Œæ•´æ¨™é¡Œ (MAX_COL)
  *
- * @param title: ¾a¥ªªº¥D­n¼ĞÃD¡A¤£·|³Q¤ÁÂ_¡C
- * @param mid: ¸m¤¤»¡©ú¡A¥i³Q¤Á»ô¡C
- * @param right: ¾a¥kªº»¡©ú¡AªÅ¶¡°÷¤~·|Åã¥Ü¡C
+ * @param title: é å·¦çš„ä¸»è¦æ¨™é¡Œï¼Œä¸æœƒè¢«åˆ‡æ–·ã€‚
+ * @param mid: ç½®ä¸­èªªæ˜ï¼Œå¯è¢«åˆ‡é½Šã€‚
+ * @param right: é å³çš„èªªæ˜ï¼Œç©ºé–“å¤ æ‰æœƒé¡¯ç¤ºã€‚
  */
 void
 vs_header(const char *title, const char *mid, const char *right)
@@ -589,7 +589,7 @@ vs_header(const char *title, const char *mid, const char *right)
 }
 
 /**
- * vs_hdr(title): ²MªÅ¿Ã¹õ¨Ã¿é¥XÂ²©öªº¼ĞÃD
+ * vs_hdr(title): æ¸…ç©ºè¢å¹•ä¸¦è¼¸å‡ºç°¡æ˜“çš„æ¨™é¡Œ
  *
  * @param title
  */
@@ -603,10 +603,10 @@ vs_hdr(const char *title)
 }
 
 /**
- * vs_footer(caption, msg): ¦b¿Ã¹õ©³³¡¦L¥X®æ¦¡¤Æªº caption msg (¤£¥i§t ANSI ½X)
+ * vs_footer(caption, msg): åœ¨è¢å¹•åº•éƒ¨å°å‡ºæ ¼å¼åŒ–çš„ caption msg (ä¸å¯å« ANSI ç¢¼)
  *
- * @param caption ¥ªÃäªº¤ÀÃş¦r¦ê
- * @param msg °T®§¦r¦ê, \t «á¤å¦r¾a¥k¡B³Ì«á­±·|¦Û°Ê¯d¤@­ÓªÅ¥Õ¡C
+ * @param caption å·¦é‚Šçš„åˆ†é¡å­—ä¸²
+ * @param msg è¨Šæ¯å­—ä¸², \t å¾Œæ–‡å­—é å³ã€æœ€å¾Œé¢æœƒè‡ªå‹•ç•™ä¸€å€‹ç©ºç™½ã€‚
  */
 void
 vs_footer(const char *caption, const char *msg)
@@ -653,7 +653,7 @@ vs_footer(const char *caption, const char *msg)
 }
 
 /**
- * vs_cols_layout(cols, ws, n): ¨Ì¾Ú cols (¤j¤p n) ªº©w¸q­pºâ¾A¦Xªº¦æ¼e©ó ws
+ * vs_cols_layout(cols, ws, n): ä¾æ“š cols (å¤§å° n) çš„å®šç¾©è¨ˆç®—é©åˆçš„è¡Œå¯¬æ–¼ ws
  */
 
 void
@@ -720,7 +720,7 @@ vs_cols_layout(const VCOL *cols, VCOLW *ws, int n)
 }
 
 /**
- * vs_cols: ¨Ì·Ó¤w¸gºâ¦nªºÄæ¦ì¤j¤p¶i¦æ¿é¥X
+ * vs_cols: ä¾ç…§å·²ç¶“ç®—å¥½çš„æ¬„ä½å¤§å°é€²è¡Œè¼¸å‡º
  */
 void
 vs_cols(const VCOL *cols, const VCOLW *ws, int n, ...)

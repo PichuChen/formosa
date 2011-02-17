@@ -4,7 +4,7 @@
 
 
 /*
- *  ¦³Ãö©ó¿Ã¹õ³B²zªº©w¸q»P¸ê®Æµ²ºc
+ *  æœ‰é—œæ–¼è¢å¹•è™•ç†çš„å®šç¾©èˆ‡è³‡æ–™çµæ§‹
  */
 
 #define ANSILINELEN (246)       /* Maximum Screen width in chars */

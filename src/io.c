@@ -12,6 +12,10 @@
 #error poll(2) is needed!
 #endif
 
+#ifndef STDOUT_FILENO
+#define STDOUT_FILENO 1
+#endif
+
 extern int dumb_term;
 
 #define OBUFSIZE  (4096)
@@ -30,7 +34,7 @@ int _getdata(int line, int col, char *prompt, char *buf, int len, int echo, char
 void oflush()
 {
 	if (obufsize)
-		write(1, outbuf, obufsize);
+		write(STDOUT_FILENO, outbuf, obufsize);
 	obufsize = 0;
 }
 
@@ -39,7 +43,7 @@ void output(char *s, int len)
 {
 	if (obufsize + len > OBUFSIZE)
 	{			/* doin a oflush */
-		write(1, outbuf, obufsize);
+		write(STDOUT_FILENO, outbuf, obufsize);
 		obufsize = 0;
 	}
 	bcopy(s, outbuf + obufsize, len);
@@ -51,7 +55,7 @@ int ochar(char c)
 {
 	if (obufsize > OBUFSIZE - 1)
 	{			/* doin a oflush */
-		write(1, outbuf, obufsize);
+		write(STDOUT_FILENO, outbuf, obufsize);
 		obufsize = 0;
 	}
 	outbuf[obufsize++] = c;
@@ -231,7 +235,7 @@ igetagain:
 				static char xbuf[128];
 				sprintf(xbuf, ESC_STR "[s" ESC_STR "[2;1H [%ld] "
 					ESC_STR "[u", len);
-				write(1, xbuf, strlen(xbuf));
+				write(STDOUT_FILENO, xbuf, strlen(xbuf));
 				fsync(1);
 			}
 #endif

@@ -42,8 +42,8 @@ struct useridx {	/* Structure used in .USERIDX */
 #define PAGER_QUIET     0x0001
 #define PAGER_FRIEND    0x0002
 #define PAGER_FIDENT    0x0004
-#define PAGER_DENYBROAD 0x0100  /* sarek:03/12/2001:©Ú¦¬¼s¼½ */
-#define PAGER_FBROADC   0x0200  /* sarek:03/12/2001:¦¬¦n¤Í¼s¼½ */
+#define PAGER_DENYBROAD 0x0100  /* sarek:03/12/2001:æ‹’æ”¶å»£æ’­ */
+#define PAGER_FBROADC   0x0200  /* sarek:03/12/2001:æ”¶å¥½å‹å»£æ’­ */
 
 #define PASSLEN		14	/* Length of encrypted passwd field */
 
@@ -66,7 +66,7 @@ typedef struct userec {		/* Structure used to hold information in PASSFLE */
         char unused_str3[STRLEN-17];
 #else
         char unused_str3[STRLEN-18-IDLEN];
-        char fakeuserid[IDLEN+1];                       /* ¥iÅıuser¥ô·N­×§ï by kmwang 000628 */
+        char fakeuserid[IDLEN+1];                       /* å¯è®“userä»»æ„ä¿®æ”¹ by kmwang 000628 */
 #endif
 	char ident;					/* user identification */
 	unsigned int userlevel;
@@ -253,13 +253,13 @@ typedef struct {
 #define CBNAMELEN  36
 
 /* the attrib of board */
-#define BRD_IDENT       0x01   /* ¤w³q¹L»{ÃÒ¤~¥i±i¶K */
-#define BRD_NEWS        0x02   /* Âà«H */
-#define BRD_UNZAP       0x04   /* µLªk ZAP ±¼ */
-#define BRD_NOPOSTNUM   0x08   /* ¤£­p±i¶K¼Æ */
-#define BRD_CROSS	0x10   /* ¤£¥iÂà¶K */
-#define BRD_PRIVATE	0x20   /* ÁôÂÃªO */
-#define BRD_WEBSKIN	0x40   /* WEBBBS:¦³¦Û­q html ªºªO */
+#define BRD_IDENT       0x01   /* å·²é€šéèªè­‰æ‰å¯å¼µè²¼ */
+#define BRD_NEWS        0x02   /* è½‰ä¿¡ */
+#define BRD_UNZAP       0x04   /* ç„¡æ³• ZAP æ‰ */
+#define BRD_NOPOSTNUM   0x08   /* ä¸è¨ˆå¼µè²¼æ•¸ */
+#define BRD_CROSS	0x10   /* ä¸å¯è½‰è²¼ */
+#define BRD_PRIVATE	0x20   /* éš±è—æ¿ */
+#define BRD_WEBSKIN	0x40   /* WEBBBS:æœ‰è‡ªè¨‚ html çš„æ¿ */
 #define BRD_ACL		0x80   /* access control */
 
 struct boardheader {
@@ -268,9 +268,9 @@ struct boardheader {
         unsigned int bid;         /* lasehu: board unique number, implies the position in .BOARDS */
         time_t  ctime;            /* lthuang: time when board created */
         char unused2[45];
-        char bclass;              /* ªO­±¤ÀÃş */
-        char unused_type;         /* Âà«HÃş§O  */
-        unsigned char brdtype;    /* ¬İªOÄİ©ÊºX¼Ğ */
+        char bclass;              /* æ¿é¢åˆ†é¡ */
+        char unused_type;         /* è½‰ä¿¡é¡åˆ¥  */
+        unsigned char brdtype;    /* çœ‹æ¿å±¬æ€§æ——æ¨™ */
         char owner[5*IDLEN+15];   /* TODO: max 5 bmas, each length is IDLEN */
         char title[CBNAMELEN+4];  /* description of board */
         char unused3[40] ;
@@ -310,10 +310,10 @@ struct  BoardList {         /* lmj@cc.nsysu.edu.tw */
 	BOARDHEADER *bhr;
 	struct board_t *binfr;
 	int     cid ;
-	int     bcur ;              /* ¤W¦¸¬İ¨ì²Ä´X½g */
-	unsigned char	enter_cnt ;	    /* «ô³X¬Y¬İªO¦¸¼Æ */
+	int     bcur ;              /* ä¸Šæ¬¡çœ‹åˆ°ç¬¬å¹¾ç¯‡ */
+	unsigned char	enter_cnt ;	    /* æ‹œè¨ªæŸçœ‹æ¿æ¬¡æ•¸ */
 #ifdef USE_VOTE
-	unsigned char	voting ;         /* ¬İªO¬O§_¥¿¶i¦æ§ë²¼¤¤ */
+	unsigned char	voting ;         /* çœ‹æ¿æ˜¯å¦æ­£é€²è¡ŒæŠ•ç¥¨ä¸­ */
 #endif
 };
 
@@ -346,8 +346,8 @@ struct visitor {
  * Dynamic Advertisement - MenuShow
  */
 #define MENUSHOW_KEY       0x1229	   /* share memory key */
-#define MENUSHOW_SIZE      128	   /* ­n°µ´X½g post ¨ì share memory */
-#define MENUSHOW_BODY      1024    /* °µ¦h¤jªº¥»¤å¬q¸¨¨ì share memory */
+#define MENUSHOW_SIZE      128	   /* è¦åšå¹¾ç¯‡ post åˆ° share memory */
+#define MENUSHOW_BODY      1024    /* åšå¤šå¤§çš„æœ¬æ–‡æ®µè½åˆ° share memory */
 #define MENUSHOW_DEFAULT   "treasure/main-menu" /* if no MENUSHOW_FILE */
 
 struct MSList {
@@ -366,15 +366,15 @@ struct MenuShowShm {
 /*
  * notepad
  */
-#define NOTE_SIZE   200 /* ¯d¨¥ª©½g¼Æ­­¨î */
+#define NOTE_SIZE   200 /* ç•™è¨€ç‰ˆç¯‡æ•¸é™åˆ¶ */
 
 typedef struct notedata
 {
-	time_t date;                /* ®æªL«Âªv¬í */
-	struct tm *tt;              /* ®É¶¡µ²ºc */
-	char userid[IDLEN];         /* ¨Ï¥ÎªÌID */
-	char username[UNAMELEN];    /* ¨Ï¥ÎªÌ¼ÊºÙ */
-	char buf[4][80];            /* ©ïÀY¡B¤º¤å */
+	time_t date;                /* æ ¼æ—å¨æ²»ç§’ */
+	struct tm *tt;              /* æ™‚é–“çµæ§‹ */
+	char userid[IDLEN];         /* ä½¿ç”¨è€…ID */
+	char username[UNAMELEN];    /* ä½¿ç”¨è€…æš±ç¨± */
+	char buf[4][80];            /* æŠ¬é ­ã€å…§æ–‡ */
 } NOTEDATA;	/* 362 bytes */
 
 
@@ -416,18 +416,18 @@ enum ULOGIN {
 
 
 /*
- * ¨t²Î¸ê®ÆÀÉ®×¤l¥Ø¿ı
+ * ç³»çµ±è³‡æ–™æª”æ¡ˆå­ç›®éŒ„
  */
-#define BBSPATH_DELUSER  "deluser"   /*¦s©ñ³Q§R°£¤§±b¸¹±K½XÀÉ¥Ø¿ı */
-#define BBSPATH_BOARDS   "boards"    /* ªO­±¥Ø¿ı */
-#define BBSPATH_TREASURE "treasure"  /* ºëµØ°Ï¥Ø¿ı */
-#define BBSPATH_NOTE     "note"      /* µuºà */
-#define BBSPATH_REALUSER "realuser"  /* User»{ÃÒ½s½X¸ê®Æ¥Ø¿ı */
+#define BBSPATH_DELUSER  "deluser"   /*å­˜æ”¾è¢«åˆªé™¤ä¹‹å¸³è™Ÿå¯†ç¢¼æª”ç›®éŒ„ */
+#define BBSPATH_BOARDS   "boards"    /* æ¿é¢ç›®éŒ„ */
+#define BBSPATH_TREASURE "treasure"  /* ç²¾è¯å€ç›®éŒ„ */
+#define BBSPATH_NOTE     "note"      /* çŸ­ç®‹ */
+#define BBSPATH_REALUSER "realuser"  /* Userèªè­‰ç·¨ç¢¼è³‡æ–™ç›®éŒ„ */
 #define BBSPATH_IDENT    "ID"
 
 
 /*
- * ¸ô®|»PÀÉ¦W©w¸q°Ï
+ * è·¯å¾‘èˆ‡æª”åå®šç¾©å€
  */
 #define DIR_REC      ".DIR"
 #define INFO_REC     ".INFO"
@@ -457,25 +457,25 @@ enum ULOGIN {
 #define IDENT_DOC    "doc/ID_Check_Doc"
 #define MAIL_WARN    "doc/MAIL_WARN"
 
-#define BBSSRV_WELCOME "conf/welcome"   /* ¶i¯¸µe­± */
-#define BADUSERID      "conf/baduserid" /* ¤£±µ¨ü Login ¤§¨Ï¥ÎªÌ±b¸¹¦r¦ê */
-#define BADIDENT       "conf/badident"  /* ¤£±µ¨ü¨­¥÷»{ÃÒ¤§ e-mail ¦ì§} */
-#define ALLOWIDENT     "conf/allowident"/* ¯S§O¤¹³\±µ¨ü¨­¥÷»{ÃÒ¤§ e-mail ¦ì§} */
+#define BBSSRV_WELCOME "conf/welcome"   /* é€²ç«™ç•«é¢ */
+#define BADUSERID      "conf/baduserid" /* ä¸æ¥å— Login ä¹‹ä½¿ç”¨è€…å¸³è™Ÿå­—ä¸² */
+#define BADIDENT       "conf/badident"  /* ä¸æ¥å—èº«ä»½èªè­‰ä¹‹ e-mail ä½å€ */
+#define ALLOWIDENT     "conf/allowident"/* ç‰¹åˆ¥å…è¨±æ¥å—èº«ä»½èªè­‰ä¹‹ e-mail ä½å€ */
 #define EXPIRE_CONF    "conf/expire.cf"
-#define MENUSHOW_CONF  "conf/menushow"  /* ¦¹ÀÉ¨î©w menushow ªº°Ñ¦Ò¬İªO¸ô®| */
-#define SHOW_UPTIME    "conf/SHOW_UPTIME"	/* ¨t²Î­t¸ü */
-#define BBS_NEWS_CONF  "news/bbs-news.conf" /* bbs-news ³]©wÀÉ */
+#define MENUSHOW_CONF  "conf/menushow"  /* æ­¤æª”åˆ¶å®š menushow çš„åƒè€ƒçœ‹æ¿è·¯å¾‘ */
+#define SHOW_UPTIME    "conf/SHOW_UPTIME"	/* ç³»çµ±è² è¼‰ */
+#define BBS_NEWS_CONF  "news/bbs-news.conf" /* bbs-news è¨­å®šæª” */
 
-/* bbs.allow ¤@¥¹¦s¦b¡A«hªí¥Ü¥u¦³¼g¦b¸Ì­±ªº ip ¤~¯à³s½u */
-#define HOST_DENY    "conf/bbs.deny"    /* ¤£­ã¤W¯¸ªº ip ½d³ò */
-#define HOST_ALLOW   "conf/bbs.allow"   /* ­ã³\¤W¯¸ªº ip ½d³ò */
+/* bbs.allow ä¸€æ—¦å­˜åœ¨ï¼Œå‰‡è¡¨ç¤ºåªæœ‰å¯«åœ¨è£¡é¢çš„ ip æ‰èƒ½é€£ç·š */
+#define HOST_DENY    "conf/bbs.deny"    /* ä¸å‡†ä¸Šç«™çš„ ip ç¯„åœ */
+#define HOST_ALLOW   "conf/bbs.allow"   /* å‡†è¨±ä¸Šç«™çš„ ip ç¯„åœ */
 
 
-#define PATH_VISITOR     "log/visitor"      /* ¤W¯¸¤H¦¸®É¶¡°O¿ı */
+#define PATH_VISITOR     "log/visitor"      /* ä¸Šç«™äººæ¬¡æ™‚é–“è¨˜éŒ„ */
 #define PATH_VISITOR_LOG "log/visitor.log"
-#define PATH_BBSLOG      "log/bbslog"       /* ¨t²Î°O¿ıÀÉ */
-#define PATH_BBSMAIL_LOG "log/bbsmail.log"  /* ¦¬¯¸¥~«H¥ó°O¿ı */
-#define PATH_IDENTLOG    "log/identlog"     /* »{ÃÒ¦^«H°O¿ı */
+#define PATH_BBSLOG      "log/bbslog"       /* ç³»çµ±è¨˜éŒ„æª” */
+#define PATH_BBSMAIL_LOG "log/bbsmail.log"  /* æ”¶ç«™å¤–ä¿¡ä»¶è¨˜éŒ„ */
+#define PATH_IDENTLOG    "log/identlog"     /* èªè­‰å›ä¿¡è¨˜éŒ„ */
 
 /*
 typedef int BOOL;
@@ -492,7 +492,7 @@ typedef short BOOL;
 
 #if 0
 /* add by wnlee */
-#define MAX_HOSTALIAS_NUM 	(100)		/* ¤ñ¹ïip©Ò¥Î¨ì struct array ¤j¤p */
+#define MAX_HOSTALIAS_NUM 	(100)		/* æ¯”å°ipæ‰€ç”¨åˆ° struct array å¤§å° */
 
 #define  BIN_SIZE sizeof(struct bin)
 typedef struct bin

@@ -203,11 +203,12 @@
 #define FTSZ_MIN_COL     (80)
 #define FTSZ_MAX_COL     (320)
 
-#define FTCHAR_ERASE     (' ')
+#define FTCHAR_ERASE     ((ftchar){" ",1})
 #define FTATTR_ERASE     (0x07)
-#define FTCHAR_BLANK     (' ')
+#define FTCHAR_BLANK     ((ftchar){" ",1})
 #define FTATTR_DEFAULT   (FTATTR_ERASE)
-#define FTCHAR_INVALID_DBCS ('?')
+#define FTCHAR_INVALID_DBCS ({"?",1})
+#define FTCHAR_END    ((ftchar){"",0})
 // #define FTATTR_TRANSPARENT (0x80)
 
 #define FTDIRTY_CHAR    (0x01)
@@ -229,11 +230,13 @@
 # define FTMV_COST      (5)     // ESC[ABCD with ESC[m;nH costs avg 4+ bytes
 #endif
 
+#define FTUTF8_LEN		(4)		//for 2011 0x0~0x1FFFD 
+
 //////////////////////////////////////////////////////////////////////////
 // Flat Terminal Data Type
 //////////////////////////////////////////////////////////////////////////
 
-typedef unsigned char ftchar;   // primitive character type
+typedef struct s_ftchar{unsigned char _byte[FTUTF8_LEN];unsigned char _len;} ftchar;   // primitive character type
 typedef unsigned char ftattr;   // primitive attribute type
 
 //////////////////////////////////////////////////////////////////////////
@@ -244,7 +247,7 @@ typedef struct
 {
     ftchar  **cmap[2];      // character map
     ftattr  **amap[2];      // attribute map
-    ftchar  *dmap;          // dirty map
+    ftattr  *dmap;          // dirty map
     ftchar  *dcmap;         // processed display map
     ftattr  attr;
     int     rows, cols;
@@ -265,7 +268,7 @@ typedef struct
     char    typeahead;
 
     // escape command
-    ftchar  cmd[FTCMD_MAXLEN+1];
+    char    cmd[FTCMD_MAXLEN+1];
     int     szcmd;
 
 } FlatTerm;
@@ -286,7 +289,7 @@ typedef struct
 #define FTATTR_DEFAULT_FG   (FTATTR_GETFG(FTATTR_DEFAULT))
 #define FTATTR_DEFAULT_BG   (FTATTR_GETBG(FTATTR_DEFAULT))
 #define FTATTR_MAKE(f,b)    (((f)<<FTATTR_FGSHIFT)|((b)<<FTATTR_BGSHIFT))
-#define FTCHAR_ISBLANK(x)   ((x) == (FTCHAR_BLANK))
+#define FTCHAR_ISBLANK(x)   (ftcharcmp(&x,&FTCHAR_BLANK) == 0)
 
 #define FTCMAP  ft.cmap[ft.mi]
 #define FTAMAP  ft.amap[ft.mi]
@@ -396,7 +399,7 @@ void    addstring   (const char *str);  // ncurses-like of outstr().
 // readback
 int     instr       (char *str);
 int     innstr      (char *str, int n); // n includes \0
-int     inansistr   (char *str, int n); // n includes \0
+//int     inansistr   (char *str, int n); // n includes \0
 
 // deprecated
 void    standout    (void);
@@ -409,6 +412,9 @@ void    grayout     (int y, int end, int level);
 
 int     fterm_inbuf     (void);         // raw input  adapter
 void    fterm_rawc      (int c);        // raw output adapter
+#ifdef FTUTF8_LEN
+void	fterm_rawUTF8c(const ftchar * c);
+#endif
 void    fterm_rawnewline(void);         // raw output adapter
 void    fterm_rawflush  (void);         // raw output adapter
 void    fterm_raws      (const char *s);
@@ -436,6 +442,11 @@ int     fterm_prepare_str(int len);
 
 // DBCS supporting
 int     fterm_DBCS_Big5(unsigned char c1, unsigned char c2);
+
+#ifdef FTUTF8_LEN
+int ftcharcmp(const ftchar*  a,const ftchar* b);
+int utf8strlen(const char* str);
+#endif
 
 #ifndef _PFTERM_TEST_MAIN
 void scr_dump(screen_backup_t *psb);

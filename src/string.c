@@ -8,10 +8,10 @@
 
 #define CHAR_LOWER(c)  ((c >= 'A' && c <= 'Z') ? c|32 : c)
 /* ----------------------------------------------------- */
-/* ¦r¦êÂà´«ÀË¬d¨ç¼Æ                                      */
+/* å­—ä¸²è½‰æ›æª¢æŸ¥å‡½æ•¸                                      */
 /* ----------------------------------------------------- */
 /**
- * ±N¦r¦ê s Âà¬°¤p¼g¦s¦^ t
+ * å°‡å­—ä¸² s è½‰ç‚ºå°å¯«å­˜å› t
  * @param t allocated char array
  * @param s
  */
@@ -26,7 +26,7 @@ void str_lower(char *t, const char *s)
 }
 
 /**
- * ²¾°£¦r¦ê buf «áºİ¦h¾lªºªÅ¥Õ¡C
+ * ç§»é™¤å­—ä¸² buf å¾Œç«¯å¤šé¤˜çš„ç©ºç™½ã€‚
  * @param buf
  */
 void trim(char *buf)
@@ -44,7 +44,7 @@ void trim(char *buf)
 }
 
 /**
- * ²¾°£ src ªº '\n' ¨Ã§ï¦¨ '\0'
+ * ç§»é™¤ src çš„ '\n' ä¸¦æ”¹æˆ '\0'
  * @param src
  */
 void chomp(char *src)
@@ -58,7 +58,7 @@ void chomp(char *src)
 }
 
 /* ----------------------------------------------------- */
-/* ANSI ³B²z¨ç¼Æ                                         */
+/* ANSI è™•ç†å‡½æ•¸                                         */
 /* ----------------------------------------------------- */
 int strip_blank(char *cbuf, char *buf)
 {
@@ -92,14 +92,14 @@ static const char EscapeFlag[] = {
 
 #if 0
 /**
- * ®Ú¾Ú mode ¨Ó strip ¦r¦ê src¡A¨Ã§âµ²ªG¦s¨ì dst
+ * æ ¹æ“š mode ä¾† strip å­—ä¸² srcï¼Œä¸¦æŠŠçµæœå­˜åˆ° dst
  * @param dst
  * @param src (if NULL then only return length)
  * @param mode enum {STRIP_ALL = 0, ONLY_COLOR, NO_RELOAD};
- *             STRIP_ALL:  ¥ş³¡¦Y±¼
- *             ONLY_COLOR: ¥u¯d¸òÃC¦â¦³Ãöªº (ESC[*m)
- *             NO_RELOAD:  ¥u¯d¤W­±»{ÃÑªº(²¾¦ì+¦â±m)
- * @return strip «áªºªø«×
+ *             STRIP_ALL:  å…¨éƒ¨åƒæ‰
+ *             ONLY_COLOR: åªç•™è·Ÿé¡è‰²æœ‰é—œçš„ (ESC[*m)
+ *             NO_RELOAD:  åªç•™ä¸Šé¢èªè­˜çš„(ç§»ä½+è‰²å½©)
+ * @return strip å¾Œçš„é•·åº¦
  */
 int strip_ansi_str(char *dst, const char *src, enum STRIP_FLAG mode)
 {
@@ -221,7 +221,7 @@ int strlen_noansi(const char *s)
 }
 
 /* ----------------------------------------------------- */
-/* DBCS ³B²z¨ç¼Æ                                         */
+/* DBCS è™•ç†å‡½æ•¸                                         */
 /* ----------------------------------------------------- */
 
 void strip_nonebig5(unsigned char *str, int maxlen)
@@ -254,7 +254,7 @@ void strip_nonebig5(unsigned char *str, int maxlen)
 }
 
 /**
- * DBCS_RemoveIntrEscape(buf, len): ¥h°£ DBCS ¤@¦rÂù¦â¦r¡C
+ * DBCS_RemoveIntrEscape(buf, len): å»é™¤ DBCS ä¸€å­—é›™è‰²å­—ã€‚
  * (deprecated)
  */
 int DBCS_RemoveIntrEscape(unsigned char *buf, int *len)
@@ -319,7 +319,7 @@ int DBCS_RemoveIntrEscape(unsigned char *buf, int *len)
 }
 
 /**
- * DBCS_Status(dbcstr, pos): ¨ú±o¦r¦ê¤¤«ü©w¦ì¸mªº DBCS ª¬ºA¡C
+ * DBCS_Status(dbcstr, pos): å–å¾—å­—ä¸²ä¸­æŒ‡å®šä½ç½®çš„ DBCS ç‹€æ…‹ã€‚
  */
 int DBCS_Status(const char *dbcstr, int pos)
 {
@@ -342,7 +342,7 @@ int DBCS_Status(const char *dbcstr, int pos)
 }
 
 /**
- * DBCS_strcasestr(pool, ptr): ¦b¦r¦ê pool ¤¤´M§ä ptr (¥u©¿²¤­^¤å¤j¤p¼g)
+ * DBCS_strcasestr(pool, ptr): åœ¨å­—ä¸² pool ä¸­å°‹æ‰¾ ptr (åªå¿½ç•¥è‹±æ–‡å¤§å°å¯«)
  */
 char *DBCS_strcasestr(const char* pool, const char *ptr)
 {
@@ -391,7 +391,7 @@ char *DBCS_strcasestr(const char* pool, const char *ptr)
 }
 
 /* ----------------------------------------------------- */
-/* ¦r¦êÀË¬d¨ç¼Æ¡G­^¤å¡B¼Æ¦r¡BÀÉ¦W¡BE-mail address        */
+/* å­—ä¸²æª¢æŸ¥å‡½æ•¸ï¼šè‹±æ–‡ã€æ•¸å­—ã€æª”åã€E-mail address        */
 /* ----------------------------------------------------- */
 
 int invalid_pname(const char *str)
@@ -402,10 +402,10 @@ int invalid_pname(const char *str)
     while (*p1) {
 	if (!(p2 = strchr(p1, '/')))
 	    p2 = str + strlen(str);
-	if (p1 + 1 > p2 || p1 + strspn(p1, ".") == p2) /* ¤£¤¹³\¥Î / ¶}ÀY, ©Î¬O // ¤§¶¡¥u¦³ . */
+	if (p1 + 1 > p2 || p1 + strspn(p1, ".") == p2) /* ä¸å…è¨±ç”¨ / é–‹é ­, æˆ–æ˜¯ // ä¹‹é–“åªæœ‰ . */
 	    return 1;
 	for (p3 = p1; p3 < p2; p3++)
-	    if (!isalnum(*p3) && !strchr("@[]-._", *p3)) /* ¥u¤¹³\ alnum ©Î³o¨Ç²Å¸¹ */
+	    if (!isalnum(*p3) && !strchr("@[]-._", *p3)) /* åªå…è¨± alnum æˆ–é€™äº›ç¬¦è™Ÿ */
 		return 1;
 	p1 = p2 + (*p2 ? 1 : 0);
     }
@@ -414,7 +414,7 @@ int invalid_pname(const char *str)
 
 /*
  * return	1	if /^[0-9]+$/
- * 		0	else, §tªÅ¦r¦ê
+ * 		0	else, å«ç©ºå­—ä¸²
  */
 int is_number(const char *p)
 {

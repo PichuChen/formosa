@@ -6,7 +6,7 @@
 
 #ifdef USE_IDENT
 
-static int id_num_check(char *num)		/* ¨­¥÷ÃÒ¦r¸¹ÀË¬d */
+static int id_num_check(char *num)		/* èº«ä»½è­‰å­—è™Ÿæª¢æŸ¥ */
 {
 	char *p, LEAD[] = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
 	int x, i;
@@ -70,20 +70,20 @@ static int send_checkmail(const char *email, const char *stamp, const char *user
 
 static int retrive_checkemail(const char *stamp, const char *userid, char *email, char *msgbuf)
 {
-	static const char * const email_pattern = "¹q¤l¶l¥ó«H½c(½Ğ°È¥²½T¹ê¶ñ¼g¥¿½T)¡G";
+	static const char * const email_pattern = "é›»å­éƒµä»¶ä¿¡ç®±(è«‹å‹™å¿…ç¢ºå¯¦å¡«å¯«æ­£ç¢º)ï¼š";
 	char *ptr, fpath[128];
 
 	sprintf(fpath, "%s/%s", BBSPATH_IDENT, stamp);
 	ptr = fgrep(email_pattern, fpath);
 	if (!ptr) {
-		strcpy(msgbuf, "µLªk±qµù¥U³æ¨ú±oE-Mail");
+		strcpy(msgbuf, "ç„¡æ³•å¾è¨»å†Šå–®å–å¾—E-Mail");
 		return -1;
 	}
 
 	strcpy(email, ptr + strlen(email_pattern));
 	if ((ptr = xgrep(email, ALLOWIDENT)) == NULL ||
 	    (ptr = xgrep(email, BADIDENT)) != NULL) {
-		sprintf(msgbuf, "»{µıE-Mail¤£¦Xªk: %s(%s)", email, userid);
+		sprintf(msgbuf, "èªè¨¼E-Mailä¸åˆæ³•: %s(%s)", email, userid);
 		return -1;
 	}
 
@@ -98,10 +98,10 @@ int resend_checkmail(const char *stamp, const char *userid, char *msgbuf)
 	if (retrive_checkemail(stamp, userid, email, msgbuf)) {
 		return -1;
 	} else if (send_checkmail(email, stamp, userid)) {
-		sprintf(msgbuf, "»{µı«H¸É±H¥¢±Ñ: %s(%s)", email, userid);
+		sprintf(msgbuf, "èªè¨¼ä¿¡è£œå¯„å¤±æ•—: %s(%s)", email, userid);
 		return -1;
 	} else {
-		sprintf(msgbuf, "»{µı«H¤w¸É±H: %s(%s)", email, userid);
+		sprintf(msgbuf, "èªè¨¼ä¿¡å·²è£œå¯„: %s(%s)", email, userid);
 		return -1;
 	}
 
@@ -115,22 +115,22 @@ int do_manual_confirm(const char *stamp, const char *userid)
 	char fpath[128];
 	time_t now = time(NULL);
 
-	rc = vansf("¤â°Ê³q¹L¨Ï¥ÎªÌ %s »{µı[N/y]? ", userid);
+	rc = vansf("æ‰‹å‹•é€šéä½¿ç”¨è€… %s èªè¨¼[N/y]? ", userid);
 	if (rc == 'y') {
 		sethomefile(fpath, userid, "sysopconfirm");
 		if ((fh = fopen(fpath, "w")) == NULL) {
-			vmsgf("¼È¦sÀÉ %s ¶}±Ò¥¢±Ñ", fpath);
+			vmsgf("æš«å­˜æª” %s é–‹å•Ÿå¤±æ•—", fpath);
 			return -1;
 		}
-		fprintf(fh, "¯¸ªø %s ¤â°Ê»{µı %s ©ó %s\n",
+		fprintf(fh, "ç«™é•· %s æ‰‹å‹•èªè¨¼ %s æ–¼ %s\n",
 			curuser.userid, userid, ctime(&now));
 		fclose(fh);
 
 		rc = pass_user_ident(userid, fpath, stamp);
 		if (rc == -1)
-			vmsgf("%s ¤â°Ê»{µı¥¢±Ñ", userid);
+			vmsgf("%s æ‰‹å‹•èªè¨¼å¤±æ•—", userid);
 		else
-			vmsgf("%s ¤w¤â°Ê»{µı", userid);
+			vmsgf("%s å·²æ‰‹å‹•èªè¨¼", userid);
 		unlink(fpath);
 		return rc;
 	}
@@ -181,7 +181,7 @@ static int is_waiting_confirm(const char *userid, char *stamp)
 }
 
 /*
- * ¶ñ¼g¨­¥÷»{ÃÒ¥Ó½Ğ®Ñ
+ * å¡«å¯«èº«ä»½èªè­‰ç”³è«‹æ›¸
  */
 int x_idcheck()
 {
@@ -215,14 +215,14 @@ int x_idcheck()
 	if (urcTmp.ident == 7)
 	{
 		clear();
-		outs("\n±z¤w³q¹L¨­¤À»{ÃÒ, ½Ğ§Y¨èÂ÷½u¦A¤W¯¸§Y¥i!");
+		outs("\næ‚¨å·²é€šéèº«åˆ†èªè­‰, è«‹å³åˆ»é›¢ç·šå†ä¸Šç«™å³å¯!");
 		pressreturn();
 		return C_FULL;
 	}
 
 	if (is_waiting_confirm(curuser.userid, stamp)) {
 		clear();
-		outs("±z¤w¶ñ¹Lµù¥U³æ¡A¬O§_ª½±µ­«°e»{µı«H¡H[N/y]");
+		outs("æ‚¨å·²å¡«éè¨»å†Šå–®ï¼Œæ˜¯å¦ç›´æ¥é‡é€èªè¨¼ä¿¡ï¼Ÿ[N/y]");
 		if (igetkey() == 'y') {
 			resend_checkmail(stamp, curuser.userid, buf);
 			prints("\n%s", buf);
@@ -338,7 +338,7 @@ int x_idcheck()
 #if 0
 				if (*(p+1) == '.')	/* @. */
 				{
-					outs("\n±z©Ò¿é¤Jªº E-mail¬O¿ù»~ªº!");
+					outs("\næ‚¨æ‰€è¼¸å…¥çš„ E-mailæ˜¯éŒ¯èª¤çš„!");
 					pressreturn();
 					continue;
 				}
@@ -348,7 +348,7 @@ int x_idcheck()
 					/* NULL STATEMENT */ ;
 
 				if (*p == '\0')
-					outs("\n¤£±µ¨ü¥D¾÷ IP §Î¦¡ªº e-mail ±b¸¹!");
+					outs("\nä¸æ¥å—ä¸»æ©Ÿ IP å½¢å¼çš„ e-mail å¸³è™Ÿ!");
 				else if ((p = xgrep(buf, ALLOWIDENT)) == NULL ||
 					 (p = xgrep(buf, BADIDENT)) != NULL) {
 					if (p && (!strchr(p, '@') || p[0] == '@'))

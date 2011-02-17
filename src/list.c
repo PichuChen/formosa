@@ -33,15 +33,15 @@ BOOL list_friend;
 
 #define PICKUP_WAYS     (5)
 
-short pickup_way = 1;		/* ¹w³]±Æ§Ç: ½u¤W¦n¤Í */
+short pickup_way = 1;		/* é è¨­æ’åº: ç·šä¸Šå¥½å‹ */
 
 char *msg_pickup_way[PICKUP_WAYS] =	/* lang.h */
 {
-	"¥ô·N±Æ¦C",
-	"½u¤W¦n¤Í",
-	"­^¤å¥N¦W",
-	"½u¤Wª¬ºA",
-	"¤W¯¸¦aÂI"
+	"ä»»æ„æ’åˆ—",
+	"ç·šä¸Šå¥½å‹",
+	"è‹±æ–‡ä»£å",
+	"ç·šä¸Šç‹€æ…‹",
+	"ä¸Šç«™åœ°é»"
 /*
  * _msg_pickup_way_1,
  * _msg_pickup_way_2,
@@ -136,8 +136,8 @@ static char pagerchar(struct pickup *pkent, char ident)
 {
 	USER_INFO *uentp = pkent->ui;
 
-	//kmwang:20000610:Ãa¤H¦W³æ
-//	if (pkent->blacklist)	// ­Y¦bÃa¤H¦W³æ¤¤.©I³ê¹a¥²¬° '*'
+	//kmwang:20000610:å£äººåå–®
+//	if (pkent->blacklist)	// è‹¥åœ¨å£äººåå–®ä¸­.å‘¼å–šéˆ´å¿…ç‚º '*'
 //		return '*';
 	if (in_blacklist(uentp->userid, curuser.userid))
 		return '*';
@@ -200,7 +200,7 @@ static void ulist_entry(int x, void *ep, int idx, int top, int last, int rows)
 			prints("   %4d %s%-12s %-*.*s[m %-15.15s %c%c %-14.14s",
 			       num,
 			       pkp->friend ? "[1;36m" : "",
-/* kmwang:20000628:¨Ï¥ÎªÌ¦W³æÅã¥Üªº¬Ofakeid */
+/* kmwang:20000628:ä½¿ç”¨è€…åå–®é¡¯ç¤ºçš„æ˜¯fakeid */
 #ifndef IGNORE_CASE
                                uentp->userid,
 #else
@@ -209,8 +209,8 @@ static void ulist_entry(int x, void *ep, int idx, int top, int last, int rows)
 #endif
 			       tmp,
 			       tmp,
-				/* sarek:12/30/2000 Âo°£ANSI±±¨î½X */
-			       (uentp->ident != 7) ? "¤¤¤s¹C«È" : (strip_ansi ? esc_filter(uentp->username) : uentp->username),
+				/* sarek:12/30/2000 æ¿¾é™¤ANSIæ§åˆ¶ç¢¼ */
+			       (uentp->ident != 7) ? "ä¸­å±±éŠå®¢" : (strip_ansi ? esc_filter(uentp->username) : uentp->username),
 
 /* TODO
 			       uentp->home,
@@ -287,7 +287,7 @@ static int ucmd_sort()
 	{
 		if (now - last_utime < 3)
 		{
-			msg("¨t²Î¦£¸L¤¤, ½Ğ±é«á...");
+			msg("ç³»çµ±å¿™ç¢Œä¸­, è«‹æ¢¢å¾Œ...");
 			return C_NONE;
 		}
 		cnt = 0;
@@ -335,14 +335,14 @@ static int ucmd_help(int ent, struct pickup *pkent, char *direct)
 	outs(_msg_list_6);
 	if (curuser.userlevel > PERM_PAGE || curuser.ident == 7)
 		outs(_msg_list_7);
-	//outs("  [CTRL-D]         ¤Á´«¼s¼½©I³ê¹a\n");	/* lang.h */
+	//outs("  [CTRL-D]         åˆ‡æ›å»£æ’­å‘¼å–šéˆ´\n");	/* lang.h */
 #ifndef NSYSUBBS
 	if (HAS_PERM(PERM_SYSOP))
-		outs("\n ¯¸ªø±M¥ÎÁä\n\
-   [i]          §âÃa³J½ğ¥X¥h   [E]                  ­×§ïºô¤Í¸ê®Æ\n");	/* lang.h */
+		outs("\n ç«™é•·å°ˆç”¨éµ\n\
+   [i]          æŠŠå£è›‹è¸¢å‡ºå»   [E]                  ä¿®æ”¹ç¶²å‹è³‡æ–™\n");	/* lang.h */
 #endif
 #ifdef USE_OVERRIDE_IN_LIST
-	outs("\n PÄæ¦ì»¡©ú  *: ©Úµ´±µ¨ü©I¥s O: ¥i±µ¨ü±j¤O©I¥s");	/* lang.h */
+	outs("\n Pæ¬„ä½èªªæ˜  *: æ‹’çµ•æ¥å—å‘¼å« O: å¯æ¥å—å¼·åŠ›å‘¼å«");	/* lang.h */
 #endif
 	pressreturn();
 	return C_FULL;
@@ -363,7 +363,7 @@ static int ucmd_query(int ent, struct pickup *pkent, char *direct)
 
 static int ucmd_mail(int ent, struct pickup *pkent, char *direct)
 {
-	if (curuser.userlevel)	/* guest ¤£¯à mail */
+	if (curuser.userlevel)	/* guest ä¸èƒ½ mail */
 	{
 		char to[STRLEN], title[TTLEN];
 
@@ -404,7 +404,7 @@ static int ucmd_refresh(int ent, struct pickup *pkent, char *direct)
 	{
 		if (now - last_utime < 5)
 		{
-			msg("½Ğµy«á¦A¸Õ...");
+			msg("è«‹ç¨å¾Œå†è©¦...");
 			return C_NONE;
 		}
 		cnt = 0;
@@ -417,7 +417,7 @@ static int ucmd_refresh(int ent, struct pickup *pkent, char *direct)
 
 static int ucmd_addfriend(int ent, struct pickup* pkent, char *direct)
 {
-	if (curuser.userlevel)	/* guest ¤£¯à add friend */
+	if (curuser.userlevel)	/* guest ä¸èƒ½ add friend */
 	{
 		uentp = pkent->ui;
 		if (uentp->userid[0] && !pkent->friend)
@@ -443,7 +443,7 @@ static int ucmd_addfriend(int ent, struct pickup* pkent, char *direct)
 
 static int ucmd_delfriend(int ent, struct pickup *pkent, char *direct)
 {
-	if (curuser.userlevel)	/* guest ¤£¯à del friend */
+	if (curuser.userlevel)	/* guest ä¸èƒ½ del friend */
 	{
 		uentp = pkent->ui;
 		if (uentp->userid[0] && pkent->friend)
@@ -469,7 +469,7 @@ static int ucmd_delfriend(int ent, struct pickup *pkent, char *direct)
 
 static int ucmd_switch(int ent, struct pickup *pkent, char *direct)
 {
-	if (!curuser.userlevel)	/* guest ¤£¯à show friend */
+	if (!curuser.userlevel)	/* guest ä¸èƒ½ show friend */
 		return C_NONE;
 
 	list_friend ^= 1;
@@ -480,7 +480,7 @@ static int ucmd_switch(int ent, struct pickup *pkent, char *direct)
 
 static int ucmd_mbox(int ent, struct pickup *pkent, char *direct)
 {
-	if (!curuser.userlevel)	/* guest ¤£¯à read mail */
+	if (!curuser.userlevel)	/* guest ä¸èƒ½ read mail */
 		return C_NONE;
 
 	m_read();
@@ -563,7 +563,7 @@ static int ucmd_kick(int ent, struct pickup *pkent, char *direct)
 
 static int ucmd_find(int ent, struct pickup *pkent, char *direct)
 {
-	if (getdata(b_line, 0, "´M§ä : ", genbuf, 20, XECHO))	/* lang.h */
+	if (getdata(b_line, 0, "å°‹æ‰¾ : ", genbuf, 20, XECHO))	/* lang.h */
 	{
 		int j = ent % num_users;
 
@@ -579,7 +579,7 @@ static int ucmd_find(int ent, struct pickup *pkent, char *direct)
 				j = 0;
 		}
 	}
-	msg("¨S§ä¨ì!");	/* lang.h */
+	msg("æ²’æ‰¾åˆ°!");	/* lang.h */
 	getkey();
 	return C_FOOT;
 }

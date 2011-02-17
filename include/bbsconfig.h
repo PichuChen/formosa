@@ -3,11 +3,11 @@
 #define _BBS_CONFIG_H_
 
 /*******************************************************************
- *    Ãö©ó¾ã­Ó¨t²Îªº©w¸q
+ *    é—œæ–¼æ•´å€‹ç³»çµ±çš„å®šç¾©
  *******************************************************************/
-#define BBS_UID             9999        /* BBS user Run Time ¨t²Î uid */
-#define BBS_GID             999         /* BBS user Run Time ¨t²Î gid */
-#define MAXACTIVE           64         /* ½u¤W®e³\¤H¼Æ */
+#define BBS_UID             9999        /* BBS user Run Time ç³»çµ± uid */
+#define BBS_GID             999         /* BBS user Run Time ç³»çµ± gid */
+#define MAXACTIVE           64         /* ç·šä¸Šå®¹è¨±äººæ•¸ */
 #define MAXBOARD            256
 #ifndef HOMEBBS
 /* a fallback in case we don't have the config.h */
@@ -15,43 +15,43 @@
 #endif
 
 /*******************************************************************
- *    ¨t²Î²ÕºA
+ *    ç³»çµ±çµ„æ…‹
  *******************************************************************/
-#undef CHROOT_BBS                       /* ¬O§_¨Ï¥Î chroot ¥H¼W¥[¨t²Î¦w¥ş */
-#define LOGINASNEW                      /* ¬O§_¤¹³\ new user */
-#undef BBSLOG_MAIL                      /* ¬O§_±Ò¥Î¹ï¥~°e«H°O¿ı */
-#undef BBSLOG_IDLEOUT                   /* ¬O§_±Ò¥Î IDLE ±j¨îÂ_½u°O¿ı */
-#define BIT8                            /* ¬O§_¨Ï¥Î¤¤¤å¤Æ 8 bits ¨t²Î*/
-#define INCLUDE_DEPTH       3           /* §t¬A­ì¤å®É, «O¯d´X¼h­ì¤å */
-#define TREASURE_DEPTH      10          /* ºëµØ°Ï³Ì¤j¶¥¼h²`«× */
-#define LEAST_IDLEN         (2)         /* userid ³Ìµuªø«× */
-#define GUEST               "guest"     /* ¬O§_±µ¨ü°ÑÆ[¥Î±b¸¹¶i¯¸ */
-#define LOCAL_MAX_MSQ       (8)         /* ¦^ÅU°T®§­Ó¼Æ¤W­­ */
+#undef CHROOT_BBS                       /* æ˜¯å¦ä½¿ç”¨ chroot ä»¥å¢åŠ ç³»çµ±å®‰å…¨ */
+#define LOGINASNEW                      /* æ˜¯å¦å…è¨± new user */
+#undef BBSLOG_MAIL                      /* æ˜¯å¦å•Ÿç”¨å°å¤–é€ä¿¡è¨˜éŒ„ */
+#undef BBSLOG_IDLEOUT                   /* æ˜¯å¦å•Ÿç”¨ IDLE å¼·åˆ¶æ–·ç·šè¨˜éŒ„ */
+#define BIT8                            /* æ˜¯å¦ä½¿ç”¨ä¸­æ–‡åŒ– 8 bits ç³»çµ±*/
+#define INCLUDE_DEPTH       3           /* å«æ‹¬åŸæ–‡æ™‚, ä¿ç•™å¹¾å±¤åŸæ–‡ */
+#define TREASURE_DEPTH      10          /* ç²¾è¯å€æœ€å¤§éšå±¤æ·±åº¦ */
+#define LEAST_IDLEN         (2)         /* userid æœ€çŸ­é•·åº¦ */
+#define GUEST               "guest"     /* æ˜¯å¦æ¥å—åƒè§€ç”¨å¸³è™Ÿé€²ç«™ */
+#define LOCAL_MAX_MSQ       (8)         /* å›é¡§è¨Šæ¯å€‹æ•¸ä¸Šé™ */
 #define MYCHARSET	    "big5"
 
 /*******************************************************************
- *    Ãö©ó»{ÃÒ
+ *    é—œæ–¼èªè­‰
  *******************************************************************/
-#define USE_IDENT                       /* ¬O§_¨Ï¥Î»{ÃÒ¨t²Î */
-#define EMAIL_LIMIT 1                   /* ¬O§_­­¨î¥¼»{ÃÒ¨Ï¥ÎªÌ±H¯¸¥~«H */
-#define PAGE_LIMIT  0                   /* ¬O§_­­¨î¥¼»{ÃÒ¨Ï¥ÎªÌ²á¤Ñ/°e°T®§¥\¯à */
-#define SYSOP_BIN                       /* ¬O§_½u¤W¬d¾\»{ÃÒ¸ê®Æ */
+#define USE_IDENT                       /* æ˜¯å¦ä½¿ç”¨èªè­‰ç³»çµ± */
+#define EMAIL_LIMIT 1                   /* æ˜¯å¦é™åˆ¶æœªèªè­‰ä½¿ç”¨è€…å¯„ç«™å¤–ä¿¡ */
+#define PAGE_LIMIT  0                   /* æ˜¯å¦é™åˆ¶æœªèªè­‰ä½¿ç”¨è€…èŠå¤©/é€è¨Šæ¯åŠŸèƒ½ */
+#define SYSOP_BIN                       /* æ˜¯å¦ç·šä¸ŠæŸ¥é–±èªè­‰è³‡æ–™ */
 #define USE_OVERRIDE_IN_LIST
 
 
 /**************************************************************************
- *    Ãö©ó¤@¨Ç¥\¯à¨Ï¥Îªº©w¸q
+ *    é—œæ–¼ä¸€äº›åŠŸèƒ½ä½¿ç”¨çš„å®šç¾©
  **************************************************************************/
-#define USE_VOTE                        /* ¬O§_¨Ï¥Î§ë²¼¨t²Î */
-#define USE_MENUSHOW                    /* ¬O§_¨Ï¥Î¨q¹Ï¬É­± */
-#undef USE_MULTI_LANGUAGE               /* ¬O§_¨Ï¥Î¦h°ê»y¨¥ */
+#define USE_VOTE                        /* æ˜¯å¦ä½¿ç”¨æŠ•ç¥¨ç³»çµ± */
+#define USE_MENUSHOW                    /* æ˜¯å¦ä½¿ç”¨ç§€åœ–ç•Œé¢ */
+#undef USE_MULTI_LANGUAGE               /* æ˜¯å¦ä½¿ç”¨å¤šåœ‹èªè¨€ */
 #if 0
 #define USE_THREADING					/* syhu: threading on/off */
-#define THREADUNIT_SIZE		10			/* syhu:.THREADPOST ÀÉ´Xµ§¬°¤@³æ¦ì */
+#define THREADUNIT_SIZE		10			/* syhu:.THREADPOST æª”å¹¾ç­†ç‚ºä¸€å–®ä½ */
 #endif
 
 /*************************************************************************
- *   ¥H¤U¥u¾A¥Î©ó NSYSU     BBS (¤¤¤s¤j¾Ç BBS)
+ *   ä»¥ä¸‹åªé©ç”¨æ–¼ NSYSU     BBS (ä¸­å±±å¤§å­¸ BBS)
  *************************************************************************/
 #if defined(ULTRABBS)|| defined(NSYSUBBS3) || defined(NSYSUBBS2) || defined(NSYSUBBS1) || defined(ANIMEBBS)
 #define NSYSUBBS
@@ -65,12 +65,12 @@
 # undef SYSOP_BIN
 # undef LOCAL_MAX_MSQ
 # define LOCAL_MAX_MSQ 20
-/* kmwang: ¥´¶}¶i mail Åª«H®É·Ğ user ªº¥\¯à */
+/* kmwang: æ‰“é–‹é€² mail è®€ä¿¡æ™‚ç…© user çš„åŠŸèƒ½ */
 # define MAILWARN
-/* kmwang: ¶}±Ò delete user ªº¥\¯à ¦b ULTRA ´ú¸Õ±N«HÂà±Hµ¹ user ¤§¥\¯à*/
+/* kmwang: é–‹å•Ÿ delete user çš„åŠŸèƒ½ åœ¨ ULTRA æ¸¬è©¦å°‡ä¿¡è½‰å¯„çµ¦ user ä¹‹åŠŸèƒ½*/
  #ifdef ULTRABBS
  # undef USE_DELUSER
-/* kmwang: ¤ä´© YSNP server */
+/* kmwang: æ”¯æ´ YSNP server */
  # define NP_SERVER
  # define USE_ALOHA
  # undef MAXACTIVE
@@ -85,7 +85,7 @@
 # define MAXACTIVE 100
 /*
 # define BBSNAME     "phbbs"
-# define BBSTITLE    "¼ê´ò¿¤±Ğ¨|ºô¸ô¤¤¤ß"
+# define BBSTITLE    "æ¾æ¹–ç¸£æ•™è‚²ç¶²è·¯ä¸­å¿ƒ"
 */
 #elif   defined(SSBBS)
 # undef HOMEBBS
@@ -97,7 +97,7 @@
 # define HOMEBBS "/apps/bbs"
 /*
 # define BBSNAME     "khbbs"
-# define BBSTITLE    "°ª¶¯¥«¸ê°T±Ğ¨|ºô¸ô BBS ¯¸"
+# define BBSTITLE    "é«˜é›„å¸‚è³‡è¨Šæ•™è‚²ç¶²è·¯ BBS ç«™"
 */
 # define ACTFILE     "conf/actfile"
 # define CHROOT_BBS
@@ -107,12 +107,12 @@
 # define MAXACTIVE 512
 # define WEB_BOARD
 # define CAPTURE_BOARD	"keepmessage"
-/* ©¿²¤ ID ªº¤j¤p¼g */
+/* å¿½ç•¥ ID çš„å¤§å°å¯« */
 //# define IGNORE_CASE
 #elif   defined(STITBBS)
 /*
 # define BBSNAME     "shutebbs"
-# define BBSTITLE    "¾ğ¼w§Ş³N¾Ç°| BBS ¯¸"
+# define BBSTITLE    "æ¨¹å¾·æŠ€è¡“å­¸é™¢ BBS ç«™"
 */
 # define ACTFILE     "conf/actfile"
 # define CHROOT_BBS
@@ -121,7 +121,7 @@
 # define HOMEBBS "/apps/bbs"
 /*
 # define BBSNAME     "kghsbbs"
-# define BBSTITLE    "°ª¶¯¤k¤¤ BBS ¯¸"
+# define BBSTITLE    "é«˜é›„å¥³ä¸­ BBS ç«™"
 # define MENU_TITLE_COLOR1      "[1;37;45m"
 # define MENU_TITLE_COLOR     "[1;33;45m"
 */
@@ -132,7 +132,7 @@
 /*
 #elif	defined(ULTRABBS)
 # define BBSNAME     "ultrabbs"
-# define BBSTITLE    "¤¤¤s¤j¾Ç Ultra BBS"
+# define BBSTITLE    "ä¸­å±±å¤§å­¸ Ultra BBS"
   */
 # undef PAGE_LIMIT
 # define PAGE_LIMIT 0
@@ -140,7 +140,7 @@
 #elif   defined(NSYSUBBS3)
 /*
 # define BBSNAME     "westbbs"
-# define BBSTITLE    "¤¤¤s¤j¾Ç West BBS-¦è¤lÆW¯¸"
+# define BBSTITLE    "ä¸­å±±å¤§å­¸ West BBS-è¥¿å­ç£ç«™"
 # define HAVE_HOSTLIST
 */
 # define NP_SERVER
@@ -154,7 +154,7 @@
 /*
 #elif defined(NSYSUBBS2)
 # define BBSNAME     "southbbs"
-# define BBSTITLE    "¤¤¤s¤j¾Ç South BBS-«n­·¯¸"
+# define BBSTITLE    "ä¸­å±±å¤§å­¸ South BBS-å—é¢¨ç«™"
 # define MENU_TITLE_COLOR1      "[1;37;43m"
 # define MENU_TITLE_COLOR     "[1;33;47m"
 # undef MAXACTIVE
@@ -165,14 +165,14 @@
 # define MAXACTIVE (100)
 /*
 # define BBSNAME     "irradiance"
-# define BBSTITLE    "¥ú¤§¤j³° ¡¹ ¥ì²úµ^´µ"
+# define BBSTITLE    "å…‰ä¹‹å¤§é™¸ â˜… ä¼Šè‰ç´æ–¯"
 # define MENU_TITLE_COLOR1      "[1;33;42m"
 # define MENU_TITLE_COLOR     "[0;37;42m"
 */
 #elif defined(NSYSUBBS1)
 /*
 # define BBSNAME     "formosabbs"
-# define BBSTITLE    "¤¤¤s¤j¾Ç Formosa BBS-¬üÄR¤§®q"
+# define BBSTITLE    "ä¸­å±±å¤§å­¸ Formosa BBS-ç¾éº—ä¹‹å³¶"
   */
 # undef MAXACTIVE
 # define MAXACTIVE (4096)

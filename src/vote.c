@@ -8,7 +8,7 @@
 
 
 #ifdef USE_VOTE
-/* TODO: ¶}²¼¦Û°Ê±i¶Kµ²ªG */
+/* TODO: é–‹ç¥¨è‡ªå‹•å¼µè²¼çµæœ */
 
 int TheTickets = 0;
 char TheTitle[STRLEN] = "";
@@ -70,15 +70,15 @@ void CheckNewSysVote()
 
 static void vote_title()
 {
-	title_func(BBSTITLE, "§ë²¼°Ï");
+	title_func(BBSTITLE, "æŠ•ç¥¨å€");
 	outs(_msg_vote_17);
 	if (show_info)
 		prints("[7m  %4s %-12.12s %12s %15s %4s %6s %6s %10s [m",
-		       "½s¸¹", "§ë²¼¦WºÙ", "Á|¿ì¤H", "¤W¯¸¨Ó·½", "µ¥¯Å",
-		       "¤W¯¸¼Æ", "±i¶K¼Æ", "µù¥U®É¶¡");
+		       "ç·¨è™Ÿ", "æŠ•ç¥¨åç¨±", "èˆ‰è¾¦äºº", "ä¸Šç«™ä¾†æº", "ç­‰ç´š",
+		       "ä¸Šç«™æ•¸", "å¼µè²¼æ•¸", "è¨»å†Šæ™‚é–“");
 	else
 		prints("[7m  %4s %-34.34s %4s %8s   %10s %10s[m",
-		       "½s¸¹", "§ë²¼¦WºÙ", "»{ÃÒ", "§ë²¼¶}©l", "¹w­p¶}²¼", "¨C¤H²¼¼Æ");
+		       "ç·¨è™Ÿ", "æŠ•ç¥¨åç¨±", "èªè­‰", "æŠ•ç¥¨é–‹å§‹", "é è¨ˆé–‹ç¥¨", "æ¯äººç¥¨æ•¸");
 }
 
 
@@ -104,15 +104,15 @@ static void vote_entry(const int x, void *ep, const int idx, const int top, cons
 		{
 			prints("   %3d %-12.12s %12s %15s %4d %6d %6d %10s\n",
 			       num, ent[i].title, ent[i].owner,
-			       *(ent[i].allow_ip) ? ent[i].allow_ip : "¤£­­",
+			       *(ent[i].allow_ip) ? ent[i].allow_ip : "ä¸é™",
 			       ent[i].userlevel, ent[i].numlogins, ent[i].numposts,
-			       (ent[i].firstlogin) ? Vtime(&(ent[i].firstlogin)) : "¤£­­");
+			       (ent[i].firstlogin) ? Vtime(&(ent[i].firstlogin)) : "ä¸é™");
 		}
 		else
 		{
-			/* kmwang:20000831:¤Å¦A¥Ç, ¤Å±N¨â¬q prints ¦X¨Ö,
-			   ¥Ñ©ó Vtime ¶Ç§}¦^¨Ó, prints ³B²z®É,
-			   end_time ªº§}±N·|¬O start_time ªº§}. */
+			/* kmwang:20000831:å‹¿å†çŠ¯, å‹¿å°‡å…©æ®µ prints åˆä½µ,
+			   ç”±æ–¼ Vtime å‚³å€å›ä¾†, prints è™•ç†æ™‚,
+			   end_time çš„å€å°‡æœƒæ˜¯ start_time çš„å€. */
 			prints("   %3d %-35.35s %s %s - ",
 			       num, ent[i].title, (ent[i].ident == 7) ? _str_marker : "  ",
 			       Vtime(&(ent[i].start_time)));
@@ -126,10 +126,10 @@ static void vote_entry(const int x, void *ep, const int idx, const int top, cons
 
 static void cand_title()
 {
-	title_func("§ë²¼°Ï", TheTitle);
-	outs("\n(¡÷)(Enter)¿ï©w§ë²¼¶µ¥Ø (¡ö)(q)Â÷¶}\n\
-(a)¼W¥[­Ô¿ï¶µ¥Ø? (d)§R°£­Ô¿ï¶µ¥Ø (E)­×§ï­Ô¿ï¶µ¥Ø\n\
-[7m  ½s¸¹ °é¿ï ­Ô¿ï¶µ¥Ø                                                          [m");
+	title_func("æŠ•ç¥¨å€", TheTitle);
+	outs("\n(â†’)(Enter)é¸å®šæŠ•ç¥¨é …ç›® (â†)(q)é›¢é–‹\n\
+(a)å¢åŠ å€™é¸é …ç›®? (d)åˆªé™¤å€™é¸é …ç›® (E)ä¿®æ”¹å€™é¸é …ç›®\n\
+[7m  ç·¨è™Ÿ åœˆé¸ å€™é¸é …ç›®                                                          [m");
 }
 
 
@@ -147,14 +147,14 @@ static void cand_entry(int x, void *ep, int idx, int top, int last, int rows)
 
 		j = 1 << (num - 1);
 		prints("   %3d  %s  %s\n",
-		       num, (MyBox.vbits & j) ? "¡·" : "  ", ent[i].item);
+		       num, (MyBox.vbits & j) ? "â—" : "  ", ent[i].item);
 	}
 }
 
 
 static int ccmd_enter(int ent, CAND *cinfo, char *direct)
 {
-	/* §A¤£¯à¦A¦h§ë¤F°Õ */
+	/* ä½ ä¸èƒ½å†å¤šæŠ•äº†å•¦ */
 	if (MyTickets >= TheTickets)
 	{
 		msg(_msg_vote_7, TheTickets);
@@ -171,7 +171,7 @@ static int ccmd_enter(int ent, CAND *cinfo, char *direct)
 		return C_FULL;
 	}
 
-	/* ±N²¼§ë¤J¼È¦s½c */
+	/* å°‡ç¥¨æŠ•å…¥æš«å­˜ç®± */
 	if (!(MyBox.vbits & (1 << (ent - 1))))
 	{
 		MyBox.vbits |= 1 << (ent - 1);
@@ -179,10 +179,10 @@ static int ccmd_enter(int ent, CAND *cinfo, char *direct)
 		MyTickets++;
 	}
 
-	/* ¶ñ¼g§ë²¼·N¨£ªí */
+	/* å¡«å¯«æŠ•ç¥¨æ„è¦‹è¡¨ */
 	move(10, 0);
 	clrtobot();
-	if (getdata(10, 0, "±z¹ï¥»¦¸§ë²¼¦³¨ä¥¦·N¨£¶Ü? [n]: ", genbuf, 2,
+	if (getdata(10, 0, "æ‚¨å°æœ¬æ¬¡æŠ•ç¥¨æœ‰å…¶å®ƒæ„è¦‹å—? [n]: ", genbuf, 2,
 		    ECHONOSP) && genbuf[0] == 'y')
 	{
 		char buf[PATHLEN];
@@ -207,13 +207,13 @@ static int ccmd_add(int ent, CAND *cinfo, char *direct)
 
 	if (get_num_records(direct, sizeof(*cinfo)) > sizeof(MyBox.vbits) * 8)
 	{
-		msg("­Ô¿ï¶µ¥Ø³Ì¦h %d ¶µ", sizeof(MyBox.vbits) * 8);
+		msg("å€™é¸é …ç›®æœ€å¤š %d é …", sizeof(MyBox.vbits) * 8);
 		getkey();
 		return C_FOOT;
 	}
 
 	memset(&ch, 0, sizeof(ch));
-	if (getdata(b_line, 0, "­Ô¿ï¶µ¥Ø¦W: ", ch.item, sizeof(ch.item), XECHO))
+	if (getdata(b_line, 0, "å€™é¸é …ç›®å: ", ch.item, sizeof(ch.item), XECHO))
 	{
 		append_record(direct, &ch, sizeof(ch));
 		return C_INIT;
@@ -227,7 +227,7 @@ static int ccmd_edit(int ent, CAND *cinfo, char *direct)
 	if (!hasBMPerm)
 		return C_NONE;
 
-	if (getdata_str(b_line, 0, "­Ô¿ï¶µ¥Ø¦W: ", cinfo->item, sizeof(cinfo->item),
+	if (getdata_str(b_line, 0, "å€™é¸é …ç›®å: ", cinfo->item, sizeof(cinfo->item),
 		    XECHO, cinfo->item))
 	{
 		substitute_record(direct, cinfo, sizeof(*cinfo), ent);
@@ -245,7 +245,7 @@ static int ccmd_delete(int ent, CAND *cinfo, char *direct)
 	msg("Are you sure ? [n]: ");
 	if (igetkey() == 'y')
 	{
-		/* §R°£­Ô¿ï¶µ¥Ø */
+		/* åˆªé™¤å€™é¸é …ç›® */
 		delete_record(direct, sizeof(*cinfo), ent);
 		return C_INIT;
 	}
@@ -265,7 +265,7 @@ struct one_key cand_comms[] =
 
 static int vcmd_desc(int ent, VOTE *vinfo, char *direct)
 {
-	/* ¿ïÁ|»¡©ú */
+	/* é¸èˆ‰èªªæ˜ */
 	setvotefile2(genbuf, direct, vinfo->filename, "/desc");
 	pmore(genbuf, TRUE);
 
@@ -292,8 +292,8 @@ static int set_vote(char *path, VOTE *vinfo)
 	char filename[PATHLEN];
 
 	/* sarek: 12/03/2000
-	   ­ì¨Óvinfo->filename«ü¦V¥¿½Tªºpath,
-	   ¦ı¦b¤U­±ªºmemset()·|³Q²M°£±¼ */
+	   åŸä¾†vinfo->filenameæŒ‡å‘æ­£ç¢ºçš„path,
+	   ä½†åœ¨ä¸‹é¢çš„memset()æœƒè¢«æ¸…é™¤æ‰ */
 	char orig_vinfo_filename[PATHLEN];
 	strcpy(orig_vinfo_filename, vinfo->filename);
 
@@ -305,45 +305,45 @@ static int set_vote(char *path, VOTE *vinfo)
 	/* sarek: 12/03/2000 */
 	strcpy(vinfo->filename, orig_vinfo_filename);
 
-	outs("[½Ğª`·N] <¤£§@­­¨î«h«ö Enter ²¤¹L>");
+	outs("[è«‹æ³¨æ„] <ä¸ä½œé™åˆ¶å‰‡æŒ‰ Enter ç•¥é>");
 
-	if (!getdata_str(3, 0, "1) §ë²¼¦WºÙ : ", genbuf, sizeof(vinfo->title), XECHO, vinfo->title))
+	if (!getdata_str(3, 0, "1) æŠ•ç¥¨åç¨± : ", genbuf, sizeof(vinfo->title), XECHO, vinfo->title))
 		return -1;
 	strcpy(vinfo->title, genbuf);
 
 	if (vinfo->start_time == 0)
 		vinfo->start_time = time(0);
 	strcpy(genbuf, Vtime(&(vinfo->start_time)));
-	if (getdata_str(4, 0, "2) §ë²¼¶}©l(YYYY.mm.dd) : ", genbuf, 11, ECHONOSP, genbuf))
+	if (getdata_str(4, 0, "2) æŠ•ç¥¨é–‹å§‹(YYYY.mm.dd) : ", genbuf, 11, ECHONOSP, genbuf))
 		vinfo->start_time = get_time(genbuf);
 
 	memset(genbuf, 0, sizeof(genbuf));
 	if (vinfo->end_time == 0)
 		vinfo->end_time = time(0) + 86400;
 	strcpy(genbuf, Vtime(&(vinfo->end_time)));
-	if (getdata_str(5, 0, "3) ¹w­p¶}²¼(YYYY.mm.dd) : ", genbuf, 11, ECHONOSP, genbuf))
+	if (getdata_str(5, 0, "3) é è¨ˆé–‹ç¥¨(YYYY.mm.dd) : ", genbuf, 11, ECHONOSP, genbuf))
 		vinfo->end_time = get_time(genbuf);
 
 	if (vinfo->tickets == 0)
 		vinfo->tickets = 1;
 	sprintf(genbuf, "%d", vinfo->tickets);
-	if (getdata_str(6, 0, "4) ¨C¤H²¼¼Æ : ", genbuf, 3, ECHONOSP, genbuf))
+	if (getdata_str(6, 0, "4) æ¯äººç¥¨æ•¸ : ", genbuf, 3, ECHONOSP, genbuf))
 		vinfo->tickets = atoi(genbuf);
 	if (vinfo->tickets <= 0 || vinfo->tickets > sizeof(MyBox.vbits) * 8)
 		return -1;
 
-	if (getdata_str(7, 0, "5) ¤W¯¸¨Ó·½(¨Ò¦p140.117) : ", genbuf, sizeof(vinfo->allow_ip), ECHONOSP,
+	if (getdata_str(7, 0, "5) ä¸Šç«™ä¾†æº(ä¾‹å¦‚140.117) : ", genbuf, sizeof(vinfo->allow_ip), ECHONOSP,
 		    vinfo->allow_ip))
 	{
 		strcpy(vinfo->allow_ip, genbuf);
 	}
 
 	sprintf(genbuf, "%d", vinfo->userlevel);
-	if (getdata_str(8, 0, "6) ¨Ï¥ÎªÌµ¥¯Å(¨Ò¦p50) : ", genbuf, 4, ECHONOSP, genbuf))
+	if (getdata_str(8, 0, "6) ä½¿ç”¨è€…ç­‰ç´š(ä¾‹å¦‚50) : ", genbuf, 4, ECHONOSP, genbuf))
 		vinfo->userlevel = atoi(genbuf);
 
 	strcpy(genbuf, "n");
-	getdata_str(9, 0, "7) ¤w¨­¥÷»{ÃÒªÌ¤~¥i§ë(y/n): ", genbuf, 2, ECHONOSP, genbuf);
+	getdata_str(9, 0, "7) å·²èº«ä»½èªè­‰è€…æ‰å¯æŠ•(y/n): ", genbuf, 2, ECHONOSP, genbuf);
 	if (genbuf[0] == 'y')
 		vinfo->ident = 7;
 	else
@@ -353,15 +353,15 @@ static int set_vote(char *path, VOTE *vinfo)
 		strcpy(genbuf, Vtime(&(vinfo->firstlogin)));
 	else
 		genbuf[0] = '\0';
-	if (getdata_str(10, 0, "8) µù¥U¤é´Á(YYYY.mm.dd)¡G", genbuf, 11, ECHONOSP, genbuf))
+	if (getdata_str(10, 0, "8) è¨»å†Šæ—¥æœŸ(YYYY.mm.dd)ï¼š", genbuf, 11, ECHONOSP, genbuf))
 		vinfo->firstlogin = get_time(genbuf);
 
 	sprintf(genbuf, "%d", vinfo->numlogins);
-	if (getdata_str(11, 0, "9) ¤W¯¸¦¸¼Æ : ", genbuf, 7, ECHONOSP, genbuf))
+	if (getdata_str(11, 0, "9) ä¸Šç«™æ¬¡æ•¸ : ", genbuf, 7, ECHONOSP, genbuf))
 		vinfo->numlogins = atoi(genbuf);
 
 	sprintf(genbuf, "%d", vinfo->numposts);
-	if (getdata_str(12, 0, "10) ±i¶K¦¸¼Æ : ", genbuf, 7, ECHONOSP, genbuf))
+	if (getdata_str(12, 0, "10) å¼µè²¼æ¬¡æ•¸ : ", genbuf, 7, ECHONOSP, genbuf))
 		vinfo->numposts = atoi(genbuf);
 
 	setvotefile2(filename, path, vinfo->filename, "/desc");
@@ -393,12 +393,12 @@ static int vcmd_delete(int ent, VOTE *vinfo, char *direct)
 	msg(_msg_not_sure);
 	if (igetkey() == 'y')
 	{
-		/* §R°£¿ïÁ|¸ê®Æ */
+		/* åˆªé™¤é¸èˆ‰è³‡æ–™ */
 		delete_record(direct, sizeof(*vinfo), ent);
 		if (get_num_records(direct, sizeof(char)) == 0)
 			unlink(direct);
 
-		/* §R°£¿ïÁ|¥Ø¿ı */
+		/* åˆªé™¤é¸èˆ‰ç›®éŒ„ */
 		setdotfile(genbuf, direct, vinfo->filename);
 		myunlink(genbuf);
 		return C_INIT;
@@ -418,20 +418,20 @@ static int vcmd_enter(int ent, VOTE *vinfo, char *direct)
 
 	if (vinfo->start_time > time(0))
 	{
-		showmsg("§O«æ«§..§ë²¼ÁÙ¨S¶}©l£²~");
+		showmsg("åˆ¥æ€¥å’©..æŠ•ç¥¨é‚„æ²’é–‹å§‹ã„¡~");
 		return C_FULL;
 	}
 
 	if (time(0) > vinfo->end_time)
 	{
-		showmsg("§ë²¼¬¡°Ê¤w¸gµ²§ô¤F, ¬İ¬İµ²ªG§a!");
+		showmsg("æŠ•ç¥¨æ´»å‹•å·²ç¶“çµæŸäº†, çœ‹çœ‹çµæœå§!");
 		return vcmd_result(ent, vinfo, direct);
 	}
 
 	memset(&MyBox, 0, sizeof(MyBox));
 
 	MyOffset = -1;
-	/* ¬O§_¤w§ë¹L²¼ */
+	/* æ˜¯å¦å·²æŠ•éç¥¨ */
 	j = 1;
 	num = 0;
 	setvotefile2(genbuf, direct, vinfo->filename, "/box");
@@ -453,9 +453,9 @@ static int vcmd_enter(int ent, VOTE *vinfo, char *direct)
 	if (MyOffset == -1)
 		MyOffset = j;
 
-	/* ­YÂ÷¶}®É, userid ¤£¬° '\0', ªí¥Ü¨Ï¥ÎªÌ¦³§ë¤J²¼½cªº°Ê§@µo¥Í */
+	/* è‹¥é›¢é–‹æ™‚, userid ä¸ç‚º '\0', è¡¨ç¤ºä½¿ç”¨è€…æœ‰æŠ•å…¥ç¥¨ç®±çš„å‹•ä½œç™¼ç”Ÿ */
 	MyBox.userid[0] = '\0';
-	/* ¼Æ¥X±z¤w§ë¤F´X²¼ */
+	/* æ•¸å‡ºæ‚¨å·²æŠ•äº†å¹¾ç¥¨ */
 	for (j = 1, MyTickets = 0; j != 0; j <<= 1)
 	{
 		if (MyBox.vbits & j)
@@ -470,11 +470,11 @@ static int vcmd_enter(int ent, VOTE *vinfo, char *direct)
 	    || curuser.numposts < vinfo->numposts
 	    || (vinfo->firstlogin && curuser.firstlogin > vinfo->firstlogin))
 	{
-		showmsg("©êºp, ¦¹¦¸§ë²¼¬¡°Ê¦³­­¨î¹ï¶H, ±zµLªk°Ñ¥[!");
+		showmsg("æŠ±æ­‰, æ­¤æ¬¡æŠ•ç¥¨æ´»å‹•æœ‰é™åˆ¶å°è±¡, æ‚¨ç„¡æ³•åƒåŠ !");
 		return C_FULL;
 	}
 
-	/* °Ñ¥[§ë²¼«e, Åã¥Ü¦¹¦¸§ë²¼»¡©ú */
+	/* åƒåŠ æŠ•ç¥¨å‰, é¡¯ç¤ºæ­¤æ¬¡æŠ•ç¥¨èªªæ˜ */
 	vcmd_desc(ent, vinfo, direct);
 
 	TheTickets = vinfo->tickets;
@@ -485,10 +485,10 @@ static int vcmd_enter(int ent, VOTE *vinfo, char *direct)
 		    cand_title, NULL /* cm_btitle */ , cand_entry, read_get, read_max,
 		    NULL, 1, TRUE);
 
-	/* §Ú§ë¹L²¼Åo! */
+	/* æˆ‘æŠ•éç¥¨å›‰! */
 	if (MyBox.userid[0])
 	{
-		/* ¼g¤J²¼½c */
+		/* å¯«å…¥ç¥¨ç®± */
 		setdotfile(genbuf, tmpdir, "/box");
 		if (num == 0)
 			append_record(genbuf, &MyBox, sizeof(MyBox));
@@ -512,7 +512,7 @@ static int count_box(char *path, VOTE *vinfo)
 
 
 	memset(num, 0, sizeof(num));
-	/* ¦Û²¼½c¤¤¼Æ¦U±o²¼¼Æ */
+	/* è‡ªç¥¨ç®±ä¸­æ•¸å„å¾—ç¥¨æ•¸ */
 	sprintf(genbuf, "%s/box", path);
 	if ((fd = open(genbuf, O_RDONLY)) > 0)
 	{
@@ -544,28 +544,28 @@ static int count_box(char *path, VOTE *vinfo)
 	}
 
 	fprintf(fp, "[1;33;44m %-26.26s [1;37m%12s %10s - %10s %12s [m\n",
-		"¿ïÁ|¦WºÙ", "Á|¿ì¤H", "§ë²¼¶}©l", "¶}²¼®É¶¡", "¨C¤H¥i§ë²¼¼Æ");
+		"é¸èˆ‰åç¨±", "èˆ‰è¾¦äºº", "æŠ•ç¥¨é–‹å§‹", "é–‹ç¥¨æ™‚é–“", "æ¯äººå¯æŠ•ç¥¨æ•¸");
 	fprintf(fp, " %-26.26s %12s %10s - %10s %12d\n",
 		vinfo->title, vinfo->owner,
 		Vtime(&(vinfo->start_time)),
 		Vtime(&(vinfo->end_time)),
 		vinfo->tickets);
 
-	fprintf(fp, "[7m §ë²¼¤H­­¨î¡G                 %15s %4s %6s %6s %12s[m\n",
-		"¤W¯¸¨Ó·½", "µ¥¯Å", "¤W¯¸¼Æ", "±i¶K¼Æ", "µù¥U®É¶¡");
+	fprintf(fp, "[7m æŠ•ç¥¨äººé™åˆ¶ï¼š                 %15s %4s %6s %6s %12s[m\n",
+		"ä¸Šç«™ä¾†æº", "ç­‰ç´š", "ä¸Šç«™æ•¸", "å¼µè²¼æ•¸", "è¨»å†Šæ™‚é–“");
 	fprintf(fp, "                              %15s %4d %6d %6d %12s\n",
-		*(vinfo->allow_ip) ? vinfo->allow_ip : "¤£­­",
+		*(vinfo->allow_ip) ? vinfo->allow_ip : "ä¸é™",
 		vinfo->userlevel, vinfo->numlogins, vinfo->numposts,
-		(vinfo->firstlogin) ? Vtime(&(vinfo->firstlogin)) : "¤£­­");
+		(vinfo->firstlogin) ? Vtime(&(vinfo->firstlogin)) : "ä¸é™");
 
 	fprintf(fp, "[1;37;42m      %4s  %6s    %-55s [m\n",
-		"½s¸¹", "²¼¼Æ", "¦WºÙ");
-	/* ¦C¦L§ë²¼¼Æµ²ªG */
+		"ç·¨è™Ÿ", "ç¥¨æ•¸", "åç¨±");
+	/* åˆ—å°æŠ•ç¥¨æ•¸çµæœ */
 	for (i = 0; read(fd, &cand, sizeof(cand)) == sizeof(cand); i++)
-		fprintf(fp, "      %4d¡G%6d    %s\n", i + 1, num[i], cand.item);
+		fprintf(fp, "      %4dï¼š%6d    %s\n", i + 1, num[i], cand.item);
 
-	fprintf(fp, "    Á`²¼¼Æ¡G%6d\n", n_tickets);
-	fprintf(fp, "    Á`¤H¼Æ¡G%6d\n", n_users);
+	fprintf(fp, "    ç¸½ç¥¨æ•¸ï¼š%6d\n", n_tickets);
+	fprintf(fp, "    ç¸½äººæ•¸ï¼š%6d\n", n_users);
 
 	close(fd);
 	fclose(fp);
@@ -582,10 +582,10 @@ static int vcmd_result(int ent, VOTE *vinfo, char *direct)
 	struct stat st;
 
 
-	/* ªO¥D¥i¥H°½ºË§ë²¼µ²ªG */
+	/* æ¿ä¸»å¯ä»¥å·ç„æŠ•ç¥¨çµæœ */
 	if (!hasBMPerm && time(0) < vinfo->end_time)
 	{
-		showmsg("ÁÙ¨S¨ì¶}²¼¤é³á!! ¦Aµ¥¤@¤U§a!");
+		showmsg("é‚„æ²’åˆ°é–‹ç¥¨æ—¥å–”!! å†ç­‰ä¸€ä¸‹å§!");
 		return C_FULL;
 	}
 
@@ -593,18 +593,18 @@ static int vcmd_result(int ent, VOTE *vinfo, char *direct)
 	if (!(stat(fn_result, &st) == 0 && st.st_size > 0
 	    && st.st_mtime >= vinfo->end_time))
 	{
-		/* ²Î­p²¼½c */
+		/* çµ±è¨ˆç¥¨ç®± */
 		setdotfile(fname, direct, vinfo->filename);
 		count_box(fname, vinfo);
 
-		/* ¦X¨Ö·N¨£ªí¨ì¿ïÁ|µ²ªG */
+		/* åˆä½µæ„è¦‹è¡¨åˆ°é¸èˆ‰çµæœ */
 
 		setvotefile2(fname, direct, vinfo->filename, "/mess");
 		if ((fpr = fopen(fname, "r")) != NULL)
 		{
 			if ((fpw = fopen(fn_result, "a")) != NULL)
 			{
-				fprintf(fpw, "\n[7m ¥H¤U¬Oºô¤Í­Ìªº·N¨£                                                           [m\n\n");
+				fprintf(fpw, "\n[7m ä»¥ä¸‹æ˜¯ç¶²å‹å€‘çš„æ„è¦‹                                                           [m\n\n");
 				while (fgets(genbuf, sizeof(genbuf), fpr))
 					fputs(genbuf, fpw);
 				fclose(fpw);
@@ -626,7 +626,7 @@ static int vcmd_add(int ent, VOTE *vinfo, char *direct)
 	if (!hasBMPerm)
 		return C_NONE;
 
-	getdata(b_line, 0, "½T©w¶Ü(y/n)? [n]: ", genbuf, 2, ECHONOSP | XLCASE);
+	getdata(b_line, 0, "ç¢ºå®šå—(y/n)? [n]: ", genbuf, 2, ECHONOSP | XLCASE);
 	if (genbuf[0] != 'y')
 		return C_FOOT;
 
@@ -634,7 +634,7 @@ static int vcmd_add(int ent, VOTE *vinfo, char *direct)
 
 	strcpy(vh_new.owner, curuser.userid);
 
-	/* «Ø¥ß¿ïÁ|¥Ø¿ı */
+	/* å»ºç«‹é¸èˆ‰ç›®éŒ„ */
 	strcpy(path, direct);
 	p = strrchr(path, '/') + 1;
 	do
@@ -655,7 +655,7 @@ static int vcmd_add(int ent, VOTE *vinfo, char *direct)
 	set_brdt_vote_mtime(CurBList->filename);
 	curbe->voting = TRUE;
 
-	/* ¦Û°Ê¶i¤J¸Ó¿ïÁ|¤§¿ï³æ: bug? */
+	/* è‡ªå‹•é€²å…¥è©²é¸èˆ‰ä¹‹é¸å–®: bug? */
 	vcmd_enter(ent + 1, &vh_new, direct);
 	return C_INIT;
 }
@@ -711,7 +711,7 @@ int v_board()
 
 	setvotefile(tmpdir, CurBList->filename, NULL);
 
-	/* «Ø¥ß¬İªO§ë²¼¥Ø¿ı */
+	/* å»ºç«‹çœ‹æ¿æŠ•ç¥¨ç›®éŒ„ */
 	mkdir(tmpdir, 0755);
 	setvotefile(tmpdir, CurBList->filename, VOTE_REC);
 

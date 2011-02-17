@@ -40,33 +40,33 @@
 
 char *mycrypt();
 
-#define _ms_bbschatd_1	"Åwªï¥úÁ{! ²á¤Ñ«Ç¤w¹B§@¤F [1;33m%d[0m ¤ÀÄÁ [1;32m%d[0m ¬í! ¥Ø«e¦@¦³ [1;36m%d[0m ¦ì¨Ï¥ÎªÌ¦b²á¤Ñ«Ç¤¤!\r\n"
-#define _ms_bbschatd_6	"¨Ï¥ÎªÌ %s Â÷¶}¥»ÀW¹D\r\n"
-#define _ms_bbschatd_7	"ÂÂ op ¤wÂ÷¶}, ¥»ÀW¹D op ²{¥Ñ±z±µ¤â, ±K½X¬°: %s\r\n"
-#define _ms_bbschatd_8	"ÂÂ op ¤wÂ÷¶}, ¥»ÀW¹D op ²{¥Ñ±z±µ¤â!\r\n"
-#define _ms_bbschatd_9	"%s ¥[¤JÅo!\r\n"
-#define _ms_bbschatd_10	"/%s\t%s\t%s ®¨®¨¹ï§A»¡¡G%s\r\n"
-#define _ms_bbschatd_11	"§A®¨®¨¹ï %s »¡¡G%s\r\n"
-#define _ms_bbschatd_12	"*** ¡i[1;37m%s[m¡j§ó´«°ÎºÙ¬°¡i[1;33m%s[m¡j\r\n"
-#define _ms_bbschatd_13	"*** ¡i[1;33m%s[m¡j¶i¨ÓÅo! ¤j®a¦n!\r\n"
-/* #define _ms_bbschatd_14      "%s ¤jÁn»¡: %s\r\n" */
-#define _ms_bbschatd_15	"*** ¡i[1;33m%s[m¡j¦^®aÅo! «á·|¦³´Á!\r\n"
-#define	_msg_chat_27	"** §ó´«¥»ÀW¹D¥DÃD¬°: [1;36m%s[m **\r\n"
-#define	_msg_chat_30	"*** §ó´«¥»ÀW¹D±K½X¬°: [1;36m%s[m\r\n"
-#define	_msg_chat_31	"*** §ó´«¥»ÀW¹D±K½X§¹¦¨ **\r\n"
-#define	_msg_chat_33	"*** ¸Ñ°£¥»ÀW¹D±K½X§¹¦¨ **\r\n"
+#define _ms_bbschatd_1	"æ­¡è¿å…‰è‡¨! èŠå¤©å®¤å·²é‹ä½œäº† [1;33m%d[0m åˆ†é˜ [1;32m%d[0m ç§’! ç›®å‰å…±æœ‰ [1;36m%d[0m ä½ä½¿ç”¨è€…åœ¨èŠå¤©å®¤ä¸­!\r\n"
+#define _ms_bbschatd_6	"ä½¿ç”¨è€… %s é›¢é–‹æœ¬é »é“\r\n"
+#define _ms_bbschatd_7	"èˆŠ op å·²é›¢é–‹, æœ¬é »é“ op ç¾ç”±æ‚¨æ¥æ‰‹, å¯†ç¢¼ç‚º: %s\r\n"
+#define _ms_bbschatd_8	"èˆŠ op å·²é›¢é–‹, æœ¬é »é“ op ç¾ç”±æ‚¨æ¥æ‰‹!\r\n"
+#define _ms_bbschatd_9	"%s åŠ å…¥å›‰!\r\n"
+#define _ms_bbschatd_10	"/%s\t%s\t%s æ‚„æ‚„å°ä½ èªªï¼š%s\r\n"
+#define _ms_bbschatd_11	"ä½ æ‚„æ‚„å° %s èªªï¼š%s\r\n"
+#define _ms_bbschatd_12	"*** ã€[1;37m%s[mã€‘æ›´æ›åŒ¿ç¨±ç‚ºã€[1;33m%s[mã€‘\r\n"
+#define _ms_bbschatd_13	"*** ã€[1;33m%s[mã€‘é€²ä¾†å›‰! å¤§å®¶å¥½!\r\n"
+/* #define _ms_bbschatd_14      "%s å¤§è²èªª: %s\r\n" */
+#define _ms_bbschatd_15	"*** ã€[1;33m%s[mã€‘å›å®¶å›‰! å¾Œæœƒæœ‰æœŸ!\r\n"
+#define	_msg_chat_27	"** æ›´æ›æœ¬é »é“ä¸»é¡Œç‚º: [1;36m%s[m **\r\n"
+#define	_msg_chat_30	"*** æ›´æ›æœ¬é »é“å¯†ç¢¼ç‚º: [1;36m%s[m\r\n"
+#define	_msg_chat_31	"*** æ›´æ›æœ¬é »é“å¯†ç¢¼å®Œæˆ **\r\n"
+#define	_msg_chat_33	"*** è§£é™¤æœ¬é »é“å¯†ç¢¼å®Œæˆ **\r\n"
 
-#define _ms_bbschatd_50 "*** µL¦¹ÀW¹D¦s¦b!!\r\n"
-#define	_msg_chat_12	"*** ¥Ø«e©Ò¦bÀW¹DµL¦¹¨Ï¥ÎªÌ ©Î ¯Ê¤Ö­n°e¥X¤§°T®§ **\r\n"
-#define	_msg_chat_22	"*** ¿ù»~: ¨S¦³«ü©w­n¥[¤JªºÀW¹D¦WºÙ\r\n"
-#define	_msg_chat_23	"*** ±z¤w¸g¦b¸ÓÀW¹D!\r\n"
-#define	_msg_chat_25	"*** ¥[¤J [1;36m%s[m ÀW¹D¥¢±Ñ: Åv­­¤£¨¬ **\r\n"
-#define	_msg_chat_26	"*** ¿ù»~: ¨S¦³«ü©w¥DÃD\r\n"
-#define	_msg_chat_28	"*** §ó´«¥»ÀW¹D¥DÃD¥¢±Ñ: Åv­­¤£¨¬ **\r\n"
-#define	_msg_chat_29	"*** ¿ù»~: ¨S¦³«ü©w±K½X\r\n"
-#define	_msg_chat_32	"*** §ó´«¥»ÀW¹D±K½X¥¢±Ñ: Åv­­¤£¨¬ **\r\n"
-#define	_msg_chat_38	"*** ¿ù»~: ¦Ü¤Ö­nµ¹­Ó¦W¦r\r\n"
-#define	_msg_chat_40	"°ÎºÙ­«½Æ\r\n"
+#define _ms_bbschatd_50 "*** ç„¡æ­¤é »é“å­˜åœ¨!!\r\n"
+#define	_msg_chat_12	"*** ç›®å‰æ‰€åœ¨é »é“ç„¡æ­¤ä½¿ç”¨è€… æˆ– ç¼ºå°‘è¦é€å‡ºä¹‹è¨Šæ¯ **\r\n"
+#define	_msg_chat_22	"*** éŒ¯èª¤: æ²’æœ‰æŒ‡å®šè¦åŠ å…¥çš„é »é“åç¨±\r\n"
+#define	_msg_chat_23	"*** æ‚¨å·²ç¶“åœ¨è©²é »é“!\r\n"
+#define	_msg_chat_25	"*** åŠ å…¥ [1;36m%s[m é »é“å¤±æ•—: æ¬Šé™ä¸è¶³ **\r\n"
+#define	_msg_chat_26	"*** éŒ¯èª¤: æ²’æœ‰æŒ‡å®šä¸»é¡Œ\r\n"
+#define	_msg_chat_28	"*** æ›´æ›æœ¬é »é“ä¸»é¡Œå¤±æ•—: æ¬Šé™ä¸è¶³ **\r\n"
+#define	_msg_chat_29	"*** éŒ¯èª¤: æ²’æœ‰æŒ‡å®šå¯†ç¢¼\r\n"
+#define	_msg_chat_32	"*** æ›´æ›æœ¬é »é“å¯†ç¢¼å¤±æ•—: æ¬Šé™ä¸è¶³ **\r\n"
+#define	_msg_chat_38	"*** éŒ¯èª¤: è‡³å°‘è¦çµ¦å€‹åå­—\r\n"
+#define	_msg_chat_40	"åŒ¿ç¨±é‡è¤‡\r\n"
 
 
 int seat;
@@ -258,7 +258,7 @@ static int get_chid(const char *chname)
 }
 
 
-int create_channel(char *chname)		/* «Ø¥ß·sªºÀW¹D */
+int create_channel(char *chname)		/* å»ºç«‹æ–°çš„é »é“ */
 {
 	register int i;
 
@@ -514,7 +514,7 @@ void leave_channel()			/* ? */
 					continue;
 				if (i == seat)
 					continue;
-				if (Usrec[i].chid == oldchid)	/* ¶¶¦ì op ±µ¤â */
+				if (Usrec[i].chid == oldchid)	/* é †ä½ op æ¥æ‰‹ */
 				{
 					if (!BADID(Usrec[i].bad, oldchid))
 					{

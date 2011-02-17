@@ -58,7 +58,7 @@ int select_board()
 			curbe = be1;
 			CurBList = be1->bhr;
 #if 0
-			board_ccur = be1 - all_brds + 1;		/* Åı¨Ï¥ÎªÌ¤@¶i¤J (0)Boards ´N°±¦b¤W¦¸ªº¬İªO */
+			board_ccur = be1 - all_brds + 1;		/* è®“ä½¿ç”¨è€…ä¸€é€²å…¥ (0)Boards å°±åœåœ¨ä¸Šæ¬¡çš„çœ‹æ¿ */
 #endif
 			return C_REDO;
 		}
@@ -120,7 +120,7 @@ static int board_get(char *direct, void *s, int size, int top)
 static void board_title()
 {
 	title_func(BBSTITLE, (in_board ? _msg_board_normal : _msg_board_treasure));
-	prints(_msg_board_1, (show_numposts) ? "½g¼Æ" : "½s¸¹");
+	prints(_msg_board_1, (show_numposts) ? "ç¯‡æ•¸" : "ç·¨è™Ÿ");
 }
 
 
@@ -149,7 +149,7 @@ static int board_findkey(char *nbuf, void *ep, int start, int total)
 	else
 		s = all_brds;
 
-	/* ¦³¤H©ê«è·j´M®É¤£·|©¹«e·j´M, ©Ò¥H... */
+	/* æœ‰äººæŠ±æ€¨æœå°‹æ™‚ä¸æœƒå¾€å‰æœå°‹, æ‰€ä»¥... */
 	for (i = 1; i <= total; i++)
 	{
 		if (s[i - 1].bhr &&
@@ -162,7 +162,7 @@ static int board_findkey(char *nbuf, void *ep, int start, int total)
 		nbuf[len - 1] = '\0';
 	move(1, 0);
 	clrtoeol();
-	prints("¿ï¾Ü¬İªO : %s", nbuf);
+	prints("é¸æ“‡çœ‹æ¿ : %s", nbuf);
 	if (i > total)
 		return -1;
 	return i;
@@ -225,7 +225,7 @@ static int bcmd_jump(int ent, struct BoardList *bent, char *direct)
 	struct BoardList *be1;
 	char bname[BNAMELEN];
 
-	if (getdata(b_line, 0, "½Ğ¿é¤J¤¤/­^¤åªO¦W : ", bname, sizeof(bname), ECHONOSP))
+	if (getdata(b_line, 0, "è«‹è¼¸å…¥ä¸­/è‹±æ–‡æ¿å : ", bname, sizeof(bname), ECHONOSP))
 	{
 		int i;
 
@@ -235,7 +235,7 @@ static int bcmd_jump(int ent, struct BoardList *bent, char *direct)
 			return C_MOVE;
 		}
 
-		/* lthuang: 99/08/20 ­Y¥H­^¤åªO¦W´M§ä¥¢±Ñ, «h¥H¤¤¤åªO¦W¦A´M§ä */
+		/* lthuang: 99/08/20 è‹¥ä»¥è‹±æ–‡æ¿åå°‹æ‰¾å¤±æ•—, å‰‡ä»¥ä¸­æ–‡æ¿åå†å°‹æ‰¾ */
 		for (i = board_ccur; ;)
 		{
 			if (strstr((all_brds[i].bhr)->title, bname))
@@ -335,7 +335,7 @@ int Boards()
 	return C_LOAD;
 }
 
-/* ¶i¤Jµuºàª© */
+/* é€²å…¥çŸ­ç®‹ç‰ˆ */
 int NoteBoard(char *userid)
 {
 	static BOARDHEADER bh, *note_bh = NULL;

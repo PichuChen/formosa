@@ -65,7 +65,7 @@ int more(char *filename, BOOL promptend)
 	{
 		if (!dojump || (dojump && pageno < jumpto - 2))
 		{
-			/* sarek:06/09/2002:¤Ş¨¥¤W¦â,­×¥¿¥[ªÅ¥Õ«áªº²Ä¤G¼h¤Ş¨¥¤W¦â§PÂ_ */
+			/* sarek:06/09/2002:å¼•è¨€ä¸Šè‰²,ä¿®æ­£åŠ ç©ºç™½å¾Œçš„ç¬¬äºŒå±¤å¼•è¨€ä¸Šè‰²åˆ¤æ–· */
 			if ((buf[0] == '>' && buf[1] == ' ' && buf[2] == '>') ||
 				(buf[0] == '>' && buf[1] == '>') ||
 				(buf[0] == ':' && buf[1] == ' ' && buf[2] == ':') ||
@@ -167,7 +167,7 @@ int more(char *filename, BOOL promptend)
 
 					nbuf[0] = chkey;
 					nbuf[1] = '\0';
-					if (getdata_str(b_line, 0, "¸õ¨ì²Ä´X­¶: ", nbuf, 4, ECHONOSP, nbuf))
+					if (getdata_str(b_line, 0, "è·³åˆ°ç¬¬å¹¾é : ", nbuf, 4, ECHONOSP, nbuf))
 					{
 						dojump = TRUE;
 						jumpto = atoi(nbuf);
@@ -188,7 +188,7 @@ int more(char *filename, BOOL promptend)
 					int cur_page = pageno + 1;
 					int j = 0;
 
-					if (!getdata(b_line, 0, "½Ğ¿é¤J·j´M¦r¦ê: ", grepstr, sizeof(grepstr), XECHO, NULL))
+					if (!getdata(b_line, 0, "è«‹è¼¸å…¥æœå°‹å­—ä¸²: ", grepstr, sizeof(grepstr), XECHO, NULL))
 						break;
 
 					while ((numbytes = readln(fp, buf)))
@@ -223,7 +223,7 @@ int more(char *filename, BOOL promptend)
 					{
 						move(b_line, 0);
 						clrtoeol();
-						prints("[1;37;45m--More--(%d%% p.%d)[0;44m [¡÷]:¤U¤@­¶,[¡õ]:¤U¤@¦C,[B]:¤W¤@­¶,[¡ö][q]:¤¤Â_ more        [m", (viewed * 100) / st.st_size, pageno + 1);
+						prints("[1;37;45m--More--(%d%% p.%d)[0;44m [â†’]:ä¸‹ä¸€é ,[â†“]:ä¸‹ä¸€åˆ—,[B]:ä¸Šä¸€é ,[â†][q]:ä¸­æ–· more        [m", (viewed * 100) / st.st_size, pageno + 1);
 					}
 					break;
 				}

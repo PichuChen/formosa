@@ -14,8 +14,8 @@
 #define IRC_CHATPORT 6667
 #define DEFAULT_CHANNAME "#Formosa"
 /*******************************************************************
- * ¶Ç¤J string, malloc ¤@¶ô memory ¦s¤U¦r¦ê
- * ¶Ç¦^ ¸Ó MEMORY Pointer
+ * å‚³å…¥ string, malloc ä¸€å¡Š memory å­˜ä¸‹å­—ä¸²
+ * å‚³å› è©² MEMORY Pointer
  *******************************************************************/
 void *xstrdup(const char *str)
 {
@@ -56,7 +56,7 @@ static void fixchatid(char *chatid)
 {
 	char *p;
 
-	if ((p = strstr(chatid, "¡@")))		/* lthuang */
+	if ((p = strstr(chatid, "ã€€")))		/* lthuang */
 		memcpy(p, "__", 2);
 	while (*chatid)
 	{
@@ -242,9 +242,9 @@ static void dochatcommand(char *cmd)
 	if (*cmd == 'h')
 	{
 		printchatline(_msg_chat_41);
-		printchatline("    /leave                  - Â÷¶}¥»ÀW¹D            [/le]");
+		printchatline("    /leave                  - é›¢é–‹æœ¬é »é“            [/le]");
 		if (curuser.userlevel >= PERM_CLOAK)
-			printchatline("    /cloak                  - Áô¨­                  [/cl]");
+			printchatline("    /cloak                  - éš±èº«                  [/cl]");
 		printchatline(_msg_chat_43);
 		return;
 	}
@@ -476,7 +476,7 @@ int t_chat()
 	currchar = 0;
 	chat_line = 0;
 
-	if (getdata(1, 0, "(1) ¸ó¯¸²á¤Ñ«Ç (2) ¯¸¤º²á¤Ñ«Ç (3) °h¥X: [3] ", genbuf, 2, ECHONOSP))
+	if (getdata(1, 0, "(1) è·¨ç«™èŠå¤©å®¤ (2) ç«™å…§èŠå¤©å®¤ (3) é€€å‡º: [3] ", genbuf, 2, ECHONOSP))
 	{
 		if (genbuf[0] == '2')
 			return t_chat2();
@@ -682,7 +682,7 @@ int t_chat()
 
 					if ((p = strchr(pargv[3], ':')) != NULL)
 					{
-						sprintf(genbuf, "*** ¥»ÀW¹Dªº°Q½×¥DÃD¬°: %s", p+1);
+						sprintf(genbuf, "*** æœ¬é »é“çš„è¨è«–ä¸»é¡Œç‚º: %s", p+1);
 						printchatline(genbuf);
 					}
 				}
@@ -697,7 +697,7 @@ int t_chat()
 				{
 					if ((p = strchr(pargv[3], ':')) != NULL)
 					{
-						sprintf(genbuf, "*** %s ¨Ó¦Û %s", p+1);
+						sprintf(genbuf, "*** %s ä¾†è‡ª %s", p+1);
 						printchatline(genbuf);
 					}
 				}
@@ -705,7 +705,7 @@ int t_chat()
 				{
 					if ((p = strchr(pargv[3], ':')) != NULL)
 					{
-						sprintf(genbuf, "*** %s ¤w¶¢¸m %s ¬í", p+1);
+						sprintf(genbuf, "*** %s å·²é–’ç½® %s ç§’", p+1);
 						printchatline(genbuf);
 					}
 				}
@@ -725,7 +725,7 @@ int t_chat()
 			}
 			else if (!strcmp(pargv[1], "KICK"))
 			{
-				sprintf(genbuf, "*** %s ¸T¤î %s Á¿¸Ü!", pargv[0], pargv[3]);
+				sprintf(genbuf, "*** %s ç¦æ­¢ %s è¬›è©±!", pargv[0], pargv[3]);
 				printchatline(genbuf);
 			}
 			else if (!strcmp(pargv[1], "MODE"))
@@ -742,12 +742,12 @@ int t_chat()
 
 				if (!strncmp(pargv[3], "-k", 2))
 				{
-					sprintf(genbuf, "*** ¸Ñ°£ %s ÀW¹D±K½X!", pargv[2]);
+					sprintf(genbuf, "*** è§£é™¤ %s é »é“å¯†ç¢¼!", pargv[2]);
 					printchatline(genbuf);
 				}
 				else if (!strncmp(pargv[3], "+k", 2))
 				{
-					sprintf(genbuf, "*** ³]©w %s ÀW¹D±K½X¬°: %s", pargv[2], pargv[3] + 3);
+					sprintf(genbuf, "*** è¨­å®š %s é »é“å¯†ç¢¼ç‚º: %s", pargv[2], pargv[3] + 3);
 					printchatline(genbuf);
 				}
 				else if (!strncmp(pargv[3], "+t", 2))
@@ -757,36 +757,36 @@ int t_chat()
 			}
 			else if (!strcmp(pargv[1], "JOIN"))
 			{
-				sprintf(genbuf, "*** %s ¶i¨Ó %s ÀW¹DÅo! ¤j®a¦n!", pargv[0], pargv[2]+1);
+				sprintf(genbuf, "*** %s é€²ä¾† %s é »é“å›‰! å¤§å®¶å¥½!", pargv[0], pargv[2]+1);
 				printchatline(genbuf);
 			}
 			else if (!strcmp(pargv[1], "PART"))
 			{
-				sprintf(genbuf, "*** %s Â÷¶} %s ÀW¹DÅo!", pargv[0], pargv[2]);
+				sprintf(genbuf, "*** %s é›¢é–‹ %s é »é“å›‰!", pargv[0], pargv[2]);
 				printchatline(genbuf);
 			}
 #if 1
 			else if (!strcmp(pargv[1], "INVITE"))
 			{
-				sprintf(genbuf, "*** %s ÁÜ½Ğ±z¥[¤J %s ÀW¹D!",
+				sprintf(genbuf, "*** %s é‚€è«‹æ‚¨åŠ å…¥ %s é »é“!",
 					pargv[0], pargv[3] + 1);
 				printchatline(genbuf);
 			}
 #endif
 			else if (!strcmp(pargv[1], "TOPIC"))
 			{
-				sprintf(genbuf, "*** %s §ó´« %s ÀW¹D¥DÃD¬°: %s",
+				sprintf(genbuf, "*** %s æ›´æ› %s é »é“ä¸»é¡Œç‚º: %s",
 					pargv[0], cur_chname, pargv[3] + 1);
 				printchatline(genbuf);
 			}
 			else if (!strcmp(pargv[1], "QUIT"))
 			{
-				sprintf(genbuf, "*** %s ¦^®aÅo! «á·|¦³´Á!", pargv[0]);
+				sprintf(genbuf, "*** %s å›å®¶å›‰! å¾Œæœƒæœ‰æœŸ!", pargv[0]);
 				printchatline(genbuf);
 			}
 			else if (!strcmp(pargv[1], "NICK"))
 			{
-				sprintf(genbuf, "*** %s §ó´«¼ÊºÙ¬°: %s", pargv[0], pargv[2] + 1);
+				sprintf(genbuf, "*** %s æ›´æ›æš±ç¨±ç‚º: %s", pargv[0], pargv[2] + 1);
 				printchatline(genbuf);
 
 				if (!strcmp(pargv[0], uinfo.chatid))

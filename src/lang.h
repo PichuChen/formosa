@@ -15,413 +15,413 @@ struct LANG {
 #define MsgInfo(n) (langshm->pool + langshm->msg[n])
 
 
-#define	_msg_admin_1	MsgInfo(2)	/*	"(E)­×§ï¬İªO³]©w (D)§R°£¬İªO (P)¾ã²z¬İªO (Q)Â÷¶} ? [Q]: "	*/
-#define	_msg_admin_2	MsgInfo(11)	/*	"­^¤åªO¦W : "	*/
-#define	_msg_admin_3	MsgInfo(12)	/*	"¤£¦XªkªO¦W ©Î ¬İªO¤w¦s¦b."	*/
-#define	_msg_admin_5	MsgInfo(13)	/*	"¬İªOµ¥¯Å (0 ~ 255) [0] : "	*/
-#define	_msg_admin_9	MsgInfo(15)	/*	"¸ê®Æ³]©w¤£¥ş, µLªk¦sÀÉ!"	*/
-#define	_msg_admin_16	MsgInfo(8)	/*	"\n½T©w±N¨Ï¥ÎªÌ '%s' ±j¨îÂ÷½u (y/n) ? [n]: "	*/
-#define	_msg_admin_17	MsgInfo(9)	/*	"\n\n¦@²M°£½u¤W %d ­Ó logins."	*/
-#define	_msg_admin_18	MsgInfo(10)	/*	"©Ò¦³¤H"	*/
-#define	_msg_admin_bdesc	MsgInfo(16)	/*	"¤¤¤å»¡©ú : "	*/
-#define	_msg_admin_blevel	MsgInfo(17)	/*	"¬İªOµ¥¯Å : "	*/
-#define	_msg_admin_class	MsgInfo(18)	/*	"¬İªOÃş§O : "	*/
-#define	_msg_admin_owner	MsgInfo(19)	/*	"ªO    ¥D : "	*/
-#define	_str_brdtype_ident	MsgInfo(21)	/*	"»{ÃÒ¥i±i¶K"	*/
-#define	_str_brdtype_invisible	MsgInfo(22)	/*	"ÁôÂÃ"	*/
-#define	_str_brdtype_news	MsgInfo(23)	/*	"Âà«H"	*/
-#define	_str_brdtype_nopostnum	MsgInfo(24)	/*	"¤£­p±i¶K¼Æ"	*/
-#define	_str_brdtype_unzap	MsgInfo(25)	/*	"¤£¥iZAP"	*/
-#define	_str_brdtype_crosspost	MsgInfo(26)	/*	"¤£¥iÂà¶K"	*/
+#define	_msg_admin_1	MsgInfo(2)	/*	"(E)ä¿®æ”¹çœ‹æ¿è¨­å®š (D)åˆªé™¤çœ‹æ¿ (P)æ•´ç†çœ‹æ¿ (Q)é›¢é–‹ ? [Q]: "	*/
+#define	_msg_admin_2	MsgInfo(11)	/*	"è‹±æ–‡æ¿å : "	*/
+#define	_msg_admin_3	MsgInfo(12)	/*	"ä¸åˆæ³•æ¿å æˆ– çœ‹æ¿å·²å­˜åœ¨."	*/
+#define	_msg_admin_5	MsgInfo(13)	/*	"çœ‹æ¿ç­‰ç´š (0 ~ 255) [0] : "	*/
+#define	_msg_admin_9	MsgInfo(15)	/*	"è³‡æ–™è¨­å®šä¸å…¨, ç„¡æ³•å­˜æª”!"	*/
+#define	_msg_admin_16	MsgInfo(8)	/*	"\nç¢ºå®šå°‡ä½¿ç”¨è€… '%s' å¼·åˆ¶é›¢ç·š (y/n) ? [n]: "	*/
+#define	_msg_admin_17	MsgInfo(9)	/*	"\n\nå…±æ¸…é™¤ç·šä¸Š %d å€‹ logins."	*/
+#define	_msg_admin_18	MsgInfo(10)	/*	"æ‰€æœ‰äºº"	*/
+#define	_msg_admin_bdesc	MsgInfo(16)	/*	"ä¸­æ–‡èªªæ˜ : "	*/
+#define	_msg_admin_blevel	MsgInfo(17)	/*	"çœ‹æ¿ç­‰ç´š : "	*/
+#define	_msg_admin_class	MsgInfo(18)	/*	"çœ‹æ¿é¡åˆ¥ : "	*/
+#define	_msg_admin_owner	MsgInfo(19)	/*	"æ¿    ä¸» : "	*/
+#define	_str_brdtype_ident	MsgInfo(21)	/*	"èªè­‰å¯å¼µè²¼"	*/
+#define	_str_brdtype_invisible	MsgInfo(22)	/*	"éš±è—"	*/
+#define	_str_brdtype_news	MsgInfo(23)	/*	"è½‰ä¿¡"	*/
+#define	_str_brdtype_nopostnum	MsgInfo(24)	/*	"ä¸è¨ˆå¼µè²¼æ•¸"	*/
+#define	_str_brdtype_unzap	MsgInfo(25)	/*	"ä¸å¯ZAP"	*/
+#define	_str_brdtype_crosspost	MsgInfo(26)	/*	"ä¸å¯è½‰è²¼"	*/
 
-#define	_msg_article_1	MsgInfo(34)	/*	"±z±ı§R°£¼Ğ°O«O¯dªº¤å³¹«e, ½Ğ¥ı¨ú®ø¸Ó¼Ğ°O«O¯dÄİ©Ê!"	*/
-#define	_msg_article_2	MsgInfo(37)	/*	"<<¾ã§å¼Ğ°O>> ±q²Ä´X¶µ¶}©l ? "	*/
-#define	_msg_article_3	MsgInfo(38)	/*	"<<¾ã§å¼Ğ°O>> ¨ì²Ä´X¶µ¬°¤î ? "	*/
-#define	_msg_article_5	MsgInfo(40)	/*	"[0;37;44m[r][y]:¦^À³ [¡õ][¡÷][Space][n]:¤U½g [¡ô][p]:¤W½g [m]:±H¥X [d]:§R°£ [¡ö][q]:°h¥X[0m"	*/
-#define	_msg_article_6	MsgInfo(41)	/*	"<<§R°£¤å³¹>> (m)§R°£ (u)¨ú®ø§R°£ (c)³£¤£°µ ? [c]: "	*/
-#define	_msg_article_7	MsgInfo(42)	/*	"<<§R°£¤å³¹>> (m)§R°£ (u)¨ú®ø§R°£ (r)§R°£¨Ã±H¦^µ¹­ì§@ªÌ (c)³£¤£°µ ? [c]: "	*/
-#define	_msg_article_8	MsgInfo(43)	/*	"<<§R°£¤å³¹>> §R°£«á§YµLªk±Ï¦^, ½T©w¶Ü ? [n] : "	*/
-#define	_msg_article_9	MsgInfo(44)	/*	"¦¬«H¤H [%s] ¹ï¶Ü ? (y/n) [y] :"	*/
+#define	_msg_article_1	MsgInfo(34)	/*	"æ‚¨æ¬²åˆªé™¤æ¨™è¨˜ä¿ç•™çš„æ–‡ç« å‰, è«‹å…ˆå–æ¶ˆè©²æ¨™è¨˜ä¿ç•™å±¬æ€§!"	*/
+#define	_msg_article_2	MsgInfo(37)	/*	"<<æ•´æ‰¹æ¨™è¨˜>> å¾ç¬¬å¹¾é …é–‹å§‹ ? "	*/
+#define	_msg_article_3	MsgInfo(38)	/*	"<<æ•´æ‰¹æ¨™è¨˜>> åˆ°ç¬¬å¹¾é …ç‚ºæ­¢ ? "	*/
+#define	_msg_article_5	MsgInfo(40)	/*	"[0;37;44m[r][y]:å›æ‡‰ [â†“][â†’][Space][n]:ä¸‹ç¯‡ [â†‘][p]:ä¸Šç¯‡ [m]:å¯„å‡º [d]:åˆªé™¤ [â†][q]:é€€å‡º[0m"	*/
+#define	_msg_article_6	MsgInfo(41)	/*	"<<åˆªé™¤æ–‡ç« >> (m)åˆªé™¤ (u)å–æ¶ˆåˆªé™¤ (c)éƒ½ä¸åš ? [c]: "	*/
+#define	_msg_article_7	MsgInfo(42)	/*	"<<åˆªé™¤æ–‡ç« >> (m)åˆªé™¤ (u)å–æ¶ˆåˆªé™¤ (r)åˆªé™¤ä¸¦å¯„å›çµ¦åŸä½œè€… (c)éƒ½ä¸åš ? [c]: "	*/
+#define	_msg_article_8	MsgInfo(43)	/*	"<<åˆªé™¤æ–‡ç« >> åˆªé™¤å¾Œå³ç„¡æ³•æ•‘å›, ç¢ºå®šå— ? [n] : "	*/
+#define	_msg_article_9	MsgInfo(44)	/*	"æ”¶ä¿¡äºº [%s] å°å— ? (y/n) [y] :"	*/
 
-#define	_msg_article_11	MsgInfo(28)	/*	"[«H¥ó§R°£³qª¾]"	*/
+#define	_msg_article_11	MsgInfo(28)	/*	"[ä¿¡ä»¶åˆªé™¤é€šçŸ¥]"	*/
 
-#define	_msg_article_13	MsgInfo(30)	/*	"<<¾ã§åÂà±H>> (t)¤w¼Ğ°Oªº (a)¦¹½g? [a]: "	*/
-#define	_msg_article_14	MsgInfo(31)	/*	"<<¾ã§å§R°£>> (t)¤w¼Ğ°Oªº (a)¦¹½g? [a]: "	*/
+#define	_msg_article_13	MsgInfo(30)	/*	"<<æ•´æ‰¹è½‰å¯„>> (t)å·²æ¨™è¨˜çš„ (a)æ­¤ç¯‡? [a]: "	*/
+#define	_msg_article_14	MsgInfo(31)	/*	"<<æ•´æ‰¹åˆªé™¤>> (t)å·²æ¨™è¨˜çš„ (a)æ­¤ç¯‡? [a]: "	*/
 
-#define	_msg_article_18	MsgInfo(35)	/*	"»P²Ä´X¶µ¥æ´« ? "	*/
-#define	_msg_article_19	MsgInfo(36)	/*	"¨Ï¥Î¼ĞÃD (%s) ? (y/n) [y] : "	*/
+#define	_msg_article_18	MsgInfo(35)	/*	"èˆ‡ç¬¬å¹¾é …äº¤æ› ? "	*/
+#define	_msg_article_19	MsgInfo(36)	/*	"ä½¿ç”¨æ¨™é¡Œ (%s) ? (y/n) [y] : "	*/
 
-#define	_msg_ent_new_title	MsgInfo(46)	/*	"·s¼ĞÃD: "	*/
-#define	_str_crosspost	MsgInfo(47)	/*	"[Âà¶K]"	*/
-#define	_str_header_title	MsgInfo(48)	/*	"¼ĞÃD: "	*/
+#define	_msg_ent_new_title	MsgInfo(46)	/*	"æ–°æ¨™é¡Œ: "	*/
+#define	_str_crosspost	MsgInfo(47)	/*	"[è½‰è²¼]"	*/
+#define	_str_header_title	MsgInfo(48)	/*	"æ¨™é¡Œ: "	*/
 
-#define	_msg_board_1	MsgInfo(49)	/*	"\n\n(Z)ap Yank(I)n,(O)ut (^)¸õ¨ì²Ä¤@¶µ,($)¥½¤@¶µ (/)·j´M (TAB)¤@¯ë/ºëµØ°Ï (H)»¡©ú\n[7m   %s ªO¦W             News   µ¥¯Å ¤¤¤å»¡©ú                     ªO¥D        [m"	*/
-#define	_msg_board_3	MsgInfo(51)	/*	"[Âà]"	*/
-#define	_msg_board_4	MsgInfo(52)	/*	" (¡ô)(¡õ)´å¼Ğ (¡÷)(Enter)¿ï¾Ü (¡ö)°h¥X (P)(PgUp)¤W­¶ (N)(PgDn)(Sp)¤U­¶        [m"	*/
-#define	_msg_board_5	MsgInfo(53)	/*	"½Ğ¿é¤J±z­n¿ïªº­^¤åªO¦W («ö [Space] ªÅ¥ÕÁä¥i¦C¥X¹LÂoªº²M³æ)\n"	*/
-#define	_msg_board_6	MsgInfo(54)	/*	"¿ï¾Ü¬İªO: "	*/
-#define	_msg_board_7	MsgInfo(55)	/*	"½Ğ¿é¤J­^¤åªO¦W: "	*/
-#define	_msg_chat_1	MsgInfo(56)	/*	"<<¿ï¾Ü¶i¤J>> (1)²á¤Ñ«Ç(2)ª¾¤ß¯ù«Ç ? [1]: "	*/
-#define	_msg_chat_2	MsgInfo(67)	/*	"ª¾¤ß¯ù«Ç"	*/
-#define	_msg_chat_3	MsgInfo(78)	/*	"¿³«Ø¤¤, ½Ğµy«İ\n"	*/
-#define	_msg_chat_4	MsgInfo(89)	/*	"\n\n¶i¤J chatroom ¥¢±Ñ!"	*/
-#define	_msg_chat_6	MsgInfo(98)	/*	"¥´ [1;33m/help[0m ¥i¬İ¨Ï¥Î»¡©ú\n"	*/
-#define	_msg_chat_7	MsgInfo(99)	/*	"\n*** ²{¦b³o¸Ìªº«È¤H ***"	*/
-#define	_msg_chat_8	MsgInfo(100)	/*	"ºï¸¹"	*/
+#define	_msg_board_1	MsgInfo(49)	/*	"\n\n(Z)ap Yank(I)n,(O)ut (^)è·³åˆ°ç¬¬ä¸€é …,($)æœ«ä¸€é … (/)æœå°‹ (TAB)ä¸€èˆ¬/ç²¾è¯å€ (H)èªªæ˜\n[7m   %s æ¿å             News   ç­‰ç´š ä¸­æ–‡èªªæ˜                     æ¿ä¸»        [m"	*/
+#define	_msg_board_3	MsgInfo(51)	/*	"[è½‰]"	*/
+#define	_msg_board_4	MsgInfo(52)	/*	" (â†‘)(â†“)æ¸¸æ¨™ (â†’)(Enter)é¸æ“‡ (â†)é€€å‡º (P)(PgUp)ä¸Šé  (N)(PgDn)(Sp)ä¸‹é         [m"	*/
+#define	_msg_board_5	MsgInfo(53)	/*	"è«‹è¼¸å…¥æ‚¨è¦é¸çš„è‹±æ–‡æ¿å (æŒ‰ [Space] ç©ºç™½éµå¯åˆ—å‡ºéæ¿¾çš„æ¸…å–®)\n"	*/
+#define	_msg_board_6	MsgInfo(54)	/*	"é¸æ“‡çœ‹æ¿: "	*/
+#define	_msg_board_7	MsgInfo(55)	/*	"è«‹è¼¸å…¥è‹±æ–‡æ¿å: "	*/
+#define	_msg_chat_1	MsgInfo(56)	/*	"<<é¸æ“‡é€²å…¥>> (1)èŠå¤©å®¤(2)çŸ¥å¿ƒèŒ¶å®¤ ? [1]: "	*/
+#define	_msg_chat_2	MsgInfo(67)	/*	"çŸ¥å¿ƒèŒ¶å®¤"	*/
+#define	_msg_chat_3	MsgInfo(78)	/*	"èˆˆå»ºä¸­, è«‹ç¨å¾…\n"	*/
+#define	_msg_chat_4	MsgInfo(89)	/*	"\n\né€²å…¥ chatroom å¤±æ•—!"	*/
+#define	_msg_chat_6	MsgInfo(98)	/*	"æ‰“ [1;33m/help[0m å¯çœ‹ä½¿ç”¨èªªæ˜\n"	*/
+#define	_msg_chat_7	MsgInfo(99)	/*	"\n*** ç¾åœ¨é€™è£¡çš„å®¢äºº ***"	*/
+#define	_msg_chat_8	MsgInfo(100)	/*	"ç¶½è™Ÿ"	*/
 #define	_msg_chat_9	MsgInfo(101)	/*	"BBS ID"	*/
-#define	_msg_chat_10	MsgInfo(57)	/*	"\n*** ²{¦b©Ò¦³ªº«È¤H ***"	*/
-#define	_msg_chat_11	MsgInfo(58)	/*	"©Ò¦bÀW¹D"	*/
+#define	_msg_chat_10	MsgInfo(57)	/*	"\n*** ç¾åœ¨æ‰€æœ‰çš„å®¢äºº ***"	*/
+#define	_msg_chat_11	MsgInfo(58)	/*	"æ‰€åœ¨é »é“"	*/
 
-#define	_msg_chat_16	MsgInfo(63)	/*	"\n*** ¥Ø«e©Ò¦³ÀW¹D ***"	*/
-#define	_msg_chat_17	MsgInfo(64)	/*	"¦WºÙ"	*/
-#define	_msg_chat_18	MsgInfo(65)	/*	"¥DÃD"	*/
-#define	_msg_chat_19	MsgInfo(66)	/*	"ºŞ²z­û"	*/
-#define	_msg_chat_20	MsgInfo(68)	/*	"¦¨­û¼Æ"	*/
-#define	_msg_chat_21	MsgInfo(69)	/*	"Âê½X"	*/
+#define	_msg_chat_16	MsgInfo(63)	/*	"\n*** ç›®å‰æ‰€æœ‰é »é“ ***"	*/
+#define	_msg_chat_17	MsgInfo(64)	/*	"åç¨±"	*/
+#define	_msg_chat_18	MsgInfo(65)	/*	"ä¸»é¡Œ"	*/
+#define	_msg_chat_19	MsgInfo(66)	/*	"ç®¡ç†å“¡"	*/
+#define	_msg_chat_20	MsgInfo(68)	/*	"æˆå“¡æ•¸"	*/
+#define	_msg_chat_21	MsgInfo(69)	/*	"é–ç¢¼"	*/
 
-#define	_msg_chat_36	MsgInfo(85)	/*	"*** [1;32m¶}©l±µ¦¬ ID¡G¡i%s¡j©Ò»¡ªº¸Ü[0m ***"	*/
-#define	_msg_chat_37	MsgInfo(86)	/*	"*** [1;32m©Úµ´¦¬Å¥ ID¡G¡i%s¡j©Ò»¡ªº¸Ü[0m ***"	*/
+#define	_msg_chat_36	MsgInfo(85)	/*	"*** [1;32mé–‹å§‹æ¥æ”¶ IDï¼šã€%sã€‘æ‰€èªªçš„è©±[0m ***"	*/
+#define	_msg_chat_37	MsgInfo(86)	/*	"*** [1;32mæ‹’çµ•æ”¶è½ IDï¼šã€%sã€‘æ‰€èªªçš„è©±[0m ***"	*/
 
-#define	_msg_chat_41	MsgInfo(91)	/*	"±z¥i¥H¨Ï¥Î³o¨Ç©R¥O:\n  /help                   - »¡©úµe­±              [/h]\n  /who                    - ¥»ÀW¹D¦¨­û            [/w]\n  /who <ÀW¹D¦WºÙ>         - ¬YÀW¹D¦¨­û            [/w]\n  /whoall                 - ©Ò¦³ÀW¹D¦¨­û          [/ws]\n  /join <ÀW¹D> <Âê½X±K½X> - ¥[¤J¬YÀW¹D            [/j]\n  /list                   - ¦C¥X©Ò¦³ÀW¹D          [/l]\n  /msg <BBS ID> <®¨®¨¸Ü>  - °e <®¨®¨¸Ü> µ¹ <BBS ID> [/m]\n  /pager                  - ¤Á´« Pager            [/p]\n  /nick <ºï¸¹>            - §ïºï¸¹ <ºï¸¹>         [/n]\n  /me <­«­nªº¸Ü>          - ½Ğ¤j®aª`·N§Aªº¸Ü      [/me]\n  /ignore <BBS ID>        - ©ÚÅ¥¬Y¤Hªº¸Ü          [/i]\n  /unignore <BBS ID>      - ±µ¦¬¬Y¤Hªº¸Ü          [/ui]\n  /clear                  - ²M°£µe­±              [/c]"	*/
-#define	_msg_chat_43	MsgInfo(93)	/*	"¥H¤U©R¥O¶È´£¨ÑºŞ²zªÌ¨Ï¥Î:\n  /passwd <±K½X>          - ³]©w¥»ÀW¹D±K½X [/ps]\n  /nopasswd               - ¸Ñ°£¥»ÀW¹D±K½X [/nps]\n  /topic <¥DÃD>           - §ó§ï¥»ÀW¹D¥DÃD [/t] \n  ctrl-d                  - Â÷¶}"	*/
-#define	_msg_chat_44	MsgInfo(94)	/*	"*** «ü©wÀW¹D¤£¦s¦b"	*/
-#define	_msg_chat_45	MsgInfo(95)	/*	"*** ¿ù»~: «á­±­n¥[¤@¥y¸Ü"	*/
-#define	_msg_chat_46	MsgInfo(96)	/*	"¥´ /help ¥i¬İ»¡©úµe­±\n"	*/
-#define	_msg_edit_5	MsgInfo(106)	/*	"(s)%s, (a)©ñ±ó, (t)¦s¤J¼È¦sÀÉ, ©Î (e)Ä~Äò½s¿è? [s]: "	*/
-#define	_msg_edit_6	MsgInfo(107)	/*	"°e¥X"	*/
-#define	_msg_edit_7	MsgInfo(108)	/*	"¦sÀÉ"	*/
-#define	_msg_edit_8	MsgInfo(109)	/*	"\n±z¦³¤@­Ó½s¿è¥¢±Ñªº³Æ¥÷ÀÉ !!\n½Ğ°İ (1)¤Ş¤J (2)²M±¼³Æ¥÷ ? (1/2) [1] : "	*/
+#define	_msg_chat_41	MsgInfo(91)	/*	"æ‚¨å¯ä»¥ä½¿ç”¨é€™äº›å‘½ä»¤:\n  /help                   - èªªæ˜ç•«é¢              [/h]\n  /who                    - æœ¬é »é“æˆå“¡            [/w]\n  /who <é »é“åç¨±>         - æŸé »é“æˆå“¡            [/w]\n  /whoall                 - æ‰€æœ‰é »é“æˆå“¡          [/ws]\n  /join <é »é“> <é–ç¢¼å¯†ç¢¼> - åŠ å…¥æŸé »é“            [/j]\n  /list                   - åˆ—å‡ºæ‰€æœ‰é »é“          [/l]\n  /msg <BBS ID> <æ‚„æ‚„è©±>  - é€ <æ‚„æ‚„è©±> çµ¦ <BBS ID> [/m]\n  /pager                  - åˆ‡æ› Pager            [/p]\n  /nick <ç¶½è™Ÿ>            - æ”¹ç¶½è™Ÿ <ç¶½è™Ÿ>         [/n]\n  /me <é‡è¦çš„è©±>          - è«‹å¤§å®¶æ³¨æ„ä½ çš„è©±      [/me]\n  /ignore <BBS ID>        - æ‹’è½æŸäººçš„è©±          [/i]\n  /unignore <BBS ID>      - æ¥æ”¶æŸäººçš„è©±          [/ui]\n  /clear                  - æ¸…é™¤ç•«é¢              [/c]"	*/
+#define	_msg_chat_43	MsgInfo(93)	/*	"ä»¥ä¸‹å‘½ä»¤åƒ…æä¾›ç®¡ç†è€…ä½¿ç”¨:\n  /passwd <å¯†ç¢¼>          - è¨­å®šæœ¬é »é“å¯†ç¢¼ [/ps]\n  /nopasswd               - è§£é™¤æœ¬é »é“å¯†ç¢¼ [/nps]\n  /topic <ä¸»é¡Œ>           - æ›´æ”¹æœ¬é »é“ä¸»é¡Œ [/t] \n  ctrl-d                  - é›¢é–‹"	*/
+#define	_msg_chat_44	MsgInfo(94)	/*	"*** æŒ‡å®šé »é“ä¸å­˜åœ¨"	*/
+#define	_msg_chat_45	MsgInfo(95)	/*	"*** éŒ¯èª¤: å¾Œé¢è¦åŠ ä¸€å¥è©±"	*/
+#define	_msg_chat_46	MsgInfo(96)	/*	"æ‰“ /help å¯çœ‹èªªæ˜ç•«é¢\n"	*/
+#define	_msg_edit_5	MsgInfo(106)	/*	"(s)%s, (a)æ”¾æ£„, (t)å­˜å…¥æš«å­˜æª”, æˆ– (e)ç¹¼çºŒç·¨è¼¯? [s]: "	*/
+#define	_msg_edit_6	MsgInfo(107)	/*	"é€å‡º"	*/
+#define	_msg_edit_7	MsgInfo(108)	/*	"å­˜æª”"	*/
+#define	_msg_edit_8	MsgInfo(109)	/*	"\næ‚¨æœ‰ä¸€å€‹ç·¨è¼¯å¤±æ•—çš„å‚™ä»½æª” !!\nè«‹å• (1)å¼•å…¥ (2)æ¸…æ‰å‚™ä»½ ? (1/2) [1] : "	*/
 #define	_msg_edit_9	MsgInfo(110)	/*	"Type [Ctrl-Z]: help. [Ctrl-R]: save and continue edit."	*/
-#define	_msg_include_which_sig	MsgInfo(111)	/*	"¤Ş¤J²Ä´X­ÓÃ±¦WÀÉ"	*/
-#define	_msg_no_include_sig	MsgInfo(112)	/*	"¤£¤Ş¤J"	*/
-#define	_msg_no_use_sig	MsgInfo(113)	/*	"\n´£¿ô±z: ±z¤w³]©w¤£¦A¨Ï¥ÎÃ±¦WÀÉ!"	*/
-#define	_msg_signature	MsgInfo(114)	/*	"Ã±¦WÀÉ"	*/
-#define	_msg_formosa_1	MsgInfo(132)	/*	"\nÅwªï! ·s¥ë¦ñ, ½Ğ¿é¤J±z©Ò§Æ±æªº¥N¸¹(¤@­Ó­^¤å¦W¦r)\n"	*/
-#define	_msg_formosa_2	MsgInfo(143)	/*	"¨Ï¥ÎªÌ¥N¸¹ (user id) : "	*/
-#define	_msg_formosa_3	MsgInfo(153)	/*	"\n½Ğ¿é¤J¦Ü¤Ö %d ­Ó¤p¼g¦r¥À, ¤£¥i¦³¯S®í²Å¸¹, ªÅ¥Õ, ¼Æ¦r, ¤£¶®¦r²´\n"	*/
-#define	_msg_formosa_4	MsgInfo(164)	/*	"\n±zÁÙ¬O¨S·Q¦n­n¨Ï¥Îªº¥N¸¹, ¤U¦¸¦A¨ÓÅo, ÙTÙT ...\n"	*/
-#define	_msg_formosa_5	MsgInfo(169)	/*	"\n¦¹¥N¸¹¤w³Q¨Ï¥Î, ½Ğ´«¤@­Ó\n"	*/
-#define	_msg_formosa_6	MsgInfo(170)	/*	"±K½X(password, 4 - 8 ­Ó¦r) : "	*/
-#define	_msg_formosa_7	MsgInfo(171)	/*	"\n±K½Xªø«×¦Ü¤Ö­n 4 ­Ó¦r¤¸\n"	*/
-#define	_msg_formosa_8	MsgInfo(172)	/*	"\n½Ğ¤Å¨Ï¥Î»P ID ¬Û¦P©Î¤Ó¹L©óÂ²³æ©ö²qªº±K½X\n"	*/
-#define	_msg_formosa_9	MsgInfo(173)	/*	"¦A¥´¤@¦¸±K½X(check) : "	*/
-#define	_msg_formosa_10	MsgInfo(133)	/*	"\n¨â¦¸¿é¤Jªº±K½X¤£¤@¼Ë, ½Ğ­«·s³]©w.\n"	*/
-#define	_msg_formosa_11	MsgInfo(134)	/*	"±zªº¼ÊºÙ (Name ¤¤­^¤å¬Ò¥i) : "	*/
-#define	_msg_formosa_12	MsgInfo(135)	/*	"¹q¤l¶l¥ó¦a§} : "	*/
-#define	_msg_formosa_13	MsgInfo(136)	/*	"\r\n«Ø·s±b¸¹¥¢±Ñ, ³s½u²×µ²"	*/
-#define	_msg_formosa_14	MsgInfo(137)	/*	"\nÅwªï¥úÁ{ [1;37m%s[m, ¥Ø«e½u¤W¦³ [[1;33m%d[m/[1;32m%d[m] ¤H\n"	*/
-#define	_msg_formosa_15	MsgInfo(138)	/*	"¨t²Î (1,10,15) ¤ÀÄÁªº¥­§¡­t²ü¤À§O¬° %s\n"	*/
-#define	_msg_formosa_16	MsgInfo(139)	/*	"\n\r[1;32m¤W­­ %d ¤H, ½Ğµy­Ô¦A¨Ó"	*/
-#define	_msg_formosa_17	MsgInfo(140)	/*	"\n©êºp, §A¤w¥´¿ù %d ¦¸, ¤U¦¸¦A¨Ó§a!\n"	*/
-#define	_msg_formosa_18	MsgInfo(141)	/*	"\n­Y·Qµù¥U·s±b¸¹, ½Ğ¿é¤J 'new'"	*/
-#define	_msg_formosa_19	MsgInfo(142)	/*	" (°ÑÆ[½Ğ¿é¤J '%s') ²Ä¤G³s±µ°ğ¬° Port 9001"	*/
-#define	_msg_formosa_20	MsgInfo(144)	/*	"\n­Y·Q°ÑÆ[½Ğ¿é¤J '%s'"	*/
-#define	_msg_formosa_21	MsgInfo(145)	/*	"\n½Ğ¿é¤J¥N¸¹(user id) : "	*/
-#define	_msg_formosa_22	MsgInfo(146)	/*	"\r\n¥»¨t²Î¤£±µ¨ü·s¨Ï¥Îµù¥U !!"	*/
-#define	_msg_formosa_23	MsgInfo(147)	/*	"\r\n½Ğ¥H guest °ÑÆ[¥Î±b¸¹¶i¯¸."	*/
-#define	_msg_formosa_25	MsgInfo(148)	/*	"½Ğ¿é¤J±K½X(password) : <½Ğª½±µ«ö Enter §Y¥i>  "	*/
-#define	_msg_formosa_26	MsgInfo(149)	/*	"½Ğ¿é¤J±K½X(password) : "	*/
-#define	_msg_formosa_27	MsgInfo(150)	/*	"±K½X¿ù»~ !!\n"	*/
-#define	_msg_formosa_28	MsgInfo(151)	/*	"­n¬d¬İµ¥¯Å¦h¤Ö¥H¤Wªº¨Ï¥ÎªÌ ? [0] : "	*/
-#define	_msg_formosa_29	MsgInfo(152)	/*	"¥N¦W"	*/
-#define	_msg_formosa_30	MsgInfo(154)	/*	"¥ş¦W"	*/
-#define	_msg_formosa_31	MsgInfo(155)	/*	"¤W¯¸¼Æ"	*/
-#define	_msg_formosa_32	MsgInfo(156)	/*	"±i¶K¼Æ"	*/
-#define	_msg_formosa_33	MsgInfo(157)	/*	"µ¥¯Å"	*/
-#define	_msg_formosa_34	MsgInfo(158)	/*	"[37;45m--- ÁÙ¦³®@ ---[44m [q] or [¡ö]:Â÷¶} , [¡÷][n][Space]:¤U¤@­¶        [m"	*/
-#define	_msg_formosa_35	MsgInfo(159)	/*	"[37;44mµù¥U¤H¼Æ %d ¤H, "	*/
-#define	_msg_formosa_36	MsgInfo(160)	/*	"[37;44m²Î­p¤H¼Æ %d/%d ¤H, "	*/
-#define	_msg_formosa_37	MsgInfo(161)	/*	"ºŞ²zªÌ %d ¤H, ªO¥D %d ¤H"	*/
-#define	_msg_formosa_38	MsgInfo(162)	/*	", (³q¹L»{ÃÒ %d ¤H)"	*/
-#define	_msg_formosa_39	MsgInfo(163)	/*	"\n¥»¯¸°ÑÆ[¥Î¯¸¸¹(guest)¨Ï¥Î¤H¼Æ¤wÃBº¡, ½Ğ±zµy«á¦A¸Õ.\n"	*/
-#define	_msg_formosa_40	MsgInfo(165)	/*	"\n%d. Login PID:[%d] ¨Ó¦Û %s ¬O§_§R°£ (y/n) ? [n] : "	*/
-#define	_msg_formosa_41	MsgInfo(166)	/*	"\n¤£¯à­«ÂĞ Login %d ¦¸ !!"	*/
-#define	_msg_formosa_42	MsgInfo(167)	/*	"[1;33m§A¦³¤W¦¸½s¿è¥¢±ÑªºÀÉ®×³á¡I¡I\n±N¦b¤U¦¸½s¿è®É½Ğ±z¿ï¾Ü¬O§_¤Ş¤J[m"	*/
-#define	_msg_formosa_44	MsgInfo(168)	/*	"±b¸¹¤£¦s¦b !!\n"	*/
+#define	_msg_include_which_sig	MsgInfo(111)	/*	"å¼•å…¥ç¬¬å¹¾å€‹ç°½åæª”"	*/
+#define	_msg_no_include_sig	MsgInfo(112)	/*	"ä¸å¼•å…¥"	*/
+#define	_msg_no_use_sig	MsgInfo(113)	/*	"\næé†’æ‚¨: æ‚¨å·²è¨­å®šä¸å†ä½¿ç”¨ç°½åæª”!"	*/
+#define	_msg_signature	MsgInfo(114)	/*	"ç°½åæª”"	*/
+#define	_msg_formosa_1	MsgInfo(132)	/*	"\næ­¡è¿! æ–°ä¼™ä¼´, è«‹è¼¸å…¥æ‚¨æ‰€å¸Œæœ›çš„ä»£è™Ÿ(ä¸€å€‹è‹±æ–‡åå­—)\n"	*/
+#define	_msg_formosa_2	MsgInfo(143)	/*	"ä½¿ç”¨è€…ä»£è™Ÿ (user id) : "	*/
+#define	_msg_formosa_3	MsgInfo(153)	/*	"\nè«‹è¼¸å…¥è‡³å°‘ %d å€‹å°å¯«å­—æ¯, ä¸å¯æœ‰ç‰¹æ®Šç¬¦è™Ÿ, ç©ºç™½, æ•¸å­—, ä¸é›…å­—çœ¼\n"	*/
+#define	_msg_formosa_4	MsgInfo(164)	/*	"\næ‚¨é‚„æ˜¯æ²’æƒ³å¥½è¦ä½¿ç”¨çš„ä»£è™Ÿ, ä¸‹æ¬¡å†ä¾†å›‰, æ°æ° ...\n"	*/
+#define	_msg_formosa_5	MsgInfo(169)	/*	"\næ­¤ä»£è™Ÿå·²è¢«ä½¿ç”¨, è«‹æ›ä¸€å€‹\n"	*/
+#define	_msg_formosa_6	MsgInfo(170)	/*	"å¯†ç¢¼(password, 4 - 8 å€‹å­—) : "	*/
+#define	_msg_formosa_7	MsgInfo(171)	/*	"\nå¯†ç¢¼é•·åº¦è‡³å°‘è¦ 4 å€‹å­—å…ƒ\n"	*/
+#define	_msg_formosa_8	MsgInfo(172)	/*	"\nè«‹å‹¿ä½¿ç”¨èˆ‡ ID ç›¸åŒæˆ–å¤ªéæ–¼ç°¡å–®æ˜“çŒœçš„å¯†ç¢¼\n"	*/
+#define	_msg_formosa_9	MsgInfo(173)	/*	"å†æ‰“ä¸€æ¬¡å¯†ç¢¼(check) : "	*/
+#define	_msg_formosa_10	MsgInfo(133)	/*	"\nå…©æ¬¡è¼¸å…¥çš„å¯†ç¢¼ä¸ä¸€æ¨£, è«‹é‡æ–°è¨­å®š.\n"	*/
+#define	_msg_formosa_11	MsgInfo(134)	/*	"æ‚¨çš„æš±ç¨± (Name ä¸­è‹±æ–‡çš†å¯) : "	*/
+#define	_msg_formosa_12	MsgInfo(135)	/*	"é›»å­éƒµä»¶åœ°å€ : "	*/
+#define	_msg_formosa_13	MsgInfo(136)	/*	"\r\nå»ºæ–°å¸³è™Ÿå¤±æ•—, é€£ç·šçµ‚çµ"	*/
+#define	_msg_formosa_14	MsgInfo(137)	/*	"\næ­¡è¿å…‰è‡¨ [1;37m%s[m, ç›®å‰ç·šä¸Šæœ‰ [[1;33m%d[m/[1;32m%d[m] äºº\n"	*/
+#define	_msg_formosa_15	MsgInfo(138)	/*	"ç³»çµ± (1,10,15) åˆ†é˜çš„å¹³å‡è² è·åˆ†åˆ¥ç‚º %s\n"	*/
+#define	_msg_formosa_16	MsgInfo(139)	/*	"\n\r[1;32mä¸Šé™ %d äºº, è«‹ç¨å€™å†ä¾†"	*/
+#define	_msg_formosa_17	MsgInfo(140)	/*	"\næŠ±æ­‰, ä½ å·²æ‰“éŒ¯ %d æ¬¡, ä¸‹æ¬¡å†ä¾†å§!\n"	*/
+#define	_msg_formosa_18	MsgInfo(141)	/*	"\nè‹¥æƒ³è¨»å†Šæ–°å¸³è™Ÿ, è«‹è¼¸å…¥ 'new'"	*/
+#define	_msg_formosa_19	MsgInfo(142)	/*	" (åƒè§€è«‹è¼¸å…¥ '%s') ç¬¬äºŒé€£æ¥åŸ ç‚º Port 9001"	*/
+#define	_msg_formosa_20	MsgInfo(144)	/*	"\nè‹¥æƒ³åƒè§€è«‹è¼¸å…¥ '%s'"	*/
+#define	_msg_formosa_21	MsgInfo(145)	/*	"\nè«‹è¼¸å…¥ä»£è™Ÿ(user id) : "	*/
+#define	_msg_formosa_22	MsgInfo(146)	/*	"\r\næœ¬ç³»çµ±ä¸æ¥å—æ–°ä½¿ç”¨è¨»å†Š !!"	*/
+#define	_msg_formosa_23	MsgInfo(147)	/*	"\r\nè«‹ä»¥ guest åƒè§€ç”¨å¸³è™Ÿé€²ç«™."	*/
+#define	_msg_formosa_25	MsgInfo(148)	/*	"è«‹è¼¸å…¥å¯†ç¢¼(password) : <è«‹ç›´æ¥æŒ‰ Enter å³å¯>  "	*/
+#define	_msg_formosa_26	MsgInfo(149)	/*	"è«‹è¼¸å…¥å¯†ç¢¼(password) : "	*/
+#define	_msg_formosa_27	MsgInfo(150)	/*	"å¯†ç¢¼éŒ¯èª¤ !!\n"	*/
+#define	_msg_formosa_28	MsgInfo(151)	/*	"è¦æŸ¥çœ‹ç­‰ç´šå¤šå°‘ä»¥ä¸Šçš„ä½¿ç”¨è€… ? [0] : "	*/
+#define	_msg_formosa_29	MsgInfo(152)	/*	"ä»£å"	*/
+#define	_msg_formosa_30	MsgInfo(154)	/*	"å…¨å"	*/
+#define	_msg_formosa_31	MsgInfo(155)	/*	"ä¸Šç«™æ•¸"	*/
+#define	_msg_formosa_32	MsgInfo(156)	/*	"å¼µè²¼æ•¸"	*/
+#define	_msg_formosa_33	MsgInfo(157)	/*	"ç­‰ç´š"	*/
+#define	_msg_formosa_34	MsgInfo(158)	/*	"[37;45m--- é‚„æœ‰å“¦ ---[44m [q] or [â†]:é›¢é–‹ , [â†’][n][Space]:ä¸‹ä¸€é         [m"	*/
+#define	_msg_formosa_35	MsgInfo(159)	/*	"[37;44mè¨»å†Šäººæ•¸ %d äºº, "	*/
+#define	_msg_formosa_36	MsgInfo(160)	/*	"[37;44mçµ±è¨ˆäººæ•¸ %d/%d äºº, "	*/
+#define	_msg_formosa_37	MsgInfo(161)	/*	"ç®¡ç†è€… %d äºº, æ¿ä¸» %d äºº"	*/
+#define	_msg_formosa_38	MsgInfo(162)	/*	", (é€šéèªè­‰ %d äºº)"	*/
+#define	_msg_formosa_39	MsgInfo(163)	/*	"\næœ¬ç«™åƒè§€ç”¨ç«™è™Ÿ(guest)ä½¿ç”¨äººæ•¸å·²é¡æ»¿, è«‹æ‚¨ç¨å¾Œå†è©¦.\n"	*/
+#define	_msg_formosa_40	MsgInfo(165)	/*	"\n%d. Login PID:[%d] ä¾†è‡ª %s æ˜¯å¦åˆªé™¤ (y/n) ? [n] : "	*/
+#define	_msg_formosa_41	MsgInfo(166)	/*	"\nä¸èƒ½é‡è¦† Login %d æ¬¡ !!"	*/
+#define	_msg_formosa_42	MsgInfo(167)	/*	"[1;33mä½ æœ‰ä¸Šæ¬¡ç·¨è¼¯å¤±æ•—çš„æª”æ¡ˆå–”ï¼ï¼\nå°‡åœ¨ä¸‹æ¬¡ç·¨è¼¯æ™‚è«‹æ‚¨é¸æ“‡æ˜¯å¦å¼•å…¥[m"	*/
+#define	_msg_formosa_44	MsgInfo(168)	/*	"å¸³è™Ÿä¸å­˜åœ¨ !!\n"	*/
 
-#define	_msg_ident_1	MsgInfo(174)	/*	"±z­n­×§ï½Öªº½T»{µ¥¯Å¡G"	*/
-#define	_msg_ident_2	MsgInfo(185)	/*	"½Ğ¿é¤J»{ÃÒµ¥¯Å (0 or 7) ? [0]: "	*/
-#define	_msg_ident_3	MsgInfo(188)	/*	"±z­n¬d¸ß½Öªº¯u¹ê¸ê®Æ [ID]¡G"	*/
+#define	_msg_ident_1	MsgInfo(174)	/*	"æ‚¨è¦ä¿®æ”¹èª°çš„ç¢ºèªç­‰ç´šï¼š"	*/
+#define	_msg_ident_2	MsgInfo(185)	/*	"è«‹è¼¸å…¥èªè­‰ç­‰ç´š (0 or 7) ? [0]: "	*/
+#define	_msg_ident_3	MsgInfo(188)	/*	"æ‚¨è¦æŸ¥è©¢èª°çš„çœŸå¯¦è³‡æ–™ [ID]ï¼š"	*/
 
-#define	_msg_ident_7	MsgInfo(192)	/*	"±z©Ò¿é¤Jªº E-Mail «H½c¦ì§}¥i¯à¬°§K¶O«H½c, ®¤¤£±µ¨ü!"	*/
-#define	_msg_ident_8	MsgInfo(193)	/*	"±H°e»{ÃÒ«H¨ç¥¢±Ñ"	*/
-#define	_msg_ident_9	MsgInfo(194)	/*	"¨t²Î¤w±H°e¥X»{ÃÒ¨ç. ½Ğ±z°È¥²¦Ü¥H¤U«H½c±N»{ÃÒ¨ç¦^ÂĞ¥H«K§¹¦¨»{ÃÒµ{§Ç:\n%s"	*/
-#define	_msg_ident_10	MsgInfo(175)	/*	"¥»¯¸¹ï»{ÃÒ¸ê®Æµ´¹ï«O±K, ±z­n°µ¨­¥÷»{ÃÒ¶Ü ? [N]: "	*/
-#define	_msg_ident_11	MsgInfo(176)	/*	"µn¿ı»{ÃÒ¸ê®Æ¥¢±Ñ."	*/
-#define	_msg_ident_12	MsgInfo(177)	/*	"½Ğ¶ñ¤J¤U¦C¸ê®Æ: "	*/
-#define	_msg_ident_13	MsgInfo(178)	/*	" ½Ğ°İ±z©Ò¶ñªº¬°Å@·Ó¸¹½X¶Ü (Y/N) ? : [N]"	*/
-#define	_msg_ident_14	MsgInfo(179)	/*	"[1;36m ¶ñ¼gÅ@·Ó¸¹½X, ¶·±HÅ@·Ó¼v¥», ½Ğ¬İ system-report ªOºëµØ°Ï»¡©ú[m"	*/
-#define	_msg_ident_15	MsgInfo(180)	/*	"[1;36m ¶ñ¼g xxx.bbs@[hostname], ¶·±H¨­¥÷ÃÒ¼v¥», ½Ğ¬İ system-report ªOºëµØ°Ï»¡©ú[m"	*/
-#define	_msg_ident_16	MsgInfo(181)	/*	"¥Ó½Ğ¤é´Á¡G%s\n"	*/
-#define	_msg_ident_17	MsgInfo(182)	/*	"\n¥H¤W¸ê®Æ³£¥¿½T¶Ü [N] ?"	*/
-#define	_msg_ident_18	MsgInfo(183)	/*	"¸ê®Æ¥i¯à¦³»~"	*/
-#define	_msg_ident_19	MsgInfo(184)	/*	"¨­¥÷½T»{: %s"	*/
-#define	_msg_ident_20	MsgInfo(186)	/*	"µn¿ı¥¢±Ñ"	*/
-#define	_msg_ident_21	MsgInfo(187)	/*	"\n¥»»{ÃÒ¨t²ÎµLªk±µ¨ü±z¿é¤Jªº e-mail ¦ì§}!"	*/
+#define	_msg_ident_7	MsgInfo(192)	/*	"æ‚¨æ‰€è¼¸å…¥çš„ E-Mail ä¿¡ç®±ä½å€å¯èƒ½ç‚ºå…è²»ä¿¡ç®±, æ•ä¸æ¥å—!"	*/
+#define	_msg_ident_8	MsgInfo(193)	/*	"å¯„é€èªè­‰ä¿¡å‡½å¤±æ•—"	*/
+#define	_msg_ident_9	MsgInfo(194)	/*	"ç³»çµ±å·²å¯„é€å‡ºèªè­‰å‡½. è«‹æ‚¨å‹™å¿…è‡³ä»¥ä¸‹ä¿¡ç®±å°‡èªè­‰å‡½å›è¦†ä»¥ä¾¿å®Œæˆèªè­‰ç¨‹åº:\n%s"	*/
+#define	_msg_ident_10	MsgInfo(175)	/*	"æœ¬ç«™å°èªè­‰è³‡æ–™çµ•å°ä¿å¯†, æ‚¨è¦åšèº«ä»½èªè­‰å— ? [N]: "	*/
+#define	_msg_ident_11	MsgInfo(176)	/*	"ç™»éŒ„èªè­‰è³‡æ–™å¤±æ•—."	*/
+#define	_msg_ident_12	MsgInfo(177)	/*	"è«‹å¡«å…¥ä¸‹åˆ—è³‡æ–™: "	*/
+#define	_msg_ident_13	MsgInfo(178)	/*	" è«‹å•æ‚¨æ‰€å¡«çš„ç‚ºè­·ç…§è™Ÿç¢¼å— (Y/N) ? : [N]"	*/
+#define	_msg_ident_14	MsgInfo(179)	/*	"[1;36m å¡«å¯«è­·ç…§è™Ÿç¢¼, é ˆå¯„è­·ç…§å½±æœ¬, è«‹çœ‹ system-report æ¿ç²¾è¯å€èªªæ˜[m"	*/
+#define	_msg_ident_15	MsgInfo(180)	/*	"[1;36m å¡«å¯« xxx.bbs@[hostname], é ˆå¯„èº«ä»½è­‰å½±æœ¬, è«‹çœ‹ system-report æ¿ç²¾è¯å€èªªæ˜[m"	*/
+#define	_msg_ident_16	MsgInfo(181)	/*	"ç”³è«‹æ—¥æœŸï¼š%s\n"	*/
+#define	_msg_ident_17	MsgInfo(182)	/*	"\nä»¥ä¸Šè³‡æ–™éƒ½æ­£ç¢ºå— [N] ?"	*/
+#define	_msg_ident_18	MsgInfo(183)	/*	"è³‡æ–™å¯èƒ½æœ‰èª¤"	*/
+#define	_msg_ident_19	MsgInfo(184)	/*	"èº«ä»½ç¢ºèª: %s"	*/
+#define	_msg_ident_20	MsgInfo(186)	/*	"ç™»éŒ„å¤±æ•—"	*/
+#define	_msg_ident_21	MsgInfo(187)	/*	"\næœ¬èªè­‰ç³»çµ±ç„¡æ³•æ¥å—æ‚¨è¼¸å…¥çš„ e-mail ä½å€!"	*/
 
-#define	_msg_ident_item1	MsgInfo(195)	/*	"1 ©m¦W(¤¤¤å)¡G"	*/
-#define	_msg_ident_item2	MsgInfo(196)	/*	"2 ®a¸Ì¹q¸Ü¡G"	*/
-#define	_msg_ident_item3	MsgInfo(197)	/*	"3 ¾Ç®Õ©Î¤½¥q¹q¸Ü(­YµL,¥i¤£¶ñ)¡G"	*/
-#define	_msg_ident_item4	MsgInfo(198)	/*	"4 ³q°T¦a§}¡G"	*/
-#define	_msg_ident_item5	MsgInfo(199)	/*	"5 ¨­¥÷ÃÒ¦r¸¹¡G"	*/
-#define	_msg_ident_item6	MsgInfo(200)	/*	"6 ¤áÄy¥Ó³ø¦a¡G"	*/
-#define	_msg_ident_item7	MsgInfo(201)	/*	"7 ¥Í¤é(yy/mm/dd)¡G"	*/
-#define	_msg_ident_item8	MsgInfo(202)	/*	"8 ¹q¤l¶l¥ó«H½c(½Ğ°È¥²½T¹ê¶ñ¼g¥¿½T)¡G"	*/
-#define	_msg_ident_item9	MsgInfo(203)	/*	"9 Â²µu¤¶²Ğ¡G"	*/
+#define	_msg_ident_item1	MsgInfo(195)	/*	"1 å§“å(ä¸­æ–‡)ï¼š"	*/
+#define	_msg_ident_item2	MsgInfo(196)	/*	"2 å®¶è£¡é›»è©±ï¼š"	*/
+#define	_msg_ident_item3	MsgInfo(197)	/*	"3 å­¸æ ¡æˆ–å…¬å¸é›»è©±(è‹¥ç„¡,å¯ä¸å¡«)ï¼š"	*/
+#define	_msg_ident_item4	MsgInfo(198)	/*	"4 é€šè¨Šåœ°å€ï¼š"	*/
+#define	_msg_ident_item5	MsgInfo(199)	/*	"5 èº«ä»½è­‰å­—è™Ÿï¼š"	*/
+#define	_msg_ident_item6	MsgInfo(200)	/*	"6 æˆ¶ç±ç”³å ±åœ°ï¼š"	*/
+#define	_msg_ident_item7	MsgInfo(201)	/*	"7 ç”Ÿæ—¥(yy/mm/dd)ï¼š"	*/
+#define	_msg_ident_item8	MsgInfo(202)	/*	"8 é›»å­éƒµä»¶ä¿¡ç®±(è«‹å‹™å¿…ç¢ºå¯¦å¡«å¯«æ­£ç¢º)ï¼š"	*/
+#define	_msg_ident_item9	MsgInfo(203)	/*	"9 ç°¡çŸ­ä»‹ç´¹ï¼š"	*/
 
-#define	_msg_list_4	MsgInfo(217)	/*	"[±Æ§Ç¤èªk]"	*/
-#define	_msg_list_5	MsgInfo(218)	/*	"\n %s %s  [¨Ï¥ÎªÌ] %s  [Á`¤H¼Æ] %-4d  [¦n¤Í¼Æ] %d \n (f)¦n¤Í (t)²á¤Ñ (a,d)¥æ¤Í (u)¬d¸ß (w,l)°e,¦^°T®§ (m)±H«H (TAB)±Æ§Ç (s)§ó·s"	*/
-#define	_msg_list_6	MsgInfo(219)	/*	" ²á¤Ñ¿ï³æ¨Ï¥Î»¡©ú\n-----------------------------------------------------------------------------\n °ò¥»¥\\¯àÁä\n   [¡ô] [p]     ©¹¤W²¾¤@¦æ     [Ctrl-B] [PgUp]      Â½¤W¤@­¶\n   [¡õ] [n]     ©¹¤U²¾¤@¦æ     [Ctrl-F] [PgDn] [Sp] Â½¤U¤@­¶\n   [¡ö] [e]     Â÷¶}²á¤Ñ¿ï³æ   [##]                 ¸õ¨ì²Ä´X¶µ\n   [Home]       ¸õ¨ì²Ä¤@¶µ     [$] [End]            ¸õ¨ì¥½¤@¶µ\n\n ¯S®í¥\\¯àÁä\n   [s]          ­«·sÅã¥Ü¦Cªí   [f]                  ¦C¥X½u¤W¦n¤Í/¥ş³¡ºô¤Í\n   [m]          ±H«Hµ¹ºô¤Í     [u] [Enter][¡÷]      ¬d¸ßºô¤Í¸ê®Æ\n   [/]          §ä´M           [TAB]                ¤Á´«±Æ§Ç¤è¦¡\n   [x]          ¾\\Åª­Ó¤H«H¥ó   [a] [d]              ¼W¥[/§R°£¦n¤Í¦W³æ\n"	*/
-#define	_msg_list_7	MsgInfo(220)	/*	"\n ¥æ½Í±M¥ÎÁä\n   [t]          ¸ò¥L¡ş¦o²á¤Ñ   [Ctrl-P]             ¤Á´«©I³ê¹a¶}Ãö\n   [w]          ½u¤W°e°T®§     [Ctrl-R] [l]         ¦^ÅU½u¤W°T®§\n"	*/
-#define	_msg_list_9	MsgInfo(222)	/*	"½Ğ¿é¤J·j´M¦r¦ê¡G"	*/
-#define	_msg_list_12	MsgInfo(207)	/*	"½u¤W¦nªB¤Í¦Cªí"	*/
-#define	_msg_list_13	MsgInfo(208)	/*	"½u¤W¨Ï¥ÎªÌ¦Cªí"	*/
-#define	_msg_list_14	MsgInfo(209)	/*	"\n[7m   ½s¸¹ ­^¤å¥N¦W     %-20s %-15s %cP %-9s ¶¢¸m(¤À)[0m\n"	*/
-#define	_msg_list_16	MsgInfo(210)	/*	"¤¤¤å¥NºÙ"	*/
-#define	_msg_list_17	MsgInfo(211)	/*	"¨Ó¦Û"	*/
-#define	_msg_list_18	MsgInfo(212)	/*	"ª¬ºA"	*/
-#define	_msg_list_19	MsgInfo(213)	/*	"...¨Ï¥ÎªÌ¶i¯¸¤¤..."	*/
-#define	_msg_list_20	MsgInfo(215)	/*	" (¡ô)(¡õ)´å¼Ğ (¡÷)(Enter)¬d¸ß (Ctrl-P)¤Á´«©I¥s¹a (h)»¡©ú  %s [m"	*/
+#define	_msg_list_4	MsgInfo(217)	/*	"[æ’åºæ–¹æ³•]"	*/
+#define	_msg_list_5	MsgInfo(218)	/*	"\n %s %s  [ä½¿ç”¨è€…] %s  [ç¸½äººæ•¸] %-4d  [å¥½å‹æ•¸] %d \n (f)å¥½å‹ (t)èŠå¤© (a,d)äº¤å‹ (u)æŸ¥è©¢ (w,l)é€,å›è¨Šæ¯ (m)å¯„ä¿¡ (TAB)æ’åº (s)æ›´æ–°"	*/
+#define	_msg_list_6	MsgInfo(219)	/*	" èŠå¤©é¸å–®ä½¿ç”¨èªªæ˜\n-----------------------------------------------------------------------------\n åŸºæœ¬åŠŸ\èƒ½éµ\n   [â†‘] [p]     å¾€ä¸Šç§»ä¸€è¡Œ     [Ctrl-B] [PgUp]      ç¿»ä¸Šä¸€é \n   [â†“] [n]     å¾€ä¸‹ç§»ä¸€è¡Œ     [Ctrl-F] [PgDn] [Sp] ç¿»ä¸‹ä¸€é \n   [â†] [e]     é›¢é–‹èŠå¤©é¸å–®   [##]                 è·³åˆ°ç¬¬å¹¾é …\n   [Home]       è·³åˆ°ç¬¬ä¸€é …     [$] [End]            è·³åˆ°æœ«ä¸€é …\n\n ç‰¹æ®ŠåŠŸ\èƒ½éµ\n   [s]          é‡æ–°é¡¯ç¤ºåˆ—è¡¨   [f]                  åˆ—å‡ºç·šä¸Šå¥½å‹/å…¨éƒ¨ç¶²å‹\n   [m]          å¯„ä¿¡çµ¦ç¶²å‹     [u] [Enter][â†’]      æŸ¥è©¢ç¶²å‹è³‡æ–™\n   [/]          æ‰¾å°‹           [TAB]                åˆ‡æ›æ’åºæ–¹å¼\n   [x]          é–±\è®€å€‹äººä¿¡ä»¶   [a] [d]              å¢åŠ /åˆªé™¤å¥½å‹åå–®\n"	*/
+#define	_msg_list_7	MsgInfo(220)	/*	"\n äº¤è«‡å°ˆç”¨éµ\n   [t]          è·Ÿä»–ï¼å¥¹èŠå¤©   [Ctrl-P]             åˆ‡æ›å‘¼å–šéˆ´é–‹é—œ\n   [w]          ç·šä¸Šé€è¨Šæ¯     [Ctrl-R] [l]         å›é¡§ç·šä¸Šè¨Šæ¯\n"	*/
+#define	_msg_list_9	MsgInfo(222)	/*	"è«‹è¼¸å…¥æœå°‹å­—ä¸²ï¼š"	*/
+#define	_msg_list_12	MsgInfo(207)	/*	"ç·šä¸Šå¥½æœ‹å‹åˆ—è¡¨"	*/
+#define	_msg_list_13	MsgInfo(208)	/*	"ç·šä¸Šä½¿ç”¨è€…åˆ—è¡¨"	*/
+#define	_msg_list_14	MsgInfo(209)	/*	"\n[7m   ç·¨è™Ÿ è‹±æ–‡ä»£å     %-20s %-15s %cP %-9s é–’ç½®(åˆ†)[0m\n"	*/
+#define	_msg_list_16	MsgInfo(210)	/*	"ä¸­æ–‡ä»£ç¨±"	*/
+#define	_msg_list_17	MsgInfo(211)	/*	"ä¾†è‡ª"	*/
+#define	_msg_list_18	MsgInfo(212)	/*	"ç‹€æ…‹"	*/
+#define	_msg_list_19	MsgInfo(213)	/*	"...ä½¿ç”¨è€…é€²ç«™ä¸­..."	*/
+#define	_msg_list_20	MsgInfo(215)	/*	" (â†‘)(â†“)æ¸¸æ¨™ (â†’)(Enter)æŸ¥è©¢ (Ctrl-P)åˆ‡æ›å‘¼å«éˆ´ (h)èªªæ˜  %s [m"	*/
 
-#define	_msg_ask_group_add	MsgInfo(228)	/*	"¿ï¶µ: [a]¥[¤J [d]§R°£ [f]¦n¤Í [e]§¹¦¨ [q]©ñ±ó : [e] "	*/
+#define	_msg_ask_group_add	MsgInfo(228)	/*	"é¸é …: [a]åŠ å…¥ [d]åˆªé™¤ [f]å¥½å‹ [e]å®Œæˆ [q]æ”¾æ£„ : [e] "	*/
 
-#define	_msg_checkfwdemailaddr	MsgInfo(230)	/*	"\n½Ğ¥ı­×§ï­Ó¤H¸ê®Æ, ¦b e-mail Äæ¦ì¶ñ¤W±z­nÂà±Hªº¦ì§}.\n¤~¯à±Ò°Ê¦¹³]©w\n\n¨Ò¦p: \n   myuserid@myhost.mydomain"	*/
-#define	_msg_checkfwdemailaddr_fail	MsgInfo(231)	/*	"\n­Ó¤H¸ê®Æ e-mail Äæ¦ì³]©w¿ù»~, ¤Å¶ñ¼g¥»¯¸¦ì§}, ½Ğ­«·s³]©w."	*/
-#define	_msg_checkfwdemailaddr_nsysu	MsgInfo(232)	/*	"\n­Y­n¨Ï¥Î¦Û°ÊÂà±HªA°È, ­Ó¤H¸ê®Æ e-mail Äæ¦ì½Ğ¤Å¶ñ¼g¤¤¤sBBS¯¸"	*/
-#define	_msg_delete	MsgInfo(233)	/*	"§R°£: "	*/
-#define	_msg_m_forward_desc	MsgInfo(234)	/*	" (­Ó¤H«H½c·s«H¬O§_[¦Û°ÊÂà±H]¦Ü±zªº[¹q¤l¶l½c])"	*/
+#define	_msg_checkfwdemailaddr	MsgInfo(230)	/*	"\nè«‹å…ˆä¿®æ”¹å€‹äººè³‡æ–™, åœ¨ e-mail æ¬„ä½å¡«ä¸Šæ‚¨è¦è½‰å¯„çš„ä½å€.\næ‰èƒ½å•Ÿå‹•æ­¤è¨­å®š\n\nä¾‹å¦‚: \n   myuserid@myhost.mydomain"	*/
+#define	_msg_checkfwdemailaddr_fail	MsgInfo(231)	/*	"\nå€‹äººè³‡æ–™ e-mail æ¬„ä½è¨­å®šéŒ¯èª¤, å‹¿å¡«å¯«æœ¬ç«™ä½å€, è«‹é‡æ–°è¨­å®š."	*/
+#define	_msg_checkfwdemailaddr_nsysu	MsgInfo(232)	/*	"\nè‹¥è¦ä½¿ç”¨è‡ªå‹•è½‰å¯„æœå‹™, å€‹äººè³‡æ–™ e-mail æ¬„ä½è«‹å‹¿å¡«å¯«ä¸­å±±BBSç«™"	*/
+#define	_msg_delete	MsgInfo(233)	/*	"åˆªé™¤: "	*/
+#define	_msg_m_forward_desc	MsgInfo(234)	/*	" (å€‹äººä¿¡ç®±æ–°ä¿¡æ˜¯å¦[è‡ªå‹•è½‰å¯„]è‡³æ‚¨çš„[é›»å­éƒµç®±])"	*/
 
-#define	_msg_m_new_command_prompt	MsgInfo(237)	/*	"<<Åª·s«H>> (r)¦^«H (d)§R°£ (n)¤U¤@«Ê (e)Â÷¶}? [n] : "	*/
+#define	_msg_m_new_command_prompt	MsgInfo(237)	/*	"<<è®€æ–°ä¿¡>> (r)å›ä¿¡ (d)åˆªé™¤ (n)ä¸‹ä¸€å° (e)é›¢é–‹? [n] : "	*/
 
-#define	_msg_m_new_nomore	MsgInfo(239)	/*	"¨S¦³·s«H¤F !!"	*/
-#define	_msg_m_new_read_prompt	MsgInfo(240)	/*	"±H«H¤H : %s\n¼ĞÃD : %s\n(y)Åª¨ú¦¹«Ê (n)¤U¤@«Ê (q)Â÷¶} ? [y] : "	*/
-#define	_msg_mail_1	MsgInfo(241)	/*	"±H(¦^)µ¹ [%s] ? (y/n) [y] : "	*/
-#define	_msg_mail_2	MsgInfo(242)	/*	"±H(¦^)µ¹ : "	*/
-#define	_msg_mail_3	MsgInfo(14)	/*	"­Ó¤H«H¥ó¦Cªí"	*/
-#define	_msg_mail_group_max_prompt	MsgInfo(243)	/*	"\n¸s²Õ±H«H¤H¼Æ¤W­­: %d"	*/
-#define	_msg_mail_to_all_friend	MsgInfo(244)	/*	"±H«Hµ¹©Ò¦³¦n¤Í"	*/
-#define	_msg_max_group	MsgInfo(245)	/*	"[±H«Hµ¹¦h¤H] ¤H¼Æ¤W­­: %d"	*/
-#define	_msg_max_mail_warning	MsgInfo(246)	/*	"\n¥Ø«e«H½c¤º¦³ [1m%d[m «Ê«H¥ó, ¤w¸g¶W¹L­­¨î.\n¦]¦¹µLªkÅª·s«H, ½Ğ±N«H¥ó¶q§R¦Ü [1m%d[m «Ê¦AÂ÷¶}\n§_«h¤U¦¸±z¦³·sªº«H¥ó¨ì¹F®É, ±NµLªk¦s¤J«H½c¤¤.[m"	*/
-#define	_msg_receiver	MsgInfo(247)	/*	"¦¬«H¤H: "	*/
-#define	_msg_main_1	MsgInfo(248)	/*	"\r\n\r\n©êºp¡A±zªº¦ì§} %s ¤£¯à¨Ï¥Î¥»¯¸\r\n"	*/
-#define	_msg_main_2	MsgInfo(249)	/*	"\r\n\r\n¡¸ %s ¡¸\r\n\r\r\n\r"	*/
-#define	_msg_title_func	MsgInfo(250)	/*	"¬İªO¡G%-16.16s [m"	*/
-#define	_msg_menu_2	MsgInfo(251)	/*	" (¡ô)(¡õ)´å¼Ğ (¡÷)(Enter)¿ï¾Ü (¡ö)(Q)¤W¼h (Tab)®i¶}¤½§i   %s [m"	*/
-#define	_msg_more_1	MsgInfo(253)	/*	"[1;37;45m--More--(%d%%)p.%d [0;44m [¡÷]:¤U¤@­¶,[¡õ]:¤U¤@¦C,[B]:¤W¤@­¶,[¡ö][q]:Â÷¶}             [m"	*/
-#define	_msg_abort	MsgInfo(254)	/*	"©ñ±ó."	*/
-#define	_msg_board_normal	MsgInfo(257)	/*	"[¤@¯ë°Ï]"	*/
-#define	_msg_board_treasure	MsgInfo(258)	/*	"[ºëµØ°Ï]"	*/
+#define	_msg_m_new_nomore	MsgInfo(239)	/*	"æ²’æœ‰æ–°ä¿¡äº† !!"	*/
+#define	_msg_m_new_read_prompt	MsgInfo(240)	/*	"å¯„ä¿¡äºº : %s\næ¨™é¡Œ : %s\n(y)è®€å–æ­¤å° (n)ä¸‹ä¸€å° (q)é›¢é–‹ ? [y] : "	*/
+#define	_msg_mail_1	MsgInfo(241)	/*	"å¯„(å›)çµ¦ [%s] ? (y/n) [y] : "	*/
+#define	_msg_mail_2	MsgInfo(242)	/*	"å¯„(å›)çµ¦ : "	*/
+#define	_msg_mail_3	MsgInfo(14)	/*	"å€‹äººä¿¡ä»¶åˆ—è¡¨"	*/
+#define	_msg_mail_group_max_prompt	MsgInfo(243)	/*	"\nç¾¤çµ„å¯„ä¿¡äººæ•¸ä¸Šé™: %d"	*/
+#define	_msg_mail_to_all_friend	MsgInfo(244)	/*	"å¯„ä¿¡çµ¦æ‰€æœ‰å¥½å‹"	*/
+#define	_msg_max_group	MsgInfo(245)	/*	"[å¯„ä¿¡çµ¦å¤šäºº] äººæ•¸ä¸Šé™: %d"	*/
+#define	_msg_max_mail_warning	MsgInfo(246)	/*	"\nç›®å‰ä¿¡ç®±å…§æœ‰ [1m%d[m å°ä¿¡ä»¶, å·²ç¶“è¶…éé™åˆ¶.\nå› æ­¤ç„¡æ³•è®€æ–°ä¿¡, è«‹å°‡ä¿¡ä»¶é‡åˆªè‡³ [1m%d[m å°å†é›¢é–‹\nå¦å‰‡ä¸‹æ¬¡æ‚¨æœ‰æ–°çš„ä¿¡ä»¶åˆ°é”æ™‚, å°‡ç„¡æ³•å­˜å…¥ä¿¡ç®±ä¸­.[m"	*/
+#define	_msg_receiver	MsgInfo(247)	/*	"æ”¶ä¿¡äºº: "	*/
+#define	_msg_main_1	MsgInfo(248)	/*	"\r\n\r\næŠ±æ­‰ï¼Œæ‚¨çš„ä½å€ %s ä¸èƒ½ä½¿ç”¨æœ¬ç«™\r\n"	*/
+#define	_msg_main_2	MsgInfo(249)	/*	"\r\n\r\nâ˜† %s â˜†\r\n\r\r\n\r"	*/
+#define	_msg_title_func	MsgInfo(250)	/*	"çœ‹æ¿ï¼š%-16.16s [m"	*/
+#define	_msg_menu_2	MsgInfo(251)	/*	" (â†‘)(â†“)æ¸¸æ¨™ (â†’)(Enter)é¸æ“‡ (â†)(Q)ä¸Šå±¤ (Tab)å±•é–‹å…¬å‘Š   %s [m"	*/
+#define	_msg_more_1	MsgInfo(253)	/*	"[1;37;45m--More--(%d%%)p.%d [0;44m [â†’]:ä¸‹ä¸€é ,[â†“]:ä¸‹ä¸€åˆ—,[B]:ä¸Šä¸€é ,[â†][q]:é›¢é–‹             [m"	*/
+#define	_msg_abort	MsgInfo(254)	/*	"æ”¾æ£„."	*/
+#define	_msg_board_normal	MsgInfo(257)	/*	"[ä¸€èˆ¬å€]"	*/
+#define	_msg_board_treasure	MsgInfo(258)	/*	"[ç²¾è¯å€]"	*/
 
-#define	_msg_ent_userid	MsgInfo(261)	/*	"¿é¤J­^¤å¥N¦W: "	*/
-#define	_msg_err_boardname	MsgInfo(262)	/*	"¬İªO¦WºÙ¿ù»~"	*/
-#define	_msg_err_userid	MsgInfo(263)	/*	"\n¨Ï¥ÎªÌ¥N¸¹¿ù»~."	*/
-#define	_msg_fail	MsgInfo(264)	/*	"¥¢±Ñ."	*/
-#define	_msg_finish	MsgInfo(266)	/*	"§¹¦¨."	*/
-#define	_msg_in_processing	MsgInfo(268)	/*	"³B²z¤¤, ½Ğµy­Ô ..."	*/
-#define	_msg_include_ori	MsgInfo(269)	/*	"\n¬O§_¤Ş¤J­ì¤å (y/n/r) ? [y]: "	*/
-#define	_msg_message_fail	MsgInfo(270)	/*	"°e¥X°T®§¥¢±Ñ."	*/
-#define	_msg_message_finish	MsgInfo(271)	/*	"°e¥X°T®§§¹¦¨."	*/
-#define	_msg_no_board_exist	MsgInfo(272)	/*	"Åª¤£¨ì¥ô¦ó¬İªO !!\n"	*/
-#define	_msg_not_choose_board	MsgInfo(273)	/*	"©|¥¼¿ï©w¬İªO"	*/
-#define	_msg_not_sure	MsgInfo(274)	/*	"==>> ½T©w¶Ü (y/n) ? [n] : "	*/
-#define	_msg_not_sure_modify	MsgInfo(275)	/*	"==>> ½T©w­n­×§ï¶Ü (y/n) ? [n] : "	*/
-#define	_msg_off	MsgInfo(276)	/*	"Ãö³¬"	*/
-#define	_msg_on	MsgInfo(277)	/*	"¶}±Ò"	*/
-#define	_msg_press_enter	MsgInfo(278)	/*	"                         [1;37;44m   ½Ğ«ö [Enter] ÁäÄ~Äò   [m"	*/
-#define	_msg_sorry_email	MsgInfo(279)	/*	"©êºp, ¥Ø«e¤£´£¨Ñ¥¼»{ÃÒ¨Ï¥ÎªÌªººô¸ô e-mail ªA°È."	*/
-#define	_msg_sorry_ident	MsgInfo(280)	/*	"©êºp, ¦Û88¦~9¤ë1¤é°_¥¼³q¹L¨­¥÷»{ÃÒªº¨Ï¥ÎªÌ¤£¶}©ñ¨Ï¥Î¦¹¥\\¯à."	*/
-#define	_msg_sorry_newuser	MsgInfo(216)	/*	"µ¥¯Å 20 ¥H¤U¥B¥¼³q¹L¨­¥÷»{ÃÒªÌ¤£¶}©ñ¦¹¥\¯à."	*/
-#define	_msg_title	MsgInfo(281)	/*	"¼ĞÃD¡G "	*/
-#define	_msg_to_nth	MsgInfo(282)	/*	"¸õ¦Ü²Ä´X¶µ: "	*/
-#define	_msg_you_have_mail	MsgInfo(283)	/*	" ±z¦³·s«H! "	*/
-#define	_msg_bm_limit_assist	MsgInfo(285)	/*	"¤w¦³¤T¦ìªO¥D§U¤â." 	*/
-#define	_msg_bm_manage_about	MsgInfo(286)	/*	"ªO¥D¶·ª¾¡G\n\n    ±z©Ò«ü©wªºªO¥D§U¤â¦WÃB¤W­­¬°\"¤T¦ì\"¡A¥B¥Ñ©óªO¥D§U¤â¹ï¸Ó¬İªO»PªO¥D\n¾Ö¦³¬Ûµ¥¤§§G§i»PºëµØ°Ï¤å³¹¾ã²zÅv¤O¡A¬G±N¨äµø¬°ªO¥D¥N²z¤H¡A¦ÓªO¥D¥ç¶·\n¬°©Ò¿ï¥X¤§ªO¥D§U¤â¦æ¬°­t³s±a³d¥ô¡A¦]¦¹½Ğ·V­«¨M©w¤H¿ï¡C"	*/
-#define	_msg_bm_manage_cmd_full	MsgInfo(287)	/*	"(E)½s¿è¶iªOµe­±, (D)§R°£¶iªOµe­±, ©Î (M)½s¿èªO¥D§U¤â¦W³æ ? [E]: "	*/
-#define	_msg_bm_manage_cmd_part	MsgInfo(288)	/*	"(E)½s¿è¶iªOµe­±, ©Î (D)§R°£¶iªOµe­± ? [E]: "	*/
-#define	_msg_bm_manage_edit_bmas	MsgInfo(289)	/*	"[½s¿èªO¥D§U¤â¦W³æ] ¦W³æ¤Wªº¤H±N¾Ö¦³¥»ªO¥DÅv­­ (½Ğ¤p¤ß¨Ï¥Î)\n"	*/
-#define	_msg_cannot_check_board_list	MsgInfo(290)	/*	"Åª¤£¨ì¥ô¦ó¬İªO"	*/
-#define	_msg_cannot_post_in_treasure	MsgInfo(291)	/*	"\nºëµØ°Ï±i¶K½Ğ¥ÎÂà¶K¿ï¶µ(t)\n©Î¦b¾\\Åªª¬ºA¤U±i¶K\n"	*/
-#define	_msg_choose_add	MsgInfo(292)	/*	"(A)¼W¥[¤@­Ó¦W¦r, ©Î (E)Â÷¶}? [E]: "	*/
-#define	_msg_choose_add_delete	MsgInfo(293)	/*	"(A)¼W¥[¤@­Ó¦W¦r, (D)§R°£¤@­Ó¦W¦r, ©Î (E)Â÷¶}? [E]: "	*/
-#define	_msg_display_assistant	MsgInfo(294)	/*	"¥H¤U¬°¥»ªOªO¥D§U¤â¸s¦W³æ, ¨ó§UªO¥D³B²zªO°È:\n"	*/
-#define	_msg_exceed	MsgInfo(295)	/*	"[1;33m±z©Ò¿ï¨úªº½d³ò¶W¹L¤FÁ`½g¼Æ[0m"	*/
-#define	_msg_mail_fail	MsgInfo(296)	/*	"±H«H¥¢±Ñ"	*/
-#define	_msg_mail_finish	MsgInfo(297)	/*	"±H«H§¹¦¨"	*/
-#define	_msg_mailpost_reply	MsgInfo(298)	/*	"¦^ÂĞ¨ì (1)¬İªO ©Î (2)­ì¤å§@ªÌ«H½c (3)¥H¤W¬Ò¬O? [1]: "	*/
-#define	_msg_no_ident_send_tonews	MsgInfo(299)	/*	"\n©êºp, ¥¼³q¹L»{ÃÒ¨Ï¥ÎªÌµLªk±N¤å³¹°e¦Ü¯¸¥~."	*/
-#define	_msg_no_tag_found	MsgInfo(300)	/*	"½Ğ¥ı±N¤å³¹¼Ğ°O."	*/
-#define	_msg_none	MsgInfo(301)	/*	"(¨S¤H)\n"	*/
-#define	_str_marker	MsgInfo(284)	/*	"¡À"	*/
+#define	_msg_ent_userid	MsgInfo(261)	/*	"è¼¸å…¥è‹±æ–‡ä»£å: "	*/
+#define	_msg_err_boardname	MsgInfo(262)	/*	"çœ‹æ¿åç¨±éŒ¯èª¤"	*/
+#define	_msg_err_userid	MsgInfo(263)	/*	"\nä½¿ç”¨è€…ä»£è™ŸéŒ¯èª¤."	*/
+#define	_msg_fail	MsgInfo(264)	/*	"å¤±æ•—."	*/
+#define	_msg_finish	MsgInfo(266)	/*	"å®Œæˆ."	*/
+#define	_msg_in_processing	MsgInfo(268)	/*	"è™•ç†ä¸­, è«‹ç¨å€™ ..."	*/
+#define	_msg_include_ori	MsgInfo(269)	/*	"\næ˜¯å¦å¼•å…¥åŸæ–‡ (y/n/r) ? [y]: "	*/
+#define	_msg_message_fail	MsgInfo(270)	/*	"é€å‡ºè¨Šæ¯å¤±æ•—."	*/
+#define	_msg_message_finish	MsgInfo(271)	/*	"é€å‡ºè¨Šæ¯å®Œæˆ."	*/
+#define	_msg_no_board_exist	MsgInfo(272)	/*	"è®€ä¸åˆ°ä»»ä½•çœ‹æ¿ !!\n"	*/
+#define	_msg_not_choose_board	MsgInfo(273)	/*	"å°šæœªé¸å®šçœ‹æ¿"	*/
+#define	_msg_not_sure	MsgInfo(274)	/*	"==>> ç¢ºå®šå— (y/n) ? [n] : "	*/
+#define	_msg_not_sure_modify	MsgInfo(275)	/*	"==>> ç¢ºå®šè¦ä¿®æ”¹å— (y/n) ? [n] : "	*/
+#define	_msg_off	MsgInfo(276)	/*	"é—œé–‰"	*/
+#define	_msg_on	MsgInfo(277)	/*	"é–‹å•Ÿ"	*/
+#define	_msg_press_enter	MsgInfo(278)	/*	"                         [1;37;44m   è«‹æŒ‰ [Enter] éµç¹¼çºŒ   [m"	*/
+#define	_msg_sorry_email	MsgInfo(279)	/*	"æŠ±æ­‰, ç›®å‰ä¸æä¾›æœªèªè­‰ä½¿ç”¨è€…çš„ç¶²è·¯ e-mail æœå‹™."	*/
+#define	_msg_sorry_ident	MsgInfo(280)	/*	"æŠ±æ­‰, è‡ª88å¹´9æœˆ1æ—¥èµ·æœªé€šéèº«ä»½èªè­‰çš„ä½¿ç”¨è€…ä¸é–‹æ”¾ä½¿ç”¨æ­¤åŠŸ\èƒ½."	*/
+#define	_msg_sorry_newuser	MsgInfo(216)	/*	"ç­‰ç´š 20 ä»¥ä¸‹ä¸”æœªé€šéèº«ä»½èªè­‰è€…ä¸é–‹æ”¾æ­¤åŠŸèƒ½."	*/
+#define	_msg_title	MsgInfo(281)	/*	"æ¨™é¡Œï¼š "	*/
+#define	_msg_to_nth	MsgInfo(282)	/*	"è·³è‡³ç¬¬å¹¾é …: "	*/
+#define	_msg_you_have_mail	MsgInfo(283)	/*	" æ‚¨æœ‰æ–°ä¿¡! "	*/
+#define	_msg_bm_limit_assist	MsgInfo(285)	/*	"å·²æœ‰ä¸‰ä½æ¿ä¸»åŠ©æ‰‹." 	*/
+#define	_msg_bm_manage_about	MsgInfo(286)	/*	"æ¿ä¸»é ˆçŸ¥ï¼š\n\n    æ‚¨æ‰€æŒ‡å®šçš„æ¿ä¸»åŠ©æ‰‹åé¡ä¸Šé™ç‚º\"ä¸‰ä½\"ï¼Œä¸”ç”±æ–¼æ¿ä¸»åŠ©æ‰‹å°è©²çœ‹æ¿èˆ‡æ¿ä¸»\næ“æœ‰ç›¸ç­‰ä¹‹ä½ˆå‘Šèˆ‡ç²¾è¯å€æ–‡ç« æ•´ç†æ¬ŠåŠ›ï¼Œæ•…å°‡å…¶è¦–ç‚ºæ¿ä¸»ä»£ç†äººï¼Œè€Œæ¿ä¸»äº¦é ˆ\nç‚ºæ‰€é¸å‡ºä¹‹æ¿ä¸»åŠ©æ‰‹è¡Œç‚ºè² é€£å¸¶è²¬ä»»ï¼Œå› æ­¤è«‹æ…é‡æ±ºå®šäººé¸ã€‚"	*/
+#define	_msg_bm_manage_cmd_full	MsgInfo(287)	/*	"(E)ç·¨è¼¯é€²æ¿ç•«é¢, (D)åˆªé™¤é€²æ¿ç•«é¢, æˆ– (M)ç·¨è¼¯æ¿ä¸»åŠ©æ‰‹åå–® ? [E]: "	*/
+#define	_msg_bm_manage_cmd_part	MsgInfo(288)	/*	"(E)ç·¨è¼¯é€²æ¿ç•«é¢, æˆ– (D)åˆªé™¤é€²æ¿ç•«é¢ ? [E]: "	*/
+#define	_msg_bm_manage_edit_bmas	MsgInfo(289)	/*	"[ç·¨è¼¯æ¿ä¸»åŠ©æ‰‹åå–®] åå–®ä¸Šçš„äººå°‡æ“æœ‰æœ¬æ¿ä¸»æ¬Šé™ (è«‹å°å¿ƒä½¿ç”¨)\n"	*/
+#define	_msg_cannot_check_board_list	MsgInfo(290)	/*	"è®€ä¸åˆ°ä»»ä½•çœ‹æ¿"	*/
+#define	_msg_cannot_post_in_treasure	MsgInfo(291)	/*	"\nç²¾è¯å€å¼µè²¼è«‹ç”¨è½‰è²¼é¸é …(t)\næˆ–åœ¨é–±\è®€ç‹€æ…‹ä¸‹å¼µè²¼\n"	*/
+#define	_msg_choose_add	MsgInfo(292)	/*	"(A)å¢åŠ ä¸€å€‹åå­—, æˆ– (E)é›¢é–‹? [E]: "	*/
+#define	_msg_choose_add_delete	MsgInfo(293)	/*	"(A)å¢åŠ ä¸€å€‹åå­—, (D)åˆªé™¤ä¸€å€‹åå­—, æˆ– (E)é›¢é–‹? [E]: "	*/
+#define	_msg_display_assistant	MsgInfo(294)	/*	"ä»¥ä¸‹ç‚ºæœ¬æ¿æ¿ä¸»åŠ©æ‰‹ç¾¤åå–®, å”åŠ©æ¿ä¸»è™•ç†æ¿å‹™:\n"	*/
+#define	_msg_exceed	MsgInfo(295)	/*	"[1;33mæ‚¨æ‰€é¸å–çš„ç¯„åœè¶…éäº†ç¸½ç¯‡æ•¸[0m"	*/
+#define	_msg_mail_fail	MsgInfo(296)	/*	"å¯„ä¿¡å¤±æ•—"	*/
+#define	_msg_mail_finish	MsgInfo(297)	/*	"å¯„ä¿¡å®Œæˆ"	*/
+#define	_msg_mailpost_reply	MsgInfo(298)	/*	"å›è¦†åˆ° (1)çœ‹æ¿ æˆ– (2)åŸæ–‡ä½œè€…ä¿¡ç®± (3)ä»¥ä¸Šçš†æ˜¯? [1]: "	*/
+#define	_msg_no_ident_send_tonews	MsgInfo(299)	/*	"\næŠ±æ­‰, æœªé€šéèªè­‰ä½¿ç”¨è€…ç„¡æ³•å°‡æ–‡ç« é€è‡³ç«™å¤–."	*/
+#define	_msg_no_tag_found	MsgInfo(300)	/*	"è«‹å…ˆå°‡æ–‡ç« æ¨™è¨˜."	*/
+#define	_msg_none	MsgInfo(301)	/*	"(æ²’äºº)\n"	*/
+#define	_str_marker	MsgInfo(284)	/*	"ãŠ£"	*/
 
-#define	_msg_post_1	MsgInfo(302)	/*	"±N´å¼Ğ²¾¨ì¥Ø¿ı¦A«ö(G)¡A«K¥iÂà¤J¸Ó¤l¥Ø¿ı"	*/
-#define	_msg_post_2	MsgInfo(307)	/*	"<<Âà¤J¤l¥Ø¿ı>>: (c)opy ½Æ»s (m)ove ·h²¾«á§R°£ ? [c]: "	*/
-#define	_msg_post_3	MsgInfo(308)	/*	"<<Âà¤JºëµØ°Ï>>: (c)opy ½Æ»s (m)ove ·h²¾«á§R°£ ? [c]: "	*/
-#define	_msg_post_4	MsgInfo(309)	/*	"Âà¤J«á¦X¨Ö¬°¤@½g (y/n) ? [n]: "	*/
-#define	_msg_post_5	MsgInfo(310)	/*	"ºëµØ°Ï³Ì¦h¥u¥i¶} %d ¼h, ¤£­n¤Ó³g¤ß°Õ !"	*/
-#define	_msg_post_6	MsgInfo(311)	/*	"¥Ø¿ı¦WºÙ: "	*/
-#define	_msg_post_7	MsgInfo(312)	/*	"½T©w«Ø¥ß¥Ø¿ı '[1;36m%s[m' ¶Ü (y/n) ? [n] : "	*/
-#define	_msg_post_8	MsgInfo(313)	/*	"¥H¤U¬O¬°¥»ªOªA°ÈªºªO¥D§U¤â¸s:\n\n"	*/
-#define	_msg_post_9	MsgInfo(314)	/*	"<<¼ĞÃÑ©Ò¦³¤å³¹>> ¬° (y)¤wÅª¹L(n)¥¼Åª¹L(q)©ñ±ó ? [q]:  "	*/
-#define	_msg_post_10	MsgInfo(303)	/*	"±q²Ä´X¶µ¶}©l ? "	*/
-#define	_msg_post_11	MsgInfo(304)	/*	"¨ì²Ä´X¶µ¬°¤î ? "	*/
-#define	_msg_post_12	MsgInfo(305)	/*	"[44m[¾ã§å¼Ğ°O±ıÂàºëµØ°Ï¤å³¹]: ¨Ì½g¼Æ¸¹½X½d³ò[0m"	*/
-#define	_msg_post_13	MsgInfo(306)	/*	"±H©¹¯¸¥~©Î°ê¥~½Ğª½±µ¶ñ E-mail ¹q¤l¶l¥ó«H½c (¨Ò¦p: user@pc.campus.zone)"	*/
-#define	_msg_post_fail	MsgInfo(315)	/*	"±i¶K¥¢±Ñ."	*/
-#define	_msg_post_finish	MsgInfo(316)	/*	"±i¶K§¹¦¨."	*/
-#define	_msg_post_on_normal	MsgInfo(317)	/*	"\n±i¶K¦b '%s' ¬İªO"	*/
-#define	_msg_post_on_treasure	MsgInfo(318)	/*	"\n±i¶K¦b '%s' ºëµØ°Ï"	*/
-#define	_msg_post_rule	MsgInfo(319)	/*	"[44m¼Ğ°O½d³ò¤£±o¶W¹L [%d] ½g[0m"	*/
-#define	_msg_postperm_reason_guest	MsgInfo(320)	/*	"\n©êºp, guest ±b¸¹µLªk±i¶K©ó¥»ªO!\n"	*/
-#define	_msg_postperm_reason_ident	MsgInfo(321)	/*	"\n©êºp, ¥»ªO¥Ø«e¥u±µ¨ü³q¹L»{ÃÒ¤§¨Ï¥ÎªÌ±i¶K!!"	*/
-#define	_msg_postperm_reason_level	MsgInfo(322)	/*	"\n©êºp, ±zªºµ¥¯Å [%d] ¤£¨ì¥»ªO [%s] µ¥¯Å [%d], ¤£¯à±i¶K¦b¥»ªO\n"	*/
-#define	_msg_postperm_reason_treasure	MsgInfo(323)	/*	"©êºp, ¥u¦³¥»ªOªO¥D ¤~¯à¦bºëµØ°Ï±i¶K !!"	*/
-#define	_msg_send_tonews_yesno	MsgInfo(324)	/*	"\n¦¹½g¬O§_­n°e¤W News Âà«H (y/n) ? [y]: "	*/
-#define	_msg_treasure_cnvt	MsgInfo(325)	/*	"<<Âà¤JºëµØ°Ï>>:(n)Âà¤@½g (t)Âà¼Ğ°O (c)³£¤£°µ ? [c]: "	*/
-#define	_msg_treasure_cnvt_dir	MsgInfo(326)	/*	"<<±N¼Ğ°O¤å³¹Âà¤J>>:(t)¥Ø¿ı (.)¤W¼h (c)³£¤£°µ? [c]:"	*/
-#define	_msg_backward	MsgInfo(328)	/*	"¤W"	*/
-#define	_msg_forward	MsgInfo(329)	/*	"¤U"	*/
-#define	_str_combined_treasure_title	MsgInfo(327)	/*	"[¾ã²z] ¤w¼Ğ°O¤å³¹"	*/
+#define	_msg_post_1	MsgInfo(302)	/*	"å°‡æ¸¸æ¨™ç§»åˆ°ç›®éŒ„å†æŒ‰(G)ï¼Œä¾¿å¯è½‰å…¥è©²å­ç›®éŒ„"	*/
+#define	_msg_post_2	MsgInfo(307)	/*	"<<è½‰å…¥å­ç›®éŒ„>>: (c)opy è¤‡è£½ (m)ove æ¬ç§»å¾Œåˆªé™¤ ? [c]: "	*/
+#define	_msg_post_3	MsgInfo(308)	/*	"<<è½‰å…¥ç²¾è¯å€>>: (c)opy è¤‡è£½ (m)ove æ¬ç§»å¾Œåˆªé™¤ ? [c]: "	*/
+#define	_msg_post_4	MsgInfo(309)	/*	"è½‰å…¥å¾Œåˆä½µç‚ºä¸€ç¯‡ (y/n) ? [n]: "	*/
+#define	_msg_post_5	MsgInfo(310)	/*	"ç²¾è¯å€æœ€å¤šåªå¯é–‹ %d å±¤, ä¸è¦å¤ªè²ªå¿ƒå•¦ !"	*/
+#define	_msg_post_6	MsgInfo(311)	/*	"ç›®éŒ„åç¨±: "	*/
+#define	_msg_post_7	MsgInfo(312)	/*	"ç¢ºå®šå»ºç«‹ç›®éŒ„ '[1;36m%s[m' å— (y/n) ? [n] : "	*/
+#define	_msg_post_8	MsgInfo(313)	/*	"ä»¥ä¸‹æ˜¯ç‚ºæœ¬æ¿æœå‹™çš„æ¿ä¸»åŠ©æ‰‹ç¾¤:\n\n"	*/
+#define	_msg_post_9	MsgInfo(314)	/*	"<<æ¨™è­˜æ‰€æœ‰æ–‡ç« >> ç‚º (y)å·²è®€é(n)æœªè®€é(q)æ”¾æ£„ ? [q]:  "	*/
+#define	_msg_post_10	MsgInfo(303)	/*	"å¾ç¬¬å¹¾é …é–‹å§‹ ? "	*/
+#define	_msg_post_11	MsgInfo(304)	/*	"åˆ°ç¬¬å¹¾é …ç‚ºæ­¢ ? "	*/
+#define	_msg_post_12	MsgInfo(305)	/*	"[44m[æ•´æ‰¹æ¨™è¨˜æ¬²è½‰ç²¾è¯å€æ–‡ç« ]: ä¾ç¯‡æ•¸è™Ÿç¢¼ç¯„åœ[0m"	*/
+#define	_msg_post_13	MsgInfo(306)	/*	"å¯„å¾€ç«™å¤–æˆ–åœ‹å¤–è«‹ç›´æ¥å¡« E-mail é›»å­éƒµä»¶ä¿¡ç®± (ä¾‹å¦‚: user@pc.campus.zone)"	*/
+#define	_msg_post_fail	MsgInfo(315)	/*	"å¼µè²¼å¤±æ•—."	*/
+#define	_msg_post_finish	MsgInfo(316)	/*	"å¼µè²¼å®Œæˆ."	*/
+#define	_msg_post_on_normal	MsgInfo(317)	/*	"\nå¼µè²¼åœ¨ '%s' çœ‹æ¿"	*/
+#define	_msg_post_on_treasure	MsgInfo(318)	/*	"\nå¼µè²¼åœ¨ '%s' ç²¾è¯å€"	*/
+#define	_msg_post_rule	MsgInfo(319)	/*	"[44mæ¨™è¨˜ç¯„åœä¸å¾—è¶…é [%d] ç¯‡[0m"	*/
+#define	_msg_postperm_reason_guest	MsgInfo(320)	/*	"\næŠ±æ­‰, guest å¸³è™Ÿç„¡æ³•å¼µè²¼æ–¼æœ¬æ¿!\n"	*/
+#define	_msg_postperm_reason_ident	MsgInfo(321)	/*	"\næŠ±æ­‰, æœ¬æ¿ç›®å‰åªæ¥å—é€šéèªè­‰ä¹‹ä½¿ç”¨è€…å¼µè²¼!!"	*/
+#define	_msg_postperm_reason_level	MsgInfo(322)	/*	"\næŠ±æ­‰, æ‚¨çš„ç­‰ç´š [%d] ä¸åˆ°æœ¬æ¿ [%s] ç­‰ç´š [%d], ä¸èƒ½å¼µè²¼åœ¨æœ¬æ¿\n"	*/
+#define	_msg_postperm_reason_treasure	MsgInfo(323)	/*	"æŠ±æ­‰, åªæœ‰æœ¬æ¿æ¿ä¸» æ‰èƒ½åœ¨ç²¾è¯å€å¼µè²¼ !!"	*/
+#define	_msg_send_tonews_yesno	MsgInfo(324)	/*	"\næ­¤ç¯‡æ˜¯å¦è¦é€ä¸Š News è½‰ä¿¡ (y/n) ? [y]: "	*/
+#define	_msg_treasure_cnvt	MsgInfo(325)	/*	"<<è½‰å…¥ç²¾è¯å€>>:(n)è½‰ä¸€ç¯‡ (t)è½‰æ¨™è¨˜ (c)éƒ½ä¸åš ? [c]: "	*/
+#define	_msg_treasure_cnvt_dir	MsgInfo(326)	/*	"<<å°‡æ¨™è¨˜æ–‡ç« è½‰å…¥>>:(t)ç›®éŒ„ (.)ä¸Šå±¤ (c)éƒ½ä¸åš? [c]:"	*/
+#define	_msg_backward	MsgInfo(328)	/*	"ä¸Š"	*/
+#define	_msg_forward	MsgInfo(329)	/*	"ä¸‹"	*/
+#define	_str_combined_treasure_title	MsgInfo(327)	/*	"[æ•´ç†] å·²æ¨™è¨˜æ–‡ç« "	*/
 
-#define	_msg_read_2	MsgInfo(340)	/*	"ªO¥D¡G%-12.12s"	*/
-#define	_msg_read_3	MsgInfo(345)	/*	"\n(h)»¡©ú (Ctrl-p)±i¶K (s)´«¬İªO (Tab)ºëµØ°Ï¤Á´« (</>)(a/A)·j´M ([/])¥DÃD¾\\Åª\n(d)§R°£ (m)±H¥X (E)­×§ï½s¿è (b)¶iªOµe­± ($)³Ì«á (v)§ë²¼ (x)Âà¶K (U)¬d¸ßµo«H¤H\n[7m   ½s¸¹     µo«H¤H         ¤é´Á     ¼ĞÃD                                      [m"	*/
-#define	_msg_read_4	MsgInfo(346)	/*	"[¥Ø¿ı]"	*/
-#define	_msg_read_7	MsgInfo(349)	/*	" <<¥»½g¤w³Q %s §R°£>>"	*/
-#define	_msg_read_10	MsgInfo(331)	/*	"\n¥»¼hºëµØ°ÏµL§G§i.\n\n­Y­n±i¶K²Ä¤@½g, ½Ğ¨Ï¥ÎÂà¶K¿ï¶µ(t)"	*/
-#define	_msg_read_11	MsgInfo(332)	/*	"¨S¦³¸ê®Æ°O¸ü....\n"	*/
-#define	_msg_read_12	MsgInfo(333)	/*	"±zªº«H½c¤¤¨S¦³«H¥ó\n"	*/
-#define	_msg_read_13	MsgInfo(334)	/*	"\n¥»ªOµL§G§i.\n\n±z²{¦b­n±i¶K²Ä¤@½g¶Ü (y/n) ? [y]: "	*/
-#define	_msg_read_14	MsgInfo(335)	/*	" [r][¡÷]:Åª [¡õ][n]:¤U½g [¡ô][p]:¤W½g [m]:±H¥X [d]:§R°£ [¡ö][q]:°h¥X          [m"	*/
-#define	_msg_read_15	MsgInfo(336)	/*	"­n¸õ¨ì²Ä´X¶µ : "	*/
-#define	_msg_read_16	MsgInfo(337)	/*	"¦V%s·j´M§@ªÌ [%s]: "	*/
-#define	_msg_read_17	MsgInfo(338)	/*	"¦V%s·j´M¼ĞÃD [%s]: "	*/
-#define	_msg_read_18	MsgInfo(339)	/*	"¼Ğ°O(1)¦P¼ĞÃD(2)¦P§@ªÌ ? [1]: "	*/
-#define	_msg_read_20	MsgInfo(341)	/*	"§@ªÌ: "	*/
-#define	_msg_read_21	MsgInfo(342)	/*	"³B²z¤¤, ½Ğµy­Ô ..."	*/
-#define	_msg_read_22	MsgInfo(343)	/*	"¦@¼Ğ°O %d ½g."	*/
-#define	_msg_read_23	MsgInfo(344)	/*	"©¹%s¤wµL²Å¦X±ø¥óªº¤å³¹."	*/
-#define	_msg_stuff_1	MsgInfo(352)	/*	"[31;42m------------(¡´¡i­Ó¤H¤pÀÉ®×¡j¡´)-------------[m"	*/
-#define	_msg_stuff_2	MsgInfo(363)	/*	"[1;37;44m       Á`±i¶K¼Æ == [33m%-6d                    [m"	*/
-#define	_msg_stuff_3	MsgInfo(364)	/*	"[1;37;44m       ¤W¯¸¦¸¼Æ == [33m%-6d                    [m"	*/
-#define	_msg_stuff_4	MsgInfo(365)	/*	"[1;37;44m   ¤W¦¸¨Óªº®É¨è == [33m%-26s[m"	*/
-#define	_msg_stuff_5	MsgInfo(366)	/*	"[1;37;44m   ¤W¦¸¨Óªº¦a¤è == [33m%-26s[m"	*/
-#define	_msg_stuff_6	MsgInfo(367)	/*	"[1;37;44m   ³o¦¸¨Óªº®É¨è == [33m%-26s[m"	*/
-#define	_msg_stuff_7	MsgInfo(368)	/*	"[1;37;44m   ³o¦¸¨Óªº¦a¤è == [33m%-26s[m"	*/
-#define	_msg_stuff_8	MsgInfo(369)	/*	"[31;42m (¡´ ²{¦b®É¶¡¬O %-24s ¡´) [m"	*/
-#define	_msg_stuff_9	MsgInfo(370)	/*	"[1;33;45m ±z§b¸m¹L¤[, ¤w¦Û°ÊÂ÷½u [m\n"	*/
-#define	_msg_stuff_10	MsgInfo(353)	/*	"[1;36;45m  ½Ğ«ö [33m<Enter>[36m ¤§«áÂ÷½u  [m\n"	*/
-#define	_msg_stuff_11	MsgInfo(354)	/*	"[1;33;45m   ¡¯ ¬O§_Â÷¶}¥»¨t²Î (Y/N) :   [m"	*/
-#define	_msg_stuff_14	MsgInfo(357)	/*	"¿ï¾Ü¿ù»~. ¨S¦³§ä¨ì²Å¦Xªº."	*/
-#define	_msg_stuff_15	MsgInfo(358)	/*	"[1;37;44m                            ³· ªd ÂE ¤ö ¡A ¶­ ¥h ¯d ²ª                        \n[m"	*/
-#define	_msg_stuff_16	MsgInfo(359)	/*	"½Ğ¯d¨¥¡]¦Ü¦h¤T¦æ¡^¡A«ö[Enter]µ²§ô¡G\n"	*/
-#define	_msg_stuff_17	MsgInfo(360)	/*	"(S)¦sÀÉÆ[¬İ(E)­«·s½s¿è(Q)©ñ±ó¯d¨¥¡H[S]"	*/
-#define	_msg_stuff_18	MsgInfo(361)	/*	"[7m%s(%s)%.*s©ó%s¨ì¦¹¤@¹C[m"	*/
-#define	_msg_stuff_19	MsgInfo(362)	/*	"[1;37;44m   ¶¶¤â¶î¾~¡A¤ß±¡ÀHµ§(Y/N)[n] :   [m"	*/
-#define	_msg_talk_1	MsgInfo(458)	/*	"[7m [q]:Â÷¶} [d]:²M°£©Ò¦³°T®§ [m"	*/
-#define	_msg_talk_2	MsgInfo(382)	/*	"©I³ê¹a : (1)¤@­Ó¤HÀRÀR (2)¦n¤Í (3)¦n¤Í©Î¤w»{ÃÒ (4)©Ò¦³¤H, ½Ğ¿ï¾Ü: "	*/
-#define	_msg_talk_5	MsgInfo(414)	/*	"­Ó¤H¸ê®Æ¬d¸ß¡G"	*/
-#define	_msg_talk_6	MsgInfo(423)	/*	"\n%s (%s), µ¥¯Å %d, ¤W¯¸ %d ¦¸, ±i¶K %d ½g"	*/
-#define	_msg_talk_7	MsgInfo(424)	/*	", [1;36m¤w§¹¦¨¨­¥÷»{ÃÒ [m"	*/
-#define	_msg_talk_8	MsgInfo(425)	/*	", [1;33m¥¼§¹¦¨¨­¥÷»{ÃÒ [m"	*/
-#define	_msg_talk_9	MsgInfo(426)	/*	"\n¤W¦¸¤W¯¸®É¶¡ %s ¨Ó¦Û %s"	*/
-#define	_msg_talk_12	MsgInfo(374)	/*	"\n¹q¤l¶l¥ó«H½c: %s"	*/
-#define	_msg_talk_13	MsgInfo(375)	/*	"\n---- ­Ó¤H«H¥ó¦Û°ÊÂà±H¶}±Ò,"	*/
-#define	_msg_talk_14	MsgInfo(376)	/*	"\n---- «H½c¤¤ÁÙ¦³·s«HÁÙ¨S¬İ,"	*/
-#define	_msg_talk_15	MsgInfo(377)	/*	"\n---- «H½c¤¤ªº«H¥ó³£¬İ¹L¤F,"	*/
-#define	_msg_talk_16	MsgInfo(378)	/*	"\n¥Ø«e¥¿¦b½u¤W¡G%s %s"	*/
-#define	_msg_talk_17	MsgInfo(379)	/*	"\n¥Ø«e¤£¦b½u¤W, "	*/
-#define	_msg_talk_18	MsgInfo(380)	/*	"½Ğ«ö¥ô·NÁä¬d¸ß¦W¤ùÀÉ..."	*/
-#define	_msg_talk_19	MsgInfo(381)	/*	"\n¨S¦³¦W¤ùÀÉ."	*/
-#define	_msg_talk_20	MsgInfo(383)	/*	"<½Ğ¿é¤J¨Ï¥ÎªÌ¥N¸¹>"	*/
-#define	_msg_talk_21	MsgInfo(384)	/*	"­n¬d¸ß½Ö ? "	*/
-#define	_msg_talk_22	MsgInfo(385)	/*	"<½Ğ¿é¤J­^¤å¥N¦W> («öªÅ¥ÕÁä¥iÅã¥Ü¨Ã¹LÂo½u¤W¨Ï¥ÎªÌ)\n"	*/
-#define	_msg_talk_23	MsgInfo(386)	/*	"¹ï¶H¬O: "	*/
-#define	_msg_talk_24	MsgInfo(387)	/*	"¹ï¤è¤wÂ÷½u."	*/
-#define	_msg_talk_27	MsgInfo(390)	/*	"¥¿¦b¹ï %s ·n¹aÅo, ½Ğµy«İ¤ù¨è..\n«ö Ctrl-D ¥i¥H¤¤Â_\n"	*/
-#define	_msg_talk_28	MsgInfo(391)	/*	"¦A·n¤@¦¸¹a.\n"	*/
-#define	_msg_talk_29	MsgInfo(392)	/*	"¹ï¤è¤wÂ÷½u."	*/
-#define	_msg_talk_30	MsgInfo(394)	/*	"--- ** °T®§: %s ·Q¸ò±z²á²á"	*/
-#define	_msg_talk_31	MsgInfo(395)	/*	"±z·Q»P¨Ó¦Û %s ªº %s ²á²á¶Ü ?\n(Yes/No/Query) [Q]: "	*/
-#define	_msg_talk_32	MsgInfo(396)	/*	"¹ï¤è¥¿¥©¤¤¤î©I¥s, ¬GµLªkÁpÃ´!"	*/
-#define	_msg_talk_33	MsgInfo(397)	/*	"±z­n§Ú§i¶D¥Lªº²z¥Ñ¬O[1]:"	*/
-#define	_msg_talk_34	MsgInfo(398)	/*	"[±zªº¦^µª]: "	*/
-#define	_msg_talk_35	MsgInfo(399)	/*	"[7m<<< ½Í¤ß¶®«Ç >>> ¡ô %s and ¡õ %s (%-20.20s)[m"	*/
-#define	_msg_talk_36	MsgInfo(400)	/*	"±z½T©w­nµ²§ô½Í¸Ü¶Ü (y/n) ? [N]: "	*/
-#define	_msg_talk_37	MsgInfo(401)	/*	"°e¥X°T®§: "	*/
-#define	_msg_talk_38	MsgInfo(402)	/*	"½T©w°eµ¹ %s ¶Ü (y/n) ? [y]: ";	*/
-#define	_msg_talk_39	MsgInfo(403)	/*	"°ÑÆ[¥Î±b¸¹¤£¥i¥æ½Í."	*/
+#define	_msg_read_2	MsgInfo(340)	/*	"æ¿ä¸»ï¼š%-12.12s"	*/
+#define	_msg_read_3	MsgInfo(345)	/*	"\n(h)èªªæ˜ (Ctrl-p)å¼µè²¼ (s)æ›çœ‹æ¿ (Tab)ç²¾è¯å€åˆ‡æ› (</>)(a/A)æœå°‹ ([/])ä¸»é¡Œé–±è®€\n(d)åˆªé™¤ (m)å¯„å‡º (E)ä¿®æ”¹ç·¨è¼¯ (b)é€²æ¿ç•«é¢ ($)æœ€å¾Œ (v)æŠ•ç¥¨ (x)è½‰è²¼ (U)æŸ¥è©¢ç™¼ä¿¡äºº\n[7m   ç·¨è™Ÿ     ç™¼ä¿¡äºº         æ—¥æœŸ     æ¨™é¡Œ                                      [m"	*/
+#define	_msg_read_4	MsgInfo(346)	/*	"[ç›®éŒ„]"	*/
+#define	_msg_read_7	MsgInfo(349)	/*	" <<æœ¬ç¯‡å·²è¢« %s åˆªé™¤>>"	*/
+#define	_msg_read_10	MsgInfo(331)	/*	"\næœ¬å±¤ç²¾è¯å€ç„¡ä½ˆå‘Š.\n\nè‹¥è¦å¼µè²¼ç¬¬ä¸€ç¯‡, è«‹ä½¿ç”¨è½‰è²¼é¸é …(t)"	*/
+#define	_msg_read_11	MsgInfo(332)	/*	"æ²’æœ‰è³‡æ–™è¨˜è¼‰....\n"	*/
+#define	_msg_read_12	MsgInfo(333)	/*	"æ‚¨çš„ä¿¡ç®±ä¸­æ²’æœ‰ä¿¡ä»¶\n"	*/
+#define	_msg_read_13	MsgInfo(334)	/*	"\næœ¬æ¿ç„¡ä½ˆå‘Š.\n\næ‚¨ç¾åœ¨è¦å¼µè²¼ç¬¬ä¸€ç¯‡å— (y/n) ? [y]: "	*/
+#define	_msg_read_14	MsgInfo(335)	/*	" [r][â†’]:è®€ [â†“][n]:ä¸‹ç¯‡ [â†‘][p]:ä¸Šç¯‡ [m]:å¯„å‡º [d]:åˆªé™¤ [â†][q]:é€€å‡º          [m"	*/
+#define	_msg_read_15	MsgInfo(336)	/*	"è¦è·³åˆ°ç¬¬å¹¾é … : "	*/
+#define	_msg_read_16	MsgInfo(337)	/*	"å‘%sæœå°‹ä½œè€… [%s]: "	*/
+#define	_msg_read_17	MsgInfo(338)	/*	"å‘%sæœå°‹æ¨™é¡Œ [%s]: "	*/
+#define	_msg_read_18	MsgInfo(339)	/*	"æ¨™è¨˜(1)åŒæ¨™é¡Œ(2)åŒä½œè€… ? [1]: "	*/
+#define	_msg_read_20	MsgInfo(341)	/*	"ä½œè€…: "	*/
+#define	_msg_read_21	MsgInfo(342)	/*	"è™•ç†ä¸­, è«‹ç¨å€™ ..."	*/
+#define	_msg_read_22	MsgInfo(343)	/*	"å…±æ¨™è¨˜ %d ç¯‡."	*/
+#define	_msg_read_23	MsgInfo(344)	/*	"å¾€%så·²ç„¡ç¬¦åˆæ¢ä»¶çš„æ–‡ç« ."	*/
+#define	_msg_stuff_1	MsgInfo(352)	/*	"[31;42m------------(â—ã€å€‹äººå°æª”æ¡ˆã€‘â—)-------------[m"	*/
+#define	_msg_stuff_2	MsgInfo(363)	/*	"[1;37;44m       ç¸½å¼µè²¼æ•¸ == [33m%-6d                    [m"	*/
+#define	_msg_stuff_3	MsgInfo(364)	/*	"[1;37;44m       ä¸Šç«™æ¬¡æ•¸ == [33m%-6d                    [m"	*/
+#define	_msg_stuff_4	MsgInfo(365)	/*	"[1;37;44m   ä¸Šæ¬¡ä¾†çš„æ™‚åˆ» == [33m%-26s[m"	*/
+#define	_msg_stuff_5	MsgInfo(366)	/*	"[1;37;44m   ä¸Šæ¬¡ä¾†çš„åœ°æ–¹ == [33m%-26s[m"	*/
+#define	_msg_stuff_6	MsgInfo(367)	/*	"[1;37;44m   é€™æ¬¡ä¾†çš„æ™‚åˆ» == [33m%-26s[m"	*/
+#define	_msg_stuff_7	MsgInfo(368)	/*	"[1;37;44m   é€™æ¬¡ä¾†çš„åœ°æ–¹ == [33m%-26s[m"	*/
+#define	_msg_stuff_8	MsgInfo(369)	/*	"[31;42m (â— ç¾åœ¨æ™‚é–“æ˜¯ %-24s â—) [m"	*/
+#define	_msg_stuff_9	MsgInfo(370)	/*	"[1;33;45m æ‚¨å‘†ç½®éä¹…, å·²è‡ªå‹•é›¢ç·š [m\n"	*/
+#define	_msg_stuff_10	MsgInfo(353)	/*	"[1;36;45m  è«‹æŒ‰ [33m<Enter>[36m ä¹‹å¾Œé›¢ç·š  [m\n"	*/
+#define	_msg_stuff_11	MsgInfo(354)	/*	"[1;33;45m   ï¼Š æ˜¯å¦é›¢é–‹æœ¬ç³»çµ± (Y/N) :   [m"	*/
+#define	_msg_stuff_14	MsgInfo(357)	/*	"é¸æ“‡éŒ¯èª¤. æ²’æœ‰æ‰¾åˆ°ç¬¦åˆçš„."	*/
+#define	_msg_stuff_15	MsgInfo(358)	/*	"[1;37;44m                            é›ª æ³¥ é´» çˆª ï¼Œ é› å» ç•™ ç—•                        \n[m"	*/
+#define	_msg_stuff_16	MsgInfo(359)	/*	"è«‹ç•™è¨€ï¼ˆè‡³å¤šä¸‰è¡Œï¼‰ï¼ŒæŒ‰[Enter]çµæŸï¼š\n"	*/
+#define	_msg_stuff_17	MsgInfo(360)	/*	"(S)å­˜æª”è§€çœ‹(E)é‡æ–°ç·¨è¼¯(Q)æ”¾æ£„ç•™è¨€ï¼Ÿ[S]"	*/
+#define	_msg_stuff_18	MsgInfo(361)	/*	"[7m%s(%s)%.*sæ–¼%såˆ°æ­¤ä¸€éŠ[m"	*/
+#define	_msg_stuff_19	MsgInfo(362)	/*	"[1;37;44m   é †æ‰‹å¡—é´‰ï¼Œå¿ƒæƒ…éš¨ç­†(Y/N)[n] :   [m"	*/
+#define	_msg_talk_1	MsgInfo(458)	/*	"[7m [q]:é›¢é–‹ [d]:æ¸…é™¤æ‰€æœ‰è¨Šæ¯ [m"	*/
+#define	_msg_talk_2	MsgInfo(382)	/*	"å‘¼å–šéˆ´ : (1)ä¸€å€‹äººéœéœ (2)å¥½å‹ (3)å¥½å‹æˆ–å·²èªè­‰ (4)æ‰€æœ‰äºº, è«‹é¸æ“‡: "	*/
+#define	_msg_talk_5	MsgInfo(414)	/*	"å€‹äººè³‡æ–™æŸ¥è©¢ï¼š"	*/
+#define	_msg_talk_6	MsgInfo(423)	/*	"\n%s (%s), ç­‰ç´š %d, ä¸Šç«™ %d æ¬¡, å¼µè²¼ %d ç¯‡"	*/
+#define	_msg_talk_7	MsgInfo(424)	/*	", [1;36må·²å®Œæˆèº«ä»½èªè­‰ [m"	*/
+#define	_msg_talk_8	MsgInfo(425)	/*	", [1;33mæœªå®Œæˆèº«ä»½èªè­‰ [m"	*/
+#define	_msg_talk_9	MsgInfo(426)	/*	"\nä¸Šæ¬¡ä¸Šç«™æ™‚é–“ %s ä¾†è‡ª %s"	*/
+#define	_msg_talk_12	MsgInfo(374)	/*	"\né›»å­éƒµä»¶ä¿¡ç®±: %s"	*/
+#define	_msg_talk_13	MsgInfo(375)	/*	"\n---- å€‹äººä¿¡ä»¶è‡ªå‹•è½‰å¯„é–‹å•Ÿ,"	*/
+#define	_msg_talk_14	MsgInfo(376)	/*	"\n---- ä¿¡ç®±ä¸­é‚„æœ‰æ–°ä¿¡é‚„æ²’çœ‹,"	*/
+#define	_msg_talk_15	MsgInfo(377)	/*	"\n---- ä¿¡ç®±ä¸­çš„ä¿¡ä»¶éƒ½çœ‹éäº†,"	*/
+#define	_msg_talk_16	MsgInfo(378)	/*	"\nç›®å‰æ­£åœ¨ç·šä¸Šï¼š%s %s"	*/
+#define	_msg_talk_17	MsgInfo(379)	/*	"\nç›®å‰ä¸åœ¨ç·šä¸Š, "	*/
+#define	_msg_talk_18	MsgInfo(380)	/*	"è«‹æŒ‰ä»»æ„éµæŸ¥è©¢åç‰‡æª”..."	*/
+#define	_msg_talk_19	MsgInfo(381)	/*	"\næ²’æœ‰åç‰‡æª”."	*/
+#define	_msg_talk_20	MsgInfo(383)	/*	"<è«‹è¼¸å…¥ä½¿ç”¨è€…ä»£è™Ÿ>"	*/
+#define	_msg_talk_21	MsgInfo(384)	/*	"è¦æŸ¥è©¢èª° ? "	*/
+#define	_msg_talk_22	MsgInfo(385)	/*	"<è«‹è¼¸å…¥è‹±æ–‡ä»£å> (æŒ‰ç©ºç™½éµå¯é¡¯ç¤ºä¸¦éæ¿¾ç·šä¸Šä½¿ç”¨è€…)\n"	*/
+#define	_msg_talk_23	MsgInfo(386)	/*	"å°è±¡æ˜¯: "	*/
+#define	_msg_talk_24	MsgInfo(387)	/*	"å°æ–¹å·²é›¢ç·š."	*/
+#define	_msg_talk_27	MsgInfo(390)	/*	"æ­£åœ¨å° %s æ–éˆ´å›‰, è«‹ç¨å¾…ç‰‡åˆ»..\næŒ‰ Ctrl-D å¯ä»¥ä¸­æ–·\n"	*/
+#define	_msg_talk_28	MsgInfo(391)	/*	"å†æ–ä¸€æ¬¡éˆ´.\n"	*/
+#define	_msg_talk_29	MsgInfo(392)	/*	"å°æ–¹å·²é›¢ç·š."	*/
+#define	_msg_talk_30	MsgInfo(394)	/*	"--- ** è¨Šæ¯: %s æƒ³è·Ÿæ‚¨èŠèŠ"	*/
+#define	_msg_talk_31	MsgInfo(395)	/*	"æ‚¨æƒ³èˆ‡ä¾†è‡ª %s çš„ %s èŠèŠå— ?\n(Yes/No/Query) [Q]: "	*/
+#define	_msg_talk_32	MsgInfo(396)	/*	"å°æ–¹æ­£å·§ä¸­æ­¢å‘¼å«, æ•…ç„¡æ³•è¯ç¹«!"	*/
+#define	_msg_talk_33	MsgInfo(397)	/*	"æ‚¨è¦æˆ‘å‘Šè¨´ä»–çš„ç†ç”±æ˜¯[1]:"	*/
+#define	_msg_talk_34	MsgInfo(398)	/*	"[æ‚¨çš„å›ç­”]: "	*/
+#define	_msg_talk_35	MsgInfo(399)	/*	"[7m<<< è«‡å¿ƒé›…å®¤ >>> â†‘ %s and â†“ %s (%-20.20s)[m"	*/
+#define	_msg_talk_36	MsgInfo(400)	/*	"æ‚¨ç¢ºå®šè¦çµæŸè«‡è©±å— (y/n) ? [N]: "	*/
+#define	_msg_talk_37	MsgInfo(401)	/*	"é€å‡ºè¨Šæ¯: "	*/
+#define	_msg_talk_38	MsgInfo(402)	/*	"ç¢ºå®šé€çµ¦ %s å— (y/n) ? [y]: ";	*/
+#define	_msg_talk_39	MsgInfo(403)	/*	"åƒè§€ç”¨å¸³è™Ÿä¸å¯äº¤è«‡."	*/
 
-#define	_msg_talk_42	MsgInfo(407)	/*	"¹ï¤è¤£§Æ±æ³Q¥´ÂZ."	*/
-#define	_msg_talk_46	MsgInfo(410)	/*	"¥H¤U¬O³Ìªñ¤@¦¸©Ò¦¬¨ì°T®§, ²{¦b­n¦^¶Ü (y/n) ? [n]:"	*/
-#define	_msg_talk_47	MsgInfo(411)	/*	"©|¥¼¦¬¨ì¥ô¦ó°T®§..."	*/
-#define	_msg_talk_48	MsgInfo(412)	/*	"(Ctrl-R ¦^°T®§, ©Î Enter Áäªğ¦^)"	*/
-#define	_msg_talk_57	MsgInfo(422)	/*	"©Ò¦³¦n¤Í"	*/
-#define	_msg_talk_refusal_1	MsgInfo(427)	/*	"©êºp, ²{¦b¥¿¦£µÛ, §ï¤Ñ¦A²á¦n¶Ü ?"	*/
-#define	_msg_talk_refusal_2	MsgInfo(428)	/*	"©êºp, «İ·|¦A§ä±z²á, O.K ?"	*/
-#define	_msg_talk_refusal_3	MsgInfo(429)	/*	"©êºp, ¥¿©M¬Y¤H²á¤Ñ¤¤...."	*/
-#define	_msg_talk_refusal_4	MsgInfo(430)	/*	"©êºp, §Úªº¥´¦r³t«×¤ÓºC, ©È§AºÎµÛ...."	*/
-#define	_msg_talk_refusal_5	MsgInfo(431)	/*	"©êºp, §Ú¤£¤Ó³ßÅw TALK ­ù !!"	*/
-#define	_msg_talk_refusal_6	MsgInfo(432)	/*	"©êºp, ¥ı¨Ó«Ê«H¦Û§Ú¤¶²Ğ§a !!"	*/
-#define	_msg_talk_refusal_7	MsgInfo(433)	/*	"©êºp, ²Ö¿nÂI¸gÅç¦A¨Ó§a !!"	*/
-#define	_msg_talk_refusal_8	MsgInfo(434)	/*	"¨ä¥¦"	*/
+#define	_msg_talk_42	MsgInfo(407)	/*	"å°æ–¹ä¸å¸Œæœ›è¢«æ‰“æ“¾."	*/
+#define	_msg_talk_46	MsgInfo(410)	/*	"ä»¥ä¸‹æ˜¯æœ€è¿‘ä¸€æ¬¡æ‰€æ”¶åˆ°è¨Šæ¯, ç¾åœ¨è¦å›å— (y/n) ? [n]:"	*/
+#define	_msg_talk_47	MsgInfo(411)	/*	"å°šæœªæ”¶åˆ°ä»»ä½•è¨Šæ¯..."	*/
+#define	_msg_talk_48	MsgInfo(412)	/*	"(Ctrl-R å›è¨Šæ¯, æˆ– Enter éµè¿”å›)"	*/
+#define	_msg_talk_57	MsgInfo(422)	/*	"æ‰€æœ‰å¥½å‹"	*/
+#define	_msg_talk_refusal_1	MsgInfo(427)	/*	"æŠ±æ­‰, ç¾åœ¨æ­£å¿™è‘—, æ”¹å¤©å†èŠå¥½å— ?"	*/
+#define	_msg_talk_refusal_2	MsgInfo(428)	/*	"æŠ±æ­‰, å¾…æœƒå†æ‰¾æ‚¨èŠ, O.K ?"	*/
+#define	_msg_talk_refusal_3	MsgInfo(429)	/*	"æŠ±æ­‰, æ­£å’ŒæŸäººèŠå¤©ä¸­...."	*/
+#define	_msg_talk_refusal_4	MsgInfo(430)	/*	"æŠ±æ­‰, æˆ‘çš„æ‰“å­—é€Ÿåº¦å¤ªæ…¢, æ€•ä½ ç¡è‘—...."	*/
+#define	_msg_talk_refusal_5	MsgInfo(431)	/*	"æŠ±æ­‰, æˆ‘ä¸å¤ªå–œæ­¡ TALK å“© !!"	*/
+#define	_msg_talk_refusal_6	MsgInfo(432)	/*	"æŠ±æ­‰, å…ˆä¾†å°ä¿¡è‡ªæˆ‘ä»‹ç´¹å§ !!"	*/
+#define	_msg_talk_refusal_7	MsgInfo(433)	/*	"æŠ±æ­‰, ç´¯ç©é»ç¶“é©—å†ä¾†å§ !!"	*/
+#define	_msg_talk_refusal_8	MsgInfo(434)	/*	"å…¶å®ƒ"	*/
 
-#define	_msg_vote_1	MsgInfo(435)	/*	"\n±z¥Ø«e¦³¦h­«¤W½u, ½Ğ±z¥H³Ì¥ıªº¤@­Ó¤W½u¨Ó¶i¨Ó§ë²¼."	*/
-#define	_msg_vote_7	MsgInfo(448)	/*	"¨C¤H¥u¥i§ë %d ²¼³á!"	*/
-#define	_msg_vote_10	MsgInfo(436)	/*	"±z½T©w­nÂ÷¶}½s¿è¶Ü ? [n]: "	*/
-#define	_msg_vote_11	MsgInfo(437)	/*	"­­¨îIP¬° %s ¤è¥i§ë²¼, ©êºp!!"	*/
-#define	_msg_vote_12	MsgInfo(438)	/*	"§ë²¼®É¶¡¥¼¨ì, ©êºp!!"	*/
-#define	_msg_vote_13	MsgInfo(439)	/*	"§ë²¼®É¶¡¤w¹L, ©êºp!!..."	*/
-#define	_msg_vote_14	MsgInfo(440)	/*	"§ë²¼µ¥¯Å¬°%3d, ©êºp!!..."	*/
-#define	_msg_vote_15	MsgInfo(441)	/*	"¶}²¼®É¶¡©|¥¼¨ì, ¤£´£¨Ñ¬d¸ß!"	*/
-#define	_msg_vote_17	MsgInfo(443)	/*	"\n(¡÷)(Enter)¿ï¾Ü§ë²¼ (¡ö)(Q)Â÷¶} (c)¿ïÁ|»¡©ú (i)Åã¥Ü³]©w (o)¶}²¼µ²ªG (h)»¡©ú\n(a)¼W¥[¿ïÁ|/­Ô¿ï¶µ¥Ø (d)§R°£¿ïÁ|/­Ô¿ï¶µ¥Ø (E)­×§ï¿ïÁ|/­Ô¿ï¶µ¥Ø\n"	*/
-#define	_msg_vote_18	MsgInfo(444)	/*	"     §ë²¼Á`¤H¼Æ : %d"	*/
-#define	_msg_vote_22	MsgInfo(449)	/*	"§R°£§¹²¦!"	*/
-#define	_msg_vote_23	MsgInfo(450)	/*	"\n©êºp, ¥Ø«e©|µLÁ|¿ì¥ô¦ó§ë²¼!!"	*/
-#define	_msg_vote_25	MsgInfo(452)	/*	"±z­n·s¼WªO§ë²¼¶Ü ? [y]: "	*/
-#define	_msg_vote_26	MsgInfo(453)	/*	"½Ğ¥ı¿ï¾Ü±z©ÒºŞ²zªºªO¤l...."	*/
-#define	_msg_vote_27	MsgInfo(454)	/*	"±z­n­×§ïªO§ë²¼¶Ü ? [n]: "	*/
-#define	_msg_vote_31	MsgInfo(459)	/*	"§ë²¼¶µ¥Ø¥¼§¹¦¨"	*/
-#define	_msg_vote_32	MsgInfo(460)	/*	"µL§ë²¼®É¶¡"	*/
-#define	_msg_vote_33	MsgInfo(461)	/*	"µL§ë²¼¼ĞÃD"	*/
-#define	_msg_vote_34	MsgInfo(462)	/*	"µLªk¦sÀÉ, ½Ğ«ö¥ô¤@ÁäÄ~Äò."	*/
-#define	_msg_vote_35	MsgInfo(463)	/*	"¦sÀÉ§¹²¦, ½Ğ«ö¥ô·NÁäÂ÷¶}."	*/
-#define	_msg_vote_37	MsgInfo(465)	/*	"½Ğ¿é´X¤é«á¶}©l[§Y¨è¶}©l½Ğ«öEnter]: "	*/
-#define	_msg_vote_38	MsgInfo(466)	/*	"½Ğ¿é´X¤é«áµ²§ô[¦Ü¤Ö1¤é]: "	*/
-#define	_msg_vote_39	MsgInfo(467)	/*	"±z­n§R°£ªO§ë²¼¶Ü ? [n]: "	*/
-#define	_msg_vote_holdlist9	MsgInfo(482)	/*	"[[1;36ms[m] Àx¦s§ë²¼. "	*/
+#define	_msg_vote_1	MsgInfo(435)	/*	"\næ‚¨ç›®å‰æœ‰å¤šé‡ä¸Šç·š, è«‹æ‚¨ä»¥æœ€å…ˆçš„ä¸€å€‹ä¸Šç·šä¾†é€²ä¾†æŠ•ç¥¨."	*/
+#define	_msg_vote_7	MsgInfo(448)	/*	"æ¯äººåªå¯æŠ• %d ç¥¨å–”!"	*/
+#define	_msg_vote_10	MsgInfo(436)	/*	"æ‚¨ç¢ºå®šè¦é›¢é–‹ç·¨è¼¯å— ? [n]: "	*/
+#define	_msg_vote_11	MsgInfo(437)	/*	"é™åˆ¶IPç‚º %s æ–¹å¯æŠ•ç¥¨, æŠ±æ­‰!!"	*/
+#define	_msg_vote_12	MsgInfo(438)	/*	"æŠ•ç¥¨æ™‚é–“æœªåˆ°, æŠ±æ­‰!!"	*/
+#define	_msg_vote_13	MsgInfo(439)	/*	"æŠ•ç¥¨æ™‚é–“å·²é, æŠ±æ­‰!!..."	*/
+#define	_msg_vote_14	MsgInfo(440)	/*	"æŠ•ç¥¨ç­‰ç´šç‚º%3d, æŠ±æ­‰!!..."	*/
+#define	_msg_vote_15	MsgInfo(441)	/*	"é–‹ç¥¨æ™‚é–“å°šæœªåˆ°, ä¸æä¾›æŸ¥è©¢!"	*/
+#define	_msg_vote_17	MsgInfo(443)	/*	"\n(â†’)(Enter)é¸æ“‡æŠ•ç¥¨ (â†)(Q)é›¢é–‹ (c)é¸èˆ‰èªªæ˜ (i)é¡¯ç¤ºè¨­å®š (o)é–‹ç¥¨çµæœ (h)èªªæ˜\n(a)å¢åŠ é¸èˆ‰/å€™é¸é …ç›® (d)åˆªé™¤é¸èˆ‰/å€™é¸é …ç›® (E)ä¿®æ”¹é¸èˆ‰/å€™é¸é …ç›®\n"	*/
+#define	_msg_vote_18	MsgInfo(444)	/*	"     æŠ•ç¥¨ç¸½äººæ•¸ : %d"	*/
+#define	_msg_vote_22	MsgInfo(449)	/*	"åˆªé™¤å®Œç•¢!"	*/
+#define	_msg_vote_23	MsgInfo(450)	/*	"\næŠ±æ­‰, ç›®å‰å°šç„¡èˆ‰è¾¦ä»»ä½•æŠ•ç¥¨!!"	*/
+#define	_msg_vote_25	MsgInfo(452)	/*	"æ‚¨è¦æ–°å¢æ¿æŠ•ç¥¨å— ? [y]: "	*/
+#define	_msg_vote_26	MsgInfo(453)	/*	"è«‹å…ˆé¸æ“‡æ‚¨æ‰€ç®¡ç†çš„æ¿å­...."	*/
+#define	_msg_vote_27	MsgInfo(454)	/*	"æ‚¨è¦ä¿®æ”¹æ¿æŠ•ç¥¨å— ? [n]: "	*/
+#define	_msg_vote_31	MsgInfo(459)	/*	"æŠ•ç¥¨é …ç›®æœªå®Œæˆ"	*/
+#define	_msg_vote_32	MsgInfo(460)	/*	"ç„¡æŠ•ç¥¨æ™‚é–“"	*/
+#define	_msg_vote_33	MsgInfo(461)	/*	"ç„¡æŠ•ç¥¨æ¨™é¡Œ"	*/
+#define	_msg_vote_34	MsgInfo(462)	/*	"ç„¡æ³•å­˜æª”, è«‹æŒ‰ä»»ä¸€éµç¹¼çºŒ."	*/
+#define	_msg_vote_35	MsgInfo(463)	/*	"å­˜æª”å®Œç•¢, è«‹æŒ‰ä»»æ„éµé›¢é–‹."	*/
+#define	_msg_vote_37	MsgInfo(465)	/*	"è«‹è¼¸å¹¾æ—¥å¾Œé–‹å§‹[å³åˆ»é–‹å§‹è«‹æŒ‰Enter]: "	*/
+#define	_msg_vote_38	MsgInfo(466)	/*	"è«‹è¼¸å¹¾æ—¥å¾ŒçµæŸ[è‡³å°‘1æ—¥]: "	*/
+#define	_msg_vote_39	MsgInfo(467)	/*	"æ‚¨è¦åˆªé™¤æ¿æŠ•ç¥¨å— ? [n]: "	*/
+#define	_msg_vote_holdlist9	MsgInfo(482)	/*	"[[1;36ms[m] å„²å­˜æŠ•ç¥¨. "	*/
 
-#define	_msg_xyz_1	MsgInfo(442)	/*	"======== µù¥U½s¸¹ : %5u ====================="	*/
-#define	_msg_xyz_2	MsgInfo(265)	/*	"======== ¨Ï¥ÎªÌ­Ó¤H¸ê®Æ ======================="	*/
-#define	_msg_xyz_3	MsgInfo(205)	/*	"¥N¦W (userid) : %s"	*/
-#define	_msg_xyz_6	MsgInfo(371)	/*	"µù¥U¤é´Á : %s"	*/
-#define	_msg_xyz_7	MsgInfo(419)	/*	"¼ÊºÙ (username) : %s"	*/
-#define	_msg_xyz_8	MsgInfo(418)	/*	"¹q¤l¶l½c : %s"	*/
-#define	_msg_xyz_9	MsgInfo(348)	/*	"¤W¯¸Á`¼Æ : %d"	*/
-#define	_msg_xyz_10	MsgInfo(445)	/*	"±i¶KÁ`¼Æ : %d"	*/
-#define	_msg_xyz_11	MsgInfo(447)	/*	"¨Ï¥Îµ¥¯Å : %d"	*/
-#define	_msg_xyz_13	MsgInfo(456)	/*	"½Ğ¿é¤JÂÂ±K½X (½T»{¨­¥÷): "	*/
-#define	_msg_xyz_14	MsgInfo(457)	/*	"\n©êºp, ¿é¤J¿ù»~ªºÂÂ±K½X¤T¦¸, ±j­¢Â÷½u.\n"	*/
-#define	_msg_xyz_15	MsgInfo(446)	/*	"\n±K½X¿ù»~. ½Ğ¦A¸Õ¤@¦¸! (¥u¯à¿ù¤T¦¸)."	*/
-#define	_msg_xyz_16	MsgInfo(252)	/*	"¥Ø«e¨t²Î®É¶¡ : %s"	*/
-#define	_msg_xyz_19	MsgInfo(267)	/*	"«H¥óÁ`¼Æ : %d"	*/
-#define	_msg_xyz_22	MsgInfo(255)	/*	"\nÃ±¦WÀÉ¤j©ó %d Bytes, ±N¦Û°ÊºI±¼¶W¹L³¡¥÷"	*/
-#define	_msg_xyz_23	MsgInfo(214)	/*	"(E)½s¿è ©Î (D)§R°£ ? [E]: "	*/
-#define	_msg_xyz_24	MsgInfo(206)	/*	"\nÀÉ®×§R°£§¹¦¨."	*/
-#define	_msg_xyz_27	MsgInfo(420)	/*	"¦Û°ÊÂà±H : %s"	*/
-#define _msg_xyz_28	MsgInfo(115)	/*	"½s¿èÃa¤H¦W³æ, Åı¦W³æ¤Wªº¤H¤£¯à¥´ÂZ§A\n"	*/
-#define	_msg_xyz_29	MsgInfo(105)	/*	"½s¿è¦nªB¤Í¦W³æ, ¦W³æ¤Wªº¤HÀH®É³£¯à§ä§A½Í¸Ü\n"	*/
-#define	_msg_xyz_30	MsgInfo(103)	/*	"¾á¥ôªO¥D : "	*/
-#define	_msg_xyz_31	MsgInfo(259)	/*	"±K    ½X : "	*/
-#define	_msg_xyz_36	MsgInfo(204)	/*	"½Ğ¿ï¾Ü±ı§ó§ï¶µ¥Ø½s¸¹, ©Î«ö [Enter] µ²§ô : "	*/
-#define	_msg_xyz_38	MsgInfo(102)	/*	"¦A¦¸½T»{ : "	*/
-#define	_msg_xyz_39	MsgInfo(104)	/*	"±K½X¤£¤@­P, ½Ğ­«·s¿é¤J."	*/
-#define	_msg_xyz_52	MsgInfo(236)	/*	"[1;37;46m                         ³X  «È  ¯d  ¨¥  ªO                              [m\n\n"	*/
-#define	_msg_xyz_53	MsgInfo(235)	/*	"[1;37;45m½Ğ«ö[Q]Áäµ²§ô, ©Î«ö[X]Áäªí¥Ü¥H«á¤£¦A¬İ¯d¨¥ªO, ©Î¥ô·NÁäÂ½¤U­¶...[0m"	*/
-#define	_msg_xyz_34	MsgInfo(229)	/*	"== »y¨¥³]©w ==\n"	*/
-#define	_msg_xyz_35	MsgInfo(1)	/*	"½Ğ¿ï¾Ü±z­n¨Ï¥Îªº»y¨¥ : "	*/
-#define	_msg_xyz_57	MsgInfo(50)	/*	"¿ï¾ÜÃ±¦WÀÉ (0/1/2/3) [0]©ñ±ó: "	*/
-#define	_msg_xyz_58	MsgInfo(45)	/*	"¿ï¾Ü±z©Ò­n½s¿èªºÃ±¦WÀÉ (1/2/3): "	*/
-#define	_msg_xyz_61	MsgInfo(5)	/*	"¤¤¤å (Big5)"	*/
-#define	_msg_xyz_62	MsgInfo(3)	/*	"English (­^¤å)"	*/
+#define	_msg_xyz_1	MsgInfo(442)	/*	"======== è¨»å†Šç·¨è™Ÿ : %5u ====================="	*/
+#define	_msg_xyz_2	MsgInfo(265)	/*	"======== ä½¿ç”¨è€…å€‹äººè³‡æ–™ ======================="	*/
+#define	_msg_xyz_3	MsgInfo(205)	/*	"ä»£å (userid) : %s"	*/
+#define	_msg_xyz_6	MsgInfo(371)	/*	"è¨»å†Šæ—¥æœŸ : %s"	*/
+#define	_msg_xyz_7	MsgInfo(419)	/*	"æš±ç¨± (username) : %s"	*/
+#define	_msg_xyz_8	MsgInfo(418)	/*	"é›»å­éƒµç®± : %s"	*/
+#define	_msg_xyz_9	MsgInfo(348)	/*	"ä¸Šç«™ç¸½æ•¸ : %d"	*/
+#define	_msg_xyz_10	MsgInfo(445)	/*	"å¼µè²¼ç¸½æ•¸ : %d"	*/
+#define	_msg_xyz_11	MsgInfo(447)	/*	"ä½¿ç”¨ç­‰ç´š : %d"	*/
+#define	_msg_xyz_13	MsgInfo(456)	/*	"è«‹è¼¸å…¥èˆŠå¯†ç¢¼ (ç¢ºèªèº«ä»½): "	*/
+#define	_msg_xyz_14	MsgInfo(457)	/*	"\næŠ±æ­‰, è¼¸å…¥éŒ¯èª¤çš„èˆŠå¯†ç¢¼ä¸‰æ¬¡, å¼·è¿«é›¢ç·š.\n"	*/
+#define	_msg_xyz_15	MsgInfo(446)	/*	"\nå¯†ç¢¼éŒ¯èª¤. è«‹å†è©¦ä¸€æ¬¡! (åªèƒ½éŒ¯ä¸‰æ¬¡)."	*/
+#define	_msg_xyz_16	MsgInfo(252)	/*	"ç›®å‰ç³»çµ±æ™‚é–“ : %s"	*/
+#define	_msg_xyz_19	MsgInfo(267)	/*	"ä¿¡ä»¶ç¸½æ•¸ : %d"	*/
+#define	_msg_xyz_22	MsgInfo(255)	/*	"\nç°½åæª”å¤§æ–¼ %d Bytes, å°‡è‡ªå‹•æˆªæ‰è¶…ééƒ¨ä»½"	*/
+#define	_msg_xyz_23	MsgInfo(214)	/*	"(E)ç·¨è¼¯ æˆ– (D)åˆªé™¤ ? [E]: "	*/
+#define	_msg_xyz_24	MsgInfo(206)	/*	"\næª”æ¡ˆåˆªé™¤å®Œæˆ."	*/
+#define	_msg_xyz_27	MsgInfo(420)	/*	"è‡ªå‹•è½‰å¯„ : %s"	*/
+#define _msg_xyz_28	MsgInfo(115)	/*	"ç·¨è¼¯å£äººåå–®, è®“åå–®ä¸Šçš„äººä¸èƒ½æ‰“æ“¾ä½ \n"	*/
+#define	_msg_xyz_29	MsgInfo(105)	/*	"ç·¨è¼¯å¥½æœ‹å‹åå–®, åå–®ä¸Šçš„äººéš¨æ™‚éƒ½èƒ½æ‰¾ä½ è«‡è©±\n"	*/
+#define	_msg_xyz_30	MsgInfo(103)	/*	"æ“”ä»»æ¿ä¸» : "	*/
+#define	_msg_xyz_31	MsgInfo(259)	/*	"å¯†    ç¢¼ : "	*/
+#define	_msg_xyz_36	MsgInfo(204)	/*	"è«‹é¸æ“‡æ¬²æ›´æ”¹é …ç›®ç·¨è™Ÿ, æˆ–æŒ‰ [Enter] çµæŸ : "	*/
+#define	_msg_xyz_38	MsgInfo(102)	/*	"å†æ¬¡ç¢ºèª : "	*/
+#define	_msg_xyz_39	MsgInfo(104)	/*	"å¯†ç¢¼ä¸ä¸€è‡´, è«‹é‡æ–°è¼¸å…¥."	*/
+#define	_msg_xyz_52	MsgInfo(236)	/*	"[1;37;46m                         è¨ª  å®¢  ç•™  è¨€  æ¿                              [m\n\n"	*/
+#define	_msg_xyz_53	MsgInfo(235)	/*	"[1;37;45mè«‹æŒ‰[Q]éµçµæŸ, æˆ–æŒ‰[X]éµè¡¨ç¤ºä»¥å¾Œä¸å†çœ‹ç•™è¨€æ¿, æˆ–ä»»æ„éµç¿»ä¸‹é ...[0m"	*/
+#define	_msg_xyz_34	MsgInfo(229)	/*	"== èªè¨€è¨­å®š ==\n"	*/
+#define	_msg_xyz_35	MsgInfo(1)	/*	"è«‹é¸æ“‡æ‚¨è¦ä½¿ç”¨çš„èªè¨€ : "	*/
+#define	_msg_xyz_57	MsgInfo(50)	/*	"é¸æ“‡ç°½åæª” (0/1/2/3) [0]æ”¾æ£„: "	*/
+#define	_msg_xyz_58	MsgInfo(45)	/*	"é¸æ“‡æ‚¨æ‰€è¦ç·¨è¼¯çš„ç°½åæª” (1/2/3): "	*/
+#define	_msg_xyz_61	MsgInfo(5)	/*	"ä¸­æ–‡ (Big5)"	*/
+#define	_msg_xyz_62	MsgInfo(3)	/*	"English (è‹±æ–‡)"	*/
 
 
 #endif /* _BBS_LANG_H_ */

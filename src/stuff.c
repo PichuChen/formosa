@@ -215,10 +215,10 @@ void show_byebye(BOOL idle)
 				return;
 
 			sprintf(fname, "tmp/_writebackup.%s", curuser.userid);
-			if (get_message_file(fname, "[³Æ¥÷] °T®§°O¿ı") == 0)
+			if (get_message_file(fname, "[å‚™ä»½] è¨Šæ¯è¨˜éŒ„") == 0)
 			{
 				SendMail(-1, fname, curuser.userid, curuser.userid,
-							 "[³Æ¥÷] °T®§°O¿ı", curuser.ident);
+							 "[å‚™ä»½] è¨Šæ¯è¨˜éŒ„", curuser.ident);
 				unlink(fname);
 			}
 		}
@@ -236,9 +236,9 @@ show_help(const char * const helptext[])
     clear();
     for (i = 0; (str = helptext[i]); i++) {
 	if (*str == '\0')
-	    prints(ANSI_COLOR(1) "¡i %s ¡j" ANSI_COLOR(0) "\n", str + 1);
+	    prints(ANSI_COLOR(1) "ã€ %s ã€‘" ANSI_COLOR(0) "\n", str + 1);
 	else if (*str == '\01')
-	    prints("\n" ANSI_COLOR(36) "¡i %s ¡j" ANSI_RESET "\n", str + 1);
+	    prints("\n" ANSI_COLOR(36) "ã€ %s ã€‘" ANSI_RESET "\n", str + 1);
 	else
 	    prints("        %s\n", str);
     }
@@ -343,15 +343,15 @@ static void left_note()			/* Seraph */
 			}
 			while (read(fdd, &notetmp, sizeof(notetmp)) == sizeof(notetmp))
 			{
-				if (mynote.date - notetmp.date < 14400)		/* 14400¬í */
-					write(fdt, &notetmp, sizeof(notetmp));	/* §âÂÂÀÉ°Â¶i¨Ó */
+				if (mynote.date - notetmp.date < 14400)		/* 14400ç§’ */
+					write(fdt, &notetmp, sizeof(notetmp));	/* æŠŠèˆŠæª”å…œé€²ä¾† */
 			}
 			flock(fdd, LOCK_UN);
 			close(fdd);
 		}
 		close(fdt);
 
-		rename(ftmp, fdat);	/* §âtmp§ó¦W¦¨dat */
+		rename(ftmp, fdat);	/* æŠŠtmpæ›´åæˆdat */
 		x_viewnote();
 	}
 }
@@ -367,7 +367,7 @@ int Goodbye()			/* quit bbs */
 	if (igetkey() != 'y')
 		return C_FOOT;
 
-	if (uinfo.ever_delete_mail)	/* Á×§K¨Ï¥ÎªÌ¤£¥¿±`Â_½u¾É­P«H½c¥¼²M */
+	if (uinfo.ever_delete_mail)	/* é¿å…ä½¿ç”¨è€…ä¸æ­£å¸¸æ–·ç·šå°è‡´ä¿¡ç®±æœªæ¸… */
 		pack_article(ufile_mail);
 
 	move(b_line, 0);
@@ -392,8 +392,8 @@ int Goodbye()			/* quit bbs */
 		)
 	{
 		move(b_line, 24);
-		outs("±N½u¤W°T®§³Æ¥÷¦Ü«H½c (y/n) ? [y]: ");
-		if (igetkey() != 'n')   /* sarek:06/09/2002:default to backup,Á×§Kuser¤â·Æº|¦s­«­n°T®§... */
+		outs("å°‡ç·šä¸Šè¨Šæ¯å‚™ä»½è‡³ä¿¡ç®± (y/n) ? [y]: ");
+		if (igetkey() != 'n')   /* sarek:06/09/2002:default to backup,é¿å…useræ‰‹æ»‘æ¼å­˜é‡è¦è¨Šæ¯... */
 		{
 			char fname[PATHLEN];
 
@@ -403,10 +403,10 @@ int Goodbye()			/* quit bbs */
 				return C_FOOT;
 
 			sprintf(fname, "tmp/_writebackup.%s", curuser.userid);
-			if (get_message_file(fname, "[³Æ¥÷] °T®§°O¿ı") == 0)
+			if (get_message_file(fname, "[å‚™ä»½] è¨Šæ¯è¨˜éŒ„") == 0)
 			{
 				SendMail(-1, fname, curuser.userid, curuser.userid,
-							 "[³Æ¥÷] °T®§°O¿ı", curuser.ident);
+							 "[å‚™ä»½] è¨Šæ¯è¨˜éŒ„", curuser.ident);
 				unlink(fname);
 			}
 		}
@@ -426,9 +426,9 @@ int Goodbye()			/* quit bbs */
 
 
 /*******************************************************************
- * ¶Ç¤J link list ªº³»ÂI, ÄÀ©ñ¾ã­Ó Link list space
- * °²¦p link data ¬O¯Â«ü¼Ğ, «h freefunc ¥²¶·¶Ç NULL ¶i¨Ó
- * ¶Ç¦^ NULL pointer
+ * å‚³å…¥ link list çš„é ‚é», é‡‹æ”¾æ•´å€‹ Link list space
+ * å‡å¦‚ link data æ˜¯ç´”æŒ‡æ¨™, å‰‡ freefunc å¿…é ˆå‚³ NULL é€²ä¾†
+ * å‚³å› NULL pointer
  *******************************************************************/
 void free_wlist(struct word **wtop, void (*freefunc) (void *))
 {
@@ -445,9 +445,9 @@ void free_wlist(struct word **wtop, void (*freefunc) (void *))
 
 
 /*******************************************************************
- * ¥[¤W¤@µ§¸ê®Æ¨ì«ü©wªº link list ¥½?
- * °²¦p link data ¬O¯Â«ü¼Ğ, «h addfunc ¥²¶·¶Ç NULL ¶i¨Ó
- * ¶Ç¦^·s link list ªº pointer («eºİ)
+ * åŠ ä¸Šä¸€ç­†è³‡æ–™åˆ°æŒ‡å®šçš„ link list æœ«?
+ * å‡å¦‚ link data æ˜¯ç´”æŒ‡æ¨™, å‰‡ addfunc å¿…é ˆå‚³ NULL é€²ä¾†
+ * å‚³å›æ–° link list çš„ pointer (å‰ç«¯)
  *******************************************************************/
 void add_wlist(struct word **wtop, char *str, void *(*addfunc) (const char *))
 {
@@ -478,10 +478,10 @@ void add_wlist(struct word **wtop, char *str, void *(*addfunc) (const char *))
 
 
 /*******************************************************************
- * ¤ñ¹ï link list ¤¤¬O§_¦³»P word ¬Û¦Pªº¸ê®Æ.
- * --del by lasehu­Y wcur ¬° NULL, «h±qÀY§ä°_, §_«h±q wcur ¶}©l§ä--
- * ¶Ç¦^§ä¨ìªº --del by lasehu©Î¥Ø«e©Ò¦bªº link pointer--
- * §ä¤£¨ì«h¶Ç¦^ NULL
+ * æ¯”å° link list ä¸­æ˜¯å¦æœ‰èˆ‡ word ç›¸åŒçš„è³‡æ–™.
+ * --del by lasehuè‹¥ wcur ç‚º NULL, å‰‡å¾é ­æ‰¾èµ·, å¦å‰‡å¾ wcur é–‹å§‹æ‰¾--
+ * å‚³å›æ‰¾åˆ°çš„ --del by lasehuæˆ–ç›®å‰æ‰€åœ¨çš„ link pointer--
+ * æ‰¾ä¸åˆ°å‰‡å‚³å› NULL
  *******************************************************************/
 int cmp_wlist(struct word *wtop, char *str, int (*cmpfunc) (const char *, const char *))
 {
@@ -501,12 +501,12 @@ int cmp_wlist(struct word *wtop, char *str, int (*cmpfunc) (const char *, const 
 
 
 /*******************************************************************
- * ¤ñ¹ï link list ¤¤¬O§_¦³»P word ¬Û¦Pªº¸ê®Æ.
- * ­Y wcur ¬° NULL, «h±qÀY§ä°_, §_«h±q wcur ¶}©l§ä.
- * ¦pªG¦³, ¶¶«K§â¸Ó link data §R?
- * °²¦p link data ¬O¯Â«ü¼Ğ, «h freefunc ¥²¶·¶Ç NULL ¶i¨Ó
- * ¶Ç¦^§ä¨ìªº©Î¥Ø«e©Ò¦bªº link pointer
- * §ä¤£¨ì«h¶Ç¦^ NULL
+ * æ¯”å° link list ä¸­æ˜¯å¦æœ‰èˆ‡ word ç›¸åŒçš„è³‡æ–™.
+ * è‹¥ wcur ç‚º NULL, å‰‡å¾é ­æ‰¾èµ·, å¦å‰‡å¾ wcur é–‹å§‹æ‰¾.
+ * å¦‚æœæœ‰, é †ä¾¿æŠŠè©² link data åˆª?
+ * å‡å¦‚ link data æ˜¯ç´”æŒ‡æ¨™, å‰‡ freefunc å¿…é ˆå‚³ NULL é€²ä¾†
+ * å‚³å›æ‰¾åˆ°çš„æˆ–ç›®å‰æ‰€åœ¨çš„ link pointer
+ * æ‰¾ä¸åˆ°å‰‡å‚³å› NULL
  *******************************************************************/
 struct word *cmpd_wlist(struct word **pwtop, char *str,
 						int (*cmpfunc) (const char *, const char *),
@@ -562,9 +562,9 @@ struct word *cmpd_wlist(struct word **pwtop, char *str,
 
 
 /*******************************************************************
- * ­pºâ«ü©wªº link list ¤¤¦³´Xµ§ link.
- * ­Y wcur ¬° NULL, «h±qÀYºâ°_, §_«h±q wcur ¶}©lºâ.
- * ¶Ç¦^µ§¼Æ
+ * è¨ˆç®—æŒ‡å®šçš„ link list ä¸­æœ‰å¹¾ç­† link.
+ * è‹¥ wcur ç‚º NULL, å‰‡å¾é ­ç®—èµ·, å¦å‰‡å¾ wcur é–‹å§‹ç®—.
+ * å‚³å›ç­†æ•¸
  *******************************************************************/
 static int num_wlist(struct word *wtop /* , struct word *wcur */ )
 {
@@ -589,7 +589,7 @@ static int num_wlist(struct word *wtop /* , struct word *wcur */ )
 
 
 /*******************************************************************
- * ²£¥Í link list ¤l¶°¦X
+ * ç”¢ç”Ÿ link list å­é›†åˆ
  *******************************************************************/
 static struct word *get_subwlist(register char tag[], register struct word *list)
 {
@@ -609,7 +609,7 @@ static struct word *get_subwlist(register char tag[], register struct word *list
 
 
 /*******************************************************************
- * ¬d¥X³Ì¤j¦r¦ê
+ * æŸ¥å‡ºæœ€å¤§å­—ä¸²
  *******************************************************************/
 static int maxlen_wlist(struct word *list, int count)
 {
@@ -630,7 +630,7 @@ static int maxlen_wlist(struct word *list, int count)
 #define NUMLINES (19)
 
 /*******************************************************************
- * ±µ¨ü¿é¤J, »P«ü©wªº link list ¤ñ¹ï
+ * æ¥å—è¼¸å…¥, èˆ‡æŒ‡å®šçš„ link list æ¯”å°
  *******************************************************************/
 int namecomplete(struct word *toplev, char data[], BOOL simple)
 {
@@ -1052,8 +1052,8 @@ int (*cmpfunc) (const char *, const char *);
 
 
 /*******************************************************************
- * ¶Ç¤J string, malloc ¤@¶ô memory ¦s¤U¦r¦ê
- * ¶Ç¦^ ¸Ó MEMORY Pointer
+ * å‚³å…¥ string, malloc ä¸€å¡Š memory å­˜ä¸‹å­—ä¸²
+ * å‚³å› è©² MEMORY Pointer
  *******************************************************************/
 void *malloc_str(const char *str)
 {

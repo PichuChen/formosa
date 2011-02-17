@@ -27,7 +27,7 @@ static void fixchatid(char *chatid)
 {
 	char *p;
 
-	if ((p = strstr(chatid, "¡@")))		/* lthuang */
+	if ((p = strstr(chatid, "ã€€")))		/* lthuang */
 		memcpy(p, "__", 2);
 	while (*chatid)
 	{
@@ -489,9 +489,9 @@ static void dochatcommand(char *cmd)
 	if (*cmd == 'h')
 	{
 		printchatline(_msg_chat_41);
-		printchatline("  /leave                  - Â÷¶}¥»ÀW¹D            [/le]");
+		printchatline("  /leave                  - é›¢é–‹æœ¬é »é“            [/le]");
 		if (curuser.userlevel >= PERM_CLOAK)
-			printchatline("  /cloak                  - Áô¨­                  [/cl]");
+			printchatline("  /cloak                  - éš±èº«                  [/cl]");
 		printchatline(_msg_chat_43);
 		return;
 	}

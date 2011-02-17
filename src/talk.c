@@ -13,17 +13,17 @@
 
 /* TODO: friend struct, including type(good/bad) */
 /* kmwang:20000609:BadGuyList */
-/* ·s¼W arg: type, ¥H¿ë§O¦n¤Í(F)©Î¬OÃa¤Í(B) */
+/* æ–°å¢ž arg: type, ä»¥è¾¨åˆ¥å¥½å‹(F)æˆ–æ˜¯å£žå‹(B) */
 void friendAdd(char *ident, char type)
 {
-/* kmwang:20000802:±N if ®³±¼, Á×§K¦³¤H¤@¶i¯¸´N½s¿è¦n¤Í©ÎµÛ¬OÃa¤H¦W³æ, ³y¦¨¥æ¶° */
+/* kmwang:20000802:å°‡ if æ‹¿æŽ‰, é¿å…æœ‰äººä¸€é€²ç«™å°±ç·¨è¼¯å¥½å‹æˆ–è‘—æ˜¯å£žäººåå–®, é€ æˆäº¤é›† */
 //	if ( type == 'F' )
 		malloc_array(&friend_cache, ufile_overrides);
 //	else
 		malloc_array(&badguy_cache, ufile_blacklist);
 
 	if ( !(cmp_array(&friend_cache, ident) || cmp_array(&badguy_cache, ident)) )
-	// ¥²¶·¤£¦s¦b©ó¦n¤Í¤ÎÃa¤Í¦W³æ¤¤..
+	// å¿…é ˆä¸å­˜åœ¨æ–¼å¥½å‹åŠå£žå‹åå–®ä¸­..
 	{
 		sprintf(genbuf, "%s\n", ident);
 		if (type == 'F')
@@ -56,7 +56,7 @@ void friendAdd(char *ident, char type)
 /* sarek:02/15/2001: file_delete_line moved to lib/mod_talk.c */
 
 /* kmwang:20000609:BadGuyList */
-/* ·s¼W arg: type, ¥H¿ë§O¦n¤Í(F)©Î¬OÃa¤Í(B) */
+/* æ–°å¢ž arg: type, ä»¥è¾¨åˆ¥å¥½å‹(F)æˆ–æ˜¯å£žå‹(B) */
 void friendDelete(char *ident, char type)
 {
 #if 1
@@ -124,16 +124,16 @@ void toggle_bpager()
 		return;
 #endif
 	if (uinfo.pager & PAGER_DENYBROAD)
-		strcpy(genbuf,"©Úµ´¼s¼½");
+		strcpy(genbuf,"æ‹’çµ•å»£æ’­");
 	else if (uinfo.pager & PAGER_FBROADC)
-			strcpy(genbuf,"±µ¨ü¦n¤Íªº¼s¼½");
+			strcpy(genbuf,"æŽ¥å—å¥½å‹çš„å»£æ’­");
 		else
-			strcpy(genbuf,"©Ò¦³¤H");
+			strcpy(genbuf,"æ‰€æœ‰äºº");
 
 	move(b_line-1, 0);
 	clrtoeol();
-	prints("¼s¼½©I³ê¹a²{¦b¬O¦b [%s] ªºª¬ºA", genbuf);
-	getdata(b_line, 0, "¼s¼½©I³ê¹a : (1)©Úµ´¼s¼½ (2)±µ¨ü¦n¤Íªº¼s¼½ (3)©Ò¦³¤H, ½Ð¿ï¾Ü: ", genbuf, 2, ECHONOSP);
+	prints("å»£æ’­å‘¼å–šéˆ´ç¾åœ¨æ˜¯åœ¨ [%s] çš„ç‹€æ…‹", genbuf);
+	getdata(b_line, 0, "å»£æ’­å‘¼å–šéˆ´ : (1)æ‹’çµ•å»£æ’­ (2)æŽ¥å—å¥½å‹çš„å»£æ’­ (3)æ‰€æœ‰äºº, è«‹é¸æ“‡: ", genbuf, 2, ECHONOSP);
 	i = genbuf[0] - '0';
 	if (i >= 1 && i <= 2)
 		uinfo.pager =(uinfo.pager & 0x00FF) + (1 << (i + 7));
@@ -176,7 +176,7 @@ int QueryUser(char *userid, USER_INFO *upent)
 	/* show plan file */
 	sethomefile(genbuf, userid, UFNAME_PLANS);
 
-	qtype = vans("[1]¦W¤ùÀÉ [2]¯d¨¥ª© ");
+	qtype = vans("[1]åç‰‡æª” [2]ç•™è¨€ç‰ˆ ");
 	switch (qtype)
 	{
 	default:
@@ -646,7 +646,7 @@ static int talkCheckPerm(USER_INFO *tkuinf, BOOL opt)
 
 int check_page_perm()
 {
-	if (!curuser.userlevel)	/* guest ¤£¯à talk/write/broadcast */
+	if (!curuser.userlevel)	/* guest ä¸èƒ½ talk/write/broadcast */
 		return -1;
 #if defined(PAGE_LIMIT) || defined(KHBBS)
 	if (curuser.ident != 7)
@@ -929,7 +929,7 @@ int get_message_file(char *fname, char *title)
 	write_article_header(fpw, curuser.userid, uinfo.username, NULL,
 			       NULL, title, NULL);
 	fputs("\n", fpw);
-	/* °t¦X­×§ï¤å³¹¥\¯à­­¨î */
+	/* é…åˆä¿®æ”¹æ–‡ç« åŠŸèƒ½é™åˆ¶ */
 #if 0
 	fprintf(fpw, "--\n");
 #endif
@@ -967,8 +967,8 @@ bug fixed		*/
 			{
 				char buf[MTEXTLEN+6];
 
-				/* ´¡¤J (¼s¼½) ¦r¼Ë */
-				strcpy(buf, "(¼s¼½)");
+				/* æ’å…¥ (å»£æ’­) å­—æ¨£ */
+				strcpy(buf, "(å»£æ’­)");
 				strcat(buf, my_mtext);
 /*
 				msq_set(&mymsq, curuser.userid, curuser.username, "", buf);
@@ -1076,16 +1076,16 @@ int msq_reply()		/* lthuang */
 
 	if (msq_last == -1)
 	{
-		msg("¨S¦³¦¬¨ì¥ô¦ó°T®§!!");
+		msg("æ²’æœ‰æ”¶åˆ°ä»»ä½•è¨Šæ¯!!");
 		getkey();
 		goto msq_reply_ret;
 	}
 
 	move(b_line - 1, 0);
 	clrtoeol();
-	outs("(CTRL-R)(y)¦^°T®§ (¡ô)(¡õ)¿ï¾Ü (CTRL-D)¥þ§R°£ (Enter)Â÷¶}");
-#if defined(NSYSUBBS1) || defined(KHBBS) /* sarek:01/05/2001:°ª¥«¸ê±Ð­n¨D */
-	outs(" (CTRL-X)±ÄÃÒ");
+	outs("(CTRL-R)(y)å›žè¨Šæ¯ (â†‘)(â†“)é¸æ“‡ (CTRL-D)å…¨åˆªé™¤ (Enter)é›¢é–‹");
+#if defined(NSYSUBBS1) || defined(KHBBS) /* sarek:01/05/2001:é«˜å¸‚è³‡æ•™è¦æ±‚ */
+	outs(" (CTRL-X)æŽ¡è­‰");
 #endif
 
 	if (save_msq_first != msq_last)
@@ -1109,7 +1109,7 @@ int msq_reply()		/* lthuang */
 			/* sarek:03/30/2001:confirm */
                         move(b_line - 1, 0);
                         clrtoeol();
-                        outs("¬O§_½T©w§R°£[°T®§³Æ¥÷]? (y/n)? [n]: ");
+                        outs("æ˜¯å¦ç¢ºå®šåˆªé™¤[è¨Šæ¯å‚™ä»½]? (y/n)? [n]: ");
 
                         if (igetkey() != 'y')
                         {
@@ -1135,7 +1135,7 @@ int msq_reply()		/* lthuang */
 		{
 			QueryUser(allmsqs[ccur].fromid, NULL);
 		}
-#if defined(NSYSUBBS1) || defined(KHBBS) /* sarek:01/05/2001:°ª¥«¸ê±Ð­n¨D */
+#if defined(NSYSUBBS1) || defined(KHBBS) /* sarek:01/05/2001:é«˜å¸‚è³‡æ•™è¦æ±‚ */
 		else if (ch == CTRL('X'))
 		{
 			int retcode = -1;
@@ -1144,7 +1144,7 @@ int msq_reply()		/* lthuang */
 
 			move(b_line - 1, 0);
 			clrtoeol();
-			prints("<<°T®§±ÄÃÒ>>: §A½T©w¥B¦P·N±N°T®§±ÄÃÒµ¹¯¸ªø¶Ü (y/n)? [n]: ");
+			prints("<<è¨Šæ¯æŽ¡è­‰>>: ä½ ç¢ºå®šä¸”åŒæ„å°‡è¨Šæ¯æŽ¡è­‰çµ¦ç«™é•·å—Ž (y/n)? [n]: ");
 			if (igetkey() != 'y')
 			{
 				move(b_line - 1, 0);
@@ -1156,29 +1156,29 @@ int msq_reply()		/* lthuang */
 
 			sprintf(fname, "tmp/_writebackup.%s", curuser.userid);
 			/* TODO */
-			if (get_message_file(fname, "[°T®§°O¿ý]") == 0)
+			if (get_message_file(fname, "[è¨Šæ¯è¨˜éŒ„]") == 0)
 			{
 				/*  post on board, postpath is NULL */
 #ifdef USE_THREADING	/* syhu */
 /*
 				retcode = PublishPost(fname, curuser.userid, curuser.username,
-				                      CAPTURE_BOARD, "[°T®§°O¿ý]",
+				                      CAPTURE_BOARD, "[è¨Šæ¯è¨˜éŒ„]",
 				                      curuser.ident, uinfo.from,
 				                      FALSE, NULL, 0, -1, -1);
 */
 				retcode = PublishPost(fname, curuser.userid, uinfo.username,
-				                      CAPTURE_BOARD, "[°T®§°O¿ý]",
+				                      CAPTURE_BOARD, "[è¨Šæ¯è¨˜éŒ„]",
 				                      curuser.ident, uinfo.from,
 				                      FALSE, NULL, 0, -1, -1);
 #else
 /*
 				retcode = PublishPost(fname, curuser.userid, curuser.username,
-				                      CAPTURE_BOARD, "[°T®§°O¿ý]",
+				                      CAPTURE_BOARD, "[è¨Šæ¯è¨˜éŒ„]",
 				                      curuser.ident, uinfo.from,
 				                      FALSE, NULL, 0);
 */
 				retcode = PublishPost(fname, curuser.userid, uinfo.username,
-				                      CAPTURE_BOARD, "[°T®§°O¿ý]",
+				                      CAPTURE_BOARD, "[è¨Šæ¯è¨˜éŒ„]",
 				                      curuser.ident, uinfo.from,
 				                      FALSE, NULL, 0);
 #endif
@@ -1260,16 +1260,16 @@ static int fmsq(USER_INFO *upent)
 	{
 
 #if 0
-        	/* ¥u¦³¤¬³]¦n¤Í¤~¼s¼½ */
+        	/* åªæœ‰äº’è¨­å¥½å‹æ‰å»£æ’­ */
 		if (upent->pager & PAGER_FBROADC)
 			if (!can_override(upent->userid, curuser.userid))
 				return -1;
-		/* ©Ú¦¬¼s¼½ */
+		/* æ‹’æ”¶å»£æ’­ */
 		if (upent->pager & PAGER_DENYBROAD)
 			return -1;
 
 /*
-¥u¦³¤¬³]¦n¤Í¤~¯à°T®§¼s¼½
+åªæœ‰äº’è¨­å¥½å‹æ‰èƒ½è¨Šæ¯å»£æ’­
 		if (!can_override(upent->userid, curuser.userid))
 			return -1;
 */
@@ -1277,20 +1277,20 @@ static int fmsq(USER_INFO *upent)
 #if 1 /* first check to see if PAGER_DENYBROAD is set to avoid file open for
 		calling can_override() 'lasehu (I'm choosy) 2002/05/20
 		*/
-		/* ©Ú¦¬¼s¼½ */
+		/* æ‹’æ”¶å»£æ’­ */
 		if (upent->pager & PAGER_DENYBROAD)
 			return -1;
-        	/* ¥u¦³¤¬³]¦n¤Í¤~¼s¼½ */
+        	/* åªæœ‰äº’è¨­å¥½å‹æ‰å»£æ’­ */
 		if (upent->pager & PAGER_FBROADC)
 			if (!can_override(upent->userid, curuser.userid))
 				return -1;
 #endif
-// kmwang:20000610:©Ú¦¬Ãa¤H¼s¼½°T®§
+// kmwang:20000610:æ‹’æ”¶å£žäººå»£æ’­è¨Šæ¯
 		if (in_blacklist(upent->userid, curuser.userid))
 			return -1;
 
 #if 0
-// kmwang:20000710:©Ú¦¬¼s¼½
+// kmwang:20000710:æ‹’æ”¶å»£æ’­
 		if (get_passwd(&tobroadcast, upent->userid))
 			if (tobroadcast.flags[0] & BROADCAST_FLAG) return -1;
 #endif
@@ -1309,9 +1309,9 @@ static int fmsq(USER_INFO *upent)
 int t_fmsq()
 {
 #ifdef NSYSUBBS1
-        if (curuser.userlevel<10)       /* sarek:04/09/2001:lv¤p©ó10ªÌ¤£±o¼s¼½ */
+        if (curuser.userlevel<10)       /* sarek:04/09/2001:lvå°æ–¼10è€…ä¸å¾—å»£æ’­ */
         {
-               msg("©êºp¡Aµ¥¯Å¥¼¹F10¯ÅªÌµLªk¨Ï¥Î¼s¼½...");
+               msg("æŠ±æ­‰ï¼Œç­‰ç´šæœªé”10ç´šè€…ç„¡æ³•ä½¿ç”¨å»£æ’­...");
                getkey();
                return C_FOOT;
         }

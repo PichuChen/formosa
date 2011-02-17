@@ -36,14 +36,14 @@ disable
 		return 1;
 	else if (in_board)
 		return is_articleOwner(finfo) || hasBMPerm;
-	else /* ºëµØ°Ï */
+	else /* ç²¾è¯å€ */
 		return hasBMPerm;
 
 	return 0;
 }
 
 /*
- * ­×§ï¤å³¹¼ÐÃD
+ * ä¿®æ”¹æ–‡ç« æ¨™é¡Œ
  */
 int title_article(int ent, FILEHEADER *finfo, char *direct)
 {
@@ -61,7 +61,7 @@ int title_article(int ent, FILEHEADER *finfo, char *direct)
 	memcpy(fhr, finfo, FH_SIZE);
 	strcpy(fhr->title, title);
 	if (safely_substitute_dir(direct, 0, ent, finfo, fhr, TRUE) == -1) {
-		msg(ANSI_COLOR(1;31) "­×§ï¼ÐÃD¥¢±Ñ" ANSI_RESET);
+		msg(ANSI_COLOR(1;31) "ä¿®æ”¹æ¨™é¡Œå¤±æ•—" ANSI_RESET);
 		getkey();
 		return C_INIT;
 	}
@@ -137,7 +137,7 @@ int edit_article(int ent, FILEHEADER *finfo, char *direct)
 	update_umode(MODIFY);
 
 	setdotfile(fn_ori, direct, finfo->filename);
-	if (!in_mail && !in_board)	/* ºëµØ°Ï¤å³¹¥iª½±µ­×§ï */
+	if (!in_mail && !in_board)	/* ç²¾è¯å€æ–‡ç« å¯ç›´æŽ¥ä¿®æ”¹ */
 	{
 		vedit(fn_ori, NULL, NULL);
 		return C_FULL;
@@ -183,10 +183,10 @@ int edit_article(int ent, FILEHEADER *finfo, char *direct)
 
 	/*
 		asuka: (bug fixed by lasehu, 99/11/15)
-			§â ¤å³¹­×§ï ªº¼Ð°O²¾¤J article header
-			Á×§K¦^ÂÐ¤å³¹®É©ÎÂà«H®ÉÅÜ¦¨¤å³¹¤º®eªº¤@³¡¥÷
-		cooldavid: ¥u¦³­ì§@ªÌ­×§ï¬O©ñ¦b¼ÐÀY
-			   ª©¥D­×§ï±N­×§ï°O¿ý©ñ¦b¤å³¹«á­±
+			æŠŠ æ–‡ç« ä¿®æ”¹ çš„æ¨™è¨˜ç§»å…¥ article header
+			é¿å…å›žè¦†æ–‡ç« æ™‚æˆ–è½‰ä¿¡æ™‚è®Šæˆæ–‡ç« å…§å®¹çš„ä¸€éƒ¨ä»½
+		cooldavid: åªæœ‰åŽŸä½œè€…ä¿®æ”¹æ˜¯æ”¾åœ¨æ¨™é ­
+			   ç‰ˆä¸»ä¿®æ”¹å°‡ä¿®æ”¹è¨˜éŒ„æ”¾åœ¨æ–‡ç« å¾Œé¢
 	*/
 	if (!vedit(fn_edit, NULL, NULL))
 	{
@@ -194,7 +194,7 @@ int edit_article(int ent, FILEHEADER *finfo, char *direct)
 		while (fgets(genbuf, sizeof(genbuf), fp_ori))
 		{
 			if (is_articleOwner(finfo) &&
-			    !strncmp(genbuf, "­×§ï:", 5))
+			    !strncmp(genbuf, "ä¿®æ”¹:", 5))
 				continue;
 			if (genbuf[0] == '\n')
 				break;
@@ -205,7 +205,7 @@ int edit_article(int ent, FILEHEADER *finfo, char *direct)
 		{
 			time_t now;
 			time(&now);
-			fprintf(fp_new, "­×§ï: %s", ctime(&now));
+			fprintf(fp_new, "ä¿®æ”¹: %s", ctime(&now));
 		}
 
 		fprintf(fp_new, "\n");
@@ -244,7 +244,7 @@ int edit_article(int ent, FILEHEADER *finfo, char *direct)
 
 
 /*
- * «O¯d¤å³¹
+ * ä¿ç•™æ–‡ç« 
  */
 int reserve_article(int ent, FILEHEADER *finfo, char *direct)
 {
@@ -255,9 +255,9 @@ int reserve_article(int ent, FILEHEADER *finfo, char *direct)
 	if ((finfo->accessed & FILE_DELE) || (finfo->accessed & FILE_TREA))
 		return C_NONE;
 	/*
-	 * 1. ºëµØ°Ï¤å³¹¬Ò¤£¥i
-	 * 2. ­Ó¤H«H½c¬Ò¥i
-	 * 3. ¤@¯ë°Ï¤å³¹, ±©¦³ªO¥D, ªO¥D§U¤â, ¯¸ªø¥i
+	 * 1. ç²¾è¯å€æ–‡ç« çš†ä¸å¯
+	 * 2. å€‹äººä¿¡ç®±çš†å¯
+	 * 3. ä¸€èˆ¬å€æ–‡ç« , æƒŸæœ‰æ¿ä¸», æ¿ä¸»åŠ©æ‰‹, ç«™é•·å¯
 	 */
 	if ((!in_mail && !in_board)
 	    || (!in_mail && !hasBMPerm))
@@ -271,7 +271,7 @@ int reserve_article(int ent, FILEHEADER *finfo, char *direct)
 
 	if (cmp_wlist(artwtop, finfo->filename, strcmp))
 	{
-		msg("<<¤å³¹«O¯d>>  (t)¤w¼Ð°Oªº (a)¦¹½g? [a]: ");	/* lang.h */
+		msg("<<æ–‡ç« ä¿ç•™>>  (t)å·²æ¨™è¨˜çš„ (a)æ­¤ç¯‡? [a]: ");	/* lang.h */
 		if (igetkey() == 't')
 		{
 			/*ARGUSED*/
@@ -392,7 +392,7 @@ static int reply_article(int ent, FILEHEADER *finfo, char *direct)
 
 
 /*
- * ¼Ð¥Ü¤å³¹¤wÅª
+ * æ¨™ç¤ºæ–‡ç« å·²è®€
  */
 static void readed_article(int ent, FILEHEADER *finfo, char *direct)
 {
@@ -436,7 +436,7 @@ int read_article(int ent, FILEHEADER *finfo, char *direct)
 		char *pt;
 		extern int nowdepth;
 
-		if (!last_accessed)	/* Åª§G§i®É«ö¤W¤UÁä¹J¨ìºëµØ°Ï¥Ø¿ý */
+		if (!last_accessed)	/* è®€ä½ˆå‘Šæ™‚æŒ‰ä¸Šä¸‹éµé‡åˆ°ç²¾è¯å€ç›®éŒ„ */
 		{
 			last_accessed = TRUE;
 			return C_FULL;
@@ -534,7 +534,7 @@ int read_article(int ent, FILEHEADER *finfo, char *direct)
 
 
 /*
- * §å¦¸§R°£¤å³¹
+ * æ‰¹æ¬¡åˆªé™¤æ–‡ç« 
  *
  * ent, finfo, direct - standard input-processing function parameters
  * wtop - beginning of taged-articles linklist
@@ -627,7 +627,7 @@ int delete_articles(int ent, FILEHEADER *finfo, char *direct, struct word *wtop,
 			{
 				if (fhr->accessed & FILE_TREA)
 				{
-					/* §R°£ºëµØ°Ï¥Ø¿ý */
+					/* åˆªé™¤ç²¾è¯å€ç›®éŒ„ */
 					setdotfile(genbuf, direct, fhr->filename);
 					if (myunlink(genbuf) < 0)
 						continue;
@@ -647,7 +647,7 @@ int delete_articles(int ent, FILEHEADER *finfo, char *direct, struct word *wtop,
 				continue;
 			else if (fhr->accessed & FILE_DELE)
 			{
-				/* ¯SÅv: ¯¸ªø¥i±Ï¦^¤å³¹ */
+				/* ç‰¹æ¬Š: ç«™é•·å¯æ•‘å›žæ–‡ç«  */
 				if (!HAS_PERM(PERM_SYSOP) && strcmp(fhr->delby, curuser.userid)
 				    && (!in_board || !isBM || !strcmp(fhr->delby, fhr->owner)))
 				{
@@ -702,7 +702,7 @@ err_out:
 		get_last_info(direct, fd, &linfo, TRUE);
 
 	unlock_and_close(fd);
-	if (!rtval && !in_mail && !in_board) /* ºëµØ°Ïª½±µ²M°£ */
+	if (!rtval && !in_mail && !in_board) /* ç²¾è¯å€ç›´æŽ¥æ¸…é™¤ */
 		pack_article(direct);
 
 	return rtval;
@@ -710,7 +710,7 @@ err_out:
 
 
 /*
- * ¼Ð°O§R°£¤å³¹
+ * æ¨™è¨˜åˆªé™¤æ–‡ç« 
  */
 int
 delete_article(int ent, FILEHEADER *finfo, char *direct)
@@ -789,7 +789,7 @@ delete_article(int ent, FILEHEADER *finfo, char *direct)
 }
 
 /*
- * ²M²z¤w¼Ð°O§R°£ªº¤å³¹
+ * æ¸…ç†å·²æ¨™è¨˜åˆªé™¤çš„æ–‡ç« 
  */
 int
 bm_pack_article(int ent, FILEHEADER *finfo, char *direct)
@@ -808,14 +808,14 @@ bm_pack_article(int ent, FILEHEADER *finfo, char *direct)
 	if (!hasBMPerm)
 		return C_NONE;
 
-	msg(ANSI_COLOR(1;33) "²M²z§R°£¤å³¹"
-	    ANSI_RESET ": ¦¹°Ê§@¸û¯Ó¶O¨t²Î¸ê·½, ½Ð¤@¦¸¾ã²z§¹«á¦A¨Ï¥Î. Ä~Äò?(y/n)[n] ");
+	msg(ANSI_COLOR(1;33) "æ¸…ç†åˆªé™¤æ–‡ç« "
+	    ANSI_RESET ": æ­¤å‹•ä½œè¼ƒè€—è²»ç³»çµ±è³‡æº, è«‹ä¸€æ¬¡æ•´ç†å®Œå¾Œå†ä½¿ç”¨. ç¹¼çºŒ?(y/n)[n] ");
 
 	/* once delete permission is confirmed, check delete option */
 	ch = igetkey();
 	if (ch == 'y' || ch == 'Y') {
 		pack_article(direct);
-		msg(ANSI_COLOR(1) "²M°£§¹²¦" ANSI_RESET);
+		msg(ANSI_COLOR(1) "æ¸…é™¤å®Œç•¢" ANSI_RESET);
 		ch = igetkey();
 		return C_INIT;
 	}
@@ -904,7 +904,7 @@ static int mail_articles(FILEHEADER *finfo, char *direct, char *from, char *to, 
 
 
 /*
- * Âà±H¤å³¹
+ * è½‰å¯„æ–‡ç« 
  */
 int mail_article(int ent, FILEHEADER *finfo, char *direct)
 {
@@ -958,7 +958,7 @@ int mail_article(int ent, FILEHEADER *finfo, char *direct)
 
 
 /*
- * Âà¶K¤å³¹
+ * è½‰è²¼æ–‡ç« 
  */
 int cross_article(int ent, FILEHEADER *finfo, char *direct)
 {
@@ -967,14 +967,14 @@ int cross_article(int ent, FILEHEADER *finfo, char *direct)
 	BOARDHEADER bh_cross;
 
 #ifdef KHBBS
-	msg("ª`·N! Âà¶K½g¼Æ½Ð¤Å¶W¹L¥»¯¸³W©w(½Ð¬d¸ß¯¸³W²Ä4±ø), ¹HªÌ±N¬å°£±b¸¹!");
+	msg("æ³¨æ„! è½‰è²¼ç¯‡æ•¸è«‹å‹¿è¶…éŽæœ¬ç«™è¦å®š(è«‹æŸ¥è©¢ç«™è¦ç¬¬4æ¢), é•è€…å°‡ç é™¤å¸³è™Ÿ!");
 	getkey();
 #endif
 
 	if ((finfo->accessed & FILE_DELE) || (finfo->accessed & FILE_TREA))
 		return C_NONE;
 
-	if (curuser.userlevel < 5)	/* lthuang: ¨¾¤î·s¨Ï¥ÎªÌ¨ì³BÂà¶K */
+	if (curuser.userlevel < 5)	/* lthuang: é˜²æ­¢æ–°ä½¿ç”¨è€…åˆ°è™•è½‰è²¼ */
 		return C_NONE;
 
 	if (in_mail && check_mail_num(0))
@@ -982,12 +982,12 @@ int cross_article(int ent, FILEHEADER *finfo, char *direct)
 
 	move(b_line, 0);
 	clrtoeol();
-	outs("Âà¶KªO­±¡G");	/* lang.h */
+	outs("è½‰è²¼æ¿é¢ï¼š");	/* lang.h */
 	if (namecomplete_board(&bh_cross, bname, TRUE) <= 0)
 		return C_FULL;
 
 	clear();
-	prints("Âà¶K©ó %s ªO!\n", bname);	/* lang.h */
+	prints("è½‰è²¼æ–¼ %s æ¿!\n", bname);	/* lang.h */
 	if (has_postperm(&bh_cross) == -1)
 		return C_FULL;
 
@@ -995,9 +995,9 @@ int cross_article(int ent, FILEHEADER *finfo, char *direct)
 /* comment by lthuang: hasBMPerm is according to CurBList not bh_cross */
 	if ((bh_cross.brdtype & BRD_CROSS) && !(hasBMPerm/*|| HAS_PERM(PERM_SYSOP)*/))
 	{
-		showmsg("¸ÓªO¤w³]©w¬°¤£±µ¨üÂà¶K!!Âà¶K¥¢±Ñ.");	/* lang.h */
+		showmsg("è©²æ¿å·²è¨­å®šç‚ºä¸æŽ¥å—è½‰è²¼!!è½‰è²¼å¤±æ•—.");	/* lang.h */
 		return C_NONE;
-	}			/*      °£¤F¯¸ªø¤Îª©¥DªO§U¥~¤£³\Âà¶K    */
+	}			/*      é™¤äº†ç«™é•·åŠç‰ˆä¸»æ¿åŠ©å¤–ä¸è¨±è½‰è²¼    */
 
 	if (strncmp(finfo->title, _str_crosspost, 6))
 		sprintf(title, "%s %s", _str_crosspost, finfo->title);
@@ -1033,7 +1033,7 @@ int cross_article(int ent, FILEHEADER *finfo, char *direct)
 #endif
 	if (rc < 0) {
 		if (rc == -2)
-			showmsg("½Ð¤Å¤j¶qÂà¶K¬Û¦P¤å³¹");
+			showmsg("è«‹å‹¿å¤§é‡è½‰è²¼ç›¸åŒæ–‡ç« ");
 		else
 			showmsg(_msg_fail);
 	} else {
@@ -1057,12 +1057,12 @@ static int pushCheckPerm(FILEHEADER *finfo)
 }
 
 /*
- * ±À¤å
+ * æŽ¨æ–‡
  */
 int push_article(int ent, FILEHEADER *finfo, char *direct)
 {
 	int fd, ch, rt, score, first = 0;
-	static char *yes = "±À", *no = "©A";
+	static char *yes = "æŽ¨", *no = "å‘¸";
 	char cyes[3], cno[3], *ptr = NULL;
 	char msgbuf[64], pushline[PUSHLEN], fn_art[PATHLEN], writebuf[STRLEN << 1], c;
 	time_t date;
@@ -1073,7 +1073,7 @@ int push_article(int ent, FILEHEADER *finfo, char *direct)
 		return C_NONE;
 
 	move(b_lines, 0);
-	msg(ANSI_COLOR(1) "<<¤å³¹µû¤À>>\033[m [y]±À¤å [n]©A¤å [g]¦Û­q±À [b]¦Û­q©A [q]©ñ±ó¡G");
+	msg(ANSI_COLOR(1) "<<æ–‡ç« è©•åˆ†>>\033[m [y]æŽ¨æ–‡ [n]å‘¸æ–‡ [g]è‡ªè¨‚æŽ¨ [b]è‡ªè¨‚å‘¸ [q]æ”¾æ£„ï¼š");
 	ch = igetkey();
 	switch (ch) {
 	case 'y':
@@ -1095,14 +1095,14 @@ int push_article(int ent, FILEHEADER *finfo, char *direct)
 		return C_FULL;
 
 	if (ptr == cyes || ptr == cno) {
-		if (!getdata(b_line, 0, ANSI_COLOR(1;36) "¦Û­q¡G" ANSI_RESET, ptr, 3, XECHO)) {
+		if (!getdata(b_line, 0, ANSI_COLOR(1;36) "è‡ªè¨‚ï¼š" ANSI_RESET, ptr, 3, XECHO)) {
 			if (ptr == cyes)
 				ptr = yes;
 			else
 				ptr = no;
 		}
 	}
-	sprintf(msgbuf, ANSI_COLOR(36) "%s" ANSI_RESET " %s%s" ANSI_RESET "¡G",
+	sprintf(msgbuf, ANSI_COLOR(36) "%s" ANSI_RESET " %s%s" ANSI_RESET "ï¼š",
 		curuser.userid,
 		(ptr == yes || ptr == cyes) ? ANSI_COLOR(1;31) : ANSI_COLOR(1;32),
 		ptr);
@@ -1163,7 +1163,7 @@ push_err:
 		flock(fd, LOCK_UN);
 		close(fd);
 	} else {
-		msg(ANSI_COLOR(1;31) "±À¤å¥¢±Ñ: ¤å³¹¤w§ó°Ê" ANSI_RESET);
+		msg(ANSI_COLOR(1;31) "æŽ¨æ–‡å¤±æ•—: æ–‡ç« å·²æ›´å‹•" ANSI_RESET);
 		ch = igetkey();
 		return C_INIT;
 	}
@@ -1193,7 +1193,7 @@ int set_article_title(char title[])
 
 
 /*
- * ¼Ð°O¤å³¹
+ * æ¨™è¨˜æ–‡ç« 
  */
 int tag_article(int ent, FILEHEADER *finfo, char *direct)
 {
@@ -1206,7 +1206,7 @@ int tag_article(int ent, FILEHEADER *finfo, char *direct)
 
 
 /*
- * §å¦¸¼Ð°O¤å³¹
+ * æ‰¹æ¬¡æ¨™è¨˜æ–‡ç« 
  */
 int range_tag_article(int ent, FILEHEADER *finfo, char *direct)
 {
