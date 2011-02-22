@@ -211,7 +211,7 @@ clrscr(void)
 {
     int r,j;
     for (r = 0; r < ft.rows; r++)
-        for(j = r; j < ft.cols; ++j )FTCMAP[r][j] = FTCHAR_ERASE;
+        for(j = 0; j < ft.cols; ++j )FTCMAP[r][j] = FTCHAR_ERASE;
     for (r = 0; r < ft.rows; r++)
         memset(FTAMAP[r], FTATTR_ERASE, ft.cols * sizeof(ftattr));
     fterm_markdirty();
@@ -915,8 +915,10 @@ outc_orig(unsigned char c)
 			FTC._byte[UTF8_bytepos] = c;
 			UTF8_bytepos++;
 			if(UTF8_charlen != UTF8_bytepos)return;
-			FTCROW[ft.x +1] = FTCHAR_END;
-			FTC._len = 2;
+			FTC._len = utf8charwidth(FTC._byte);
+			if(FTC._len==2){
+				FTCROW[ft.x +1] = FTCHAR_END;
+			}
 		}else if(~c & 0x20){//110xxxxx
 			FTC._byte[0] = c;
 			UTF8_charlen = 2;
@@ -2072,20 +2074,8 @@ void fterm_rawUTF8c(const ftchar * c)
 	fterm_rawc(c->_byte[3]);
 }
 
-int utf8strlen(const char* str){
-	int i=0,j=0;
-	while(str[i]){
-		if(~str[i] & 0x80){ //0xxxxxxx
-			j++;
-		}else if(~str[i] & 0x40){//10xxxxxx
-		
-		}else {//11xxxxxx
-			j+=2;
-		}
-		
-		i++;
-	}
-	return j;
+int utf8strlen(const unsigned char* str){
+	return utf8strwidth(str);
 }
 
 #endif
@@ -2125,8 +2115,203 @@ int ftcharcmp(const ftchar*  a,const ftchar* b){
 	c = (a->_byte[3] - b->_byte[3]);
 	//if(c != 0 || !(a->_byte[0] & 0x10))
 	return c;
+}
+int utf8charwidth(const unsigned char* bytes){
+	if(~ bytes[0] & 0x80){ //0xxxxxxx ~00007F
+		return 1;
+	}else if(~bytes[0] & 0x40){//10xxxxxx 
+		return 0;
+	}else if(~bytes[0] & 0x20) {//110xxxxx 000080 - 0007FF
+		return 1;
+	}else if(~bytes[0] & 0x10){//1110xxxx 000800 - 00D7FF,00E000 - 00FFFF
+	//00000000 xxxxyyyy yyzzzzzz 	1110xxxx(E0-EF) 10yyyyyy 10zzzzzz
+	unsigned int UCS2 = ((bytes[0] & 0x0F) << 12) | ((bytes[1] & 0x3F) << 6) | (bytes[2]&0x3F);
+		//if( bytes[0] <= 0xEA &&  bytes[1] <= 0x93 && bytes[2] <= 0x8f){
+		if(UCS2 <= 0xA4CFu){
+			//0800- A4CF	
+			//if( bytes[0] >= 0xE4 &&  bytes[1] >= 0xB8 && bytes[2] >= 0x80){
+			if(UCS2 >= 0x4E00u){
+				//4E00 - A4CF
+				return 2;
+			}else{
+				//0800 - 4DFF
+				//if( bytes[0] <= 0xE1 &&  bytes[1] <= 0x87 && bytes[2] <= 0xBF){
+				if(UCS2 <= 0x11FF){
+					//0800 - 11FF
+					//if( bytes[0] >= 0xE1 &&  bytes[1] >= 0x84 && bytes[2] >= 0x80){
+					if(UCS2 >= 0x1100){
+						//1100 - 11FF
+						//if( bytes[0] >= 0xE1 &&  bytes[1] >= 0x86 && bytes[2] >= 0xA3){
+						if(UCS2 >= 0x11A3){
+							//11A3 - 11FF
+							return 2;
+						}else{
+							//1100 - 11A2
+							//if( bytes[0] <= 0xE1 &&  bytes[1] <= 0x85 && bytes[2] <= 0x9F){
+							if(UCS2 <= 0x115F){
+								//1100 - 115F
+								return 2;
+							}else{
+								//1160 - 11A2
+								return 1;
+							}
+						}
+					}else{
+						//0800 - 10FF
+						return 1;
+					}
+				}else{
+					//1200 - 4DFF
+					//if( bytes[0] >= 0xE2 &&  bytes[1] >= 0xba && bytes[2] >= 0x80){
+					if(UCS2 >= 0x2E80){
+						//2E80 - 4DBF
+						//if( bytes[0] == 0xE3 &&  bytes[1] == 0x80 && bytes[2] == 0xBF){
+						if(UCS2 == 0x303F){
+							//303F
+							return 1;
+						}else{
+							//2E80 - 303E,3040-4DBF
+							return 2;
+						}
+					}else{
+						//1200 - 2E7F
+						//if( bytes[0] == 0xE2 &&  bytes[1] == 0x8C && (bytes[2] == 0xA9 || bytes[2] >= 0xAA) ){
+						if(UCS2 == 0x2329 || UCS2 == 0x232A){
+							//2329,232A
+							return 2;
+						}else{
+							//1200 - 2928,232B-2E7F
+							return 1;
+						}
+					}
+					
+				}
+			}
+		}else{
+			//A4D0-D7FF,E000 - FFFF
+			//if( bytes[0] <= 0xED &&  bytes[1] <= 0x9F && bytes[2] <= 0xBF){
+			if(UCS2 <= 0xD7FF){
+				//A4D0-D7FF
+				//if( bytes[0] >= 0xEA &&  bytes[1] >= 0xb0 && bytes[2] >= 0x80){
+				if(UCS2 >= 0xAC00){
+					//AC00 - D7FF
+					return 2;
+				}else{//A4D0 - ABFF
+					//if( bytes[0] >= 0xEA &&  bytes[1] >= 0xA5 && bytes[2] >= 0xA0){
+					if(UCS2 >= 0xA960){
+						//A960 - ABFF
+						//if( bytes[0] <= 0xEA &&  bytes[1] <= 0xA5 && bytes[2] <= 0xBF){
+						if(UCS2 <= 0xA97F){
+							//A960 - A97F
+							return 2;
+						}else{
+							//A980 - ABFF
+							return 1;
+						}
+					}else{
+						//A4D0 - A95F
+						return 1;
+					}
+				}
+			}else{
+				//E000 -FFFF
+				//if( bytes[0] >= 0xE8u &&  bytes[1] >= 0xB1 && bytes[2] >= 0x88){
+				if(UCS2 >= 0xF900){
+					//F900 - FFFF
+					//if( bytes[0] <= 0xEF &&  bytes[1] <= 0xAB && bytes[2] <= 0xBF){
+					if(UCS2 <= 0xFAFF){
+						//F900 - FAFF
+						return 2;
+					}else{
+						//FB00 - FFFF
+						//if( bytes[0] >= 0xEF &&  bytes[1] >= 0xB8 && bytes[2] >= 0x90){
+						if(UCS2 >= 0xFE10){
+							//FE10 - FFFF
+							//if( bytes[0] >= 0xEF &&  bytes[1] >= 0xBC && bytes[2] >= 0x81){
+							if(UCS2 >= 0xFF01){
+								//FF01 - FFFF
+								//if( bytes[0] <= 0xEF &&  bytes[1] <= 0xBD && bytes[2] <= 0xA0){
+								if(UCS2 <= 0xFF60){
+									//FF01 - FF60
+									return 2;
+								}else{
+									//FF61 - FFFF
+									//if( bytes[0] >= 0xEF &&  bytes[1] >= 0xBC && bytes[2] >= 0x81 &&  bytes[0] <= 0xEF &&  bytes[1] <= 0xBD && bytes[2] <= 0xA0 ){
+									if(UCS2 >= 0xFFE0 && UCS2 <= 0xFFE7){
+										//FFE0 - FFE7
+										return 2;
+									}else{
+										return 1;
+									}
+								}
+							}else{
+								//FE10 - FF00
+								//if( bytes[0] <= 0xEF &&  bytes[1] <= 0xB9 && bytes[2] <= 0xAF){
+								if(UCS2 <= 0xFE6F){
+									//FE10 - FE6F
+									//if( bytes[0] >= 0xEF &&  bytes[1] >= 0xB8 && bytes[2] >= 0xB0){
+									if(UCS2 >= 0xFE30){
+										//FE30 - FE6F
+										return 2;
+									}else{
+										//FE10 - FE2F
+										//if( bytes[0] <= 0xEF &&  bytes[1] <= 0xB8 && bytes[2] <= 0x9F){
+										if(UCS2 <= 0xFE1F){
+											//FE10 - FE1F
+											return 2;
+										}else{
+											//FE20 - FE2F
+											return 1;
+										}
+									}
+								}else{
+									//FE70 - FF00
+									return 1;
+								}
+							}
+						}else{
+							//FB00 - FE0F
+							return 1;
+						}
+					}
+				}else{
+					//E000 - F8FF
+					return 1;
+				}
+			}
+		}
+	}else{
+		//1111xxxx 010000~
+		//000wwwxx xxxxyyyy yyzzzzzz 	11110www(F0-F7) 10xxxxxx 10yyyyyy 10zzzzzz
+		unsigned int UCS2 = ((bytes[0] & 0x07) << 18)|((bytes[1] & 0x3F) << 12) | ((bytes[2] & 0x3F) << 6) | (bytes[3]&0x3F);
+		//if( bytes[0] >= 0xF0 &&  bytes[1] >= 0x9F && bytes[2] >= 0x88 && bytes[3] >= 0x80
+		//&&  bytes[0] <= 0xF0 &&  bytes[1] <= 0xBF && bytes[2] <= 0xBF && bytes[3] <= 0xBF){
+		if(UCS2 <= 0x3FFFF && UCS2 >= 0x1F200){
+			//1F200 - 3FFFF
+			return 2;
+		}
+		return 1;
+	}
+	
 	
 }
+
+int utf8strwidth(const unsigned char* str){
+	int i=0,j=0;
+	while(str[i]){
+		if(~str[i] & 0x80){ //0xxxxxxx
+			j++;
+		}else if(~str[i] & 0x40){//10xxxxxx
+		
+		}else {//11xxxxxx
+			j+=2;
+		}
+		
+		i++;
+	}
+	return j;
+}
+
 
 #endif
 

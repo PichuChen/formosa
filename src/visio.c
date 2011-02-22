@@ -74,8 +74,14 @@ nblank(int n)
 static inline void
 fillns(int n, const char *s)
 {
-    while (n > 0 && *s)
-	outc(*s++), n--;
+    while (n > 0 && *s){
+		outc(*s++);
+#if FTUTF8_LEN		
+		if(!(*s & 0x80 && ~*s & 0x40))n-=utf8charwidth(s);
+#else
+		n--;
+#endif
+	}
     if (n > 0)
 	outnc(n, ' ');
 }
@@ -242,8 +248,11 @@ vfill(int n, int flags, const char *s)
 	if (flags & VFILL_RIGHT_ALIGN)
 	{
 	    // right-align
-	    int l = has_ansi ? strlen_noansi(s) : strlen(s);
-
+#ifdef FTUTF8_LEN
+	    int l = has_ansi ? strlen_noansi(s) : utf8strlen(s);
+#else
+		int l = has_ansi ? strlen_noansi(s) : strlen(s);
+#endif
 	    if (l >= n) // '=' prevents blanks
 		l = n;
 	    else {
@@ -916,15 +925,15 @@ vgetstring(char *_buf, int len, int flags, const char *defstr, const VGET_CALLBA
     VGET_CALLBACKS cb = {NULL};
 
     // always use internal buffer to prevent temporary input issue.
-    char buf[STRLEN] = "";  // zero whole.
+    char buf[STRLEN*FTUTF8_LEN] = "";  // zero whole.
 
     // runtime structure
-    VGET_RUNTIME    rt = { buf, len > STRLEN ? STRLEN : len };
+    VGET_RUNTIME    rt = { buf, len > STRLEN*FTUTF8_LEN ? STRLEN*FTUTF8_LEN : len };
 
     // it is wrong to design input with larger buffer
     // than STRLEN. Although we support large screen,
     // inputting huge line will just make troubles...
-    if (len > STRLEN) len = STRLEN;
+    if (len > STRLEN*FTUTF8_LEN) len = STRLEN*FTUTF8_LEN;
     assert(len <= sizeof(buf) && len >= 2);
 
     // memset(buf, 0, len);
@@ -934,7 +943,7 @@ vgetstring(char *_buf, int len, int flags, const char *defstr, const VGET_CALLBA
 #ifdef FULL_VISIO
 	strip_ansi(buf, buf, STRIP_ALL); // safer...
 #endif
-	rt.icurr = rt.iend = strlen(buf);
+	rt.ipos = rt.icurr = rt.iend = strlen(buf);
     }
 
     // setup callbacks
@@ -971,7 +980,7 @@ vgetstring(char *_buf, int len, int flags, const char *defstr, const VGET_CALLBA
 		outs(ANSI_RESET);
 
 	    // move to cursor position
-	    move(line, col+rt.icurr);
+	    move(line, col+rt.ipos);
 	} else {
 	    // to simulate the "clrtoeol" behavior...
 	    // XXX make this call only once? or not?
@@ -1006,7 +1015,7 @@ vgetstring(char *_buf, int len, int flags, const char *defstr, const VGET_CALLBA
 		else
 		    InputHistoryPrev(buf, len);
 
-		rt.icurr = rt.iend = strlen(buf);
+		rt.ipos = rt.icurr = rt.iend = strlen(buf);
 		break;
 
 	    // exiting keys
@@ -1015,7 +1024,7 @@ vgetstring(char *_buf, int len, int flags, const char *defstr, const VGET_CALLBA
 		break;
 
 	    case Ctrl('C'):
-		rt.icurr = rt.iend = 0;
+		rt.ipos = rt.icurr = rt.iend = 0;
 		buf[0] = 0;
 		buf[1] = c;
 		abort = 1;
@@ -1023,61 +1032,91 @@ vgetstring(char *_buf, int len, int flags, const char *defstr, const VGET_CALLBA
 
 	    // standard navigation
 	    case KEY_HOME:  case Ctrl('A'):
-		rt.icurr = 0;
+		rt.ipos = rt.icurr = 0;
 		break;
 
 	    case KEY_END:   case Ctrl('E'):
-		rt.icurr = rt.iend;
+		rt.ipos = rt.icurr = rt.iend;
 		break;
 
 	    case KEY_LEFT:  case Ctrl('B'):
-		if (rt.icurr > 0)
-		    rt.icurr--;
-		else
+		if (rt.icurr > 0){
+			do{
+				rt.icurr--;
+			}while(buf[rt.icurr] & 0x80 && ~buf[rt.icurr] & 0x40);
+			
+			rt.ipos -= utf8charwidth(&buf[rt.icurr]);
+			/*if(buf[rt.icurr] & 0x80)
+				rt.ipos -=2;
+			else
+				rt.ipos --;*/
+		}else
 		    bell();
-		if (rt.icurr > 0 && CHKDBCSTRAIL(buf, rt.icurr))
-		    rt.icurr--;
+		//if (rt.icurr > 0 && CHKDBCSTRAIL(buf, rt.icurr))
+		//    rt.icurr--;
 		break;
 
 	    case KEY_RIGHT: case Ctrl('F'):
-		if (rt.icurr < rt.iend)
-		    rt.icurr++;
-		else
+		if (rt.icurr < rt.iend){
+			/*if(buf[rt.icurr] & 0x80)
+				rt.ipos +=2;
+			else
+				rt.ipos ++;*/
+			rt.ipos += utf8charwidth(&buf[rt.icurr]);
+			do{
+				rt.icurr++;
+			}while(buf[rt.icurr] & 0x80 && ~buf[rt.icurr] & 0x40);
+		}else
 		    bell();
-		if (rt.icurr < rt.iend && CHKDBCSTRAIL(buf, rt.icurr))
-		    rt.icurr++;
+		//if (rt.icurr < rt.iend && CHKDBCSTRAIL(buf, rt.icurr))
+		//    rt.icurr++;
 		break;
 
 	    // editing keys
 	    case KEY_DEL:   case Ctrl('D'):
-		if (rt.icurr+1 < rt.iend && CHKDBCSTRAIL(buf, rt.icurr+1)) {
+		/*if (rt.icurr+1 < rt.iend && CHKDBCSTRAIL(buf, rt.icurr+1)) {
 		    // kill next one character.
 		    memmove(buf+rt.icurr, buf+rt.icurr+1, rt.iend-rt.icurr);
 		    rt.iend--;
-		}
+		}*/
+		
 		if (rt.icurr < rt.iend) {
+			int delrange = 0;
+			do{
+				//rt.icurr++;
+				delrange++;
+			}while(buf[rt.icurr + delrange] & 0x80 && ~buf[rt.icurr + delrange] & 0x40);
+		
+		
 		    // kill next one character.
-		    memmove(buf+rt.icurr, buf+rt.icurr+1, rt.iend-rt.icurr);
-		    rt.iend--;
+		    memmove(buf+rt.icurr, buf+rt.icurr+delrange, rt.iend-rt.icurr);
+		    rt.iend-=delrange;
 		}
 		break;
 
 	    case KEY_BS: case KEY_BS2:
 		if (rt.icurr > 0) {
+			int delrange = 0; 
+			do{
+				delrange++;
+			}while(buf[rt.icurr - delrange] & 0x80 && ~buf[rt.icurr - delrange] & 0x40);
+		
 		    // kill previous one charracter.
-		    memmove(buf+rt.icurr-1, buf+rt.icurr, rt.iend-rt.icurr+1);
-		    rt.icurr--; rt.iend--;
+			rt.ipos -= utf8charwidth(&buf[rt.icurr-delrange]); 
+		    memmove(buf+rt.icurr-delrange, buf+rt.icurr, rt.iend-rt.icurr+1);
+		    rt.icurr-=delrange;
+			rt.iend-=delrange;
 		} else
 		    bell();
-		if (rt.icurr > 0 && CHKDBCSTRAIL(buf, rt.icurr)) {
+		/*if (rt.icurr > 0 && CHKDBCSTRAIL(buf, rt.icurr)) {
 		    // kill previous one charracter.
 		    memmove(buf+rt.icurr-1, buf+rt.icurr, rt.iend-rt.icurr+1);
 		    rt.icurr--; rt.iend--;
-		}
+		}*/
 		break;
 
 	    case Ctrl('Y'):
-		rt.icurr = 0;
+		rt.ipos = rt.icurr = 0;
 		// reuse Ctrl-K code
 	    case Ctrl('K'):
 		rt.iend = rt.icurr;
@@ -1127,13 +1166,13 @@ vgetstring(char *_buf, int len, int flags, const char *defstr, const VGET_CALLBA
 		}
 
 		// prevent incomplete DBCS
-		if (c > 0x80 && num_in_buf() &&
+		/*if (c > 0x80 && num_in_buf() &&
 		    len - rt.iend < 3)	// we need 3 for DBCS+NUL.
 		{
 		    drop_input();
 		    bell();
 		    continue;
-		}
+		}*/
 
 		// callback 2: data
 		if (_vgetcbhandler(cb.data, &abort, c, &rt, instance))
@@ -1147,7 +1186,36 @@ vgetstring(char *_buf, int len, int flags, const char *defstr, const VGET_CALLBA
 
 		// add one character.
 		memmove(buf+rt.icurr+1, buf+rt.icurr, rt.iend-rt.icurr+1);
+#ifdef FTUTF8_LEN
+		static unsigned char charremainbyte = 0;
+		unsigned char*  leadbytepointer; 
+		
+		buf[rt.icurr] = c;
+		if(~c & 0x80){//0xxxxxx
+			rt.ipos++;
+		}else if(~c & 0x40){//10xxxxxx
+			charremainbyte--;
+			if(charremainbyte == 0){
+				rt.ipos += utf8charwidth(leadbytepointer);
+			}
+				
+		}else if(~c & 0x20){//110xxxxx
+			leadbytepointer = &buf[rt.icurr];
+			charremainbyte 	= 1;//rt.ipos +=1;
+		}else if(~c & 0x10){//1110xxxx
+			leadbytepointer = &buf[rt.icurr];
+			charremainbyte 	= 2;//rt.ipos +=2;
+		}else if(~c & 0x08){//11110xxx	
+			leadbytepointer = &buf[rt.icurr];
+			charremainbyte 	= 3;//rt.ipos +=2;
+		}else{
+			
+		}
+		rt.icurr++;
+#else
 		buf[rt.icurr++] = c;
+		rt.ipos++;
+#endif
 		rt.iend++;
 
 		// callback 3: post

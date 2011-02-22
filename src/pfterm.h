@@ -445,7 +445,9 @@ int     fterm_DBCS_Big5(unsigned char c1, unsigned char c2);
 
 #ifdef FTUTF8_LEN
 int ftcharcmp(const ftchar*  a,const ftchar* b);
-int utf8strlen(const char* str);
+int utf8strlen(const unsigned char* str);
+int utf8charwidth(const unsigned char* bytes);
+int utf8strwidth(const unsigned char* str);
 #endif
 
 #ifndef _PFTERM_TEST_MAIN
