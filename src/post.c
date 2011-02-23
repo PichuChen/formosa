@@ -630,7 +630,11 @@ int PreparePost(char *fn_src, char *to, char *title, int option, char *postpath)
  */
 int do_post(int ent, FILEHEADER *finfo, char *direct)
 {
+#ifdef PFUTF8_LEN
+	char title[STRLEN * PFUTF8_LEN] = "";
+#else
 	char title[STRLEN] = "";
+#endif
 	char buf[PATHLEN], *postpath;
 
 	if (!in_mail && !in_board)

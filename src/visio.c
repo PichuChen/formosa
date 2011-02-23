@@ -75,12 +75,13 @@ static inline void
 fillns(int n, const char *s)
 {
     while (n > 0 && *s){
-		outc(*s++);
+		
 #if FTUTF8_LEN		
 		if(!(*s & 0x80 && ~*s & 0x40))n-=utf8charwidth(s);
 #else
 		n--;
 #endif
+		outc(*s++);
 	}
     if (n > 0)
 	outnc(n, ' ');

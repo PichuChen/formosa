@@ -2065,12 +2065,13 @@ void fterm_rawc(int c)
 void fterm_rawUTF8c(const ftchar * c)
 {
 	if(! (c->_len))return;
+	assert(c->_byte[0]!=0);
 	fterm_rawc(c->_byte[0]);
-	if(! (c->_byte[0] & 0x80) )return;
+	if(! (c->_byte[0] & 0x80) )return;//0xxxxxxx
 	fterm_rawc(c->_byte[1]);
-	if(! (c->_byte[0] & 0x40) )return;
+	if(! (c->_byte[0] & 0x20) )return;//xx0xxxxx
 	fterm_rawc(c->_byte[2]);
-	if(! (c->_byte[0] & 0x20) )return;
+	if(! (c->_byte[0] & 0x10) )return;//xxx0xxxx
 	fterm_rawc(c->_byte[3]);
 }
 
