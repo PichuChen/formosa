@@ -38,7 +38,7 @@ int can_override(char *userid, char *whoasks)
 }
 
 /*
- * kmwang:20000610:¬d¸ß whoasks ¬O§_¦b userid ªºÃa¤Í¦W³æ¤¤
+ * kmwang:20000610:æŸ¥è©¢ whoasks æ˜¯å¦åœ¨ userid çš„å£å‹åå–®ä¸­
  * in_blacklist( userid, whoasks )
  */
 int in_blacklist(const char *userid, char *whoasks)
@@ -172,7 +172,7 @@ int msq_snd(USER_INFO *upent, MSQ *msqp)
 {
 	if (msqp->toid[0] != '\0' &&
 #ifndef IGNORE_CASE
-         strcmp(upent->userid, msqp->toid))     /* ¶Ç¿ù¤HÅo! */
+         strcmp(upent->userid, msqp->toid))     /* å‚³éŒ¯äººå›‰! */
 #else
          strcasecmp(upent->userid, msqp->toid))
 #endif
@@ -224,7 +224,7 @@ void msq_tostr(MSQ *msqp, char *showed)
 	sprintf(showed, "[1;37;4%dm%s %s[33m%s:[36m %s [m",
 		(!msqp->out) ? 5 : 0,
 		msqp->stimestr,
-		(!msqp->out) ? "" : "°eµ¹ ",
+		(!msqp->out) ? "" : "é€çµ¦ ",
 		(!msqp->out) ? msqp->fromid : msqp->toid,
 /*
 		msqp->username,
@@ -234,7 +234,7 @@ void msq_tostr(MSQ *msqp, char *showed)
 
 
 /**
- ** °O¿ı¦Û¤v°e¥Xªº½u¤W°T®§
+ ** è¨˜éŒ„è‡ªå·±é€å‡ºçš„ç·šä¸Šè¨Šæ¯
  **/
 int msq_record(MSQ *msqp, const char *filename, const char *to)
 {
@@ -256,13 +256,13 @@ char *pagerstring(USER_INFO *uentp)
 {
 	//if (uentp->pager == PAGER_QUIET)
 	if (uentp->pager & PAGER_QUIET) /* sarek:03242001:broadcast pager */
-		return "(©I³ê¹a) ¤@­Ó¤HÀRÀR";
+		return "(å‘¼å–šéˆ´) ä¸€å€‹äººéœéœ";
 	else if (uentp->pager & PAGER_FRIEND)
-		return "(©I³ê¹a) ¦nªB¤Í    ";
+		return "(å‘¼å–šéˆ´) å¥½æœ‹å‹    ";
 	else if (uentp->pager & PAGER_FIDENT)
-		return "(©I³ê¹a) ¦n¤Í©Î»{ÃÒ";
+		return "(å‘¼å–šéˆ´) å¥½å‹æˆ–èªè­‰";
 	else
-		return "(©I³ê¹a) ©Ò¦³¤H    ";	/* pager opened for everyone */
+		return "(å‘¼å–šéˆ´) æ‰€æœ‰äºº    ";	/* pager opened for everyone */
 }
 
 
@@ -276,7 +276,7 @@ int query_user(int myulevel, char *userid, USER_INFO *upent, char *outstr,
 
 	if (userid == NULL || userid[0] == '\0')
 	{
-		strcpy(outstr, "\n¨Ï¥ÎªÌ¥N¸¹¿ù»~.");
+		strcpy(outstr, "\nä½¿ç”¨è€…ä»£è™ŸéŒ¯èª¤.");
 		return -1;
 	}
 
@@ -284,7 +284,7 @@ int query_user(int myulevel, char *userid, USER_INFO *upent, char *outstr,
 	{
 		if (get_passwd(&qurc, userid) <= 0)
 		{
-			strcpy(outstr, "\n¨Ï¥ÎªÌ¥N¸¹¿ù»~.");
+			strcpy(outstr, "\nä½¿ç”¨è€…ä»£è™ŸéŒ¯èª¤.");
 			return -1;
 		}
 		quinf = search_ulist(cmp_userid, qurc.userid);
@@ -315,43 +315,43 @@ int query_user(int myulevel, char *userid, USER_INFO *upent, char *outstr,
 	}
 
 	if (quinf && (!quinf->invisible || CHECK_PERM(myulevel, PERM_SYSOP)))
-		sprintf(online, "\n¥Ø«e¥¿¦b½u¤W¡G%s %s",
+		sprintf(online, "\nç›®å‰æ­£åœ¨ç·šä¸Šï¼š%s %s",
 			modestring(quinf, 1), pagerstring(quinf));
 	else
-		strcpy(online, "\n¥Ø«e¤£¦b½u¤W, ");
+		strcpy(online, "\nç›®å‰ä¸åœ¨ç·šä¸Š, ");
 
-	sprintf(outstr, "­Ó¤H¸ê®Æ¬d¸ß¡G\n\
-%s (%s[0m), µ¥¯Å %d%s, ¤W¯¸ %d ¦¸, ±i¶K %d ½g%s\n\
-¤W¦¸¤W¯¸®É¶¡ %s ¨Ó¦Û %s\n\
+	sprintf(outstr, "å€‹äººè³‡æ–™æŸ¥è©¢ï¼š\n\
+%s (%s[0m), ç­‰ç´š %d%s, ä¸Šç«™ %d æ¬¡, å¼µè²¼ %d ç¯‡%s\n\
+ä¸Šæ¬¡ä¸Šç«™æ™‚é–“ %s ä¾†è‡ª %s\n\
 ---- %s%s",
 #ifndef IGNORE_CASE
                qurc.userid,
 #else
                qurc.fakeuserid,
 #endif
-	       qurc.ident != 7 ? "¤¤¤s¹C«È" : (strip_ansi ? esc_filter(qurc.username) : qurc.username),
+	       qurc.ident != 7 ? "ä¸­å±±éŠå®¢" : (strip_ansi ? esc_filter(qurc.username) : qurc.username),
 	       qurc.userlevel,
            (
 #ifdef GUEST
            strcmp(qurc.userid, GUEST) &&
 #endif
            CHECK_PERM(qurc.userlevel, PERM_DEFAULT) && qurc.numlogins != 1) ?
-  	         "([1;31m±b¸¹°±¥Î¤¤[0m)" : "",
+  	         "([1;31må¸³è™Ÿåœç”¨ä¸­[0m)" : "",
 	       qurc.numlogins,
 	       qurc.numposts,
 #ifdef USE_IDENT
-			(qurc.ident == 7) ? ", [1;36m¤w§¹¦¨¨­¥÷»{ÃÒ [m" : ", [1;33m¥¼§¹¦¨¨­¥÷»{ÃÒ [m",
+			(qurc.ident == 7) ? ", [1;36må·²å®Œæˆèº«ä»½èªè­‰ [m" : ", [1;33mæœªå®Œæˆèº«ä»½èªè­‰ [m",
 #else
 			"",
 #endif
 	       (qurc.lastlogin) ? Ctime(&(qurc.lastlogin)) : "(unknown)",
 	       (qurc.lasthost[0]) ? qurc.lasthost : "(unknown)",
-	       ((qurc.flags[0] & FORWARD_FLAG) ? "­Ó¤H«H¥ó¦Û°ÊÂà±H¶}±Ò" :
-            ((is_new_mail) ? "«H½c¤¤ÁÙ¦³·s«HÁÙ¨S¬İ" : "«H½c¤¤ªº«H¥ó³£¬İ¹L¤F")),
+	       ((qurc.flags[0] & FORWARD_FLAG) ? "å€‹äººä¿¡ä»¶è‡ªå‹•è½‰å¯„é–‹å•Ÿ" :
+            ((is_new_mail) ? "ä¿¡ç®±ä¸­é‚„æœ‰æ–°ä¿¡é‚„æ²’çœ‹" : "ä¿¡ç®±ä¸­çš„ä¿¡ä»¶éƒ½çœ‹éäº†")),
             online);
 /*
 unvisible
-	("\n¹q¤l¶l¥ó«H½c: %s", qurc.email);
+	("\né›»å­éƒµä»¶ä¿¡ç®±: %s", qurc.email);
 */
 
 	return 0;
@@ -482,7 +482,7 @@ char *esc_filter(const char *buf)
 
 
 #ifdef USE_ALOHA
-/* sarek:02/14/2001: ¦n¤Í¤W¯¸³qª¾ */
+/* sarek:02/14/2001: å¥½å‹ä¸Šç«™é€šçŸ¥ */
 static USEREC *curruser;
 static struct array aloha_cache;
 static MSQ mymsq;
@@ -491,14 +491,14 @@ static int aloha_msq(USER_INFO *upent)
 {
 	int retval;
        	if ((retval = cmp_array(&aloha_cache, upent->userid)) == -1)
-		return -1; //ªÅªºµo°e¦W³æ
+		return -1; //ç©ºçš„ç™¼é€åå–®
 
 	if (retval == 1)
 	{
-		/* ¦]¬°­Ó¤H¿ï¶µflag¤£°÷¤F,
-		 * user µLªk¦Û¦æ¿ï¾Ü­n¤£­nµo°e¤W¤U¯¸³qª¾,
-		 * ¬G¥Ø«e¥u°eµ¹ YSNP Client,
-		 * ¤£µo°eµ¹ telnet ªº user.
+		/* å› ç‚ºå€‹äººé¸é …flagä¸å¤ äº†,
+		 * user ç„¡æ³•è‡ªè¡Œé¸æ“‡è¦ä¸è¦ç™¼é€ä¸Šä¸‹ç«™é€šçŸ¥,
+		 * æ•…ç›®å‰åªé€çµ¦ YSNP Client,
+		 * ä¸ç™¼é€çµ¦ telnet çš„ user.
 		 */
 		if(upent->ctype != CTYPE_NPBBS)
 			return -1;
@@ -542,20 +542,20 @@ void send_aloha(USEREC *current_user, int option)
 	sethomefile(ufile_aloha, current_user->userid, UFNAME_ALOHA);
 	malloc_array(&aloha_cache, ufile_aloha);
 
-	/* ¥¼³q¹L»{ÃÒ¨Ï¥ÎªÌ¥ç¥i¥Hµo°e¤W¯¸³qª¾©ÎÂ÷½u³qª¾ */
+	/* æœªé€šéèªè­‰ä½¿ç”¨è€…äº¦å¯ä»¥ç™¼é€ä¸Šç«™é€šçŸ¥æˆ–é›¢ç·šé€šçŸ¥ */
 
-	/* option: TRUE ¤W½u; FALSE Â÷½u */
-	/* °T®§«eºİ¥[¤W \033[36m §@¬° YSNP ClientªºÃÑ§O */
-#if 0	/* °eµ¹telnetºİªº°T®§ */
+	/* option: TRUE ä¸Šç·š; FALSE é›¢ç·š */
+	/* è¨Šæ¯å‰ç«¯åŠ ä¸Š \033[36m ä½œç‚º YSNP Clientçš„è­˜åˆ¥ */
+#if 0	/* é€çµ¦telnetç«¯çš„è¨Šæ¯ */
 	if (option)
-		sprintf(aloha_message, "\033[36m(¤W¯¸³qª¾)±zªº¦n¤Í %s (%s) ¤w¸g¤W¯¸Åo!\033[m", current_user->userid, esc_filter(current_user->username));
+		sprintf(aloha_message, "\033[36m(ä¸Šç«™é€šçŸ¥)æ‚¨çš„å¥½å‹ %s (%s) å·²ç¶“ä¸Šç«™å›‰!\033[m", current_user->userid, esc_filter(current_user->username));
 	else
-		sprintf(aloha_message, "\033[36m(Â÷½u³qª¾)±zªº¦n¤Í %s (%s) ¤w¸g¤W¯¸Åo!\033[m", current_user->userid, esc_filter(current_user->username));
+		sprintf(aloha_message, "\033[36m(é›¢ç·šé€šçŸ¥)æ‚¨çš„å¥½å‹ %s (%s) å·²ç¶“ä¸Šç«™å›‰!\033[m", current_user->userid, esc_filter(current_user->username));
 #endif
 	if (option)
-		strcpy(aloha_message, "\033[36m(¤W¯¸³qª¾)\033[m");
+		strcpy(aloha_message, "\033[36m(ä¸Šç«™é€šçŸ¥)\033[m");
 	else
-		strcpy(aloha_message, "\033[36m(Â÷½u³qª¾)\033[m");
+		strcpy(aloha_message, "\033[36m(é›¢ç·šé€šçŸ¥)\033[m");
 
 	msq_set(&mymsq, current_user->userid, current_user->username, "", aloha_message);
 
@@ -576,7 +576,7 @@ void aloha_edit(const char *src_id, const char *trg_id, int option)
 	/* option: TRUE append; FALSE delete */
 	if (option)
 	{
-		// ¥²¶·¤£¦s¦b©ó²{¦³³qª¾¦W³æ¤¤
+		// å¿…é ˆä¸å­˜åœ¨æ–¼ç¾æœ‰é€šçŸ¥åå–®ä¸­
 		if (!(cmp_array(&aloha_cache, (char *)src_id)))
 		{
 			sprintf(buf, "%s\n", src_id);

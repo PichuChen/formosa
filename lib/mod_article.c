@@ -2,7 +2,7 @@
 #include "bbs.h"
 #include <sys/stat.h>
 
-#define STR_QUOTE_SAID "ªº¤å³¹¤¤´£¨ì"
+#define STR_QUOTE_SAID "çš„æ–‡ç« ä¸­æåˆ°"
 
 static FILEHEADER genfhbuf;
 
@@ -163,9 +163,9 @@ static void restore_fileheader(FILEHEADER *fhr, const char *direct, const char *
 		strcpy(fhr->owner, "UNKNOWN");
 	}
 
-	if (sp && (((p = strstr (sp, "¼ĞÃD:")) && (p = p + 5))
-		    || ((p = strstr (sp, "¼ĞÃD¡G")) && (p = p + 6))
-		    || ((p = strstr (sp, "¼Ğ  ÃD:")) && (p = p + 7))
+	if (sp && (((p = strstr (sp, "æ¨™é¡Œ:")) && (p = p + 5))
+		    || ((p = strstr (sp, "æ¨™é¡Œï¼š")) && (p = p + 6))
+		    || ((p = strstr (sp, "æ¨™  é¡Œ:")) && (p = p + 7))
 		    || ((p = strstr (sp, "Title:")) && (p = p + 6))
 		    || ((p = strstr (sp, "Subject:")) && (p = p + 8)))) {
 		while (*p == ' ')
@@ -625,8 +625,8 @@ int append_article(char *fname, char *path, char *author, char *title,
 	if (fromhost)
 	{
 #ifdef USE_IDENT
-		sprintf(buffer, "--\n* Origin: %s * From: %s [%s³q¹L»{ÃÒ]\n",
-			BBSTITLE, fromhost, (ident == 7) ? "¤w" : "¥¼");
+		sprintf(buffer, "--\n* Origin: %s * From: %s [%sé€šéèªè­‰]\n",
+			BBSTITLE, fromhost, (ident == 7) ? "å·²" : "æœª");
 #else
 		sprintf(buffer, "--\n* Origin: %s * From: %s\n", BBSTITLE, fromhost);
 #endif
@@ -648,7 +648,7 @@ int append_article(char *fname, char *path, char *author, char *title,
 	sprintf(dotdir, "%s/%s", path, DIR_REC);
 
 	/* get next valid postno from .DIR file if in the article mode */
-	/* ºëµØ°Ï / «H½c ¤£»İ­n¥Î¨ì postno */
+	/* ç²¾è¯å€ / ä¿¡ç®± ä¸éœ€è¦ç”¨åˆ° postno */
 	if (artmode && get_only_postno(dotdir, 0, fhr))
 		return -1;
 	if (stamp)
@@ -673,7 +673,7 @@ int append_article(char *fname, char *path, char *author, char *title,
 }
 
 /*
-   ¤Ş¤J­ì¤å
+   å¼•å…¥åŸæ–‡
 */
 void include_ori(char *rfile, char *wfile, char reply_mode)
 {
@@ -701,9 +701,9 @@ void include_ori(char *rfile, char *wfile, char reply_mode)
 	fgets(inbuf, sizeof(inbuf), fpr);
 	if ((foo = strchr(inbuf, '\n')))
 		*foo = '\0';
-	if ((!strncmp(inbuf, "µo«H¤H: ", 8) && (hptr = inbuf + 8))
+	if ((!strncmp(inbuf, "ç™¼ä¿¡äºº: ", 8) && (hptr = inbuf + 8))
 /*
-	    || (!strncmp(inbuf, "µo«H¤H:", 7) && (hptr = inbuf + 7))
+	    || (!strncmp(inbuf, "ç™¼ä¿¡äºº:", 7) && (hptr = inbuf + 7))
 	    || (!strncmp(inbuf, "By:", 3) && (hptr = inbuf + 3))
 	    || (!strncmp(inbuf, "From:", 5) && (hptr = inbuf + 5))
 */	    )
@@ -745,7 +745,7 @@ void include_ori(char *rfile, char *wfile, char reply_mode)
 				hptr = foo + 1;
 			}
 		}
-		/* sarek:07xx2001:¦h¥[¤@­Ó> */
+		/* sarek:07xx2001:å¤šåŠ ä¸€å€‹> */
 		if (author != NULL) {
 			if (reply_mode != 'r')
 				fprintf(fpw, "> ");
@@ -779,7 +779,7 @@ void include_ori(char *rfile, char *wfile, char reply_mode)
 		if (!strcmp(inbuf, "--\n"))
 			break;
 		/* add quote character */
-		/* kmwang:20000815:±N quote ¦r¤¸´«¦¨ : ´î¤Ö¹ï tag ªº»~§P */
+		/* kmwang:20000815:å°‡ quote å­—å…ƒæ›æˆ : æ¸›å°‘å° tag çš„èª¤åˆ¤ */
 		if (reply_mode == 'r')
 			fprintf(fpw, "%s", inbuf);
 		else {
@@ -800,10 +800,10 @@ void include_ori(char *rfile, char *wfile, char reply_mode)
 
 
 /*******************************************************************
- * ¥]§tÃ±¦WÀÉ
+ * åŒ…å«ç°½åæª”
  *		name	user ID
- *		wfile	ÀÉ®×¦WºÙ
- *		num		Ã±¦WÀÉ½s¸¹
+ *		wfile	æª”æ¡ˆåç¨±
+ *		num		ç°½åæª”ç·¨è™Ÿ
  *******************************************************************/
 #ifndef IGNORE_CASE
 int include_sig(const char *name, const char *wfile, int num)
@@ -839,7 +839,7 @@ int include_sig(char *name, const char *wfile, int num)
 	for(i = 0; i < MAX_SIG_LINES
 		&& fgets(ptr, sizeof(sigbuf) - (ptr - sigbuf), fpr); i++)
 	{
-		/* ­YÃ±¦WÀÉ¥½§À´X¦æ¬Ò¬OªÅ¦æ«h©¿²¤ */
+		/* è‹¥ç°½åæª”æœ«å°¾å¹¾è¡Œçš†æ˜¯ç©ºè¡Œå‰‡å¿½ç•¥ */
 		if (ptr[0] == '\n')
 			ptr++;
 		else
@@ -859,7 +859,7 @@ int include_sig(char *name, const char *wfile, int num)
 
 
 /*
-   ¼Ğ¥Ü«O¯d¤å³¹
+   æ¨™ç¤ºä¿ç•™æ–‡ç« 
 */
 int reserve_one_article(int ent, char *direct)
 {
@@ -888,7 +888,7 @@ int reserve_one_article(int ent, char *direct)
 }
 
 /*
-   ¨ú±o±À¤å¤À¼Æ
+   å–å¾—æ¨æ–‡åˆ†æ•¸
 */
 int get_pushcnt(const FILEHEADER *fhr)
 {
@@ -904,7 +904,7 @@ int get_pushcnt(const FILEHEADER *fhr)
 }
 
 /*
-   Åª¨ú±À¤å¤À¼Æ
+   è®€å–æ¨æ–‡åˆ†æ•¸
 */
 int read_pushcnt(int fd, int ent, const FILEHEADER *ofhr)
 {
@@ -917,7 +917,7 @@ int read_pushcnt(int fd, int ent, const FILEHEADER *ofhr)
 }
 
 /*
-   Âà´«¦s¤J±À¤å¤À¼Æ
+   è½‰æ›å­˜å…¥æ¨æ–‡åˆ†æ•¸
 */
 static void save_pushcnt(FILEHEADER *fhr, int score)
 {
@@ -932,7 +932,7 @@ static void save_pushcnt(FILEHEADER *fhr, int score)
 }
 
 /*
-   ¦s¤J±À¤å¤À¼Æ
+   å­˜å…¥æ¨æ–‡åˆ†æ•¸
 */
 int push_one_article(const char *direct, int fd, int ent, FILEHEADER *ofhr, int score)
 {
@@ -953,21 +953,21 @@ void write_article_header(FILE *fpw, const char *userid, const char *username,
 			const char *bname, const char *timestr,
 			const char *title, const char *origin)
 {
-        /* sarek:02/08/2001 username Âo°£ANSI±±¨î½X */
-        fprintf(fpw, "µo«H¤H: %s (%s)", userid, esc_filter(username));
+        /* sarek:02/08/2001 username æ¿¾é™¤ANSIæ§åˆ¶ç¢¼ */
+        fprintf(fpw, "ç™¼ä¿¡äºº: %s (%s)", userid, esc_filter(username));
 	if (bname)
-		fprintf(fpw, "    ¬İªO: %s", bname);
+		fprintf(fpw, "    çœ‹æ¿: %s", bname);
 	if (!timestr)
 	{
 		time_t now;
 		time(&now);
-		fprintf(fpw, "\n¤é´Á: %s", ctime(&now));
+		fprintf(fpw, "\næ—¥æœŸ: %s", ctime(&now));
 	}
 	else
-		fprintf(fpw, "\n¤é´Á: %s\n", timestr);
-	fprintf(fpw, "¼ĞÃD: %s\n", title);
+		fprintf(fpw, "\næ—¥æœŸ: %s\n", timestr);
+	fprintf(fpw, "æ¨™é¡Œ: %s\n", title);
 	if (origin)
-		fprintf(fpw, "¨Ó·½: %s\n", origin);
+		fprintf(fpw, "ä¾†æº: %s\n", origin);
 	fflush(fpw);
 }
 
@@ -1062,7 +1062,7 @@ err_out:
 }
 
 /*
-   ¼Ğ°O§R°£³æ½g¤å³¹
+   æ¨™è¨˜åˆªé™¤å–®ç¯‡æ–‡ç« 
 */
 //int delete_one_article(int ent, FILEHEADER *finfo, char *direct, char *delby, char *option)
 int delete_one_article(int ent, FILEHEADER *finfo, char *direct, char *delby, int option)

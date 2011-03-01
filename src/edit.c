@@ -8,7 +8,8 @@ struct textline
 {
 	struct textline *prev;
 	struct textline *next;
-	int len;
+	int memlen;
+	int charlen;
 	char data[2 * WRAPMARGIN];
 };
 
@@ -19,7 +20,7 @@ struct textline *lastline = NULL;
 
 struct textline *currline = NULL;
 int currpnt = 0;
-
+int currpos = 0;
 int shift = 0;	/* lthuang: 99/07 */
 
 struct textline *top_of_win = NULL;
@@ -75,6 +76,9 @@ static int getlineno()
 	return cnt;
 }
 
+/*	kill ASCII space(' ')
+	return the pointer of first none ' '
+*/
 static char *killsp(char *s)
 {
 	while (*s == ' ')
@@ -111,7 +115,8 @@ static struct textline *alloc_line()
 	p->next = NULL;
 	p->prev = NULL;
 	p->data[0] = '\0';
-	p->len = 0;
+	p->memlen = 0;
+	p->charlen = 0;
 	total_num_of_line++;
 	return p;
 }
@@ -139,7 +144,8 @@ static void delete_line(register struct textline *line)
 	if (!line->next && !line->prev)
 	{
 		line->data[0] = '\0';
-		line->len = 0;
+		line->memlen = 0;
+		line->charlen = 0;
 		return;
 	}
 	if (line->next)
@@ -157,23 +163,27 @@ static void delete_line(register struct textline *line)
 /*
  * split splits 'line' right before the character pos
  */
-static void split(register struct textline *line, register int pos)
+static void split(register struct textline *line, register int pos,register int charpos)
 {
 	register struct textline *p;
 
 
-	if (pos > line->len)
+	if (pos > line->memlen)
 		return;
 	p = alloc_line();
-	p->len = line->len - pos;
-	line->len = pos;
+	p->memlen = line->memlen - pos;
+	//int charpos = utf8strlen((unsigned char*)&line->data[pos]);
+	p->charlen= line->charlen- charpos;
+	line->memlen = pos;
+	line->charlen= charpos;
 	strcpy(p->data, (line->data + pos));
-	*(line->data + pos) = '\0';
+	line->data[pos] = '\0';
 	append(p, line);
 	if (line == currline && pos <= currpnt)		/* ? */
 	{
 		currline = p;
 		currpnt -= pos;
+		currpos = 0;
 		curr_window_line++;
 	}
 	redraw_everything = TRUE;
@@ -199,11 +209,12 @@ static int join(register struct textline *line)
 		return TRUE;
 	if (*killsp(line->next->data) == '\0')
 		return TRUE;
-	ovfl = line->len + line->next->len - WRAPMARGIN;
+	ovfl = line->memlen + line->next->memlen - WRAPMARGIN;
 	if (ovfl < 0)
 	{
 		strcat(line->data, line->next->data);
-		line->len += line->next->len;
+		line->memlen += line->next->memlen;
+		line->charlen += line->next->charlen;
 		delete_line(line->next);
 		return TRUE;
 	}
@@ -212,54 +223,95 @@ static int join(register struct textline *line)
 		register char *s;
 		register struct textline *p = line->next;
 
-		s = p->data + p->len - ovfl - 1;
+		s = p->data + p->memlen - ovfl - 1;
 		while (s != p->data && *s == ' ')
 			s--;
 		while (s != p->data && *s != ' ')
 			s--;
 		if (s == p->data)
 			return TRUE;
-		split(p, (s - p->data) + 1);
+		split(p, (s - p->data) + 1,(s - p->data) + 1);
 		/* indicate one of the two line are longer than WRAPMARGIN */
-		if (line->len + p->len >= WRAPMARGIN)
+		if (line->memlen + p->memlen >= WRAPMARGIN)
 		{
 			indigestion(0);
 			return TRUE;
 		}
 		join(line);	/* ? */
 		p = line->next;
-		if (p->len >= 1 && p->len + 1 < WRAPMARGIN)	/* ? */
+		if (p->memlen >= 1 && p->memlen + 1 < WRAPMARGIN)	/* ? */
 		{
-			if (p->data[p->len - 1] != ' ')
+			if (p->data[p->memlen - 1] != ' ')
 			{
 				strcat(p->data, " ");
-				p->len++;
+				p->memlen++;
 			}
 		}
 		return FALSE;
 	}
 }
 
-static void insert_char(register int ch)
+static void insert_char(register int c)
 {
 	register int i;
 	register char *s;
 	register struct textline *p = currline;
 	register BOOL wordwrap = TRUE;
 
-
-	if (currpnt > p->len)
+#ifdef FTUTF8_LEN	
+	static unsigned char UTF8_charremain = 0;
+	static char* UTF8_startpointer = NULL;
+#endif
+	if (currpnt > p->memlen)
 	{
-		indigestion(1);
+		indigestion(18+100*currpnt+10000*p->memlen);
 		return;
 	}
-	for (i = p->len; i >= currpnt; i--)
+	for (i = p->memlen; i >= currpnt; i--)
 		p->data[i + 1] = p->data[i];
-	p->data[currpnt++] = ch;
-	p->len++;
-	if (p->len < WRAPMARGIN)
+	
+	p->memlen++;
+#ifdef FTUTF8_LEN	
+
+	
+	p->data[currpnt] = c;
+	currpnt++;
+	if(~c & 0x80){//0xxxxxxx
+		currpos++;
+		p->charlen ++;
+	}else if(~c & 0x40){//10xxxxxx
+		UTF8_charremain --;
+		if(UTF8_charremain > 0)
+			return;
+		else{
+			int chlen =utf8charwidth((unsigned char*)UTF8_startpointer); 
+			currpos += chlen;
+			p->charlen += chlen;
+		}
+	}else if(~c & 0x20){//110xxxxx
+		UTF8_startpointer = &(p->data[currpnt-1]);
+		UTF8_charremain = 1;
 		return;
-	s = p->data + (p->len - 1);
+	}else if(~c & 0x10){//1110xxxx
+		UTF8_startpointer = &(p->data[currpnt-1]);
+		UTF8_charremain = 2;
+		return;
+	}else if(~c & 0x08){//11110xxx
+		UTF8_startpointer = &(p->data[currpnt-1]);
+		UTF8_charremain = 3;
+		return;
+	}else{
+	//not support
+		return;
+	
+	}
+#else	
+	p->data[currpnt] = c;
+	currpnt++;
+#endif
+	if (p->memlen < WRAPMARGIN)
+		return;
+	s = p->data + (p->memlen - 1);
 	while (s != p->data && *s == ' ')
 		s--;
 	while (s != p->data && *s != ' ')
@@ -267,18 +319,18 @@ static void insert_char(register int ch)
 	if (s == p->data)
 	{
 		wordwrap = FALSE;
-		s = p->data + (p->len - 2);
+		s = p->data + (p->memlen - 2);
 	}
-	split(p, (s - p->data) + 1);
+	split(p, (s - p->data) + 1,(s - p->data) + 1);
 	p = p->next;
-	if (wordwrap && p->len >= 1)
+	if (wordwrap && p->memlen >= 1)
 	{
-		i = p->len;
+		i = p->memlen;
 		if (p->data[i - 1] != ' ')
 		{
 			p->data[i] = ' ';
 			p->data[i + 1] = '\0';
-			p->len++;
+			p->memlen++;
 		}
 	}
 	while (!join(p))
@@ -297,16 +349,27 @@ static void delete_char()
 	register int i;
 
 
-	if (currline->len == 0)
+	if (currline->memlen == 0)
 		return;
-	if (currpnt >= currline->len)
+	if (currpnt >= currline->memlen)
 	{
 		indigestion(1);
 		return;
 	}
-	for (i = currpnt; i != currline->len; i++)
-		currline->data[i] = currline->data[i + 1];
-	currline->len--;
+	int delrange = 0;
+	do{
+		//rt.icurr++;
+		delrange++;
+	}while(currline->data[currpnt + delrange] & 0x80 && ~currline->data[currpnt + delrange] & 0x40);
+
+ 
+	// kill next one character.
+	//memmove(buf+rt.icurr, buf+rt.icurr+delrange, rt.iend-rt.icurr);
+	//rt.iend-=delrange;
+	currline->charlen -= utf8charwidth(&currline->data[i]);
+	for (i = currpnt; i != currline->memlen - delrange +1; i++)
+		currline->data[i] = currline->data[i + delrange];
+	currline->memlen-=delrange;
 }
 
 static void join_currline()
@@ -358,6 +421,7 @@ static void vedit_init()
 	lastline = p;
 	currline = p;
 	currpnt = 0;
+	currpos = 0;
 	top_of_win = p;
 	curr_window_line = 0;
 	redraw_everything = FALSE;
@@ -402,7 +466,7 @@ static void read_file(const char *filename)
 #endif
 			insert_char(ch);
 		else if (ch == '\n')
-			split(currline, currpnt);
+			split(currline, currpnt,currpnt);
 	}
 	close(fd);
 }
@@ -672,7 +736,7 @@ int vedit(const char *filename, const char *saveheader, char *bname)
 	clear();
 	display_buffer();
 
-	move(curr_window_line, currpnt);
+	move(curr_window_line, currpos);
 	while ((ch = getkey()) != EOF)
 	{
 		if (firstkey)
@@ -717,12 +781,13 @@ int vedit(const char *filename, const char *saveheader, char *bname)
 			insert_char(ch);
 			lastcharindent = -1;
 		}
-		else
+		else{
+			int charwidthremain;
 			switch (ch)
 			{
 			case KEY_UP:
 				if (lastcharindent == -1)
-					lastcharindent = currpnt;
+					lastcharindent = currpos;
 				if (!currline->prev)
 				{
 					bell();
@@ -730,11 +795,34 @@ int vedit(const char *filename, const char *saveheader, char *bname)
 				}
 				curr_window_line--;
 				currline = currline->prev;
-				currpnt = (currline->len > lastcharindent) ? lastcharindent : currline->len;
+				currpos = (currline->charlen > lastcharindent) ? lastcharindent : currline->charlen;
+				currpnt = 0;
+				charwidthremain = currpos;
+				if(currpos == 0){
+					currpnt = 0;
+					break;
+				}
+				while(currpnt < currline->memlen){
+					charwidthremain -=utf8charwidth(&currline->data[currpnt]);
+					if( charwidthremain <= 0 ){
+						break;
+					}
+					do{						
+						currpnt++;
+					}while(currline->data[currpnt] & 0x80 && ~currline->data[currpnt] & 0x40);
+				}
+				if(charwidthremain == 0){//not between DBCS
+					do{						
+						currpnt++;
+					}while(currline->data[currpnt] & 0x80 && ~currline->data[currpnt] & 0x40);
+					
+				}else{				
+					currpos--;
+				}
 				break;
 			case KEY_DOWN:
 				if (lastcharindent == -1)
-					lastcharindent = currpnt;
+					lastcharindent = currpos;
 				if (!currline->next)
 				{
 					bell();
@@ -742,7 +830,30 @@ int vedit(const char *filename, const char *saveheader, char *bname)
 				}
 				curr_window_line++;
 				currline = currline->next;
-				currpnt = (currline->len > lastcharindent) ? lastcharindent : currline->len;
+				currpos = (currline->charlen > lastcharindent) ? lastcharindent : currline->charlen;
+				currpnt = 0;
+				charwidthremain = currpos;
+				if(currpos == 0){
+					currpnt = 0;
+					break;
+				}
+				while(currpnt < currline->memlen){
+					charwidthremain -=utf8charwidth(&currline->data[currpnt]);
+					if( charwidthremain <= 0 ){
+						break;
+					}
+					do{						
+						currpnt++;
+					}while(currline->data[currpnt] & 0x80 && ~currline->data[currpnt] & 0x40);
+				}
+				if(charwidthremain == 0){//not between DBCS
+					do{						
+						currpnt++;
+					}while(currline->data[currpnt] & 0x80 && ~currline->data[currpnt] & 0x40);
+					
+				}else{				
+					currpos--;
+				}
 				break;
 			default:
 				lastcharindent = -1;
@@ -780,19 +891,24 @@ int vedit(const char *filename, const char *saveheader, char *bname)
 					break;
 				case KEY_RIGHT:
 				case CTRL('F'):
-					if (currline->len == currpnt)
+					if (currline->memlen == currpnt)
 					{
 						if (!currline->next)
 							bell();
 						else
 						{
 							currpnt = 0;
+							currpos = 0;
 							curr_window_line++;
 							currline = currline->next;
 						}
 					}
-					else
-						currpnt++;
+					else{
+						currpos += utf8charwidth(&currline->data[currpnt]);
+						do{
+							currpnt++;
+						}while(currline->data[currpnt] & 0x80 && ~currline->data[currpnt] & 0x40);
+					}
 					break;
 				case KEY_LEFT:
 				case CTRL('B'):
@@ -803,12 +919,19 @@ int vedit(const char *filename, const char *saveheader, char *bname)
 						else
 						{
 							currline = currline->prev;
-							currpnt = currline->len;
+							currpnt = currline->memlen;
+							currpos = currline->charlen;
 							curr_window_line--;
 						}
 					}
-					else
-						currpnt--;
+					else{
+						do{
+							currpnt--;
+						}while(currline->data[currpnt] & 0x80 && ~currline->data[currpnt] & 0x40);
+						
+						currpos -= utf8charwidth(&currline->data[currpnt]);
+						
+					}
 					break;
 				case CTRL('G'):
 					clear();
@@ -839,7 +962,7 @@ int vedit(const char *filename, const char *saveheader, char *bname)
 					break;
 				case KEY_END:
 				case CTRL('E'):
-					currpnt = currline->len;
+					currpnt = currline->memlen;
 					break;
 				case CTRL('R'):
 #if 0
@@ -873,7 +996,7 @@ int vedit(const char *filename, const char *saveheader, char *bname)
 					break;
 				case '\r':
 				case '\n':
-					split(currline, currpnt);
+					split(currline, currpnt, currpos);
 					/* lthuang: reduce the times of backup */
 					if (total_num_of_line % 7 == 0)
 						backup_file(bakfile);
@@ -889,7 +1012,8 @@ int vedit(const char *filename, const char *saveheader, char *bname)
 						}
 						curr_window_line--;
 						currline = currline->prev;
-						currpnt = currline->len;
+						currpnt = currline->memlen;
+						currpos = currline->charlen;
 						if (*killsp(currline->next->data) == '\0') {
 							delete_line(currline->next);
 							redraw_everything = TRUE;
@@ -903,28 +1027,32 @@ int vedit(const char *filename, const char *saveheader, char *bname)
 						}
 						break;
 					}
-					currpnt--;
+					do{
+						currpnt--;
+					}while(currline->data[currpnt] & 0x80 && ~currline->data[currpnt] & 0x40);
+					currpos -= utf8charwidth((unsigned char*)&currline->data[currpnt] );
+					
 					delete_char();
 					break;
 				case CTRL('D'):
-					if (currline->len == currpnt)
+					if (currline->memlen == currpnt)
 						join_currline();
 					else
 						delete_char();
 					break;
 				case CTRL('Y'):
 					currpnt = 0;
-					currline->len = 0;
+					currline->memlen = 0;
 					delete_currline();
 					break;
 				case CTRL('K'):
-					if (currline->len == 0)
+					if (currline->memlen == 0)
 						delete_currline();
-					else if (currline->len == currpnt)
+					else if (currline->memlen == currpnt)
 						join_currline();
 					else
 					{
-						currline->len = currpnt;
+						currline->memlen = currpnt;
 						currline->data[currpnt] = '\0';
 					}
 					break;
@@ -933,6 +1061,7 @@ int vedit(const char *filename, const char *saveheader, char *bname)
 				}
 				break;
 			}
+		}
 		if (curr_window_line == -1)
 		{
 			curr_window_line = 0;
@@ -986,7 +1115,7 @@ int vedit(const char *filename, const char *saveheader, char *bname)
 			vedit_outs(currline->data);
 		}
 
-		move(curr_window_line, currpnt - shift);	/* lthuang: 99/07 */
+		move(curr_window_line, currpos - shift);	/* lthuang: 99/07 */
 	}
 	if (uinfo.mode == POSTING || uinfo.mode == SMAIL)
 		unlink(filename);

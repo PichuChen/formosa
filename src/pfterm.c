@@ -2118,6 +2118,7 @@ int ftcharcmp(const ftchar*  a,const ftchar* b){
 	return c;
 }
 int utf8charwidth(const unsigned char* bytes){
+	if(bytes[0] < 0x20)return 0;
 	if(~ bytes[0] & 0x80){ //0xxxxxxx ~00007F
 		return 1;
 	}else if(~bytes[0] & 0x40){//10xxxxxx 
@@ -2305,7 +2306,7 @@ int utf8strwidth(const unsigned char* str){
 		}else if(~str[i] & 0x40){//10xxxxxx
 		
 		}else {//11xxxxxx
-			j+=2;
+			j+=utf8charwidth(&str[i]);
 		}
 		
 		i++;

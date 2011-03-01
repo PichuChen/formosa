@@ -87,7 +87,8 @@ typedef struct VCOL {
 typedef struct {
     char    *buf;
     const int len;	// callbacks should not change this.
-    int	     icurr;	// cursor position
+    int	     icurr; // pointer position
+	int		 ipos;	// cursor position
     int	     iend;	// buffer tail (= strlen(buf))
 } VGET_RUNTIME;
 
