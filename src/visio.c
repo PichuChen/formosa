@@ -75,7 +75,6 @@ static inline void
 fillns(int n, const char *s)
 {
     while (n > 0 && *s){
-		
 #if FTUTF8_LEN		
 		if(!(*s & 0x80 && ~*s & 0x40))n-=utf8charwidth(s);
 #else
@@ -1088,7 +1087,7 @@ vgetstring(char *_buf, int len, int flags, const char *defstr, const VGET_CALLBA
 				delrange++;
 			}while(buf[rt.icurr + delrange] & 0x80 && ~buf[rt.icurr + delrange] & 0x40);
 		
-		 
+		
 		    // kill next one character.
 		    memmove(buf+rt.icurr, buf+rt.icurr+delrange, rt.iend-rt.icurr);
 		    rt.iend-=delrange;
