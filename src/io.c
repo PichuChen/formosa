@@ -538,7 +538,7 @@ getdata2vgetflag(int echo)
 	    newecho |= VGET_LOWERCASE;
 	if (echo & NUMECHO)
 	    newecho |= VGET_DIGITS;
-	if ((echo & XNOSP) || (echo & ECHONOSP))
+	if ((echo & XNOSP) && (echo & ECHONOSP))
 	    newecho |= VGET_NO_SPACE;
     }
 
