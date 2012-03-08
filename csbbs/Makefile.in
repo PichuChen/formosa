@@ -59,7 +59,7 @@ debug: CFLAGS+= -g
 debug: all
 
 $(PROGNAME): csbbsproto.h $(OBJS) $(LIBFILE)
-	$(CC) -o $@ $(OBJS) $(LDLIBS) $(LIBFILE)
+	$(CC) -o $@ $(OBJS) $(LIBFILE) $(LDLIBS)
 	$(STRIP) $@
 
 csbbsproto.h: $(SRCS)
