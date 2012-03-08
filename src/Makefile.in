@@ -85,13 +85,13 @@ debug: CFLAGS+= -g
 debug: all
 
 bbsd: $(LIBFILE) $(OBJS)
-	$(CC) -o $@ $(OBJS) $(LDLIBS) $(LIBFILE)
+	$(CC) -o $@ $(OBJS) $(LIBFILE) $(LDLIBS)
 
 bbschatd: bbschatd.c
 	$(CC) $(CFLAGS) $(DEFINES) -o $@ $@.c  $(LDLIBS)
 
 genlogin: genlogin.c $(LIBFILE)
-	$(CC) $(CFLAGS) $(DEFINES) -o $@ $@.c $(LDLIBS) $(LIBFILE)
+	$(CC) $(CFLAGS) $(DEFINES) -o $@ $@.c $(LIBFILE) $(LDLIBS)
 
 $(LIBFILE): $(LIBSRCS)
 	cd ../lib; $(MAKE)
