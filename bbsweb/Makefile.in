@@ -54,7 +54,7 @@ debug: CFLAGS+= -g
 debug: all
 
 $(PROG): $(OBJS) $(LIBFILE) bbsweb.h log.h
-	$(CC) -o $@ $(OBJS) $(LDLIBS) $(LIBFILE)
+	$(CC) -o $@ $(OBJS) $(LIBFILE) $(LDLIBS)
 
 $(LIBFILE): $(LIBSRCS)
 	cd ../lib; $(MAKE)

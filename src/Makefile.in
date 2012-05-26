@@ -85,13 +85,13 @@ debug: CFLAGS+= -g
 debug: all
 
 bbsd: $(LIBFILE) $(OBJS)
-	$(CC) -o $@ $(OBJS) $(LDLIBS) $(LIBFILE)
+	$(CC) -o $@ $(OBJS) $(LIBFILE) $(LDLIBS)
 
 bbschatd: bbschatd.c
 	$(CC) $(CFLAGS) $(DEFINES) -o $@ $@.c  $(LDLIBS)
 
 genlogin: genlogin.c $(LIBFILE)
-	$(CC) $(CFLAGS) $(DEFINES) -o $@ $@.c $(LDLIBS) $(LIBFILE)
+	$(CC) $(CFLAGS) $(DEFINES) -o $@ $@.c $(LIBFILE) $(LDLIBS)
 
 $(LIBFILE): $(LIBSRCS)
 	cd ../lib; $(MAKE)
@@ -102,9 +102,9 @@ install_once: install genlogin
 	@(./genlogin -c Sysop -p SYSOP -l 255 -i 7 SYSOP)
 	@(./genlogin -c Guest -p guest -l 0   -i 0 guest)
 
-install: all installbbsd installbbschatd
+install: all install__bbsd install__bbschatd
 
-install%: %
+install__%: %
 	mkdir -p $(HOMEBBS)/bin
 	(cd $(HOMEBBS); [ ! -f ./bin/$? ] || mv -f ./bin/$? ./bin/$?.old)
 	-cp -p $? $(HOMEBBS)/bin

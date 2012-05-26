@@ -72,7 +72,7 @@ void read_entry(int x, void *ent, int idx, int top, int last, int rows)
 	register int num, len;
 	int score;
 	unsigned char *str;
-	char chdate[10];
+	static char chdate[10];
 	time_t date;
 	struct tm *tm;
 	register unsigned char type;
@@ -197,7 +197,6 @@ void read_entry(int x, void *ent, int idx, int top, int last, int rows)
 
 		outs(" ");
 		outs(chdate);
-		outs(" ");
 
 		if (type == 'd' || type == 'D')
 			prints(_msg_read_7, fhr->delby);

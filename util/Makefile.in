@@ -53,7 +53,7 @@ $(LIBFILE): $(LIBSRCS)
 idcheck bbs-news: str_codec.o
 idcheck bbs-news: LIBFILE+= str_codec.o
 %:  %.c $(LIBFILE)
-	$(CC) $(CFLAGS) $(DEFINES) -o $* $*.c $(LDLIBS) $(LIBFILE)
+	$(CC) $(CFLAGS) $(DEFINES) -o $* $*.c $(LIBFILE) $(LDLIBS)
 
 install_once install: all
 	for i in $(PROG); do \
