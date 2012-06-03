@@ -222,8 +222,8 @@ int main(int argc, char *argv[])
 		if (fork() != 0)
 			exit(0);
 #endif
-
-		if ((s = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+		/* change IPv4 type to IPv6. */
+		if ((s = socket(AF_INET6, SOCK_STREAM, 0)) < 0)
 			exit(1);
 
 		setsockopt(s, SOL_SOCKET, SO_REUSEADDR, (char *) &on, sizeof(on));
@@ -235,8 +235,8 @@ int main(int argc, char *argv[])
 #if defined(IP_OPTIONS) && defined(IPPROTO_IP)
 		setsockopt(s, IPPROTO_IP, IP_OPTIONS, (char *) NULL, 0);
 #endif
-
-		sin.sin_family = AF_INET;
+		/* change IPv4 type to IPv6. */
+		sin.sin_family = AF_INET6;
 		sin.sin_addr.s_addr = INADDR_ANY;
 		sin.sin_port = htons((u_short) port);
 
