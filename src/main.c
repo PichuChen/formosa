@@ -65,7 +65,7 @@ static void reaper()
 #endif
 
 
-static int DoBBS(struct sockaddr_in *from,int argc,char *argv)
+static int DoBBS(struct sockaddr_storage *from,int argc,char *argv)
 {
 	char *host;
 	int on;
@@ -78,7 +78,7 @@ static int DoBBS(struct sockaddr_in *from,int argc,char *argv)
 	setsockopt(0, SOL_SOCKET, SO_KEEPALIVE, (char *) &on, sizeof(on));
 	if (!from)
 	{
-		struct sockaddr_in cli;
+		struct sockaddr_storage cli;
 
 		from = &cli;
 		len = sizeof(*from);
@@ -126,7 +126,7 @@ int main(int argc, char *argv[])
 {
 	int aha, on = 1;
 	socklen_t len;
-	struct sockaddr_in from, sin;
+	struct sockaddr_storage from, sin;
 	int s = 0, ns;
 	struct pollfd pd;
 	extern int utmp_semid;
