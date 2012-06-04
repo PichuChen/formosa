@@ -67,7 +67,7 @@ static void reaper()
 
 static int DoBBS(struct sockaddr_storage *from,int argc,char *argv)
 {
-	char *host;
+	char host[INET6_ADDRSTRLEN];
 	int on;
 	socklen_t len;
 
@@ -84,7 +84,7 @@ static int DoBBS(struct sockaddr_storage *from,int argc,char *argv)
 		len = sizeof(*from);
 		getsockname(1, (struct sockaddr *) from, &len);	/* cannot work correctly ? */
 	}
-	host = inet_ntoa(from->sin_addr);
+	inet_ntop(AF_INET6,&((struct sockaddr_in6*)from)->sin6_addr,host,INET6_ADDRSTRLEN);
 #if 1
 	if (check && host_deny(host))
 	{
@@ -126,7 +126,7 @@ int main(int argc, char *argv[])
 {
 	int aha, on = 1;
 	socklen_t len;
-	struct sockaddr_storage from, sin;
+	struct sockaddr_storage from;
 	int s = 0, ns;
 	struct pollfd pd;
 	extern int utmp_semid;
@@ -236,11 +236,14 @@ int main(int argc, char *argv[])
 		setsockopt(s, IPPROTO_IP, IP_OPTIONS, (char *) NULL, 0);
 #endif
 		/* change IPv4 type to IPv6. */
-		sin.sin_family = AF_INET6;
-		sin.sin_addr.s_addr = INADDR_ANY;
-		sin.sin_port = htons((u_short) port);
+		struct sockaddr_in6 sin6;
+		struct in6_addr anyaddr = IN6ADDR_ANY_INIT; 
+		memset(&sin6,0,sizeof(sin6));
+		sin6.sin6_family = AF_INET6;
+		sin6.sin6_addr = anyaddr;
+		sin6.sin6_port = htons((u_short) port);
 
-		if (bind(s, (struct sockaddr *) &sin, sizeof sin) < 0 ||
+		if (bind(s, (struct sockaddr *) &sin6, sizeof(sin6)) < 0 ||
 		    listen(s, 1024) < 0)
 		{
 			perror("bind");
