@@ -7,7 +7,7 @@
 #define STRLEN		80	/* Length of most string data */
 #define IDLEN		13	/* Length of userids */
 #define UNAMELEN	21	/* Length of username */
-#define HOSTLEN		40	/* Length of from host */
+#define HOSTLEN		46	/* Length of from host, 46 = INET6_ADDRSTRLEN */
 #define PUSHLEN		46	/* Length of push post */
 
 struct useridx {	/* Structure used in .USERIDX */
