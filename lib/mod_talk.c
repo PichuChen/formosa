@@ -319,10 +319,11 @@ int query_user(int myulevel, char *userid, USER_INFO *upent, char *outstr,
 			modestring(quinf, 1), pagerstring(quinf));
 	else
 		strcpy(online, "\n¥Ø«e¤£¦b½u¤W, ");
-
+// Pichu Make IP Address in new Line
 	sprintf(outstr, "­Ó¤H¸ê®Æ¬d¸ß¡G\n\
 %s (%s[0m), µ¥¯Å %d%s, ¤W¯¸ %d ¦¸, ±i¶K %d ½g%s\n\
-¤W¦¸¤W¯¸®É¶¡ %s ¨Ó¦Û %s\n\
+¤W¦¸¤W¯¸®É¶¡ %s \n\
+¨Ó¦Û %s\n\
 ---- %s%s",
 #ifndef IGNORE_CASE
                qurc.userid,
