@@ -602,7 +602,7 @@ static int count_multi_login(USER_INFO *upent)
 			if (multi_logins > MULTILOGINS + 1 && !HAS_PERM(PERM_SYSOP))
 				goto force_leave;
 			
-			Fix the display bug. 
+			/* Fix the display bug. */ 
 			char *where;
 			where  = (char *)malloc(sizeof(upent->from));
 			if( strlen(upent->from) > 18 ) {
