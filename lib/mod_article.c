@@ -625,10 +625,11 @@ int append_article(char *fname, char *path, char *author, char *title,
 	if (fromhost)
 	{
 #ifdef USE_IDENT
-		sprintf(buffer, "--\n* Origin: %s * From: %s [%s通過認證]\n",
+		//Pichu : make ip appear in next line
+		sprintf(buffer, "--\n* Origin: %s \n* From: %s [%s通過認證]\n",
 			BBSTITLE, fromhost, (ident == 7) ? "已" : "未");
 #else
-		sprintf(buffer, "--\n* Origin: %s * From: %s\n", BBSTITLE, fromhost);
+		sprintf(buffer, "--\n* Origin: %s \n* From: %s\n", BBSTITLE, fromhost);
 #endif
 		append_record(fn_stamp, buffer, strlen(buffer));
 	}
