@@ -612,6 +612,9 @@ static int count_multi_login(USER_INFO *upent)
 			}
 			
 			prints(_msg_formosa_40, i, upent->pid, where);
+			
+			free( where );
+			
 			if (igetkey() == 'y')
 			{
 				if (upent->pid > 2)	/* debug */

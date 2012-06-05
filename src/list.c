@@ -241,6 +241,8 @@ static void ulist_entry(int x, void *ep, int idx, int top, int last, int rows)
 					prints(" %2lu ", uentp->idle_time);
 			}
 			outs("\n");
+			/* Free the pointer. */
+			free( where );
 		}
 		else
 			prints("  %5d %s\n", num, _msg_list_19);
