@@ -625,10 +625,9 @@ int append_article(char *fname, char *path, char *author, char *title,
 	if (fromhost)
 	{
 #ifdef USE_IDENT
-		sprintf(buffer, "--\n* Origin: %s * From: %s [%s通過認證]\n",
-			BBSTITLE, fromhost, (ident == 7) ? "已" : "未");
+		sprintf(buffer, "--\n* From: %s [%s通過認證]\n", fromhost, (ident == 7) ? "已" : "未");
 #else
-		sprintf(buffer, "--\n* Origin: %s * From: %s\n", BBSTITLE, fromhost);
+		sprintf(buffer, "--\n* From: %s\n", fromhost);
 #endif
 		append_record(fn_stamp, buffer, strlen(buffer));
 	}

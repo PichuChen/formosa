@@ -602,15 +602,14 @@ static int count_multi_login(USER_INFO *upent)
 			if (multi_logins > MULTILOGINS + 1 && !HAS_PERM(PERM_SYSOP))
 				goto force_leave;
 			
-			/* Fix the display bug. 
+			Fix the display bug. 
 			char *where;
 			where  = (char *)malloc(sizeof(upent->from));
-			if( !hostlistJudge() ) {
+			if( strlen(upent->from) > 18 ) {
 				strncpy( where, upent->from, 16);
 			}
-			*/
 			
-			prints(_msg_formosa_40, i, upent->pid, upent->from);
+			prints(_msg_formosa_40, i, upent->pid, where);
 			if (igetkey() == 'y')
 			{
 				if (upent->pid > 2)	/* debug */

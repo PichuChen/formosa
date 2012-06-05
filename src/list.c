@@ -197,6 +197,14 @@ static void ulist_entry(int x, void *ep, int idx, int top, int last, int rows)
 				}
 			}
 			tmp = 20 + (strip_ansi ? 0 : ascii_color_len(uentp->username));
+			
+			/* Modify the IPv6 display. 
+				char *where;
+				where = (char *)malloc(sizeof(uentp->from));
+				if( !hostlistCheck() ) {
+					strncpy( where, uentp->from, 16 );
+				}
+			*/
 			prints("   %4d %s%-12s %-*.*s[m %-15.15s %c%c %-14.14s",
 			       num,
 			       pkp->friend ? "[1;36m" : "",
@@ -211,7 +219,6 @@ static void ulist_entry(int x, void *ep, int idx, int top, int last, int rows)
 			       tmp,
 				/* sarek:12/30/2000 Âo°£ANSI±±¨î½X */
 			       (uentp->ident != 7) ? "¤¤¤s¹C«È" : (strip_ansi ? esc_filter(uentp->username) : uentp->username),
-
 /* TODO
 			       uentp->home,
 */

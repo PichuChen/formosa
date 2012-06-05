@@ -134,7 +134,7 @@ struct LANG {
 #define	_msg_formosa_37	MsgInfo(161)	/*	"ºÞ²zªÌ %d ¤H, ªO¥D %d ¤H"	*/
 #define	_msg_formosa_38	MsgInfo(162)	/*	", (³q¹L»{ÃÒ %d ¤H)"	*/
 #define	_msg_formosa_39	MsgInfo(163)	/*	"\n¥»¯¸°ÑÆ[¥Î¯¸¸¹(guest)¨Ï¥Î¤H¼Æ¤wÃBº¡, ½Ð±zµy«á¦A¸Õ.\n"	*/
-#define	_msg_formosa_40	MsgInfo(165)	/*	"\n%d. Login PID:[%d] ¨Ó¦Û %s ¬O§_§R°£ (y/n) ? [n] : "	*/
+#define	_msg_formosa_40	MsgInfo(165)	/*	"\n%d. Login PID:[%d] ¨Ó¦Û %s\n  ¬O§_§R°£ (y/n) ? [n] : "	*/
 #define	_msg_formosa_41	MsgInfo(166)	/*	"\n¤£¯à­«ÂÐ Login %d ¦¸ !!"	*/
 #define	_msg_formosa_42	MsgInfo(167)	/*	"[1;33m§A¦³¤W¦¸½s¿è¥¢±ÑªºÀÉ®×³á¡I¡I\n±N¦b¤U¦¸½s¿è®É½Ð±z¿ï¾Ü¬O§_¤Þ¤J[m"	*/
 #define	_msg_formosa_44	MsgInfo(168)	/*	"±b¸¹¤£¦s¦b !!\n"	*/
@@ -299,13 +299,13 @@ struct LANG {
 #define	_msg_read_21	MsgInfo(342)	/*	"³B²z¤¤, ½Ðµy­Ô ..."	*/
 #define	_msg_read_22	MsgInfo(343)	/*	"¦@¼Ð°O %d ½g."	*/
 #define	_msg_read_23	MsgInfo(344)	/*	"©¹%s¤wµL²Å¦X±ø¥óªº¤å³¹."	*/
-#define	_msg_stuff_1	MsgInfo(352)	/*	"[31;42m------------(¡´¡i­Ó¤H¤pÀÉ®×¡j¡´)-------------[m"	*/
-#define	_msg_stuff_2	MsgInfo(363)	/*	"[1;37;44m       Á`±i¶K¼Æ == [33m%-6d                    [m"	*/
-#define	_msg_stuff_3	MsgInfo(364)	/*	"[1;37;44m       ¤W¯¸¦¸¼Æ == [33m%-6d                    [m"	*/
-#define	_msg_stuff_4	MsgInfo(365)	/*	"[1;37;44m   ¤W¦¸¨Óªº®É¨è == [33m%-26s[m"	*/
-#define	_msg_stuff_5	MsgInfo(366)	/*	"[1;37;44m   ¤W¦¸¨Óªº¦a¤è == [33m%-26s[m"	*/
-#define	_msg_stuff_6	MsgInfo(367)	/*	"[1;37;44m   ³o¦¸¨Óªº®É¨è == [33m%-26s[m"	*/
-#define	_msg_stuff_7	MsgInfo(368)	/*	"[1;37;44m   ³o¦¸¨Óªº¦a¤è == [33m%-26s[m"	*/
+#define	_msg_stuff_1	MsgInfo(352)	/*	"[31;42m-------------------(¡´¡i­Ó¤H¤pÀÉ®×¡j¡´)--------------------[m"	*/
+#define	_msg_stuff_2	MsgInfo(363)	/*	"[1;37;44m     Á`±i¶K¼Æ = [33m%-6d                    [m"	*/
+#define	_msg_stuff_3	MsgInfo(364)	/*	"[1;37;44m     ¤W¯¸¦¸¼Æ = [33m%-6d                    [m"	*/
+#define	_msg_stuff_4	MsgInfo(365)	/*	"[1;37;44m ¤W¦¸µn¤J®É¨è = [33m%-26s[m"	*/
+#define	_msg_stuff_5	MsgInfo(366)	/*	"[1;37;44m ¤W¦¸µn¤J¦a¤è = [33m%-46s[m"	*/
+#define	_msg_stuff_6	MsgInfo(367)	/*	"[1;37;44m ¥»¦¸µn¤J®É¨è = [33m%-26s[m"	*/
+#define	_msg_stuff_7	MsgInfo(368)	/*	"[1;37;44m ¥»¦¸µn¤J¦a¤è = [33m%-46s[m"	*/
 #define	_msg_stuff_8	MsgInfo(369)	/*	"[31;42m (¡´ ²{¦b®É¶¡¬O %-24s ¡´) [m"	*/
 #define	_msg_stuff_9	MsgInfo(370)	/*	"[1;33;45m ±z§b¸m¹L¤[, ¤w¦Û°ÊÂ÷½u [m\n"	*/
 #define	_msg_stuff_10	MsgInfo(353)	/*	"[1;36;45m  ½Ð«ö [33m<Enter>[36m ¤§«áÂ÷½u  [m\n"	*/

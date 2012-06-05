@@ -1154,10 +1154,11 @@ push_err:
 			sprintf(ptr, "--\n");
 			ptr += 3;
 		}
-		sprintf(ptr, "%s%-*s %*s %02d/%02d %02d:%02d\n",
+		
+		/* Remove IP display after push the article. */
+		sprintf(ptr, "%s%-*s %02d/%02d %02d:%02d\n",
 			msgbuf, PUSHLEN - strlen(curuser.userid), pushline,
-			HOSTLEN - 1, uinfo.from,
-			tm->tm_mon + 1, tm->tm_mday, tm->tm_hour, tm->tm_min);
+			HOSTLEN - 1, tm->tm_mon + 1, tm->tm_mday, tm->tm_hour, tm->tm_min);
 		write(fd, writebuf, strlen(writebuf));
 
 		flock(fd, LOCK_UN);
