@@ -198,13 +198,15 @@ static void ulist_entry(int x, void *ep, int idx, int top, int last, int rows)
 			}
 			tmp = 20 + (strip_ansi ? 0 : ascii_color_len(uentp->username));
 			
-			/* Modify the IPv6 display. 
-				char *where;
-				where = (char *)malloc(sizeof(uentp->from));
-				if( !hostlistCheck() ) {
-					strncpy( where, uentp->from, 16 );
-				}
-			*/
+			/* Modify the IPv6 display. */ 
+			char *where;
+			where = (char *)malloc(sizeof(uentp->from));
+			if( strlen(uentp->from) > 18 ) {
+				strncpy( where, uentp->from, 16 );
+			} else {
+				strcpy( where, uentp->from );
+			}
+			
 			prints("   %4d %s%-12s %-*.*s[m %-15.15s %c%c %-14.14s",
 			       num,
 			       pkp->friend ? "[1;36m" : "",
@@ -222,7 +224,7 @@ static void ulist_entry(int x, void *ep, int idx, int top, int last, int rows)
 /* TODO
 			       uentp->home,
 */
-			       uentp->from,
+			       where,
 			       (uentp->invisible ? 'C' : ' '),
 #ifdef USE_OVERRIDE_IN_LIST
 			       pagerchar(pkp, curuser.ident),

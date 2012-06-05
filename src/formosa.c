@@ -607,6 +607,8 @@ static int count_multi_login(USER_INFO *upent)
 			where  = (char *)malloc(sizeof(upent->from));
 			if( strlen(upent->from) > 18 ) {
 				strncpy( where, upent->from, 16);
+			} else {
+				strcpy( where, upent->from );
 			}
 			
 			prints(_msg_formosa_40, i, upent->pid, where);
