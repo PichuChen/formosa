@@ -298,7 +298,7 @@ struct LANG {
 #define	_msg_read_20	MsgInfo(341)	/*	"§@ªÌ: "	*/
 #define	_msg_read_21	MsgInfo(342)	/*	"³B²z¤¤, ½Ðµy­Ô ..."	*/
 #define	_msg_read_22	MsgInfo(343)	/*	"¦@¼Ð°O %d ½g."	*/
-#define	_msg_read_23	MsgInfo(344)	/*	"©¹%s¤wµL²Å¦X±ø¥óªº¤å³¹."	*/
+#define	_msg_read_23	MsgInfo(344)	/*	"©¹%s¤wµL²Å¦X±ø¥óªº¤å³¹."	  */
 #define	_msg_stuff_1	MsgInfo(352)	/*	"[31;42m-------------------(¡´¡i­Ó¤H¤pÀÉ®×¡j¡´)--------------------[m"	*/
 #define	_msg_stuff_2	MsgInfo(363)	/*	"[1;37;44m     Á`±i¶K¼Æ = [33m%-6d                    [m"	*/
 #define	_msg_stuff_3	MsgInfo(364)	/*	"[1;37;44m     ¤W¯¸¦¸¼Æ = [33m%-6d                    [m"	*/
