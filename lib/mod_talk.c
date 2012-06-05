@@ -319,11 +319,19 @@ int query_user(int myulevel, char *userid, USER_INFO *upent, char *outstr,
 			modestring(quinf, 1), pagerstring(quinf));
 	else
 		strcpy(online, "\n¥Ø«e¤£¦b½u¤W, ");
+<<<<<<< HEAD
 
 	/* Change IPv6 display. */
 	sprintf(outstr, "­Ó¤H¸ê®Æ¬d¸ß¡G\n\
 %s (%s[0m), µ¥¯Å %d%s, ¤W¯¸ %d ¦¸, ±i¶K %d ½g%s\n\
 ¤W¦¸¤W¯¸®É¶¡:\n %s\n ¨Ó¦Û %s\n\
+=======
+// Pichu Make IP Address in new Line
+	sprintf(outstr, "­Ó¤H¸ê®Æ¬d¸ß¡G\n\
+%s (%s[0m), µ¥¯Å %d%s, ¤W¯¸ %d ¦¸, ±i¶K %d ½g%s\n\
+¤W¦¸¤W¯¸®É¶¡ %s \n\
+¨Ó¦Û %s\n\
+>>>>>>> 389356a62c6158644932c607eea34485b6df6750
 ---- %s%s",
 #ifndef IGNORE_CASE
                qurc.userid,

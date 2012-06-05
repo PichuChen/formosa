@@ -51,13 +51,14 @@ typedef struct userec {		/* Structure used to hold information in PASSFLE */
 	char userid[IDLEN+1];
 	char unused_filler[30];		/* unused */
 	time_t firstlogin;			/* lthuang: When first time user registered */
-	char lasthost[HOSTLEN];		/* Where user is from last time */
+	char unused_str11[16];		/* Where user is from last time */
 	unsigned int numlogins;		/* Number of user ever logins */
 	unsigned int numposts;		/* Number of user ever post */
 	unsigned char flags[2];
 	char passwd[PASSLEN];		/* Encryption of password */
 	char username[UNAMELEN+7];	/* nickname */
-	char unused_str11[60];
+	char lasthost[HOSTLEN];		/* Where user is from last time */
+	char unused_str12[60-HOSTLEN];    		
 	char lastctype;				/* By which way user login */
 	char lang;
 	char unused_str2[2];
