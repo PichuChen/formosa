@@ -180,23 +180,23 @@ void show_byebye(BOOL idle)
 {
 	time_t now = time(0);
 
-	move(4, 15);
+	move(4, 6);
 	outs(_msg_stuff_1);
-	move(5, 15);
+	move(5, 6);
 	prints(_msg_stuff_2, curuser.numposts);
-	move(6, 15);
+	move(6, 6);
 	prints(_msg_stuff_3, curuser.numlogins);
-	move(7, 15);
+	move(7, 6);
 	prints(_msg_stuff_4, Ctime(&curuser.lastlogin));
-	move(8, 15);
+	move(8, 6);
 	prints(_msg_stuff_5, curuser.lasthost);
-	move(9, 15);
+	move(9, 6);
 	prints(_msg_stuff_6, Ctime(&uinfo.login_time));
-	move(10, 15);
+	move(10, 6);
 	prints(_msg_stuff_7, uinfo.from);
-	move(11, 15);
+	move(11, 6);
 	prints(_msg_stuff_8, Ctime(&now));
-	move(12, 26);
+	move(12, 17);
 	outs(idle ? _msg_stuff_9 : _msg_stuff_10);
 
 	if (idle)	/* automatically message backup after idle timeout */
